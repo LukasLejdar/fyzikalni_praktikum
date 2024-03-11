@@ -1,0 +1,202 @@
+\documentclass[a4paper,11pt]{article}
+
+% Kodovani (cestiny) v dokumentu: utf-8
+%\usepackage[cp1250]{inputenc}	% Omezena stredoevropska kodova stranka, pouze MSW.
+\usepackage[utf8]{inputenc}	% Doporucujeme pouzivat UTF-8 (unicode).
+
+\usepackage[margin=2cm]{geometry}
+\newtoks\jmenopraktika \newtoks\jmeno \newtoks\datum
+\newtoks\obor \newtoks\skupina \newtoks\rocnik \newtoks\semestr
+\newtoks\cisloulohy \newtoks\jmenoulohy
+\newtoks\tlak \newtoks\teplota \newtoks\vlhkost
+
+\jmenopraktika={Fyzikální praktikum 1}
+\jmeno={Lukáš Lejdar}
+\datum={27. února 2024}
+\obor={F}
+\skupina={Út 16:00}
+
+\cisloulohy={1}
+\jmenoulohy={Měření hustoty}
+
+\tlak={101{,}35}
+\teplota={24,1}
+\vlhkost={26,6}
+
+
+%%%%%%%%%%% Uzitecne balicky:
+\usepackage[czech]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{xspace}
+\usepackage{url}
+\usepackage{indentfirst}
+
+%%%%%% Zamezeni parchantu:
+\widowpenalty 10000 \clubpenalty 10000 \displaywidowpenalty 10000
+%%%%%% Parametry pro moznost vsazeni vetsiho poctu obrazku na stranku
+\setcounter{topnumber}{3}	  % max. pocet floatu nahore (specifikace t)
+\setcounter{bottomnumber}{3}	  % max. pocet floatu dole (specifikace b)
+\setcounter{totalnumber}{6}	  % max. pocet floatu na strance celkem
+\renewcommand\topfraction{0.9}	  % max podil stranky pro floaty nahore
+\renewcommand\bottomfraction{0.9} % max podil stranky pro floaty dole
+\renewcommand\textfraction{0.1}	  % min podil stranky, ktery musi obsahovat text
+\intextsep=8mm \textfloatsep=8mm  %\intextsep pro ulozeni [h] floatu a \textfloatsep pro [b] or [t]
+
+% Tecky za cisly sekci:
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
+% Jednopismenna mezera mezi cislem a nazvem kapitoly:
+\makeatletter \def\@seccntformat#1{\csname the#1\endcsname\hspace{1ex}} \makeatother
+%
+\newcommand{\vsn}[4]{\ensuremath{#1 =} #2(#3)\,#4}
+\newcommand{\vrn}[6]{\ensuremath{#1 =} (#2 $\pm$ #3)\,#4 ($p=$ #5\,\%, $\nu=$ #6)}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Zacatek dokumentu
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\thispagestyle{empty}
+
+{
+\begin{center}
+\sf 
+{\Large Ústav fyziky a technologií plazmatu Přírodovědecké fakulty Masarykovy univerzity} \\
+\bigskip
+{\huge \bfseries FYZIKÁLNÍ PRAKTIKUM} \\
+\bigskip
+{\Large \the\jmenopraktika}
+\end{center}
+
+\bigskip
+
+\sf
+\noindent
+\setlength{\arrayrulewidth}{1pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l l}
+\large {\bfseries Zpracoval:}  \the\jmeno & \large  {\bfseries Naměřeno:} \the\datum\\[2mm]
+\large  {\bfseries Obor:} \the\obor  \hspace{40mm}  {\bfseries Skupina:} \the\skupina %
+&\large {\bfseries Testováno:}\\
+\\
+\hline
+\end{tabular*}
+}
+
+\bigskip
+
+{
+\sf
+\noindent \begin{tabular}{p{4cm} p{0.6\textwidth}}
+\Large  Úloha č. {\bfseries \the\cisloulohy:} \par
+\smallskip
+$T=\the\teplota$~$^\circ$C \par
+$p=\the\tlak$~kPa \par
+$\varphi=\the\vlhkost$~\%
+&\Large \bfseries \the\jmenoulohy  \\[2mm]
+\end{tabular}
+}
+
+\vskip1cm
+
+\section{Úvod}
+
+Měříme romzěry a hmotnost dutého válečku. Jeho hustotu spočítáme použitím následujícího vztahu
+
+\begin{equation}
+ \rho = \frac{m}{V} = \frac{4m}{\pi h (D^2 - d^2)} \label{eq:F}   
+\end{equation}
+
+,kde $\rho$ je hustota, $m$ hmotnost, $h$ výška válečku, $D$ průměr a $d$ vnitřní průměr válečku.
+
+\section{Postup měření}
+
+K měření jsme použili tyto přístroje
+\begin{itemize}
+  \item laboratorní váhy - k měření hmotnosti válečku
+    \item posuvné měřítko (nejmenší dílek 0,02\,cm) -- k měření průměru a vnitřního průměru
+    \item mikrometr (nejmenší dílek 0,01\,cm) - k měření výšky válečku
+\end{itemize}
+
+\section{Výsledky měření}
+
+\subsection{Měření hmotnosti válečku}
+Hmotnost válečku byla stanovena laboratorními váhami s citlivostí (d = 0.0001 g), 
+a ověřovacím dílkem (e = 0,001 g). Nejistotu měření určíme jako $u_B = \frac{e}{3}$
+
+\begin{equation}
+m = 172.9962\ (4)\ g
+\end{equation}
+
+\subsection{Měření geometrických rozměrů}
+Naměřené hodnoty geometrických rozměrů jsou spolu s aritmetickým průměrem a nejistotou uvedeny v~tabulce \ref{tb:mer}.
+
+
+\begin{table}[ht]
+\centering
+
+\begin{tabular}{| r | r | r | r |}
+\hline
+i & průměr [mm] & vnitřní průměr (mm) & výška [mm] \\
+\hline\hline
+1 & 44.01 & 9.20 & 15.44 \\
+2 & 44.02 & 9.22 & 15.40 \\
+3 & 43.98 & 9.42 & 15.30 \\
+4 & 43.96 & 9.20 & 15.36 \\
+5 & 43.96 & 9.30 & 15.46 \\
+6 & 43.94 & 9.28 & 15.48 \\
+7 & 43.96 & 9.30 & 15.34 \\
+8 & 43.92 & 9.30 & 15.42 \\
+9 & 44.02 & 9.32 & 15.44 \\
+10 & 43.98 & 9.42 & 15.39 \\
+\hline\hline
+x & 43.98 (1) & 9.30 (2) & 15.40 (2) \\\hline
+
+\end{tabular}
+\caption{Naměřené hodnoty...}
+\label{tb:mer}
+\end{table}
+
+\subsection{Stanovení nepřímo měřené veličiny}
+Hustotu $\rho$ jsme stanovili z přímých měření podle rovnice (\ref{eq:F}). 
+Nejistota měření $\rho$ byla stanovena pomocí vztahu
+\begin{eqnarray}
+  u(\rho) &=& \rho \sqrt{(\frac{u(m)}{m})^2 + (\frac{u(h)}{h})^2 + \frac{(2Du(D)^2 + (2du(d))^2 }{(D^2-d^2)^2}} \\
+\end{eqnarray}
+
+Výsledek měření se standardní nejistotou
+
+\begin{center}
+\vsn{\rho}{7741}{6}{kg m$^{-3}$}.
+\end{center}
+
+Výsledek měření s rozšířenou nejistotou
+
+\begin{center}
+  \vrn{\rho}{7.74}{0.03}{ $10^3$kg m$^{-3}$ }{99,73}{9}
+\end{center}
+Relativní rozšířená nejistota je rovna 0.4 \%.
+%$D=( \pm )\,\text{cm} \quad (p=0{,}6827, \nu= 9)$\\[1em]
+
+%$l=2099(1)\,\text{dm}$\\
+
+\section{Závěr}
+Materiál, ze kterého je váleček vyrobený neznáme, ale vzhled i změřená hustota nejlépe odpovídají 
+tabulokovým hodnotám litin železa (7580-7860) kg m$^{-3}$
+
+
+\begin{thebibliography}{0}
+\bibitem{navody} Bochníček a kol. \textit{Fyzikální praktikum 1, návody k ulohám.} Brno 2024.\\ Dostupné z~\url{https://monoceros.physics.muni.cz/kof/vyuka/fp1_skripta.pdf}.   
+\bibitem{tabulky} Hustota pevných látek. Dostupné z~\url{http://www.converter.cz/tabulky/hustota-pevne.htmf}.   
+
+\end{thebibliography}
+
+
+% Nakonec nezapomeňte projet text programem vlna nebo vlnka, např.
+% 	vlna -m -l -n mojeuloha.tex
+% nebo zkontrolovat a opravit jednopísmenné předložky na koncích řádků ručně.
+
+
+\end{document}
