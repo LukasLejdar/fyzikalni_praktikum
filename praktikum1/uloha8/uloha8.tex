@@ -35,7 +35,7 @@
 \usepackage{indentfirst}
 \usepackage{wrapfig}
 \usepackage{xcolor}
-\definecolor{bg}{HTML}{282828}
+\usepackage{caption}
 
 %%%%%% Zamezeni parchantu:
 \widowpenalty 10000 \clubpenalty 10000 \displaywidowpenalty 10000
@@ -124,6 +124,8 @@ vzrůstat v rozsahu 20 – 120 °C, závislosti zaznamenejte s krokem cca 5 °C.
 
 \subsection{Měření teploty infračerveným teploměrem}
 
+třista třicet stříbrných střikaček letělo přes třistařicet střiíbrńých střech
+
 \begin{enumerate}
 \item Vyhřejte měděnou desku pokrytou černým, bílým a aluminiovým žáruvzdorným lakem na
 plotýnkovém vařiči asi na teplotu asi 300 ◦C. Poté vařič vypněte. Nastavte na IR teploměru
@@ -156,8 +158,8 @@ krabičky a opět vyčkejte asi 10 minut. Porovnejte a komentujte výsledky.
 \subsection{Odporová čidla, termočlánky a jeijch realaxační doba}
 
 \begin{enumerate}
-\item Odpor kovového vodiče s teplotou roste. Měřením odporu čidla tedy můžeme měřit teplotu. 
-V úloze 1.1 se pokusíme zkalibrovat dvě taková čidala
+\item Odpor kovového vodiče s teplotou roste a měřením odporu čidla tedy můžeme měřit i teplotu. 
+V úloze 1.1 se pokusíme zkalibrovat dvě taková čidla
 
 \begin{equation}
 R = R_0(1+\alpha \Delta t),
@@ -165,7 +167,7 @@ R = R_0(1+\alpha \Delta t),
 
 kde $R_0$ je odpor čidla při některé referenční hodnotě a $\alpha$ teplotní odporový koeficient.  
 
-\item Termočlánek je vyrobený spojem dvou různých matriálů. Pokud teplot spojů je různá, 
+\item Termočlánek je vyrobený spojem dvou různých matriálů. Pokud teplota spojů je různá, 
 vznikne na termočlánku termoelektrické napětí, které je úměrné rozdílu teplot. Pokusíme se zkalibrovat i jeden termočlánek.
 
 \begin{equation}
@@ -204,24 +206,23 @@ odchylku vyzařování konkrétního povrchu od vyzařování dokonale černého
 \end{equation}
 
 kde v případě měření IR bude hodnota $T_p$ změřená teplota. a $T_{\text{čt}}$ zkutečná teplota tělesa. 
-Se znalostí emisivity lze skutečnou teplotu spočíta. 
+Se znalostí emisivity lze skutečnou teplotu spočítat. 
 Pro zkoumání propustností různých materiálů použijeme upravený vztah,
 
 \begin{equation}
-\tau = \frac{T_0}{T_v}
+\tau = \frac{T_0^4}{T_v^4}
 \end{equation}
 
-kde $T_0$ je hodnota naměřená IR teploměrem skrze daný matriál a $T_v$ je skutečná teplota tělesa.
+kde $T_0$ je hodnota naměřená IR teploměrem skrze daný matriál a $T_v$ je teplota naměřená přímo.
 
 \newpage
 
 \subsection{Měření malých teplotních rozdílů}
 
-Teplotní rozdíl můžeme samozřejmě vždy měřit i odečtením hodnot naměřených samostatnými teploměry. 
-Takový postup, ale bývá pro velmi nepřesný. 
-Rozdíly teplot v řádech podobných chybě samostatného teploměru ztratí veškerou přesnost původního měření.
+Teplotní rozdíl můžeme vždy měřit i odečtením hodnot naměřených samostatnými teploměry. 
+Takový postup, ale bývá problematický. Přesnot měření v absolutní stupnici se neslučuje s přesností rozdílu dvou takových hodnot.
 
-V úloze použijeme Wheatstoneův můstek se dvěma odporovými čidli $R_1$ a $R_2$, konstruovaný právě na měření malých teplotních rozdílů.
+V úloze raději použijeme Wheatstoneův můstek se dvěma odporovými čidli $R_1$ a $R_2$, konstruovaný právě na měření malých teplotních rozdílů.
 
 \begin{figure}[ht]
   \centering
@@ -239,43 +240,102 @@ kde $U_0$ je napájecí napětí a $\alpha$ teplotní koeficient odporu.
 
 \newpage
 
-\section{Výsledky měření}
+\section{Výsledky měření a Závěr}
 
 \subsection{Kalibrace odporových čidel}
 
 \begin{figure}[ht]
   \centering
   \include{olej_dif_cidlo.tex}
-  \caption{}
+  \caption{Závislost napětí na diferenciálním čidle na teplotě}
 \end{figure}
 
 \begin{figure}[ht]
   \centering
   \include{olej_odporova_cidla.tex}
+  \caption{Závislost odporů dvou odporových čidel na teplotě}
 \end{figure}
+
+Je vidět, že na měřeném rozmezí rosete napětí i odpor na odporových čidlech přibližně lineárně. 
+Změřený termoelektrický koeficient $\beta$ odpovída podle tabulek přibližně Chromelovému članku typu K a
+odporový koeficient $\alpha_1$ asi Pt100. Hodnota $\alpha_2$ se mi nepodařila identifikovat.
+
+\newpage
 
 \subsection{Relaxační doba čidel}
 
 \begin{figure}[htpb]
   \centering
   \input{relaxacni_doba_nezapouzdrene.tex}
-  \caption{relaxace}
+  \caption{Relaxace nezapouzdřeného čidla z 65°C na laboratorní teplotu}
 \end{figure}
 
 \begin{figure}[ht]
   \centering
   \include{relaxacni_doba_zapozdrene.tex}
-  \caption{}
+  \caption{Relaxace zapouzdřeného čidla z 65°C na laboratorní teplotu}
 \end{figure}
 
+Z grafu můžeme vyčíst, že zaoupzdřené čidlo má určitou setrvačnost a 
+rychlé výchylky teploty na rozdíl od nezapouzdřeného nezachytí. 
+Pro oba grafy jsme taky provedli fit exponencielou ze vztahu (3) a odtud určili relaxační dobu $\tau_m$. 
+Pro nezaopouzdřené čidlo se ale vztah zřejmě nedá použít.
+
+\newpage
+
+\subsection{Měření teploty infračerveným teploměrem}
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{ | c | c | c | c | }
+    \hline
+    Měděná deska & Skutečná teplota [$^{\circ} C$] & IR [$^{\circ} C$] & $\epsilon$ \\ \hline
+    černá & 289 & 287 & 0.973 \\
+    Bílá & 290 & 272 & 0.774 \\
+    Aluminiová & 346 & 171 & 0.0597\\ \hline
+  \end{tabular}
+  \captionsetup{justification=centering}
+  \caption{Měření měděné desky natřené různými barvamai infračervený teploměrem Optris oproti diferenciálnímu čidlu GMH 3230. 
+  Emisivitu jsme spočítali ze vztahu (5).}
+\end{table}
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{| c | c | c | c | }
+    \hline
+    Materiál & Okýnkem [$^{\circ} C$] & Bez Okýnka [$^{\circ} C$] & $\tau$ \\ \hline
+    Polykarbonát 1.5 mm & 27 & 143 & 1.27 * $10^{-3}$ \\
+    Sklo 1 mm & 27 & 144 & 1.23 * $10^{-3}$ \\ 
+    $SiO_2$ 3 mm & 28 & 146 & 1.35 * $10^{-3}$ \\ 
+    $CaF_2$ 2 mm & 43 & 147 & 7.32 * $10^{-3}$ \\ 
+    $Cu$ 0.3 mm & 27 & 149 &   1.07 * $10^{-3}$ \\ 
+    $Si$ 0.5 mm & 99 & 148 & 0.200 \\ 
+    $GaAs$ 0.5 mm & 108 & 153 & 0.248 \\ \hline
+  \end{tabular}
+  \captionsetup{justification=centering}
+  \caption{Měření teploty černého tělesa termokamerou Topdon TC view 001 zkrz okýnko a bez okýnka
+    Propustnost jsme spočítali pomocí vztahu (6).}
+\end{table}
+
+Tabulokové hodnoty jsou v tomto případě těžko porovnatelné, ale naměřené emisivity i propustnosti jim přibližně odpovídají.
+Černé těleso má emisivitu přibližně jedna, bílá míň, aluminiová nejmíň. Je totiž nejvíc reflexivní.
+
 \subsection{Měření můstkem}
+
+    Pro měření můstkem jsme použili 2 odporová čidla s odporovým keficientem $\alpha$ = $4.30 * 10 ^ {-3}$ 
+    a přivedeným napětím  $U_0$ = $2.20$ V. 
 
 \begin{figure}[ht]
   \centering
   \include{mustek.tex}
+  \caption{ Závislost přepočítaného rozdílu teplot pomocí vztahu (7) na čase}
 \end{figure}
 
-\section{Závěr}
+Na začátku jsme nechali obě čidla blízko u sebe, napětí tedy bylo blízké nule. 
+Potom jsme jedno vložili do izolujíci polystyrénové krabičky a můstek začal měřit malý teplotní rozdíl.
+Čidlem totiž protéká drobný proud a tím se zahřívá. Pokud jedno zaizolujeme, projeví se to i na grafu. 
+Měříme vlastně míru vlastního ohřevu čidla. Kolem času 400 s jsme čidla vyměnili a rozdíl teplot se téměř vyrovnal 
+na stejné, ale opačné hodnotě.
 
 \begin{thebibliography}{0}
 \bibitem{navody} Bochníček a kol. \textit{Fyzikální praktikum 1, návody k ulohám.} Brno 2024.\\ Dostupné z~\url{https://monoceros.physics.muni.cz/kof/vyuka/fp1_skripta.pdf}.   
