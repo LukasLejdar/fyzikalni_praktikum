@@ -103,7 +103,7 @@ $\varphi=\the\vlhkost$~\%
 
 \section{Úvod}
 
-Měříme romzěry a hmotnost dutého válečku. Jeho hustotu spočítáme použitím následujícího vztahu
+Měříme rozměry a hmotnost dutého válečku. Jeho hustotu spočítáme použitím následujícího vztahu
 
 \begin{equation}
  \rho = \frac{m}{V} = \frac{4m}{\pi h (D^2 - d^2)} \label{eq:F},
@@ -115,9 +115,9 @@ kde $\rho$ je hustota, $m$ hmotnost, $h$ výška válečku, $D$ průměr a $d$ v
 
 K měření jsme použili tyto přístroje
 \begin{itemize}
-  \item laboratorní váhy KERN 770 (e=$1 * 10 ^ {-4}$, d =  $1 * 10^{-3}$) - k měření hmotnosti válečku
-    \item posuvné měřítko (nejmenší dílek 0,02\,cm) -- k měření průměru a vnitřního průměru
-    \item mikrometr (nejmenší dílek 0,01\,cm) - k měření výšky válečku
+  \item laboratorní váhy KERN 770 (e=$1 * 10 ^ {-4}$ g, d =  $1 * 10^{-3}$ g) - k měření hmotnosti válečku
+    \item posuvné měřítko (nejmenší dílek 0,02\,mm) -- k měření průměru a vnitřního průměru
+    \item mikrometr (nejmenší dílek 0,01\,mm) - k měření výšky válečku
 \end{itemize}
 
 \section{Výsledky měření}
@@ -136,10 +136,9 @@ Naměřené hodnoty geometrických rozměrů jsou spolu s aritmetickým průměr
 
 \begin{table}[ht]
 \centering
-
 \begin{tabular}{| r | r | r | r |}
 \hline
-i & průměr [mm] & vnitřní průměr (mm) & výška [mm] \\
+i & D průměr [mm] & d vnitřní průměr (mm) & H výška [mm] \\
 \hline\hline
 1 & 44.01 & 9.20 & 15.44 \\
 2 & 44.02 & 9.22 & 15.40 \\
@@ -157,17 +156,22 @@ x & 43.98 & 9.30 & 15.40 \\\hline
 $u_A$ & 0.01 & 0.02 & 0.02 \\\hline
 $u_B$ & 0.006 & 0.006 & 0.003 \\\hline
 $u_C$ & 0.01 & 0.02 & 0.02\\\hline
-
 \end{tabular}
-\caption{Naměřené hodnoty}
+\caption{Naměřené hodnoty} 
 \label{tb:mer}
 \end{table}
+
+\begin{align}
+  D &= (43.98 \pm 0.01)\  mm\\
+  d &= (9.30 \pm 0.02)\ mm \\
+  H &= (15.40 \pm 0.02)\ mm
+\end{align}
 
 \subsection{Stanovení nepřímo měřené veličiny}
 Hustotu $\rho$ jsme stanovili z přímých měření podle rovnice (\ref{eq:F}). 
 Nejistota měření $\rho$ byla stanovena pomocí vztahu
 \begin{eqnarray}
-  u(\rho) &=& \rho \sqrt{(\frac{u(m)}{m})^2 + (\frac{u(h)}{h})^2 + \frac{\sqrt{(2Du(D)^2 + (2du(d))^2 }}{(D^2-d^2)^2}} \\
+  u(\rho) &=& \rho \sqrt{(\frac{u(m)}{m})^2 + (\frac{u(h)}{h})^2 + \frac{(2Du(D))^2 + (2du(d))^2 }{(D^2-d^2)^2}} \\
 \end{eqnarray}
 
 Výsledek měření se standardní nejistotou
@@ -179,7 +183,7 @@ Výsledek měření se standardní nejistotou
 Výsledek měření s rozšířenou nejistotou
 
 \begin{center}
-  \vrn{\rho}{7.74}{0.03}{ $10^3$kg m$^{-3}$ }{99,73}{9}
+  \vrn{\rho}{7740}{30}{ kg m$^{-3}$ }{99,73}{9}
 \end{center}
 Relativní rozšířená nejistota je rovna 0.4 \%.
 %$D=( \pm )\,\text{cm} \quad (p=0{,}6827, \nu= 9)$\\[1em]
