@@ -1,6 +1,6 @@
-set ylabel "h1 [mm]"
+set ylabel "$h_1$ [mm]"
 
-set xlabel "h1 - h3 [mm]"
+set xlabel "$h_1$ - $h_3$ [mm]"
 set xrange [55:90]
 
 set style data points
@@ -8,8 +8,8 @@ set style data points
 f(x) = a*x
 fit f(x) "clement" u ($1-$3):1 via a
 
-set term png
-set output "clement.png"
-plot "clement" u ($1-$3):1 title "", f(x) title ""
+set term epslatex size 5,3
+set output "clement.tex"
+plot "clement" u ($1-$3):1 lt 7 lc 1 lw 3 title "", f(x) lw 3 title ""
 
 

@@ -15,8 +15,8 @@ fit f4(x) "vlnova_delka4" u 1:(100-$2) via a4,b4
 fit f3(x) "vlnova_delka3" u 1:(100-$2) via a3,b3
 fit f2(x) "vlnova_delka2" u 1:(100-$2) via a2,b2
 
-set term png size 800,400
-set output "vlnova_delka.png"
+set term epslatex size 6,3.5
+set output "vlnova_delka.tex"
 
 # Define line styles
 set style line 1 lt rgb "#000000" lw 1
@@ -25,14 +25,12 @@ set style line 3 lt rgb "#0000ff" lw 1  # Blue
 set style line 4 lt rgb "#ffa500" lw 1  # Orange
 set style line 5 lt rgb "#800080" lw 1  # Purple
 
-set label 1 sprintf("%.2f", a5) at graph 1.2, graph 0.9
-
 plot \
   "vlnova_delka5" u 1:(100-$2) ls 1 title "", \
   "vlnova_delka4" u 1:(100-$2) ls 1 title "", \
   "vlnova_delka3" u 1:(100-$2) ls 1 title "", \
   "vlnova_delka2" u 1:(100-$2) ls 1 title "", \
-  f2(x) ls 2 title "f = 1.56 kHz", \
-  f3(x) ls 4 title "f = 1.89 kHz", \
-  f5(x) ls 3 title "f = 3.41 kHz", \
+  [1:11] f2(x) ls 2 title "f = 1.56 kHz", \
+  [1:14] f3(x) ls 4 title "f = 1.89 kHz", \
+  [1:18] f5(x) ls 3 title "f = 3.41 kHz", \
   f4(x) ls 5 title "f = 5.04 kHz"

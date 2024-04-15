@@ -33,7 +33,8 @@
 \usepackage{url}
 \usepackage{indentfirst}
 \usepackage{wrapfig}
-
+\usepackage{xcolor}
+\usepackage{caption}
 
 %%%%%% Zamezeni parchantu:
 \widowpenalty 10000 \clubpenalty 10000 \displaywidowpenalty 10000
@@ -125,11 +126,11 @@ $\varphi=\the\vlhkost$~\%
   \item svinovací metr
 \end{itemize}
  
-\section{Postup měření}
+\section{Teorie}
 
 \subsection{Clément Desormova metoda}
 
-Poissonova konstant vystupuje v adiabatckém ději jako,
+Poissonova konstant vystupuje v adiabatckém ději jako
 
 \begin{equation}
   pV^{\kappa} = konst.
@@ -140,7 +141,7 @@ To je ale velmi těžko realizovatelné, když adiabatický děj probíhá v tep
 
 Clément-Desormova je způsob, jak se tomuto problému vyhout. 
 Děj se bude nejprve skládat z adiabatické expanze ($p_1$, $T_1$) $\implies$ ($p_2$, $T_2$) .
-Otevřeme ventil natlakované nádoby a po vyrovnání tlakú, ale minimální výměně tepla ho zase rychle uzavřeme. \\
+Otevřeme ventil natlakované nádoby a po vyrovnání tlaků, ale minimální výměně tepla ho zase rychle uzavřeme. \\
 \begin{equation}
   p_1^{\frac{1}{\kappa} -1} T_1 = p_2^{\frac{1}{\kappa} -1} T_2 \\
 \end{equation}
@@ -170,29 +171,30 @@ Je-li změna tlaku ve srovnání s atmosférickým tlakem dostatečně malá, pa
 \kappa \approx \frac{h_1}{h_1 - h_3}
 \end{equation}
 
-Přesto že je tonto vztah aproximativní,
-jeho výhodou je, že veličny, které zde vystupují pocházejǐ z jediného měřícího přístroje a absolutní chyby se můžou částečně pokrátit.
+Přesto, že je tento vztah aproximativní,
+je jeho výhodou , že veličny, které zde vystupují pocházejǐ z jediného měřícího přístroje a absolutní chyby se 
+můžou částečně pokrátit.
 
 \subsection{Kundutova trubice}
 
 Pro rychlost zvuku v ideálním plynu platí vztah
 
 \begin{equation}
-c = \sqrt{\kappa \frac{p}{\rho}} 
+c = \sqrt{\kappa \frac{p}{\rho}},
 \end{equation}
 
-, kde $p$ je tlak, $\rho$ hustota vzduchu a  $\kappa$ poissonova konstatnta. Ze stavové rovnice pro ideální plyn ale taky
+kde $p$ je tlak, $\rho$ hustota vzduchu a  $\kappa$ poissonova konstatnta. Ze stavové rovnice pro ideální plyn ale taky
 \begin{equation}
-  p = \frac{\rho R T}{ M_{mol}}
+  p = \frac{\rho R T}{ M_{mol}}.
 \end{equation}
 
 Dosazení a vyjádřením $c$ dostáváme
 
  \begin{equation}
-   \lambda f = \sqrt{\kappa \frac{RT}{M_{mol}}} 
+   \lambda f = \sqrt{\kappa \frac{RT}{M_{mol}}},
 \end{equation}
 
-, kde $\lambda$ je vlnová délka a $f$ frekvence zvuku. 
+kde $\lambda$ je vlnová délka a $f$ frekvence zvuku. 
 Na generátoru sinusového signálu v Kundutově trubici nastavíme vhodnou frekvenci a zaznamenáváme polohy maximálních amplitud vlnění.
 Rozdíl každých dvou maxim je polovina vlnové délky.
 
@@ -202,16 +204,35 @@ Rozdíl každých dvou maxim je polovina vlnové délky.
 
 \subsection{Kalibrace diferenciálního čidla}
 
-\begin{table}[ht]
+Pro různé výšky vodního sloupce jsme odečetli proud protékající čidlem. 
+Hodnoty lineárního fitu podle vztahu 2 jsou uvedeny v grafu 1.
+
+\begin{figure}[ht]
   \centering
-  \begin{tabular}{ c | c }
-     $I_0$ & $(4.09 \pm 0.05)$  [mA] \\ \hline
-     c & $(0.031 \pm 0.001)$
-  \end{tabular}
-  \caption{Výsledky kalibrace z grafu \ref{fig:1}}
-\end{table}
+  \include{kalibrace_proudu.tex}
+  \caption{závislost proudu protekájícího čidlem na výšce vodního sloupce}
+\end{figure}
 
 \subsection{Clément Desormovou metodou}
+
+\begin{figure}[ht]
+  \centering
+  \include{clement.tex}
+  \caption{závislost rozdílu naměřených hodnot $h_1 - h_3$, na $h_1$}
+  \label{fig:2}
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+  \centering
+  \include{clement-cidlem.tex}
+  \caption{závislost rozdílu naměřených hodnot $I_1 - I_3$, na $I_1 - I_0$}
+  \label{fig:3}
+\end{figure}
+
+Podle Clément Desormovy metody jsme postupně nepřímo měřili tlak $p_1$ před adiabatickou expanzí a tlak $p_3$ po 
+izochorickém ohřevu. Výslednou poissonovu konstantu zjistíme jako sklon fitu rozdílu $p_1 - p_0$ a $p_1 - p_3$.
 
 \begin{table}[ht]
   \centering
@@ -225,7 +246,12 @@ Rozdíl každých dvou maxim je polovina vlnové délky.
 
 \subsection{Kundutovou trubicí}
 
-Pro výpočet je potřeba tlak v laboratoři $p=98497.0$ Pa a hustota vzduchu, kterou zjistíme z online kalkulačky z odkazu [3]
+Potřebujeme zjistit vzdálent realizace každých dvou amplitud vlnění odkud můžeme ze vztahu (11) vypočítat 
+poissonovu konstantu.
+Volba frekvence je na nás, zkusíme provést měření pro 4 různé frekvence a porovnáme výsledky. 
+Vypočtené hodnoty jsou uvedené v tabulce 2.
+
+Potřebnou hustotu vzduchu jsme zjistili z online kalkulačky z odkazu [3]
 
 \begin{table}[ht]
   \centering
@@ -239,42 +265,28 @@ Pro výpočet je potřeba tlak v laboratoři $p=98497.0$ Pa a hustota vzduchu, k
   \caption{Hodnoty spočítané z grafu \ref{fig:4}}
 \end{table}
 
+\newpage
+
+\begin{figure}[htpb]
+  \centering
+  \include{vlnova_delka.tex}
+  \caption{závislost n-tého maxima amplitudy vlnění na vzdálenosti}
+  \label{fig:4}
+\end{figure}
+
 \section{Závěr}
+
+Opravdová poissonova konstanta pro vzduch za laboratorních podmínek:
+
+\begin{equation}
+\kappa \approx 1.40
+\end{equation}
 
 Měření Clément Desormovou metodou nedopadlo nejlépe. Myslím, že jsem pokaždé zavřel ventil na nádobě moc brzo a tlaky se nestihli vyrovnat.
 Proto je naměřená hodnota menší než skutečná. Měření Kundutovou trubicí je na druhou stranu docela přesné. 
 Je i vidět, že pro větší hodnoty frekvence klesá vlnová délka což zjednodušuje hledání maxima a vede k přesnějšímu měření.
 
 
-
-\begin{figure}[bp!]
-  \centering
-  \includegraphics[width=0.7\linewidth]{kalibrace_proudu.png}
-  \caption{závislost proudu protekájícího čidlem na výšce vodního sloupce od počáteční hodnoty}
-  \label{fig:1}
-\end{figure}
-
-\begin{figure}[bp!]
-  \centering
-  \includegraphics[width=0.7\linewidth]{clement.png}
-  \caption{závislost rozdílu naměřených hodnot $h_1 - h_3$, na $h_1$}
-  \label{fig:2}
-\end{figure}
-
-
-\begin{figure}[bp!]
-  \centering
-  \includegraphics[width=0.7\linewidth]{clement-cidlem.png}
-  \caption{závislost rozdílu naměřených hodnot $I_1 - I_3$, na $I_1 - I_0$}
-  \label{fig:3}
-\end{figure}
-
-\begin{figure}[bp!]
-  \centering
-  \includegraphics[width=0.9\linewidth]{vlnova_delka.png}
-  \caption{závislost n-tého maxima amplitudy vlnění na vzdálenosti}
-  \label{fig:4}
-\end{figure}
 
 \begin{thebibliography}{0}
 \bibitem{navody} Bochníček a kol. \textit{Fyzikální praktikum 1, návody k ulohám.} Brno 2024.\\ Dostupné z~\url{https://monoceros.physics.muni.cz/kof/vyuka/fp1_skripta.pdf}.   
