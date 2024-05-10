@@ -19,7 +19,7 @@
 \cisloulohy={3}
 \jmenoulohy={Měření viskozity, hustoty a povrchového napětí kapalin}
 \tlak={101{,}35}
-\teplota={21,1}
+\teplota={22,4}
 \vlhkost={47,7}
 
 %%%%%%%%%%% Uzitecne balicky:
@@ -31,6 +31,7 @@
 \usepackage{url}
 \usepackage{indentfirst}
 \usepackage{wrapfig}
+\usepackage{subcaption}
 \usepackage{xcolor}
 
 %%%%%% Zamezeni parchantu:
@@ -174,7 +175,7 @@ Uvažujme časový interval od momentu $t_1$, kdy hladina v trubici B míjí rys
   \frac{\eta}{\rho} \int_{h_1}^{h_2} \frac{A(h)}{h} dh &= \frac{\pi R^4}{8 L} g \int_{t_1}^{t_2} dt 
 \end{align}
 
-Všechny konstanty vystupující na pravé straně jsou nezávislé na vlastnostech měřené kapaliny, stejně jako Integrál na straně levé. Můžu tak psát
+Všechny konstanty vystupující na pravé straně jsou nezávislé na vlastnostech měřené kapaliny, stejně jako Integrál na straně levé. Můžu psát
 
 \begin{equation}
 \nu = K(t_2-t_1),
@@ -204,7 +205,7 @@ kde R je poloměr kroužku a $f (\frac{R^3}{V}, \frac{R}{r})$ HarkinsůvJordanů
 
 \subsection{Měření hustoty metodou ponorného tělíska}
 
-Tato metoda využívá Archimedova zákona pro měření hustoty kapaliny. Změříme vztlak působící na plně ponořené těleso v kapalině o známé hustotě a v kapalině s neznámou hustotou. Výslednou hdonotu získáme ze vztahu
+Tato metoda využívá Archimedova zákona pro měření hustoty kapaliny. Změříme vztlak působící na plně ponořené těleso v kapalině o známé hustotě a v kapalině s neznámou hustotou. Výslednou hodnotu získáme ze vztahu
 
 \begin{equation}
   \rho = \frac{m}{m_{\text{známé}}} \rho_{\text{známé}}
@@ -215,18 +216,16 @@ Tato metoda využívá Archimedova zákona pro měření hustoty kapaliny. Změ�
 Pyknometr je skleněná nádoba, kterou lze naplnit velmi přesným, ale neznámým objemem kapaliny. Zvlášť zvážím hmotnost m prázdného pyknometru, hmotnost $m_1$ pyknometru naplněného kapalinou o neznámé hustotě $\rho_1$ a hmotnost $m_2$ pyknometru naplněného kapalinou o známé hustotě $\rho_2$.
 
 \begin{equation}
-  \rho_1 = (\rho_2 - \rho_1) \frac{m_1 - m}{m_2 - m} + \rho_{\text{vzduchu}}
+  \rho_1 = (\rho_2 - \rho_{\text{vzduchu}}) \frac{m_1 - m}{m_2 - m} + \rho_{\text{vzduchu}}
 \end{equation}
 
 \subsection{Měření složek povrchového napětí metodou kontaktního úhlu přisedlé kapky}
 
-Povrchové napětí nejčastěji měříme na rozhraní kapalina - vzduch, jelikož vzduch nereaguje ani s kapalinou, ani sám se sebou. Nevznikne žádný příspěvek od molekul vzduchu a nic neoponuje přitažlivým silám mezi molekulami kapaliny, které se tím v součtu projeví všechny. Dupreho rovnice (14) naopak popisuje případ, kdy obě látky na rozhraní mají vlastní povrchové napětí $
-\sigma_s$,  $\sigma_l$ a zároveň spolu interagují.
+Povrchové napětí nejčastěji měříme na rozhraní kapalina - vzduch, jelikož vzduch nereaguje ani s kapalinou, ani sám se sebou. Nevznikne žádný příspěvek od molekul vzduchu a nic neoponuje přitažlivým silám mezi molekulami kapaliny, které se tím v součtu projeví všechny. Dupreho rovnice (14) naopak popisuje případ, kdy obě látky na rozhraní mají vlastní povrchové napětí $\sigma_s$,  $\sigma_l$ a zároveň spolu interagují.
 
 \begin{equation}
   \sigma_{\text{sl}} =
-  \sigma_{\text{s}} + \sigma_{\text{l}} - 2 \sqrt{\sigma_{\text{s}}^{\text{lw}}\sigma_{\text{l}}^{\text{lw}}} - 2\sqrt{\sigm
-a_{\text{s}}^{\text{ab}}\sigma_{\text{l}}^{\text{ab}}} \\
+  \sigma_{\text{s}} + \sigma_{\text{l}} - 2 \sqrt{\sigma_{\text{s}}^{\text{lw}}\sigma_{\text{l}}^{\text{lw}}} - 2\sqrt{\sigma_{\text{s}}^{\text{ab}}\sigma_{\text{l}}^{\text{ab}}} \\
 \end{equation}
 
 Cílem měření je zjistit, jak se známá hodnota povrchového napětí $\sigma_{\text{l}}$ rozkládá do složek $\sigma_{\text{l}}^{\text{lw}}$, $\sigma_{\text{l}}^{\text{ab}}$ ze vztahu (4) a jak bude podle vztahu (14) reagovat s jinými materiály.  Kapka nanesená na vhodný povrch jako na obrázku~4, je právě co hledáme. Pro úhel $\theta$, který svírá tečna k profilu kapky v místě styku všech tří fází platí Youngova rovnice \\
@@ -250,67 +249,145 @@ Kombinací Youngovy a Dupreho rovnice dostaneme rovnici Youngovu-Dupreho:
   (1 + \cos(\theta))\sigma_{\text{l}} =  2 \sqrt{\sigma_{\text{s}}^{\text{lw}}\sigma_{\text{l}}^{\text{lw}}} + 2\sqrt{\sigma_{\text{s}}^{\text{ab}}\sigma_{\text{l}}^{\text{ab}}}
 \end{equation}
 
-Pro další zjednodušení nám nezbývá, než si půjčit nějaké poznatky z chemie. Teflon má například povrchovou energii pouze disperzního charakteru, tj. $\sigma_{\text{s}} = \sigma_{\text{s}}^{\text{lw}}$ a na pravé straně rovnice tak bude vystupovat jediná odmocnina. Dál můžeme jako kalibrační kapalinu použít metylenjodid (CH$_{2}$I$_{2}$), který má povrchovou energii rovněž čistě disperzního charakteru.
+Abychom změřili jen jednu složku povrchového napětí, musíme ji nějak izolovat od té druhé. Teflon má například povrchovou energii pouze disperzního charakteru, tj. $\sigma_{\text{s}} = \sigma_{\text{s}}^{\text{lw}}$ a na pravé straně rovnice zbude jediná odmocnina. Dál můžeme jako kalibrační kapalinu použít metylenjodid (CH$_{2}$I$_{2}$), který má povrchovou energii rovněž čistě disperzního charakteru.
 
 \begin{align}
   (1 + \cos\theta_{\text{H}_2\text{O}}) \sigma_{\text{H}_2\text{O}} &= 2 \sqrt{\sigma_{\text{s}}^{\text{lw}} \sigma_{\text{H}_2\text{O}}^{\text{lw}}} \\
   (1 + \cos\theta_{\text{kal}}) \sigma_{\text{kal}} &= 2 \sqrt{\sigma_{\text{s}}^{\text{lw}} \sigma_{\text{kal}}}
 \end{align}
 
-Po vydělení obou rovnic pro poměr disperzní a celkové povrchové energie vody platí
+Po vydělení obou rovnic dostávám pro disperzní složku povrchové energie vody
 
 \begin{equation}
-\frac{ \sigma^{lw}_{\text{H}_2\text{O}} }{ \sigma_{\text{H}_2\text{O}} } =
-\frac{ \sigma_{\text{H}_2\text{O}} }{ \sigma_{\text{kal}} }
-( \frac{1 + \cos \theta_{\text{H}_2\text{O}}}{ 1 + \cos \theta_{\text{kal}} } )
+\sigma^{lw}_{\text{H}_2\text{O}} =
+\frac{ (\sigma_{\text{H}_2\text{O}})^2 }{ \sigma_{\text{kal}} }
+\left( \frac{1 + \cos \theta_{\text{H}_2\text{O}}}{ 1 + \cos \theta_{\text{kal}} } \right)^2
 \end{equation}
 
 \section{Výsledky měření}
 
-\subsection{Absolutní měření viskozity}
+\subsection{Absolutní měření viskozity Mariottovou lahví}
 
-Pomocí katetometru jsem změřil výškový rozdíl h vyústění trubičky a úrovně kapiláry 
+Za dobu t = 128 s vytekl kapilárou objem V = $38.2 \pm 3$ cm$^{3}$ destilované vody. Uvádím taky parametry použité Mariottovy láhve pro výpočet dynamické viskozity ze vztahu (6).
+\begin{flalign*}
+  & \text{poloměr kapiláry} & R &= 0.570 \pm 0.001 \text{ mm} &  \\
+  & \text{délka kapiláry} & L &= 165.0 \pm 0.5 \text{ mm} & \\
+  & \text{tlakový spád} & \rho &= 112 \pm 4 \text{ kPa} &
+\end{flalign*}
 
-\begin{equation}
-h = 11.43 cm
-\end{equation}
+\begin{equation*}
+  \eta = (9.43 \pm 0.03) \cdot 10^{-3} \text{ Nsm}^{-2}
+\end{equation*}
 
-\subsection{Stanovení nepřímo měřené veličiny}
+\subsection{Měření Ubbelohdeho viskozimetrem}
+
+Laboratorní viskozimetr už je zkalibrovaný pro hodnotu K
+
+\begin{equation*}
+K = 1.063 \pm 0.0069 \cdot 10^{-9} \text{ m}^{2}\text{s}^{-2}.
+\end{equation*}
+
+Provedl jsem 3 měření kinematické viskozity vody. Jedno při laboratorní teplotě a dvě po ponoření celého viskozimetru v ohřáté vodě. Naměřené hodnoty jsou uvedené v tabulce 1 a kinematickou viskozitu jsem spočítal ze vztahu  (6). \\
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{ | c | c | c |}
+    \hline
+    $T$ (°C) & $t$ (m:s) & $\nu_{\text{H}_2\text{O}}$ (m$^{2}$s$^{-1}$) \\\hline
+    25 & 14:22 & 9.16 $\pm$ 0.06 $\cdot 10 ^{-7}$ \\
+    30 & 12:25 & 7.92 $\pm$ 0.05 $\cdot 10 ^{-7}$ \\
+    35 & 11:23 & 7.26 $\pm$ 0.05 $\cdot 10 ^{-7}$ \\\hline
+    \end{tabular}
+    \caption{Změřené hodnoty kinematické viskozity pro různé teploty}
+\end{table}
+
+\subsection{Měření hustoty metodou ponorného tělíska}
+
+Na závěsných vahách jsem změřil vztlak ponořeného tělíska v destilované vodě a v lihu. Hustotu dopočítám ze vztahu (12).
+\begin{flalign*}
+  & \text{tíha tělíska ponořeného v lihu} & m_{\text{l}} &= 36.37 \pm 0.03 \text{ mN} \\
+  & \text{tíha tělíska ponořeného ve vodě} & m_{\text{v}} &= 41.08 \pm 0.03 \text{ mN} & \\
+  & \text{hustota destilované vody} & \rho_{\text{v}} &= 997 \text{ kgm}^{-3} &
+\end{flalign*}
+\begin{equation*}
+  \rho_{\text{l}} = 804.4 \pm 0.9 \text{ kgm}^{-3}
+\end{equation*}
+\subsection{Měření hustoty pyknometrem}
+
+Ze vztahu (13) dopočítám hustotu lihu $\rho_{\text{l}}$, pomocí známé hustoty destilované vody $\rho_{\text{v}} = 997$ kgm$^{-3}$.
+\begin{flalign*}
+  & \text{hmotnost prázdného pyknometru} & m &= 17.728 \pm 0.003\ g & \\
+  & \text{hmotnost pyknometru s lihem} & m_\text{l} &= 38.580 \pm 0.003\ g & \\
+  & \text{hmotnost pyknometru s destilovanou vodou} & m_{\text{v}} &=  43.740 \pm 0.003\ g & \\
+  & \text{hustota vzduchu v laboratoři} & \rho_{\text{vz}} &= 1.204 \text{ kgm}^{-3}
+\end{flalign*}
+\begin{equation*}
+\rho_{\text{l}} = 799.5 \pm 0.2 \text{ kgm}^{-3}
+\end{equation*}
+
+\subsection{Měření povrchového napětí du Noüyho metodou}
+
+Celkem jsem pro každou kapalinu udělal 10 měření a výsledky i s nejistotou uvedl v tabulce 2. Poloměr kroužku byl R$= 29.0 \pm 0.05$ mm a Harkinsův-Jordanův korekční faktor f = 0.77.
+
+
+\begin{table}[htpb]
+  \centering
+  \begin{tabular}{| c | c | c |}
+    \hline
+    kapalina & $F_{max}$ (N) & $\sigma$ (Nm$^{-1}$) \\\hline
+    líh & 12.01 $\pm$ 0.2 & 25.4 $\pm$ 0.5 \\
+    destilovaná voda & 34.42 $\pm$ 0.2 & 72.7 $\pm$ 0.5 \\ \hline
+  \end{tabular}
+  \caption{Povrchové napětí destilované vody a lihu}
+\end{table}
+
+\vspace{-10pt}
+
+\subsection{Měření složek povrchového napětí metodou kontaktního úhlu přisedlé kapky}
+
+\begin{figure}[htpb]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{kapky/voda_001p_crop.jpg}
+    \caption{Destilovaná voda}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{kapky/voda_002p_crop.jpg}
+    \caption{metylenjodid}
+  \end{subfigure}
+  \caption{Kapky přisedlé na teflonové podložce}
+\end{figure}
+
+Disperzní složku povrchového napětí vody dopočítám ze vztahu (19).
+
+\begin{flalign*}
+  & \text{povrchové napětí metylenjodidu} & \sigma_{\text{kal}} &= 50.8 \text{ Nm}^{-1} & \\
+  & \text{povrchové napětí destilované vody} & \sigma_{\text{v}} &= 72.8 \text{ Nm}^{-1} & \\
+  & \text{změřený úhel přisedlé kapky metylenjodidu} & \theta_{\text{v}} &= 68.7 ^{\circ} & \\
+  & \text{změřený úhel přisedlé kapky vody} & \theta_{\text{v}} &= 109.5 ^{\circ} &
+\end{flalign*}
+
+\begin{align*}
+  \sigma^{lw}_{\text{H}_2\text{O}} &= 24.9 \text{ Nm}^{-1} & \sigma^{ab}_{\text{H}_2\text{O}} = \sigma_{\text{H}_2\text{O}} - \sigma^{lw}_{\text{H}_2\text{O}} &= 47.9 \text{ Nm}^{-1} \\
+\end{align*}
 
 \section{Závěr}
 
-\end{document}
+Pomocí Mariottovy lahve jsem změřil jsem dynamickou viskozitu destilované vody o teplotě 18~$^{\circ}$C $\eta = (9.43 \pm 0.03) \cdot 10^{-3} \text{ Nsm}^{-2}$. Viskozita vody se v řádech nejistoty mění s teplotou a proto by nemělo smysl měřit přesněji. Tabulky udávají obecnou hodnotu 0.01. \\
 
-%Povrchové napětí, které pozorujeme, je nutně důsledkem přitažlivých mezimolekulárních sil uvnitř kapalin, neboť k odhalení většího počtu molekul a ke zvětšení povrchu kapaliny je zapotřebí vykonat práci
-%
-%\begin{equation}
-%dW = Fdx = \sigma l dx = \sigma dS.
-%\end{equation}
-%
-%Povrchové napětí je skrz tento vztah zároveň veličina vyjadřující plošnou hustoty energie, kterou kapalina získává zvětšením povrchu.
-%
-%\begin{equation}
-%\sigma = \frac{dW}{dS}
-%\end{equation}
-%
-%V povrchové vrstvě ale může být mezimolekulárních interakcí mnoho a na rozhraní dvou látek se můžou působící síly lišit. Podle Fowkese a van Osse et al. tyto síly aditivně přispívají k celkovému povrchovému napětí a všechny lze zahrnout do dvou větších kategorií acidobazikých interakcí a Van der Waalsových sil
-%
-%\begin{equation}
-%\sigma = \sigma^{\text{lw}} + \sigma^{ab}.
-%\end{equation}
-%
-%Vzájemnou interakci mezi dvěma fázemi s, l popisuje adhezní práce, pro kterou platí Berthelotovo kombinační pravidlo
-%
-%\begin{equation}
-%W_{\text{sl}}^{\text{a}} = 2 \sqrt{\sigma_{\text{s}}^{\text{lw}}\sigma_{\text{l}}^{\text{lw}}} + 2\sqrt{\sigma_{\text{s}}^{\text{ab}}\sigma_{\text{l}}^{\text{ab}}} 
-%\end{equation}
-%
-%a mezifázovou povrchovou energii (tj. i např. povrchové napětí na rozhraní mezi dvěma kapalinami)
-%můžeme dopočítat dosazením (3) do Duprého rovnice
-%
-%\begin{align}
-%  \sigma_{\text{sl}} &= \sigma_{\text{s}} + \sigma_{\text{l}} - W_{\text{sl}}^{\text{a}} \\
-%  \sigma_{\text{sl}} &= \sigma_{\text{s}} + \sigma_{\text{l}} - 2 \sqrt{\sigma_{\text{s}}^{\text{lw}}\sigma_{\text{l}}^{\text{lw}}} + 2\sqrt{\sigma_{\text{s}}^{\text{ab}}\sigma_{\text{l}}^{\text{ab}}}.
-%\end{align}
-%
-%
+Ubbelohdeho viskozimetrem jsem změřil kinematickou viskozitu vody o teplotě 25 $^{\circ}$C, 30 $^{\circ}$ C a 35~$^{\circ}$C. Výsledky jsou uvedené v tabulce 1 a dobře odpovídají tabulkovým hodnotám z odkazu 1. \\
+
+Určil jsem hustotu lihu zvlášť metodou ponorného tělíska $\rho = 804.4 \pm 0.9 \text{ kgm}^{-3}$ a pyknometrem $\rho = 799.5 \pm 0.2 \text{ kgm}^{-3}$, oproti tabulkové hodnotě 789 kgm $^{-3}$. Vypadá to, že v naší laboratoři je líh o trochu těžší. \\
+
+Du Noüyho metodou jsem změřil povrchové napětí lihu $\sigma = 25.4 \pm 0.5$ Nm$^{-1}$ a destilované vody $\sigma = 72.7 \pm 0.5$~Nm$^{-1}$. Nejistotu obou hodnot tvoří převážně nejistota velikosti poloměru kroužku a korekčního faktoru. Mám ale pořád velmi dobrou shodu s tabulkovými hodnotami 22.4 a 72.8 Nm$^{-1}$. Malou chybu povrchového napětí lihu pravděpodobně způsobily nečistoty v nádobě. \\
+
+Měřením kontaktního úhlu kapky destilované vody přisedlé na podložce z teflonu jsem určil složky povrchového napětí 
+  $\sigma^{lw} = 24.9 \text{ Nm}^{-1}$ a $\sigma^{ab} = 47.9 \text{ Nm}^{-1}$. Tabulkové hodnoty jsou 21.8 a 51.0~Nm$^{-1}$. I tady výsledek mohly ovlivnit malé nečistoty na podložce.
+
+
+\begin{thebibliography}{0}
+\bibitem{tabulky} Kinematická a dynamická viskozita vody ~\url{https://e-konstrukter.cz/prakticka-informace/kinematicka-a-dynamicka-viskozita-vody}.   
+\end{thebibliography}
+
+\end{document}
