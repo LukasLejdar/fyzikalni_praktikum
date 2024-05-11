@@ -128,7 +128,7 @@ kde K je kapacita kalorimetru, $\tau$ je čas, m hmotnosti látky a c její měr
 přičemž veličina $\beta$ je takto definovaný koeficient chladnutí. Je víc způsobů jak kalorimetr použít, vždycky ale bude prvně potřeba znát kapacitu K a koeficient chladnutí $\beta$.
 
 \subsection{Měření koeficientu chladnutí kalorimetru $\beta$}
-Uvažujme řešení rovnice (3), kde v čase $\tau=0$ je teplota kalorimetru rovná teplotě okolí (t = $t_0$) a látku uvnitř ohřívá nenulový výkon spirály. Dosazením dostávám
+Uvažujme řešení rovnice (2), kde v čase $\tau=0$ je teplota kalorimetru rovná teplotě okolí (t = $t_0$) a látku uvnitř ohřívá nenulový výkon spirály. Dosazením dostávám
 
 \begin{align}
   UI &= (mc + K) \frac{dt}{d\tau}(0).
@@ -142,7 +142,7 @@ UI = \beta (t_{\text{f}} - t_0)
 \end{equation}
 
 \noindent
-Mohl, bych opravdu počkat než se teplota ustálí, ale to by přesahovalo dobu trvání praktika. Místo toho vyřeším analyticky rovnici (3) pro popsané počáteční podmínky
+Mohl, bych opravdu počkat než se teplota ustálí, ale to by přesahovalo dobu trvání praktika. Místo toho vyřeším analyticky rovnici (2) pro popsané počáteční podmínky
 
 \begin{equation}
 t = t_0 + \frac{UI}{\beta} \left(1 - e^{-\frac{\beta}{mc + K}\tau}\right)
@@ -160,7 +160,7 @@ Do kalorimetru naplněného kapalinou o počáteční teplotě $t_1$ a hmotnosti
 \end{equation}
 
 \noindent
-do které můžu dosadit měrnou tepelnou kapacitu c z měření $\beta$ v případě, že jsem používal tu stejnou kapalinu jako kalibrační látku.
+do které můžu dosadit měrnou tepelnou kapacitu c z měření $\beta$ v případě, že jsem používal tu stejnou kapalinu 
 
 \begin{align}
   c = \frac{K_{\beta} - K}{m_{\beta}}, \quad K = \frac{K_{\beta} \varpi}{1 + \varpi}, \quad \varpi = \frac{m_2}{m_{\beta}}\frac{t_2 - t}{t - t_1} - \frac{m_1}{m_{\beta}}
@@ -184,7 +184,7 @@ Naplnil jsem kalorimetr vodou o hmotnosti $m_{\beta} = (349.5 \pm 0.04)$ g a po�
 
 \subsection{Měření kapacity kalorimetru K}
 
-Připravil jsem kádinku s vodou o teplotě $t_2$ = $ (41.3 \pm 0.1)\ ^{\circ}C$ a hmotnosti $m_2 = (190.7 \pm 0.02)$ g a kalorimetr naplnil vodou o teplotě $t_1 = (24.1 \pm 0.1)\ ^{\circ}C$ a hmotnosti $m_1 = (249.0 \pm 0.02)$ g. Po přelití teplejší vody do kalorimetru se teplota ustálila na $t=(30.2 \pm 0.1)\ ^{\circ}C$. Ze vztahu (9) můžu dopočítat tepelnou kapacitu a potom i měrnou tepelnou kapacitu vody.
+Připravil jsem kádinku s vodou o teplotě $t_2$ = $ (41.3 \pm 0.1)\ ^{\circ}C$ a hmotnosti $m_2 = (190.7 \pm 0.02)$ g a kalorimetr naplnil vodou o teplotě $t_1 = (24.1 \pm 0.1)\ ^{\circ}C$ a hmotnosti $m_1 = (249.0 \pm 0.02)$ g. Po přelití teplejší vody do kalorimetru se teplota ustálila na $t=(30.2 \pm 0.1)\ ^{\circ}C$. Ze vztahu (7) můžu dopočítat tepelnou kapacitu K a potom i měrnou tepelnou kapacitu vody.
 
 \begin{align}
   K &= (347 \pm 26) \text{ JK}^{-1} \\
