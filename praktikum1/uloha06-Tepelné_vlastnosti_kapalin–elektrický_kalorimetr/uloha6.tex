@@ -1,0 +1,198 @@
+\documentclass[a4paper,11pt]{article}
+
+% Kodovani (cestiny) v dokumentu: utf-8
+%\usepackage[cp1250]{inputenc}	% Omezena stredoevropska kodova stranka, pouze MSW.
+\usepackage[utf8]{inputenc}	% Doporucujeme pouzivat UTF-8 (unicode).
+
+\usepackage[margin=2cm]{geometry}
+\newtoks\jmenopraktika \newtoks\jmeno \newtoks\datum
+\newtoks\obor \newtoks\skupina \newtoks\rocnik \newtoks\semestr
+\newtoks\cisloulohy \newtoks\jmenoulohy
+\newtoks\tlak \newtoks\teplota \newtoks\vlhkost
+
+\jmenopraktika={Fyzikální praktikum 1}
+\jmeno={Lukáš Lejdar}
+\datum={7. května 2024}
+\obor={F}
+\skupina={Út 16:00}
+
+\cisloulohy={6}
+\jmenoulohy={Tepelné vlastnosti kapalin – elektrický kalorimetr}
+
+\tlak={101{,}35}
+\teplota={21,1}
+\vlhkost={47,7}
+
+
+%%%%%%%%%%% Uzitecne balicky:
+\usepackage[czech]{babel}
+\addto\captionsczech{\renewcommand{\figurename}{Graf}}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{xspace}
+\usepackage{url}
+\usepackage{indentfirst}
+\usepackage{wrapfig}
+\usepackage{xcolor}
+
+%%%%%% Zamezeni parchantu:
+\widowpenalty 10000 \clubpenalty 10000 \displaywidowpenalty 10000
+%%%%%% Parametry pro moznost vsazeni vetsiho poctu obrazku na stranku
+\setcounter{topnumber}{3}	  % max. pocet floatu nahore (specifikace t)
+\setcounter{bottomnumber}{3}	  % max. pocet floatu dole (specifikace b)
+\setcounter{totalnumber}{6}	  % max. pocet floatu na strance celkem
+\renewcommand\topfraction{0.9}	  % max podil stranky pro floaty nahore
+\renewcommand\bottomfraction{0.9} % max podil stranky pro floaty dole
+\renewcommand\textfraction{0.1}	  % min podil stranky, ktery musi obsahovat text
+\intextsep=8mm \textfloatsep=8mm  %\intextsep pro ulozeni [h] floatu a \textfloatsep pro [b] or [t]
+
+% Tecky za cisly sekci:
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
+% Jednopismenna mezera mezi cislem a nazvem kapitoly:
+\makeatletter \def\@seccntformat#1{\csname the#1\endcsname\hspace{1ex}} \makeatother
+%
+\newcommand{\vsn}[4]{\ensuremath{#1 =} #2(#3)\,#4}
+\newcommand{\vrn}[6]{\ensuremath{#1 =} (#2 $\pm$ #3)\,#4 ($p=$ #5\,\%, $\nu=$ #6)}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Zacatek dokumentu
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\thispagestyle{empty}
+
+{
+\begin{center}
+\sf 
+{\Large Ústav fyziky a technologií plazmatu Přírodovědecké fakulty Masarykovy univerzity} \\
+\bigskip
+{\huge \bfseries FYZIKÁLNÍ PRAKTIKUM} \\
+\bigskip
+{\Large \the\jmenopraktika}
+\end{center}
+
+\bigskip
+
+\sf
+\noindent
+\setlength{\arrayrulewidth}{1pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l l}
+\large {\bfseries Zpracoval:}  \the\jmeno & \large  {\bfseries Naměřeno:} \the\datum\\[2mm]
+\large  {\bfseries Obor:} \the\obor  \hspace{40mm}  {\bfseries Skupina:} \the\skupina %
+&\large {\bfseries Testováno:}\\
+\\
+\hline
+\end{tabular*}
+}
+
+\bigskip
+
+{
+\sf
+\noindent \begin{tabular}{p{4cm} p{0.6\textwidth}}
+\Large  Úloha č. {\bfseries \the\cisloulohy:} \par
+\smallskip
+$T=\the\teplota$~$^\circ$C \par
+$p=\the\tlak$~kPa \par
+$\varphi=\the\vlhkost$~\%
+&\Large \bfseries \the\jmenoulohy  \\[2mm]
+\end{tabular}
+}
+
+\vskip1cm
+
+\section{Úvod}
+
+Elektrický kalorimetr je zařízení, které umožňuje měřit tepelnou kapacitu látky v něm. V úloze si jeden kalorimetr poskládám a pokusím se ho zkalibrovat.
+
+\section{Teorie}
+
+Fyzicky je elektrický kalorimetr tepelně izolovaná nádoba s teploměrem, míchačkou a elektrickou topnou spirálou o výkonu $UI$. Dokud v něm probíhají tepelné změny pomalu, můžu ho považovat za kvazistacionární termodynamickou soustavu o teplotě t a vyjádřit pro něj 1. termodynamický zákon
+
+\begin{equation}
+    dE = UId\tau = (mc + K)dt,
+\end{equation}
+
+\noindent
+kde K je kapacita kalorimetru, $\tau$ je čas, m hmotnosti látky a c její měrná tepelná kapacita. Pro reálné kalorimetry je ale potřeba uvažovat i ztráty do okolí $dQ_{\text{s}}$. Předpokládejme, že jsou podle Newtonova zákona přímo úměrné rozdílu teplot oproti teplotě okolí $t_0$
+
+\begin{equation}
+ UId\tau = (mc + K)dt + dQ_{\text{s}}, \quad dQ_{\text{s}} = \beta(t - t_0)d\tau,
+\end{equation}
+
+\noindent
+přičemž veličina $\beta$ je takto definovaný koeficient chladnutí. Je víc způsobů jak kalorimetr použít, vždycky ale bude prvně potřeba znát kapacitu K a koeficient chladnutí $\beta$.
+
+\subsection{Měření koeficientu chladnutí kalorimetru $\beta$}
+Uvažujme řešení rovnice (3), kde v čase $\tau=0$ je teplota kalorimetru rovná teplotě okolí (t = $t_0$) a látku uvnitř ohřívá nenulový výkon spirály. Dosazením dostávám
+
+\begin{align}
+  UI &= (mc + K) \frac{dt}{d\tau}(0).
+\end{align}
+
+\noindent
+Zrealizuju popsaný experiment, změřím rychlost růstu teploty na začátku a dozvím se celkovou tepelnou kapacitu $(mc + K)$. Pokud nechám kapalinu dál ohřívat, bude růst rozdíl teplot $(t - t_0)$ a nakonec se ztráty do okolí vyrovnají příkonu $UI$. Je to moment v čase $\tau_{\text{f}}$ , kdy $dt$ = 0.
+
+\begin{equation}
+UI = \beta (t_{\text{f}} - t_0)
+\end{equation}
+
+\noindent
+Mohl, bych opravdu počkat než se teplota ustálí, ale to by přesahovalo dobu trvání praktika. Místo toho vyřeším analyticky rovnici (3) pro popsané počáteční podmínky
+
+\begin{equation}
+t = t_0 + \frac{UI}{\beta} \left(1 - e^{-\frac{\beta}{mc + K}\tau}\right)
+\end{equation}
+
+\noindent
+a koeficient chladnutí $\beta$ určím z fitu exponenciely, kde už znám $(mc + K)$.
+
+\subsection{Měření kapacity kalorimetru K}
+
+Do kalorimetru naplněného kapalinou o počáteční teplotě $t_1$ a hmotnosti $m_1$ přidám tu samou kapalinu o teplotě $t_2 > t_1$ a hmotnosti $m_2$. Platí kalorimetrická rovnice
+
+\begin{equation}
+(m_1c + K)(t-t_1) = m_2c(t_2-t)
+\end{equation}
+
+\noindent
+do které můžu dosadit měrnou tepelnou kapacitu c z měření $\beta$ v případě, že jsem používal tu stejnou kapalinu jako kalibrační látku.
+
+\begin{align}
+  c = \frac{K_{\beta} - K}{m_{\beta}}, \quad K = \frac{K_{\beta} \varpi}{1 + \varpi}, \quad \varpi = \frac{m_2}{m_{\beta}}\frac{t_2 - t}{t - t_1} - \frac{m_1}{m_{\beta}}
+\end{align}
+
+\section{Postup měření}
+
+Kalorimetr normálně chceme mít s co nejmenšími ztrátami do okolí, abychom ho při běžném používání mohli považovat za úplně izolovaný. Při konstrukci toho mého se budu v zájmu kratšího měření snažit o opak. Na magnetickou míchačku položím větší kádinku, kterou můžu přiklopit víkem s visutou topnou spirálou a otvory pro teploměry. Výměna tepla ven z kádinky bude probíhat pouze vedením, takže ji můžu prohlásit za kalorimetr. Jako kalibrační kapalinu použiju vodu z kohoutku.
+
+\section{Výsledky měření}
+
+\subsection{Měření koeficientu chladnutí kalorimetru $\beta$}
+
+Naplnil jsem kalorimetr vodou o hmotnosti $m_{\beta} = (349.5 \pm 0.04)$ g a počkal než se teplota vyrovná s teplotou okolí. Potom jsem zapojil topnou spirálu ke zdroji o příkonu 20 W a měřil teplotu v kádince. Naměřené hodnoty jsou uvedené v grafu 1. a fit je rovnicí (6).
+
+\begin{figure}[htpb]
+  \centering
+  \include{ohrev_kalorimetru.tex}
+  \caption{Závislost teploty v kalorimetru na čase}
+\end{figure}
+
+\subsection{Měření kapacity kalorimetru K}
+
+Připravil jsem kádinku s vodou o teplotě $t_2$ = $ (41.3 \pm 0.1)\ ^{\circ}C$ a hmotnosti $m_2 = (190.7 \pm 0.02)$ g a kalorimetr naplnil vodou o teplotě $t_1 = (24.1 \pm 0.1)\ ^{\circ}C$ a hmotnosti $m_1 = (249.0 \pm 0.02)$ g. Po přelití teplejší vody do kalorimetru se teplota ustálila na $t=(30.2 \pm 0.1)\ ^{\circ}C$. Ze vztahu (9) můžu dopočítat tepelnou kapacitu a potom i měrnou tepelnou kapacitu vody.
+
+\begin{align}
+  K &= (347 \pm 26) \text{ JK}^{-1} \\
+  c_{\text{vody}} &=  (3540 \pm 80) \text{ JK}^{-1}\text{kg}^{-1}
+\end{align}
+
+\section{Závěr}
+
+Postavil jsem kalorimetr z kádinky a změřil jeho kapacitu $K = (347 \pm 26)$ JK$^{-1}$ a koeficient chladnutí $\beta = (0.4881 \pm 0.0001)$ JK$^{-1}$. Jako vedlejší produkt jsem změřil i měrnou tepelnou kapacitu vody $c_{\text{vody}} = (3540 \pm 80)$ JK$^{-1}$kg$^{-1}$. Tabulky udávají hodnotu 4128 JK$^{-1}$kg$^{-1}$. Největší příčinu chyby vidím v druhé části měření. Ustálení na teplotě 30 $^{\circ}$C se mi zdá moc malá teplota oproti poměru hmotností $m_1$:$m_2$. Měl jsem použít větší objemy vody.
+
+\end{document}
