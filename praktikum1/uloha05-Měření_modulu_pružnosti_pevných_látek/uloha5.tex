@@ -1,0 +1,262 @@
+\documentclass[a4paper,11pt]{article}
+
+% Kodovani (cestiny) v dokumentu: utf-8
+%\usepackage[cp1250]{inputenc}	% Omezena stredoevropska kodova stranka, pouze MSW.
+\usepackage[utf8]{inputenc}	% Doporucujeme pouzivat UTF-8 (unicode).
+
+\usepackage[margin=2cm]{geometry}
+\newtoks\jmenopraktika \newtoks\jmeno \newtoks\datum
+\newtoks\obor \newtoks\skupina \newtoks\rocnik \newtoks\semestr
+\newtoks\cisloulohy \newtoks\jmenoulohy
+\newtoks\tlak \newtoks\teplota \newtoks\vlhkost
+
+\jmenopraktika={Fyzikální praktikum 1}
+\jmeno={Lukáš Lejdar}
+\datum={30. dubna 2023}
+\obor={F}
+\skupina={Út 16:00}
+
+\cisloulohy={5}
+\jmenoulohy={Měření modulu pružnosti pevných látek}
+
+\tlak={101{,}35}
+\teplota={21,1}
+\vlhkost={47,7}
+
+
+%%%%%%%%%%% Uzitecne balicky:
+\usepackage[czech]{babel}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{xspace}
+\usepackage{url}
+\usepackage{indentfirst}
+\usepackage{wrapfig}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{caption}
+
+%%%%%% Zamezeni parchantu:
+\widowpenalty 10000 \clubpenalty 10000 \displaywidowpenalty 10000
+%%%%%% Parametry pro moznost vsazeni vetsiho poctu obrazku na stranku
+\setcounter{topnumber}{3}	  % max. pocet floatu nahore (specifikace t)
+\setcounter{bottomnumber}{3}	  % max. pocet floatu dole (specifikace b)
+\setcounter{totalnumber}{6}	  % max. pocet floatu na strance celkem
+\renewcommand\topfraction{0.9}	  % max podil stranky pro floaty nahore
+\renewcommand\bottomfraction{0.9} % max podil stranky pro floaty dole
+\renewcommand\textfraction{0.1}	  % min podil stranky, ktery musi obsahovat text
+\intextsep=8mm \textfloatsep=8mm  %\intextsep pro ulozeni [h] floatu a \textfloatsep pro [b] or [t]
+
+% Tecky za cisly sekci:
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
+% Jednopismenna mezera mezi cislem a nazvem kapitoly:
+\makeatletter \def\@seccntformat#1{\csname the#1\endcsname\hspace{1ex}} \makeatother
+%
+\newcommand{\vsn}[4]{\ensuremath{#1 =} #2(#3)\,#4}
+\newcommand{\vrn}[6]{\ensuremath{#1 =} (#2 $\pm$ #3)\,#4 ($p=$ #5\,\%, $\nu=$ #6)}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Zacatek dokumentu
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\thispagestyle{empty}
+
+{
+\begin{center}
+\sf 
+{\Large Ústav fyziky a technologií plazmatu Přírodovědecké fakulty Masarykovy univerzity} \\
+\bigskip
+{\huge \bfseries FYZIKÁLNÍ PRAKTIKUM} \\
+\bigskip
+{\Large \the\jmenopraktika}
+\end{center}
+
+\bigskip
+
+\sf
+\noindent
+\setlength{\arrayrulewidth}{1pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l l}
+\large {\bfseries Zpracoval:}  \the\jmeno & \large  {\bfseries Naměřeno:} \the\datum\\[2mm]
+\large  {\bfseries Obor:} \the\obor  \hspace{40mm}  {\bfseries Skupina:} \the\skupina %
+&\large {\bfseries Testováno:}\\
+\\
+\hline
+\end{tabular*}
+}
+
+\bigskip
+{
+\sf
+\noindent \begin{tabular}{p{4cm} p{0.6\textwidth}}
+\Large  Úloha č. {\bfseries \the\cisloulohy:} \par
+\smallskip
+$T=\the\teplota$~$^\circ$C \par
+$p=\the\tlak$~kPa \par
+$\varphi=\the\vlhkost$~\%
+&\Large \bfseries \the\jmenoulohy  \\[2mm]
+\end{tabular}
+}
+
+\vskip1cm
+
+\section{Úvod}
+ 
+V úloze budu měřit moduly pružnosti všeho druhu. Zavádíme je následujícím způsobem: \\
+
+Pro materiál v tahu platí v nejjednodušším případě Hookův zákon
+
+\begin{equation}
+\sigma_{\text{n}} = \frac{dF_{\text{n}}}{dS} = \frac{\Delta l}{l} E,
+\end{equation}
+
+\noindent
+kde $\Delta$ l délkové prodloužení, l délka vzorku, $dF_{\text{n}}$ průmět síly na kolmici ke zvolené plošce dS, $\sigma_{n}$ normálové napětí a E modul pružnosti. Pokud je materiál v torzi místo v tahu a speciálně se zabýváme drátem o rozměrech l $\times$ $\rho$ $\times$ $2\pi$, bude platit velmi obdobný zákon
+
+\begin{equation}
+  \sigma_{\text{t}} = \frac{dF_{\text{t}}}{dS} = \frac{\rho \varphi}{a} G
+\end{equation}
+
+\noindent
+kde $\varphi$ je úhel zkroucení konce drátu a G modul pružnosti ve smyku. 
+
+\section{Postup měření}
+
+\subsection{Měření modulu pružnosti v tahu přímou metodou z prodloužení \\ drátu}
+
+\begin{wrapfigure}{r}{70pt}
+  \vspace{-9.5em}
+  \centering
+  \includegraphics[width=53pt]{uchylkomer.jpg}
+  \caption{Přímá metoda}
+\end{wrapfigure}
+
+  \vspace{1em}
+% this text now overlaps with the title
+Měření bude probíhat jako na obrázku 1. Z úchytu visí kolmo dolů drát o délce l a průměru d, který můžu postupně zatěžovat a úchylkoměrem  velmi citlivě měřit jeho prodloužení. \\
+
+  Do Hookova zákona dosadím za S obsah průřezu drátu a za F gravitační sílu, kterou na drát působí závaží.
+
+\begin{equation}
+\Delta l(m) = \frac{4 g l}{\pi d^2 E}m
+\end{equation}
+
+Změřím odchylku pro každé další přidané závaží a modul pružnosti určím ze sklonu lineárního fitu hodnot.
+
+\begin{equation}
+  k = \frac{4 g l}{\pi d^2 E}
+\end{equation}
+
+\subsection{Měření modulu pružnosti v tahu z průhybu plného obdélníkového nosníku}
+
+Měření bude probíhat jako na obrázku 2. Mezi dvěma podpěrami ve vzdálenosti l je položený obdélníkový nosník o rozměrech a $\times$ b $\times$ c, který můžu postupně zatěžovat přidáváním závaží a úchylkoměrem měřit výchylku y od původní polohy.
+
+\begin{figure}[htpb]
+  \centering
+  \begin{subfigure}[b]{0.65\textwidth}
+    \includegraphics[width=\textwidth]{nosnik_pred.jpg}
+  \end{subfigure}
+  \begin{subfigure}[b]{70pt}
+    \includegraphics[width=51pt]{nosnik_bok.jpg}
+  \end{subfigure}
+  \caption{průhyb nosníku}
+\end{figure}
+
+Vztah mezi průhybem y daného nosníku a zatížením F=mg je
+
+\begin{equation}
+y = \frac{m g l^{3}}{4 E a^{3} b}
+\end{equation}
+
+Stejně jako v předešlém případě budu postupovat zvyšováním zátěže pro závislost y(m), kterou vyhodnotím fitem.
+
+\subsection{Měření modulu pružnosti ve smyku dynamickou metodou}
+
+Na homogenní drát délky l o poloměru r je zavěšena homogenní koule o poloměru R a hmotnosti m mnohem větší, než je hmotnost drátu. Když kouli pootočím kolem svislé osy, vykonává torzní kmity. Pokud zkroucení drátu odpovídá pružné torzní deformaci, pak platí vztah pro modul pružnosti ve~smyku G
+
+\begin{equation}
+  G = \frac{16 \pi m R^2 l}{5 r^{4} T^{2}}.
+\end{equation}
+\\
+Přitom T je perioda kmitání. Provedu 10 měření doby 10 period kmitání, veličiny zprůměruju a dopočítám G.
+
+\begin{figure}[htpb]
+  \centering
+  \includegraphics[width=0.38\textwidth]{oscilator.jpg}
+  \caption{Torzní oscilátor}
+\end{figure}
+
+\section{Výsledky měření}
+
+\subsection{Měření modulu pružnosti v tahu přímou metodou z prodloužení drátu}
+
+Na svislý ocelový drát o průměru d = $(0.50 \pm 0.003)$ mm a délce l = 1567 mm jsem postupně přidával závaží a měřil prodloužení $\Delta l$. Získané hodnoty jsou uvedené v grafu 4.
+
+\begin{figure}[htpb]
+  \centering
+  \include{prodlouzeni.tex}
+  \caption{Závislost prodloužení drátu na hmotnosti závaží}
+\end{figure}
+
+Dosazením do vztahu (4) dostávám modul pružnosti drátu E
+
+\begin{equation*}
+E =  (174 \pm 3)\ GPa.
+\end{equation*}
+
+\subsection{Měření modulu pružnosti v tahu z průhybu plného obdélníkového nosníku}
+
+Na obdélníkové nosníky o rozměrech a $\times$ b $\times$ c jsem postupně přidával závaží a měřil prohnutí y. Získané hodnoty jsou uvedené v grafu 5 a dopočítané moduly pružnosti v tabulce 1.
+
+\begin{figure}[htpb]
+  \centering
+  \include{nosnik.tex}
+  \caption{Závislost prohnutí nosníku na hmotnosti závaží.}
+\end{figure}
+
+\begin{table}[htpb]
+  \centering
+  \begin{tabular}{| c | c | c | c | c |}
+    \hline
+    materiál & a (mm) & b (cm) & k ($10^{-6}$ mkg$^{-1}$) & E (GPa) \\\hline
+    hliník & 5.03 $\pm$ 0.03 & 3.03 $\pm$ 0.02 & 6800 $\pm$ 8 & 67.9 $\pm$ 1  \\
+    mosaz & 5.06 $\pm$ 0.01 & 3.02 $\pm$ 0.05 & 4770 $\pm$ 5 & 95.6 $\pm$ 2  \\
+    měď & 5.05 $\pm$ 0.07 & 3.0 $\pm$ 0.1 & 3894 $\pm$ 9 & 116 $\pm$ 6  \\
+    ocel & 5.75 $\pm$ 0.02 & 2.98 $\pm$ 0.01 & 1528 $\pm$ 2 & 205 $\pm$ 2  \\\hline
+  \end{tabular}
+  \caption{Vypočítané moduly pružnosti E z rozměrů měřených nosníků a vzdálenosti břitů \\ l = $89.9\pm0.03$ cm.}
+\end{table}
+
+\subsection{Měření modulu pružnosti ve smyku dynamickou metodou}
+
+Uvádím parametry ocelového torzního oscilátoru a změřenou periodu kmitání pro výpočet dynamického modulu pružnosti G ze vztahu~(6).
+
+\begin{flalign*}
+  m &= 5.905 \text{ g} & & \text{hmotnost koule} & \\
+  R &= (49.87 \pm 0.07) \text{ mm} & & \text{poloměr koule} & \\
+  r &= (0.496 \pm 0.005) \text{ mm} & & \text{poloměr drátu} & \\
+  l &= (51.450 \pm 0.003) \text{ cm} & & \text{délka závěsu} & \\
+  T &= (3.983 \pm 0.032) \text{ s} & & \text{změřená perioda kmitání} \\
+\end{flalign*}
+\begin{equation*}
+G = (79 \pm 4) \text{ GPa}
+\end{equation*}
+
+\section{Závěr}
+
+Z prodloužení ocelového drátu jsem změřil modul pružnosti E = $(174 \pm 3)$ GPa. Ne celkové nejistotě se podílela nejistota typu B při měření průměru drátu mikrometrem a nejistota sklonu lineárního fitu hodnot. 
+
+Metodou prohnutí nosníků jsem změřil moduly pružnosti hliníku, mědi, mosazi a ocele a výsledné hodnoty uvedl v tabulce 1. Pro všechny čtyři kovy je rozdíl oproti tabulkám z odkazu [1] v řádech několika procent. Je vidět, že metoda průhybu nosníku dosáhla mnohem přesnějšího výsledku, než přímá metoda měření z prodloužení drátu.
+
+Z periody torzních kmitů jsem změřil modul pružnosti ve smyku ocelového drátu G = $(79 \pm 4)$ GPa. Nepřesnost měření je převážně způsobená nejistotou periody kmitání. Bylo by potřeba místo manuálního spouštění stopek použít nějakou přesnější metodu. Tabulková hodnota je 79.3 GPa.
+
+\begin{thebibliography}{0}
+\bibitem{moduly_pruznosti} Tabulky Youngových modulů pružnosti ~\url{http://kabinet.fyzika.net/studium/tabulky/modul-pruznosti.php}.   
+\end{thebibliography}
+
+\end{document}
