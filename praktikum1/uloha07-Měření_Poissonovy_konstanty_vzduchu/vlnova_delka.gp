@@ -15,7 +15,12 @@ fit f4(x) "vlnova_delka4" u 1:(100-$2) via a4,b4
 fit f3(x) "vlnova_delka3" u 1:(100-$2) via a3,b3
 fit f2(x) "vlnova_delka2" u 1:(100-$2) via a2,b2
 
-set term epslatex size 6,3.5
+set tmargin at screen 0.99
+set bmargin at screen 0.04
+set lmargin at screen 0.01
+set rmargin at screen 0.99
+
+set term epslatex size 5,2.4
 set output "vlnova_delka.tex"
 
 # Define line styles
@@ -26,11 +31,12 @@ set style line 4 lt rgb "#ffa500" lw 1  # Orange
 set style line 5 lt rgb "#800080" lw 1  # Purple
 
 plot \
-  "vlnova_delka5" u 1:(100-$2) ls 1 title "", \
-  "vlnova_delka4" u 1:(100-$2) ls 1 title "", \
-  "vlnova_delka3" u 1:(100-$2) ls 1 title "", \
-  "vlnova_delka2" u 1:(100-$2) ls 1 title "", \
+  [0:25] -1 t "", \
   [1:11] f2(x) ls 2 title "f = 1.56 kHz", \
-  [1:14] f3(x) ls 4 title "f = 1.89 kHz", \
-  [1:18] f5(x) ls 3 title "f = 3.41 kHz", \
-  f4(x) ls 5 title "f = 5.04 kHz"
+  [1:12] f3(x) ls 4 title "f = 1.89 kHz", \
+  [1:17.5] f5(x) ls 3 title "f = 3.41 kHz", \
+  [1:23] f4(x) ls 5 title "f = 5.04 kHz", \
+  "vlnova_delka5" u 1:(100-$2) lt 7 lc -1 title "", \
+  "vlnova_delka4" u 1:(100-$2) lt 7 lc -1 title "", \
+  "vlnova_delka3" u 1:(100-$2) lt 7 lc -1 title "", \
+  "vlnova_delka2" u 1:(100-$2) lt 7 lc -1 title ""

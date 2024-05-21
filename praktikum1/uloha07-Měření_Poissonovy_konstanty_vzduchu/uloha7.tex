@@ -12,7 +12,7 @@
 
 \jmenopraktika={Fyzikální praktikum 1}
 \jmeno={Lukáš Lejdar}
-\datum={12. března 2023}
+\datum={12. března 2024}
 \obor={F}
 \skupina={Út 16:00}
 
@@ -111,7 +111,7 @@ $\varphi=\the\vlhkost$~\%
   \item Pomocí U trubice ocejchujte diferenciální tlakové čidlo měřící proud 
 \begin{align}
   p &=  p_0 + \rho g h \\
-  I &= I_0 + c\Delta p
+  I &= I_0 + c\Delta p.
 \end{align}
   \item Měření poissonovy konstanty Clément-Desormesovou metodou. Natlakujte velkou nádobu, změřte U-trubicí a průmyslovým tlakovým čidlem tlak před (p1) a po expanzi (p2) a spočítejte Poissonovu konstantu z obou čidel.
   \item Pro několik různých frekvencí určete vlnovou délku stojatého vlnění v Kundtově trubici. Pro každou frekvenci najděte všechny polohy maxim v trubici, vyneste je do grafu a stanovte vlnovou délku. Určete rychlost zvuku ve vzduchu a stanovte Poissonovu konstantu vzduchu včetně nejistoty měření.
@@ -130,50 +130,49 @@ $\varphi=\the\vlhkost$~\%
 
 \subsection{Clément Desormova metoda}
 
-Poissonova konstant vystupuje v adiabatckém ději jako
+Poissonova konstant vystupuje v adiabatickém ději jako
 
 \begin{equation}
   pV^{\kappa} = konst.
 \end{equation}
 
-Měření poissonovy konstanty přímo z tohoto vztahu by tedy vyžadovalo počkat na ustálení soustavy.
-To je ale velmi těžko realizovatelné, když adiabatický děj probíhá v tepelné izolaci.
+\noindent
+Měření Poissonovy konstanty přímo z tohoto vztahu by vyžadovalo počkat na ustálení soustavy.
+To je ale velmi těžko realizovatelné, když adiabatický děj musí probíhat v tepelné izolaci. Clément-Desormova je způsob, jak se tomuto vyhnout. 
+Otevřeme ventil natlakované nádoby a po vyrovnání tlaků, ale minimální výměně tepla, ho zase rychle uzavřeme. Takový děj odpovídá adiabatické expanzi ($p_1$, $T_1$) $\implies$ ($p_2$, $T_2$) \\
 
-Clément-Desormova je způsob, jak se tomuto problému vyhout. 
-Děj se bude nejprve skládat z adiabatické expanze ($p_1$, $T_1$) $\implies$ ($p_2$, $T_2$) .
-Otevřeme ventil natlakované nádoby a po vyrovnání tlaků, ale minimální výměně tepla ho zase rychle uzavřeme. \\
 \begin{equation}
-  p_1^{\frac{1}{\kappa} -1} T_1 = p_2^{\frac{1}{\kappa} -1} T_2 \\
+  p_1^{\frac{1}{\kappa} -1} T_1 = p_2^{\frac{1}{\kappa} -1} T_2. \\
 \end{equation}
-Vzduch v nádobě je teď ochlazený adiabatickou expanzí a následuje izochorický ohřev okolím. \\ 
 
+\noindent
+Vzduch v nádobě je teď ochlazený adiabatickou expanzí a následuje izochorický ohřev okolím \\ 
 
 \begin{align}
-  \frac{p_2}{T_2} &= \frac{p_3}{T_3}
+  \frac{p_2}{T_2} &= \frac{p_3}{T_3},
 \end{align}
 
-,kde $T_3$ = $T_1$ je teplota okolí, $p_2$ tlak v laboratoři a $p_3$ tlak po ustanovení rovnováhy. 
-Vyjádřením $\kappa$ a dosazením (1) pro tlak měřený U trubicí dostáváme,
+\noindent
+kde $T_3$ = $T_1$ je teplota okolí, $p_2$ tlak v laboratoři a $p_3$ tlak po ustanovení rovnováhy. 
+Vyjádřením $\kappa$ a dosazením (1) pro tlak měřený U trubicí dostáváme
 
 \begin{equation}
   \kappa = \frac{\ln{\frac{p_1}{p_0}}}{\ln{\frac{p_1}{p_3}}} = \frac{\ln{\frac{p_0 + \rho g h_1}{p_0}}}{\ln{\frac{p_0 + \rho g h_1}{p_0 + \rho g h_3}}}.
 \end{equation} \\
 
-Taylorovým rozvojem,
+\noindent
+Taylorovým rozvojem
 
 \begin{equation}
-  \kappa = \frac{h_1}{h_1 - h_3} + \frac{1}{2} \frac{h_1 h_3 \rho g}{p_0 (h_1 - h_3)} \ldots
+  \kappa = \frac{h_1}{h_1 - h_3} + \frac{1}{2} \frac{h_1 h_3 \rho g}{p_0 (h_1 - h_3)} + \ldots
 \end{equation}
 
+\noindent
 Je-li změna tlaku ve srovnání s atmosférickým tlakem dostatečně malá, pak
 
 \begin{equation}
-\kappa \approx \frac{h_1}{h_1 - h_3}
+\kappa \approx \frac{h_1}{h_1 - h_3}.
 \end{equation}
-
-Přesto, že je tento vztah aproximativní,
-je jeho výhodou , že veličny, které zde vystupují pocházejǐ z jediného měřícího přístroje a absolutní chyby se 
-můžou částečně pokrátit.
 
 \subsection{Kundutova trubice}
 
@@ -183,17 +182,21 @@ Pro rychlost zvuku v ideálním plynu platí vztah
 c = \sqrt{\kappa \frac{p}{\rho}},
 \end{equation}
 
-kde $p$ je tlak, $\rho$ hustota vzduchu a  $\kappa$ poissonova konstatnta. Ze stavové rovnice pro ideální plyn ale taky
+\noindent
+kde $p$ je tlak, $\rho$ hustota vzduchu a  $\kappa$ poissonova konstatnta. Ze stavové rovnice pro ideální plyn plyne
+
 \begin{equation}
   p = \frac{\rho R T}{ M_{mol}}.
 \end{equation}
 
+\noindent
 Dosazení a vyjádřením $c$ dostáváme
 
- \begin{equation}
+\begin{equation}
    \lambda f = \sqrt{\kappa \frac{RT}{M_{mol}}},
 \end{equation}
 
+\noindent
 kde $\lambda$ je vlnová délka a $f$ frekvence zvuku. 
 Na generátoru sinusového signálu v Kundutově trubici nastavíme vhodnou frekvenci a zaznamenáváme polohy maximálních amplitud vlnění.
 Rozdíl každých dvou maxim je polovina vlnové délky.
@@ -204,7 +207,7 @@ Rozdíl každých dvou maxim je polovina vlnové délky.
 
 \subsection{Kalibrace diferenciálního čidla}
 
-Pro různé výšky vodního sloupce jsme odečetli proud protékající čidlem. 
+Pro různé výšky vodního sloupce jsem odečetl proud protékající čidlem. 
 Hodnoty lineárního fitu podle vztahu 2 jsou uvedeny v grafu 1.
 
 \begin{figure}[ht]
@@ -213,13 +216,15 @@ Hodnoty lineárního fitu podle vztahu 2 jsou uvedeny v grafu 1.
   \caption{závislost proudu protekájícího čidlem na výšce vodního sloupce}
 \end{figure}
 
-\subsection{Clément Desormovou metodou}
+\subsection{Měření Clément Desormovou metodou}
+
+Podle Clément Desormovy metody jsem postupně nepřímo měřil tlak $p_1$ před adiabatickou expanzí a tlak $p_3$ po 
+izochorickém ohřevu. Výslednou Poissonovu konstantu spočítám jako sklon fitu rozdílu $p_1 - p_0$ a $p_1 - p_3$.
 
 \begin{figure}[ht]
   \centering
   \include{clement.tex}
   \caption{závislost rozdílu naměřených hodnot $h_1 - h_3$, na $h_1$}
-  \label{fig:2}
 \end{figure}
 
 \newpage
@@ -228,11 +233,7 @@ Hodnoty lineárního fitu podle vztahu 2 jsou uvedeny v grafu 1.
   \centering
   \include{clement-cidlem.tex}
   \caption{závislost rozdílu naměřených hodnot $I_1 - I_3$, na $I_1 - I_0$}
-  \label{fig:3}
 \end{figure}
-
-Podle Clément Desormovy metody jsme postupně nepřímo měřili tlak $p_1$ před adiabatickou expanzí a tlak $p_3$ po 
-izochorickém ohřevu. Výslednou poissonovu konstantu zjistíme jako sklon fitu rozdílu $p_1 - p_0$ a $p_1 - p_3$.
 
 \begin{table}[ht]
   \centering
@@ -241,56 +242,42 @@ izochorickém ohřevu. Výslednou poissonovu konstantu zjistíme jako sklon fitu
     pomocí U trubice & $(1.31 \pm 0.04)$ \\
     pomocí kalibrace & $(1.32 \pm 0.04)$ \\ \hline
   \end{tabular}
-  \caption{Hodnoty spočítané z grafu \ref{fig:2} a \ref{fig:3} Použitím vztahu (8)}
+  \caption{Hodnoty spočítané z grafu 2 a 3 Použitím vztahu (8)}
 \end{table}
 
 \subsection{Kundutovou trubicí}
 
-Potřebujeme zjistit vzdálent realizace každých dvou amplitud vlnění odkud můžeme ze vztahu (11) vypočítat 
-poissonovu konstantu.
-Volba frekvence je na nás, zkusíme provést měření pro 4 různé frekvence a porovnáme výsledky. 
-Vypočtené hodnoty jsou uvedené v tabulce 2.
-
-Potřebnou hustotu vzduchu jsme zjistili z online kalkulačky z odkazu [3]
-
-\begin{table}[ht]
-  \centering
-  \begin{tabular}{c | c}
-    $f$ [kHz] & $\kappa$ \\ \hline
-    1.56 & $(1.4 \pm 0.2)$ \\
-    1.89 & $(1.4 \pm 0.3 )$\\
-    3.41 & $(1.40 \pm 0.03)$ \\
-    5.04 & $(1.39 \pm 0.03)$ \\
-  \end{tabular}
-  \caption{Hodnoty spočítané z grafu \ref{fig:4}}
-\end{table}
-
-\newpage
+V Kundutově trubici je posuvka nastavující její délku, generátor sinusového signálu a osciloskop. Na osciloskopu nastavím vhodnou frekvenci a posuvkou postupně prodlužuji její délku. Rozdíl každých dvou amplitud vzniklého interferenčního vlnění měřené osciloskopem odpovídá půlce vlnové délky. Výsledky pro 4 různé frekvence jsou uvedené v tabulce 2.
 
 \begin{figure}[htpb]
   \centering
   \include{vlnova_delka.tex}
   \caption{závislost n-tého maxima amplitudy vlnění na vzdálenosti}
-  \label{fig:4}
 \end{figure}
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{| c | c | c | c |}
+    \hline
+    $f$ [kHz] & $\frac{\lambda }{2}$ [cm] & v$_\text{vzduchu}$ [ms$^{-1}$] & $\kappa$ \\ \hline
+    1.56 & $11.06 \pm 0.02$  & $345.1 \pm 0.4$ & $1.4 \pm 0.2$ \\
+    1.89 & $9.06  \pm 0.04$  & $342.5 \pm 0.8$ & $1.4 \pm 0.3 $\\
+    3.41 & $5.05 \pm 0.004$  & $344.41 \pm 0.08$ & $1.40 \pm 0.03$ \\
+    5.04 & $3.403 \pm 0.008$ & $343.02 \pm 0.02$ & $1.39 \pm 0.03$ \\ \hline
+  \end{tabular}
+  \caption{Hodnoty spočítané z grafu 2}
+\end{table}
 
 \section{Závěr}
 
-Opravdová poissonova konstanta pro vzduch za laboratorních podmínek:
+Opravdová poissonova konstanta pro vzduch za laboratorních podmínek $\kappa \approx 1.40.$ \\
 
-\begin{equation}
-\kappa \approx 1.40
-\end{equation}
-
-Měření Clément Desormovou metodou nedopadlo nejlépe. Myslím, že jsem pokaždé zavřel ventil na nádobě moc brzo a tlaky se nestihli vyrovnat.
+ Měření Clément Desormovou metodou je chybné asi o 7 \%. Myslím, že jsem pokaždé zavřel ventil na nádobě moc brzo a tlaky se nestihli vyrovnat.
 Proto je naměřená hodnota menší než skutečná. Měření Kundutovou trubicí je na druhou stranu docela přesné. 
-Je i vidět, že pro větší hodnoty frekvence klesá vlnová délka což zjednodušuje hledání maxima a vede k přesnějšímu měření.
-
+Je i vidět, že pro větší hodnoty frekvence klesá vlnová délka, což zjednodušuje hledání maxima a vede k přesnějšímu měření.
 
 
 \begin{thebibliography}{0}
-\bibitem{navody} Bochníček a kol. \textit{Fyzikální praktikum 1, návody k ulohám.} Brno 2024.\\ Dostupné z~\url{https://monoceros.physics.muni.cz/kof/vyuka/fp1_skripta.pdf}.   
-\bibitem{tabulky} Hustota pevných látek. Dostupné z~\url{http://www.converter.cz/tabulky/hustota-pevne.htmf}.   
 \bibitem{hustota vzduchu} kalkulačka hustoty vzduchu \url{https://www.omnicalculator.com/physics/air-density}.
 \end{thebibliography}
 
