@@ -12,7 +12,7 @@
 
 \jmenopraktika={Fyzikální praktikum 1}
 \jmeno={Lukáš Lejdar}
-\datum={9 dubna 2023}
+\datum={23. dubna 2024}
 \obor={F}
 \skupina={Út 16:00}
 
@@ -106,7 +106,7 @@ $\varphi=\the\vlhkost$~\%
 
 \section{Úvod}
 
-V úloze se pokusím změřit gravitační konstantu $G$ Cavendishovou metodou a tíhové zrychlení pomocí reverzního kyvadla.
+V úloze budu měřit gravitační konstantu $G$ Cavendishovou metodou a tíhové zrychlení pomocí reverzního kyvadla.
 
 \section{Teorie}
 
@@ -201,7 +201,7 @@ Pro výpočet potřebuju docílit stejných period kmitání na osách o1 a o2, 
 
 \subsection{Cavendishova metoda}
 
-V aparatuře je laser namířený na torzní kyvadlo, který se sérií zrcadel projektuje na opačnou stěnu místnosti. Vychýlení kyvadla o úhel $\varphi$ tedy způsobí i vychýlení laseru o ten samý úhel. Aparatura mi zároveň umožňuje obě větší koule zrcadlově vyměnit, tak aby výchylka $\varphi_0$ byla stejná, ale na opačnou stranu. Spustím měření a po uplynutí dostatečně dlouhé doby koule právě takhle vyměním. Výsledná závislost polohy laseru na čase by měla vypadat nějak takto
+V aparatuře je laser namířený na torzní kyvadlo, který se zrcadlem projektuje na opačnou stěnu místnosti tak, že vychýlení kyvadla o úhel $\varphi$ způsobí  vychýlení laseru o úhel 2$\varphi$. Navíc aparatura umožňuje obě větší koule zrcadlově vyměnit, tak aby výchylka $\varphi_0$ byla stejná, ale na opačnou stranu. Spustím měření a po uplynutí dostatečně dlouhé doby koule právě takhle vyměním. Výsledná závislost polohy laseru na čase by měla vypadat nějak takto
 
 \begin{figure}[htpb]
   \centering
@@ -220,7 +220,7 @@ Rovnovážnou polohu určím metodou tří kyvů; $\varphi_0 = \frac{1}{2}(\frac
 Ve skutečnosti ale měřím vzdálenosti na stěně místo úhlů. Platí mezi nimi převodní vztah
 
 \begin{equation}
-\varphi_0 - \varphi_0' = 2\arctan(\frac{x_0 - x_0'}{2L}),
+\varphi_0 - \varphi_0' = 4\arctan(\frac{x_0 - x_0'}{2L}),
 \end{equation}
 
 \noindent
@@ -240,15 +240,15 @@ Nejprve jsem provedl několik měření period kmitání na obou osách v závis
 Závaží bylo potřeba ještě několikrát nepatrně posunout, než jsem dospěl k nejlepší shodě
 
 \begin{equation}
-T_1 = (0.99860 \pm 0.00002)\ s,\ T_2 = (0.99845 \pm 0.00002)\ s,
+\frac{T_1}{2} = (0.99860 \pm 0.00002)\ s,\ \frac{T_2}{2} = (0.99845 \pm 0.00002)\ s,
 \end{equation}
 
-Jako výslednou periodu budu považovat průměr hodnot a nejistotu jako jejich rozdíl. Stačí už jenom dosadit vzdálenost os l do vztahu (3) a můžu dopočítat gravitační zrychlení. 
+Jako výslednou periodu budu považovat průměr hodnot a nejistotu jako jejich rozdíl. Stačí dosadit vzdálenost os l do vztahu (3) a můžu dopočítat gravitační zrychlení. 
 
 \begin{align}
-  T &= (0.99853 \pm 0.0002) \ s \\
-  l &= (89.90 \pm 0.03) \text{ cm} \\
-  g &= (9.800 \pm 0.004) \text{ ms}^{-2}
+  T &= (1.9971 \pm 0.0004) \ s \\
+  l &= (99.10 \pm 0.03) \text{ cm} \\
+  g &= (9.800 \pm 0.005) \text{ ms}^{-2}
 \end{align}
 
 \newpage
@@ -269,21 +269,20 @@ Jako výslednou periodu budu považovat průměr hodnot a nejistotu jako jejich 
   & \text{hmotnost kuličky } &  m &= (38.3 \pm 0.2)\ g & \\
   & \text{perioda kmitů } &  T &= (490 \pm 3)\ s & \\
   & \text{Vzdálenost stínítka od oscilátoru } &  L &= (5.280 \pm 0.003)\ m & \\
-  & \text{Dopočítaný rozdíl výchylek} & \varphi_0 - \varphi_0' &= (0.027 \pm 0.002) \ Rad &
+  & \text{Dopočítaný rozdíl výchylek} & \varphi_0 - \varphi_0' &= (0.0138 \pm 0.001) \ Rad &
 \end{flalign}
 
 Vyjádřením gravitační konstanty ze vztahů (5) (6) a (8) získávám hodnotu
 
 \begin{equation}
-  G = (17.4 \pm 1.5) 10^{-11} \text{ Nm}^2 \text{kg}^{-2} \\
+  G = (8.6 \pm 0.7) \cdot 10^{-11} \text{ Nm}^2 \text{kg}^{-2} \\
 \end{equation}
 
 \section{Závěr}
 
 Pomocí reverzního kyvadla jsem změřil gravitační zrychlení v laboratoři $g=(9.800 \pm 0.005) \text{ ms}^{-2}$, která velmi dobře odpovídá tabulkovým hodnotám pro Brno $g=9,809980$ ms$^{-2}$. Na nejistotu má převážně vliv nejistota změřené periody. \\
 
-Gravitační konstantu jsem pomocí Cavendishovy metody určil na $G=17.4 \pm 1.5\cdot 10^{-11}$ Nm$^{2}$kg$^{-2}$ oproti tabulkové hodnotě 6.67430 $\cdot 10^{-11}$ Nm $^{2}$kg$^{-2}$. Na odkaze [1] přikládám článek z Harvardské univerzity, popisující měření stejnou aparaturou jako jsem používal já. Jejich změřená úhlová výchylka, ale byla $0.00540$ Rad, zatímco moje hodnota je $\frac{\varphi_0 - \varphi_0'}{2} = 0.0135$ Rad. Neznám důvod této chyby, ale je příčinou nesprávné hodnoty gravitační konstanty. Periody kmitání máme přibližně shodné. \\
-
+Gravitační konstantu jsem pomocí Cavendishovy metody určil na $G=8.6 \pm 0.7\cdot 10^{-11}$ Nm$^{2}$kg$^{-2}$ oproti tabulkové hodnotě 6.67430 $\cdot 10^{-11}$ Nm $^{2}$kg$^{-2}$. Na odkaze [1] přikládám článek z Harvardské univerzity, popisující měření stejnou aparaturou jako jsem používal já. Porovnáním výsledků způsobuje největší chybu dopočítané gravitační konstanty výchylka kmitání. Měla by vycházet přibližně $0.00540$ Rad, zatímco moje hodnota je $\frac{\varphi_0 - \varphi_0'}{2} = 0.0069$ Rad. \\ 
 
 \begin{thebibliography}{0}
 \bibitem{tabulky} Cavendishův experiment Harvardské univerzity ~\url{https://sciencedemonstrations.fas.harvard.edu/presentations/cavendish-experiment}.   
