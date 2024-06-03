@@ -12,7 +12,7 @@
 
 \jmenopraktika={Fyzikální praktikum 1}
 \jmeno={Lukáš Lejdar}
-\datum={2. dubna 2023}
+\datum={2. dubna 2024}
 \obor={F}
 \skupina={Út 16:00}
 
@@ -107,7 +107,7 @@ $\varphi=\the\vlhkost$~\%
 \vskip1cm
 
 \section{Úvod}
-Mám za úkol změřit součinitel tepelné vodivosti sádrokartonu pomocí časového vývoje teploty uprostřed vzorku s počtátečním rozložením jako v grafu~1. Ve středu je teplota maximální a lineárně klesá k okrajům, které je potřeba po celou dobu experimentu udržovat na stálé teplotě.
+Mám za úkol změřit součinitel tepelné vodivosti sádrokartonu pomocí časového vývoje teploty uprostřed vzorku s počátečním rozložením jako v grafu~1. Ve středu je teplota maximální a lineárně klesá k okrajům, které je potřeba po celou dobu experimentu udržovat na stálé teplotě.
 
 \begin{figure}[htpb]
   \centering
@@ -135,7 +135,7 @@ Dosazením podmínek popsaných v úvodu vyhovuje rovnici 1 analytický vztah
 \noindent
 kde $t_0$ je konstantní teplota na okrajích, $t_{max}$ počáteční hodnota uprostřed a l délka vzorku.
 
-Jednotlivé členy nekonečné sumy jsou nepřímo úměrné $n^2$ a zároveň mají $-n^2$ v exponentu. Můžeme tedy očekávat, že příspěvek 1. členu budu s časem stále více dominantí. Když navíc dosadíme za x=0 pro střed vzorku, dostaneme aproximativňí vztah
+Jednotlivé členy nekonečné sumy jsou nepřímo úměrné $n^2$ a zároveň mají $-n^2$ v exponentu. Můžeme tedy očekávat, že příspěvek 1. členu budu s časem stále více dominantní. Když navíc dosadíme za x=0 pro střed vzorku, dostaneme aproximativní vztah
 
 \begin{equation}
   t(\tau) = t_0 + \frac{8(t_{max} - t_0)}{\pi^2}\exp(- \frac{\lambda}{\rho c} (\frac{\pi}{l})^2 \tau).
@@ -151,14 +151,14 @@ Jednotlivé členy nekonečné sumy jsou nepřímo úměrné $n^2$ a zároveň m
 \begin{figure}[htpb]
   \centering
   \include{casovy_vyvoj_teploty_uprostred.tex}
-  \caption{Závislot teploty ve středu vzorku na čase v logaritmické stupnici.}
+  \caption{Závislost teploty ve středu vzorku na čase v logaritmické stupnici.}
 \end{figure}
 
 \section{Postup měření}
 
-Nejprve je potřeba zajistit rozložení teploty z grafu 1. Víme, že pokud se teplo šíří přímo od ohřívače k chladiči o stálých teplotách bez ztrát do okolí, bude rozložení teploty na této přímce lineární. Nejjednoduší je celou soustavu udělat mnohem širší než vysokou, což uprostřed napodobuje případ nekonečných rozměrů, kde není ani okolí ani nejsou ztráty do okolí.
+Nejprve je potřeba zajistit rozložení teploty z grafu 1. Víme, že pokud se teplo šíří přímo od ohřívače k chladiči o stálých teplotách bez ztrát do okolí, bude rozložení teploty na této přímce lineární. Nejjednodušší je celou soustavu udělat mnohem širší než vysokou, což uprostřed napodobuje případ nekonečných rozměrů, kde není ani okolí ani nejsou ztráty do okolí.
 
-K dispozici mám 2 chladiče, topnou fólii a sádrokartonové desky jako vzorek. Na chladič položím sádrokartn, pak topnou fólii, další desku a nahoru druhý chladič. Sádrokartonové desky mají navíc na obou stranách vyhloubené drážky, kudy se dá protáhnout teplotní čidlo až doprostřed. Čidla budou tedy 4 umístěné z obou stran obou desek. 
+K dispozici mám 2 chladiče, topnou fólii a sádrokartonové desky jako vzorek. Na chladič položím sádrokarton, pak topnou fólii, další desku a nahoru druhý chladič. Sádrokartonové desky mají navíc na obou stranách vyhloubené drážky, kudy se dá protáhnout teplotní čidlo až doprostřed. Čidla budou tedy 4 umístěné z obou stran obou desek. 
 
 \section{Výsledky měření}
 
@@ -169,7 +169,7 @@ Určil jsem rozměry a hmotnost čtvercové sádrokartonové desky na
   m = (379.4 \pm 2) \text{ g.} \\
 \end{align*}
 
-Dopočítana hustota je $\rho$ = (750 $\pm$ 30) kg m$^3$ a měrnou teplenou kapacitu c = 1100 J Kg$^{-1}$ K$^{-1}$ jsem našel v tabulkách.
+Dopočítaná hustota je $\rho$ = (750 $\pm$ 30) kg m$^3$ a měrnou tepelnou kapacitu c = 1100 J Kg$^{-1}$ K$^{-1}$ jsem našel v tabulkách.
 
 
 \begin{figure}[htpb]
@@ -181,7 +181,7 @@ Dopočítana hustota je $\rho$ = (750 $\pm$ 30) kg m$^3$ a měrnou teplenou kapa
 
 \section{Závěr}
 
-Pomocí realizace analytického řešení (3) rovnice vedení tepla jsem změřil součinitel tepelné vodivosti sádrokartonu $\lambda$=(0.143 $\pm$ 0.009) W m$^{-1}$ K$^{-1}$. Tabulková hodnota z odkazu 1 je 0.220~W~m$^{-1}$~K$^{-1}$. Největším přispěvkem chyby mého výsledku je pravděpodovně nedostatečně výkonný chladič. Konce tyče, které měly mít stabilní teplotu, se, jak je vidět v grafu 4, pohybvaly na intervalu asi 10 $^{\circ}$C. Stálá počáteční teplota $t_0$=20 $^{\circ}$C by vedla k rychlejšímu chládnutí, strmějšímu grafu a vyšší tepelné vodivosti. Přesto je fit exponencielou velmi přesný kromě intervalu kolem času $t_0$, což odpovídá teorii. 
+Pomocí realizace analytického řešení (3) rovnice vedení tepla jsem změřil součinitel tepelné vodivosti sádrokartonu $\lambda$=(0.143 $\pm$ 0.009) W m$^{-1}$ K$^{-1}$. Tabulková hodnota z odkazu 1 je 0.220~W~m$^{-1}$~K$^{-1}$. Největším příspěvkem chyby mého výsledku je pravděpodobně nedostatečně výkonný chladič. Konce tyče, které měly mít stabilní teplotu, se, jak je vidět v grafu 4, pohybovaly na intervalu asi 10 $^{\circ}$C. Stálá počáteční teplota $t_0$=20 $^{\circ}$C by vedla k rychlejšímu chladnutí, strmějšímu grafu a vyšší tepelné vodivosti. Přesto je fit exponencielou velmi přesný kromě intervalu kolem času $t_0$, což odpovídá teorii. 
 
 \begin{thebibliography}{0}
 \bibitem{tabulky} Katalog stavebních materiálů ~\url{https://stavba.tzb-info.cz/docu/tabulky/0000/000086_katalog.html}.   
