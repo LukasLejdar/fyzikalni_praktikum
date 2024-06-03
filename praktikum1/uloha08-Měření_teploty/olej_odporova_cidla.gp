@@ -16,7 +16,7 @@ set lmargin at screen 0
 set rmargin at screen 1
 
 
-set term epslatex size 4,3
+set term epslatex size 4,2.5
 set output "olej_odporova_cidla.tex"
 
 plot \
