@@ -1,6 +1,7 @@
 set ylabel "T ($^{\\circ}$C)"
 set xlabel "t (s)"
 
+set tmargin at screen 0.99
 set bmargin at screen 0.01
 
 t1 = 100
@@ -16,18 +17,19 @@ fit [t1:t2] f(x) "ohrev_kalorimetru.txt" u 1:3 via T0, B
 
 k(x) = T0 + (x - t1)* P/KB
 
-set yrange [20:68]
+set yrange [20:65]
+set ytics 20,5,60
+set key left top
+set key reverse
+set key Left
 
-set label at 120,65 "$\\beta = (0.4881 \\pm 0.0001)$ WK$^{-1}$"
-set label at 120,60 "$K_{\\beta} = (1585 \\pm 5)$ JK$^{-1}$"
-
-set term epslatex size 5.5,2.51
+set term epslatex size 5.5,3
 set output "ohrev_kalorimetru.tex"
 plot \
 "ohrev_kalorimetru.txt" u 1:3 w l lw 4 lc 4 t "$t(\\tau)$", \
-"ohrev_kalorimetru.txt" u 1:5 w l lw 4 lc 5 t "$t_0$", \
+"ohrev_kalorimetru.txt" u 1:5 w l lw 4 lc rgb "grey" t "$t_0(\\tau)$", \
 [t1:t2] f(x) lw 8 lt 0 lc -1 t "fit", \
-[t1:t2] k(x) lw 2 lt 0 lc -1 t ""
+[t1:t2] k(x) lw 2 lt 0 lc -1 t "směrnice v t(0)"
 
 print 'B = unc.ufloat(', B, ', ', B_err, ')'
 print 'KB =', KB

@@ -107,22 +107,24 @@ $\varphi=\the\vlhkost$~\%
 
 \section{Úvod}
 
-Elektrický kalorimetr je zařízení, které umožňuje měřit tepelnou kapacitu látky v něm. V úloze si jeden kalorimetr poskládám a pokusím se ho zkalibrovat.
+Elektrický kalorimetr je zařízení, které umožňuje měřit tepelnou kapacitu látky v něm. V úloze si jeden kalorimetr poskládám a pokusím se ho zkalibrovat. Zároveň bych měl být schopný dopočítat měrnou tepelnou kapacitu kalibrační kapaliny. V úloze použiju kohoutkovou vodu.
 
 \section{Teorie}
 
-Fyzicky je elektrický kalorimetr tepelně izolovaná nádoba s teploměrem, míchačkou a elektrickou topnou spirálou o výkonu $UI$. Dokud v něm probíhají tepelné změny pomalu, můžu ho považovat za kvazistacionární termodynamickou soustavu o teplotě t a vyjádřit pro něj 1. termodynamický zákon
+Fyzicky je elektrický kalorimetr tepelně izolovaná nádoba s teploměrem, míchačkou a elektrickou topnou spirálou o výkonu $UI$. Dokud v něm probíhají tepelné změny pomalu, můžu pro něj vyjádřit 1. termodynamický zákon
 
-\begin{equation}
-    dE = UId\tau = (mc + K)dt,
-\end{equation}
+\begin{align}
+  dE &= UId\tau \\ 
+     &= (mc + K)dt,
+\end{align}
 
 \noindent
 kde K je kapacita kalorimetru, $\tau$ je čas, m hmotnosti látky a c její měrná tepelná kapacita. Pro reálné kalorimetry je ale potřeba uvažovat i ztráty do okolí $dQ_{\text{s}}$. Předpokládejme, že jsou podle Newtonova zákona přímo úměrné rozdílu teplot oproti teplotě okolí $t_0$
 
-\begin{equation}
- UId\tau = (mc + K)dt + dQ_{\text{s}}, \quad dQ_{\text{s}} = \beta(t - t_0)d\tau,
-\end{equation}
+\begin{align}
+  dQ_{\text{s}} &= \beta(t - t_0)d\tau \\
+  UId\tau &= (mc + K)dt + dQ_{\text{s}}
+\end{align}
 
 \noindent
 přičemž veličina $\beta$ je takto definovaný koeficient chladnutí. Je víc způsobů jak kalorimetr použít, vždycky ale bude prvně potřeba znát kapacitu K a koeficient chladnutí $\beta$.
@@ -149,7 +151,15 @@ t = t_0 + \frac{UI}{\beta} \left(1 - e^{-\frac{\beta}{mc + K}\tau}\right)
 \end{equation}
 
 \noindent
-a koeficient chladnutí $\beta$ určím z fitu exponenciely, kde už znám $(mc + K)$.
+a koeficient chladnutí $\beta$ určím z fitu exponenciely, kde už znám $(mc + K)$. Tento výraz ještě přepíšu pomocí redukované kapacity kalorimetru $\kappa = \frac{K}{c}$ jako
+
+\begin{align}
+ mc + K &= c(m + \kappa),
+\end{align}
+
+\noindent
+kde k dopočítání měrné tepelné kapacity ještě potřebuji změřit $\kappa$.
+
 
 \subsection{Měření kapacity kalorimetru K}
 
@@ -160,39 +170,70 @@ Do kalorimetru naplněného kapalinou o počáteční teplotě $t_1$ a hmotnosti
 \end{equation}
 
 \noindent
-do které můžu dosadit měrnou tepelnou kapacitu c z měření $\beta$ v případě, že jsem používal tu stejnou kapalinu 
+do které dosadím redukovanou kapacitu 
 
 \begin{align}
-  c = \frac{K_{\beta} - K}{m_{\beta}}, \quad K = \frac{K_{\beta} \varpi}{1 + \varpi}, \quad \varpi = \frac{m_2}{m_{\beta}}\frac{t_2 - t}{t - t_1} - \frac{m_1}{m_{\beta}}
+  c(m_1 + \kappa)(t-t_1) &= m_2c(t_2-t) \\
+  (m_1 + \kappa)(t-t_1) &= m_2(t_2-t)
 \end{align}
+
+\noindent
+a měrné tepelné kapacity se zkrátí. Vyjádřím $\kappa$
+
+\begin{align}
+  \kappa &= m_2 \frac{t_2 - t}{t - t_1} - m_1
+\end{align}
+
+\noindent
+odkud spolu se vztahem (8) můžu dopočítat měrnou tepelnou kapacitu c i kapacitu kalorimetru K, pokud jsem použil tu stejnou kapalinu.
 
 \section{Postup měření}
 
-Kalorimetr normálně chceme mít s co nejmenšími ztrátami do okolí, abychom ho při běžném používání mohli považovat za úplně izolovaný. Při konstrukci toho mého se budu v zájmu kratšího měření snažit o opak. Na magnetickou míchačku položím větší kádinku, kterou můžu přiklopit víkem s visutou topnou spirálou a otvory pro teploměry. Výměna tepla ven z kádinky bude probíhat pouze vedením, takže ji můžu prohlásit za kalorimetr. Jako kalibrační kapalinu použiju vodu z kohoutku.
+Kalorimetr normálně chceme mít s co nejmenšími ztrátami do okolí, abychom ho při běžném používání mohli považovat za úplně izolovaný. Při konstrukci toho mého se budu v zájmu kratšího měření snažit o opak. Na magnetickou míchačku položím větší kádinku, kterou můžu přiklopit víkem s visutou topnou spirálou a otvory pro teploměry. Nádoba je uzavřená, takže výměna tepla ven z kádinky bude probíhat pouze vedením a tím splňuje podmínky kalorimetru. Jako kalibrační kapalinu použiju vodu z kohoutku.
 
 \section{Výsledky měření}
 
 \subsection{Měření koeficientu chladnutí kalorimetru $\beta$}
 
-Naplnil jsem kalorimetr vodou o hmotnosti $m_{\beta} = (349.5 \pm 0.04)$ g a počkal než se teplota vyrovná s teplotou okolí. Potom jsem zapojil topnou spirálu ke zdroji o příkonu 20 W a měřil teplotu v kádince. Naměřené hodnoty jsou uvedené v grafu 1. a fit je rovnicí (6).
+Naplnil jsem kalorimetr vodou o hmotnosti $m_{\beta} = (349.5 \pm 0.04)$ g a počkal než se teplota vyrovná s teplotou okolí. Potom jsem zapojil topnou spirálu ke zdroji o příkonu 20 W a měřil teplotu v kádince. Naměřené hodnoty jsou uvedené v grafu 1. a fit je rovnicí (7).
 
 \begin{figure}[htpb]
   \centering
   \include{ohrev_kalorimetru.tex}
   \caption{Závislost teploty v kalorimetru na čase}
+  \vspace{-30pt}
 \end{figure}
+
+
+\begin{align*}
+  \beta &= (0.4881 \pm 0.0001) WK^{-1} \\
+  mc + K &= (1585 \pm 5) JK^{-1}
+\end{align*}
+
+\vspace{5pt}
 
 \subsection{Měření kapacity kalorimetru K}
 
-Připravil jsem kádinku s vodou o teplotě $t_2$ = $ (41.3 \pm 0.1)\ ^{\circ}C$ a hmotnosti $m_2 = (190.7 \pm 0.02)$ g a kalorimetr naplnil vodou o teplotě $t_1 = (24.1 \pm 0.1)\ ^{\circ}C$ a hmotnosti $m_1 = (249.0 \pm 0.02)$ g. Po přelití teplejší vody do kalorimetru se teplota ustálila na $t=(30.2 \pm 0.1)\ ^{\circ}C$. Ze vztahu (7) můžu dopočítat tepelnou kapacitu K a potom i měrnou tepelnou kapacitu vody.
+Připravil jsem kádinku s vodou o teplotě $t_2$ = $ (41.9 \pm 0.05)\ ^{\circ}C$ a hmotnosti $m_2 = (236.6 \pm 0.2)$ g a kalorimetr naplnil vodou o teplotě $t_1 = (24.1 \pm 0.05)\ ^{\circ}C$ a hmotnosti $m_1 = (429.0 \pm 0.2)$ g. Po přelití teplejší vody do kalorimetru se teplota ustálila na $t=(30.1 \pm 0.05)\ ^{\circ}C$. Ze vztahu (12) vypočítám redukovanou kapacitu $\kappa$ a ze vztahu (8) měrnou tepelnou kapacitu vody c a kapacitu kalorimetru K.
 
-\begin{align}
-  K &= (347 \pm 26) \text{ JK}^{-1} \\
-  c_{\text{vody}} &=  (3540 \pm 80) \text{ JK}^{-1}\text{kg}^{-1}
-\end{align}
+
+\begin{align*}
+  \kappa &= (0.036 \pm 0.007)\ kg \\
+  K &= (149 \pm 30) \text{ JK}^{-1} \\
+  c_{\text{v}} &=  (4110 \pm 80) \text{ JK}^{-1}\text{kg}^{-1}
+\end{align*}
 
 \section{Závěr}
 
-Postavil jsem kalorimetr z kádinky a změřil jeho kapacitu $K = (347 \pm 26)$ JK$^{-1}$ a koeficient chladnutí $\beta = (0.4881 \pm 0.0001)$ JK$^{-1}$. Jako vedlejší produkt jsem změřil i měrnou tepelnou kapacitu vody $c_{\text{vody}} = (3540 \pm 80)$ JK$^{-1}$kg$^{-1}$. Tabulky udávají hodnotu 4128 JK$^{-1}$kg$^{-1}$. Největší příčinu chyby vidím v druhé části měření. Ustálení na teplotě 30 $^{\circ}$C se mi zdá moc malá teplota oproti poměru hmotností $m_1$:$m_2$. Měl jsem použít větší objemy vody.
+Postavil jsem kalorimetr z kádinky a změřil jeho kapacitu $K = (149 \pm 30)$ JK$^{-1}$ a koeficient chladnutí $\beta = (0.4881 \pm 0.0001)$ JK$^{-1}$. Navíc jsem změřil i měrnou tepelnou kapacitu vody $c_{\text{v}} = (4110 \pm 80)$ JK$^{-1}$kg$^{-1}$. Tabulky udávají hodnotu 4128 JK$^{-1}$kg$^{-1}$. Největším zdrojem nejistoty jsou nejisoty teplot $t_1$, $t_2$ a $t$. Ve vztahu (12) se totiž odčítají dvě velmi podobné hodnoty 
+
+\begin{align*}
+  m_2 \frac{t_2 - t}{t - t_1} &= (0.465 \pm 0.007) g \\
+  m_1 &= (0.429 \pm 0.00002) g
+\end{align*}
+
+\noindent
+a velká část přesnosti měření se tak ztratí.
+
 
 \end{document}
