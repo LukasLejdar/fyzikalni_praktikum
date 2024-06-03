@@ -12,7 +12,7 @@
 
 \jmenopraktika={Fyzikální praktikum 1}
 \jmeno={Lukáš Lejdar}
-\datum={16. dubna}
+\datum={16. dubna 2024}
 \obor={F}
 \skupina={Út 16:00}
 
@@ -141,7 +141,7 @@ Podle Fowkese a van Osse et al. působí v povrchové vrstvě různé mezimoleku
 Pokud kapalina proudí v kapiláře laminárně, platí zjednodušený tvar Hagenovy – Poiseuillovy rovnice
 
 \begin{equation}
-\frac{dV}{dt} = v \pi R^2 = \frac{\pi R^4 \Delta p }{8 \eta L} 
+\frac{dV}{dt} =  \bar{v} \pi R^2 = \frac{\pi R^4 \Delta p }{8 \eta L} 
 \end{equation}
 
 \noindent
@@ -272,11 +272,11 @@ Za dobu t = 128 s vytekl kapilárou objem V = $38.2 \pm 3$ cm$^{3}$ destilované
 \begin{flalign*}
   & \text{poloměr kapiláry} & R &= 0.570 \pm 0.001 \text{ mm} &  \\
   & \text{délka kapiláry} & L &= 165.0 \pm 0.5 \text{ mm} & \\
-  & \text{tlakový spád} & \rho &= 112 \pm 4 \text{ kPa} &
+  & \text{tlakový spád} & \rho &= 1110 \pm 40 \text{ Pa} &
 \end{flalign*}
 
 \begin{equation*}
-  \eta = (9.43 \pm 0.03) \cdot 10^{-3} \text{ Nsm}^{-2}
+  \eta = 1.03 \pm 0.01 \cdot 10^{-3} \text{ mPas}
 \end{equation*}
 
 \subsection{Měření Ubbelohdeho viskozimetrem}
@@ -291,12 +291,12 @@ Provedl jsem 3 měření kinematické viskozity vody. Jedno při laboratorní te
 
 \begin{table}[h]
     \centering
-    \begin{tabular}{ | c | c | c |}
+    \begin{tabular}{ | c | c | c | c |}
     \hline
-    $T$ (°C) & $t$ (m:s) & $\nu_{\text{H}_2\text{O}}$ (m$^{2}$s$^{-1}$) \\\hline
-    25 & 14:22 & 9.16 $\pm$ 0.06 $\cdot 10 ^{-7}$ \\
-    30 & 12:25 & 7.92 $\pm$ 0.05 $\cdot 10 ^{-7}$ \\
-    35 & 11:23 & 7.26 $\pm$ 0.05 $\cdot 10 ^{-7}$ \\\hline
+    $T$ (°C) & $t$ (m:s) & $\nu_{\text{H}_2\text{O}}$ (mm$^{2}$s$^{-1}$) & tabulkové $\nu_{\text{H}_2\text{O}}$ (mm$^{2}$s$^{-1}$) \\\hline
+    25 & 14:22 & 0.916 $\pm$ 0.006 & 0.8926 \\
+    30 & 12:25 & 0.792 $\pm$ 0.005  & 0.8007 \\
+    35 & 11:23 & 0.726 $\pm$ 0.005 & 0.7234 \\\hline
     \end{tabular}
     \caption{Změřené hodnoty kinematické viskozity pro různé teploty}
 \end{table}
@@ -334,7 +334,7 @@ Celkem jsem pro každou kapalinu udělal 10 měření a výsledky i s nejistotou
   \centering
   \begin{tabular}{| c | c | c |}
     \hline
-    kapalina & $F_{max}$ (N) & $\sigma$ (Nm$^{-1}$) \\\hline
+    kapalina & $F_{max}$ (mN) & $\sigma$ (mNm$^{-1}$) \\\hline
     líh & 12.01 $\pm$ 0.2 & 25.4 $\pm$ 0.5 \\
     destilovaná voda & 34.42 $\pm$ 0.2 & 72.7 $\pm$ 0.5 \\ \hline
   \end{tabular}
@@ -374,20 +374,19 @@ Disperzní složku povrchového napětí vody dopočítám ze vztahu (19).
 
 \section{Závěr}
 
-Pomocí Mariottovy lahve jsem změřil jsem dynamickou viskozitu destilované vody o teplotě 18~$^{\circ}$C $\eta = (9.43 \pm 0.03) \cdot 10^{-3} \text{ Nsm}^{-2}$. Viskozita vody se v řádech nejistoty mění s teplotou a proto by nemělo smysl měřit přesněji. Tabulky udávají obecnou hodnotu 0.01. \\
+Pomocí Mariottovy lahve jsem změřil jsem dynamickou viskozitu destilované vody o teplotě 22~$^{\circ}$C $\eta = (1.03 \pm 0.01) \text{ mPas}$. Tabulky udávají pro tuto teplotu hodnotu 0.9544 mPas. Chybu mohlo způsobit nepřesné měření času, nebo objemu vody, který vytekl kapilárou. \\
 
 Ubbelohdeho viskozimetrem jsem změřil kinematickou viskozitu vody o teplotě 25 $^{\circ}$C, 30 $^{\circ}$ C a 35~$^{\circ}$C. Výsledky jsou uvedené v tabulce 1 a dobře odpovídají tabulkovým hodnotám z odkazu 1. \\
 
-Určil jsem hustotu lihu zvlášť metodou ponorného tělíska $\rho = 804.4 \pm 0.9 \text{ kgm}^{-3}$ a pyknometrem $\rho = 799.5 \pm 0.2 \text{ kgm}^{-3}$, oproti tabulkové hodnotě 789 kgm $^{-3}$. Vypadá to, že v naší laboratoři je líh o trochu těžší. \\
+Určil jsem hustotu lihu zvlášť metodou ponorného tělíska $\rho = 804.4 \pm 0.9 \text{ kgm}^{-3}$ a pyknometrem $\rho = 799.5 \pm 0.2 \text{ kgm}^{-3}$, oproti tabulkové hodnotě 789 kgm $^{-3}$. Pyknometr jsem trochu přelil a zůstala na něm nějaké kapaky, které mohli způsobit chybu měření. V případě ponorného tělíska je možné, že jsem ho při ponoru do kalibrační kapaliny neponořil stejně jako do lihu, což by mohlo způsobit rozdíl hodnot.\\
 
-Du Noüyho metodou jsem změřil povrchové napětí lihu $\sigma = 25.4 \pm 0.5$ Nm$^{-1}$ a destilované vody $\sigma = 72.7 \pm 0.5$~Nm$^{-1}$. Nejistotu obou hodnot tvoří převážně nejistota velikosti poloměru kroužku a korekčního faktoru. Mám ale pořád velmi dobrou shodu s tabulkovými hodnotami 22.4 a 72.8 Nm$^{-1}$. Malou chybu povrchového napětí lihu pravděpodobně způsobily nečistoty v nádobě. \\
+Du Noüyho metodou jsem změřil povrchové napětí lihu $\sigma = 25.4 \pm 0.5$ mNm$^{-1}$ a destilované vody $\sigma = 72.7 \pm 0.5$~mNm$^{-1}$. Nejistotu obou hodnot tvoří převážně nejistota velikosti poloměru kroužku a korekčního faktoru. Mám ale pořád velmi dobrou shodu s tabulkovými hodnotami 22.4 a 72.8 mNm$^{-1}$. Malou chybu povrchového napětí lihu pravděpodobně způsobily nečistoty v nádobě. \\
 
-Měřením kontaktního úhlu kapky destilované vody přisedlé na podložce z teflonu jsem určil složky povrchového napětí 
-  $\sigma^{lw} = 24.9 \text{ Nm}^{-1}$ a $\sigma^{ab} = 47.9 \text{ Nm}^{-1}$. Tabulkové hodnoty jsou 21.8 a 51.0~Nm$^{-1}$. I tady výsledek mohly ovlivnit malé nečistoty na podložce.
+Měřením kontaktního úhlu kapky destilované vody přisedlé na podložce z teflonu jsem určil složky povrchového napětí $\sigma^{lw} = 24.9 \text{ mNm}^{-1}$ a $\sigma^{ab} = 47.9 \text{ mNm}^{-1}$. Tabulkové hodnoty jsou 21.8 a 51.0~mNm$^{-1}$. I tady výsledek mohly ovlivnit malé nečistoty na podložce.
 
 
 \begin{thebibliography}{0}
-\bibitem{tabulky} Kinematická a dynamická viskozita vody ~\url{https://e-konstrukter.cz/prakticka-informace/kinematicka-a-dynamicka-viskozita-vody}.   
+\bibitem{tabulky} Kinematická a dynamická viskozita vody ~\url{https://wiki.anton-paar.com/en/water/}.   
 \end{thebibliography}
 
 \end{document}
