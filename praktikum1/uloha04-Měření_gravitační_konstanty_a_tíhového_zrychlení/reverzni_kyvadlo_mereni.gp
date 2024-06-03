@@ -12,7 +12,7 @@ set bmargin at screen 0.03
 set term epslatex size 6,2.7
 set output "reverzni_kyvadlo_mereni.tex"
 
-set ylabel "T (s)"
+set ylabel "T $\\cdot$ 0.5 (s)"
 set xlabel "x (mm)"
 
 x0 = 92.7282
