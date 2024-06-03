@@ -12,7 +12,7 @@
 
 \jmenopraktika={Fyzikální praktikum 1}
 \jmeno={Lukáš Lejdar}
-\datum={26. března 2023}
+\datum={26. března 2024}
 \obor={F}
 \skupina={Út 16:00}
 
@@ -106,15 +106,14 @@ $\varphi=\the\vlhkost$~\%
 
 \section{Úvod}
 
-V úloze se budeme zabývat měřením vnitřního odporu ručkového ampérmetru a navržením obvodů pro rozsíření jeho rozsahu.
+V úloze se budu zabývat měřením vnitřního odporu ručkového ampérmetru a navržením obvodů pro rozsíření jeho rozsahu.
 Druhá část úlohy je zaměřená na digitálně analogové a analogově digitální převodníky a jejich vlastnosti.
 
 \section{Teorie}
 
 \subsection{Měření vnitřního odporu ampérmetru}
 
-Určit vnitřní odpor ručkového ampermetru jde jednoduše přímo z Ohmova zákona zapojením obvodu z obrázku 1.
-
+Určit vnitřní odpor ručkového ampermetru jde jednoduše přímo z Ohmova zákona zapojením obvodu na obrázku 1.
 
 \begin{figure}[htpb]
   \centering
@@ -122,6 +121,7 @@ Určit vnitřní odpor ručkového ampermetru jde jednoduše přímo z Ohmova z�
   \caption{Měření vnitřního odporu ampérmetru z Ohmova zákona}
 \end{figure}
 
+\noindent
 2. možnost využívá nastavitelného odporu podle obrázku 2. 
 Nejprve necháme dekádu nepřipojenou a řiditelným zdrojem nastavíme na ampérmetru
 maximální výchylku rozsahu $I_0$. Poté dekádu připojíme a snažíme se nastavením hodnoty jejího odporu dosáhnout poloviční výchylky $I = \frac{I_0}{2}$. Nyní protéká oběma větvemi stejný proud, což nastane právě tehdy, když obě větve mají stejný odpor.
@@ -133,9 +133,9 @@ maximální výchylku rozsahu $I_0$. Poté dekádu připojíme a snažíme se na
 \end{figure}
 
 
-\subsection{změna rozsahu ampérmetru}
+\subsection{Změna rozsahu ampérmetru}
 
-Obecně můžeme rozsah přístroje pouze zvětšit. Měřený proud jde pomocí bočníku rozdělit do dvou větví a proud se měří jen v jdené, jako na obrázku 3. Celkový proud dopočítáme se znalostí odporu bočníku $R_B$.
+Obecně můžeme rozsah přístroje pouze zvětšit. Měřený proud jde pomocí bočníku rozdělit do dvou větví a proud se měří jen v jdené, jako na obrázku 3. Celkový proud dopočítáme pomocí odporu bočníku $R_B$.
 
 \begin{figure}[htpb]
   \centering
@@ -146,17 +146,16 @@ Obecně můžeme rozsah přístroje pouze zvětšit. Měřený proud jde pomocí
 Protože napětí je na měřicím přístroji i na celkovém obvodu je stejné
 
 \begin{align}
-  \frac{I_N}{R_A + R_B} &= R_AI_A = U \\
+  I_N \frac{R_A R_B}{R_A + R_B} &= R_AI_A = U \\
   R_B &= \frac{R_A}{\frac{I_N}{I_A} - 1},
 \end{align}
 
 \noindent
-kde $I_N$, je celkový proud a $I_A$ měřený proud ampérmetrem. Vztah (2) udává potřebnou volbou $R_B$ pro $\frac{I_N}{I_A}=$n-násobného zvětšení rozsahu proudu.
+kde $I_N$ je celkový proud a $I_A$ proud měřený ampérmetrem. Ze vztahu (2) můžu spočítat potřebný odpor $R_B$ pro $\frac{I_N}{I_A}=$n-násobné zvětšení rozsahu měření proudu.
 
 \subsection{Změna rozsahu voltmetru}
 
-Namísto paralelně zapojeného bočníku je v případě změny rozsahu voltmetru třeba použít sériově
-zapojený odpor, tzv. předřadník (zapojení předřadníku je na obr. 4). 
+Rozsah voltmetru změní sériově zapojený odpor jako na obrázku 4, tzv. předřadník. 
 Místo voltmetru se taky dá použít ampérmetr se známým vnitřním odporem a napětí spočítat z ohmova zákona.
 
 \newpage
@@ -168,7 +167,7 @@ Místo voltmetru se taky dá použít ampérmetr se známým vnitřním odporem 
   \label{fig:}
 \end{figure}
 
-Protože proud, který teče voltmetrem je stejný jako ten, který teče celým obvodem,
+Protože proud, který teče voltmetrem je stejný jako ten, který teče celým obvodem
 
 \begin{align}
   \frac{U_V}{R_V} =& \frac{U_N}{R_P + R_V} \\
@@ -176,7 +175,7 @@ Protože proud, který teče voltmetrem je stejný jako ten, který teče celým
 \end{align}
 
 \noindent
-kde $\frac{U_N}{U_A} = n$, což je keficient zvětšení rozsahu. Pokud namísto voltmetru použijeme ampérmetr,
+kde $\frac{U_N}{U_A} = n$, což je koeficient zvětšení rozsahu. Pokud namísto voltmetru použijeme ampérmetr
 
 \begin{align}
   U_N &= (R_A + R_B) * I_A \\
@@ -186,24 +185,24 @@ kde $\frac{U_N}{U_A} = n$, což je keficient zvětšení rozsahu. Pokud namísto
 
 \subsection{Digitální část}
 
-Číslený rozsah n-bitového převodníku určíme jako $[0, 2^n -1]$ a jeho kvantizační krok 
+Číselný rozsah n-bitového převodníku určíme jako $[0, 2^n -1]$ a jeho kvantizační krok 
 
 \begin{align}
   k = \frac{U_m - U_0}{2^n -1},
 \end{align}
 
 \noindent
-kde $U_0$ je minimální a $U_m$ maximální napětí. Pokud pro žádané napětí hledáme odpovídající vstup použijeme,
+kde $U_0$ je minimální a $U_m$ maximální napětí. Pokud pro žádané napětí hledáme odpovídající vstup použijeme
 
 \begin{align}
-  x = \frac{U(x) - U_0}{k}
+  x = \frac{U(x) - U_0}{k}.
 \end{align}
 
 Na obrázku 5 je uvedený jeden možný n-bitový přechodník, který obecně patří do skupiny převodníků konstruovaných pro mapování rozsahu (0, $2^n -1$) na napěťový rozsah (0, $U_m$). Reálné získané napětí ale může být odlišné. Zavádíme proto veličny charakterizující tyto odchylky jako
 
 \begin{align}
   \text{chyba ofsetu} & & \delta_0 &= \frac{U_0}{k} & &\\
-  \text{chyba zesílení} & & \delta_m &= \frac{U_m - U_0}{k},
+  \text{chyba zesílení} & & \delta_m &= \frac{U_m - U_0}{k}.
 \end{align}
 
 \begin{figure}[htpb]
@@ -218,13 +217,13 @@ Na obrázku 5 je uvedený jeden možný n-bitový přechodník, který obecně p
 
 \subsection{Měření vnitřního odporu ampérmetru}
 
-Použili jsme dvě metody měření vnitřního odporu ampérmetru $R_A$. Přímo z ohmova zákona zapojením obvodu z obrázku 1 apomocí odporové dekády podle obrázku 2. 
+Použil jsem dvě metody měření vnitřního odporu ampérmetru $R_A$. Přímo z ohmova zákona zapojením obvodu z obrázku 1 a pomocí odporové dekády podle obrázku 2. 
 
 \begin{table}[htpb]
   \centering
   \begin{tabular}{ c | c }
-    měření z Ohmova zákona & 1650(50) $\Omega$ \\
-    měření Dekádou & 1670(20) $\Omega$
+    měření z Ohmova zákona & (1650 $\pm$ 20) $\Omega$ \\
+    měření Dekádou & (1670 $\pm$ 20) $\Omega$
   \end{tabular}
 
   \caption{výsledky měření vnitřního odporu ručkového ampérmetru}
@@ -232,27 +231,23 @@ Použili jsme dvě metody měření vnitřního odporu ampérmetru $R_A$. Přím
 
 \subsection{Zvětšení rozsahu ampérmetru}
 
-N-násobné zvětšení rozsahu můžeme realizovat zapojením obvodu z obrázku 3 s odporem $R_B$, který spočítáme ze 
-vztahu (2) se seznalostí $R_A$. Nejjednodušší způsob kontroly je použít velmi přesný 
-nastavitelný zdroj napětí a nastavit ho tak, aby na ručkovém ampérmetru byl právě maximální hodnota. 
-Nakonec provnáme předpokládanou hodnotu proudu s tou nastavenou na zdroji.
+N-násobné zvětšení rozsahu jde realizovat zapojením obvodu z obrázku 3 s odporem $R_B$, který spočítám ze vztahu (2). Nejjednodušší způsob kontroly je použít velmi přesně nastavitelný zdroj proudu a nastavit ho tak, aby na ručkovém ampérmetru byla právě maximální hodnota. Nakonec porovnám předpokládanou hodnotu proudu s tou nastavenou na zdroji.
 
 \begin{table}[htpb]
   \centering
   \begin{tabular}{ | c | c | c | c | c | }
     \hline
     n & $R_B$ [$\Omega$] & $I_A$ [$\mu A$] & předpokládáme $I=nI_0$ [mA] & opravdový proud $I$ [mA] \\\hline
-    5 & 420(5) & 100 & 0.5 & 0.4929 \\
-    10 & 187(2) & 100 & 1 & 0.9790 \\
-    20 & 88(1)& 100 & 2 & 1.9664 \\\hline
+    5 & (420 $\pm$ 5) & 100 & 0.5 & 0.4929 \\
+    10 & (187 $\pm$ 2) & 100 & 1 & 0.9790 \\
+    20 & (88 $\pm$ 1) & 100 & 2 & 1.9664 \\\hline
   \end{tabular}
   \caption{Tabulka měření proudu použitím bočníku podle vztahu (2)}
 \end{table}
 
 \subsection{Zvětšení rozsahu voltmertu}
 
-Se znalostí vnitřního odporu jde ampérmetr použít jako voltmetr. S přeřadníkem s odporem $R_P$ podle obvodu z obrázku 4 můžeme navíc zvětšit jeho rozsah na hodnotu $U_N$ podle vztahu (7).
-Ke kontrole použijeme podobný postup jako u bočníku.
+Pokud znám vnitřní odpor ampérmetru, můžu ho použít jako voltmetr. S přeřadníkem o odporu $R_B$ navíc můžu zvětšit jeho rozsah na hodnotu $U_N$ podle vztahu (7). Ke kontrole použiju podobný postup jako u bočníku.
 
 
 \begin{table}[htpb]
@@ -260,8 +255,8 @@ Ke kontrole použijeme podobný postup jako u bočníku.
   \begin{tabular}{| c | c | c | c | c | }
     \hline
     předpokládané napětí $U_N$ $[V]$ & $I_A$ [$\mu A$] & $R_B$ [$k\Omega$] & opravdové napětí $U_N$ [V] \\\hline
-    5 & 100 & 48.320 & 5.086 \\
-    10 & 100 & 98.320 & 10.420 \\\hline
+    5 & 100 & (48.34 $\pm$ 0.04) & 5.086 \\
+    10 & 100 & (98.34 $\pm$ 0.04) & 10.420 \\\hline
   \end{tabular}
   \caption{Tabulka měření napětí použitím přeřadníku podle vztahu (7)}
 \end{table}
@@ -269,23 +264,23 @@ Ke kontrole použijeme podobný postup jako u bočníku.
 
 \subsection{D/A převodníky}
 
-Určíme rozsah 8-bitového převodníku MDAC08 a 16-bitobého USB - 9162.
+Určím rozsah 8-bitového převodníku MDAC08 a 16-bitobého USB - 9162.
 
 \begin{table}[htpb]
   \centering
   \begin{tabular}{ | c | c | c | c | c | }
     \hline
-    převodník & n & $U_m$ [V] & $U_0$ [V] & k \\\hline
-    MDAC08 & 8 & 9.88121 & $1.2560 * 10^{-3}$ & $38.6 * 10 ^ {-3} $  \\
-    USB - 9162 & 16 & 10.6970 & -10.6735 & $0.326 * 10 ^ {-3} $ \\\hline
+    převodník & n & $U_m$ [V] & $U_0$ [V] & k [mV] \\\hline
+    MDAC08 & 8 & 9.88121 & $1.2560 \cdot 10^{-3}$ & $38.6 $  \\
+    USB - 9162 & 16 & 10.6970 & -10.6735 & $0.326 $ \\\hline
   \end{tabular}
   \caption{rozsahy dvou D/A převodníků a jejich kvantizační kroky}
 \end{table}
 
-Interpolací teď můžeme podle vztahu (9) nastavit libovolné napětí v rozsahu. Třeba pro $U(x) = 3.2$ je x = 42545. 
+Interpolací podle vztahu (9) teď můžu nastavit libovolné napětí v rozsahu. Třeba pro $U(x) = 3.2$ je x = 42545. 
 Skutečné napětí bylo $3.19917$ V. \\
 
-Nominální rozsah přvodníku MDAC08 je 0 - 10 V. Ze vztaů (10) a (11) můžeme určit chybu ofsetu a chybu zesílení jako
+Nominální rozsah přvodníku MDAC08 je 0 - 10 V. Ze vztaů (10) a (11) spočítám chybu ofsetu a chybu zesílení
 
 \begin{align}
   \delta_0 &= 1.26 * 10^{-3}\\
@@ -294,7 +289,7 @@ Nominální rozsah přvodníku MDAC08 je 0 - 10 V. Ze vztaů (10) a (11) můžem
 
 \subsection{Vliv vzorkovací frekvence na kvalitu záznamu}
 
-Zaznamenávali jsme signál o frekvenci 1kHz A/D převodníkem a růžnými vzorkovacími frekvencemi. Výsledky jsou uvedeny v tabulce 3.
+Různými vzorkovacími frekvencemi jsem A/D převodníkem zaznamenával signál o frekvenci 1 kHz. Výsledky jsou uvedeny v tabulce 3.
 
 \begin{table}[htpb]
   \centering
@@ -313,17 +308,17 @@ Zaznamenávali jsme signál o frekvenci 1kHz A/D převodníkem a růžnými vzor
 \subsection{Kvantizační krok A/D převodníku}
 
 Kvantizační krok vyjadřuje minimální rozdíl napětí, který jde A/D převodníkem změřit. 
-K jeho určení existuje následující postup; Zkratováním vstupních svorek začne karta měřit malé náhodné rozdíly napětí. Kvantizační krok se v získaných datech, projeví jako nejmenší nenulový rozdíl dvou následujících hodnot. Použili jsme 12-bitový A/D převodník na kartě ICP DAS PCI-1202LU z měřícího systému ISES. Nejmenší naměřený rozdíl byl 1.22099 mV.
+K jeho určení existuje následující postup. Zkratováním vstupních svorek začne karta měřit malé náhodné rozdíly napětí. Kvantizační krok se v získaných datech, projeví jako nejmenší nenulový rozdíl dvou následujících hodnot. Použil jsem 12-bitový A/D převodník na kartě ICP DAS PCI-1202LU z měřícího systému ISES. Nejmenší naměřený rozdíl byl 1.22099 mV.
 
 \newpage
 
 \section{Závěr}
 
-Použil jsem dvě různé metody pro měření vnitřního odporu ručkového ampérmetru. Obě měření uvedené v tabulce 1 jsou docela přesné a zhodují se. Dál jsme chtěli zvětšit měřící rozsah. Podle vztahů (2) a (7) jsem odhadl velikosti odporů bočníků a přeřadníků a výsledky uvedl v tabulkách 2 a 3. Rozdíl vypočítaných hodnot a skutečných byl v obou případech minimální. \\
+Použil jsem dvě různé metody pro měření vnitřního odporu ručkového ampérmetru. Obě měření uvedené v tabulce 1 jsou docela přesné a zhodují se. Dál jsem chtěl zvětšit měřící rozsah. Podle vztahů (2) a (7) jsem odhadl velikosti odporů bočníků a přeřadníků a výsledky uvedl v tabulkách 2 a 3. Rozdíl vypočítaných hodnot a skutečných byl v obou případech minimální. \\
 
-Určil jsem velikosti kvantizačních kroků dvou D/A přeřadníků MDAC08 a USB - 9162 uvedné v tabulce 4. Povedlo se správně odhadnout potřebné vstupní číslo pro nastavení 3.2 V a chyby ofsetu a zesílení byli obě minimální. \\
+Určil jsem velikosti kvantizačních kroků dvou D/A přeřadníků MDAC08 a USB - 9162 uvedené v tabulce 4. Povedlo se správně odhadnout potřebné vstupní číslo pro nastavení 3.2 V a chyby ofsetu a zesílení byly obě minimální. \\
 
-V tabluce 5 jsme testovali různé vzorkovací frekvence pro měření signálu o frekvenci 1 kHz. Ke spolehlivým výsledkům bylo potřeba alespoň dvojnásobná vzorkovací frekvence. \\
+V tabulce 5 jsem testoval různé vzorkovací frekvence při měření signálu o frekvenci 1 kHz. Pro vzorkovací frekvenci 2 kHz už vyšla správná hodnota, ale spolehlivé měření by to nebylo. Vzorkovací frekvence by měla být alespoň o řád vyšší než ta měřená, aby mezi nimi nedošlo k nějaké harmonii. \\
 
 Určil jsem kvantizační krok 12-bitového A/D převodníku s rozsahem 0 - 5 V na kartě ICP DAS PCI-1202LU jako 1.22099 mV, což odpovídá teoretickému výsledku $k = \frac{U_r}{2^{n} -1}=1.221$ mV. \\
 
