@@ -34,8 +34,10 @@
 \usepackage{indentfirst}
 \usepackage{wrapfig}
 \usepackage{subcaption}
-\usepackage{xcolor}
 \usepackage{caption}
+\usepackage{listings}
+\usepackage{xcolor}
+
 
 %%%%%% Zamezeni parchantu:
 \widowpenalty 10000 \clubpenalty 10000 \displaywidowpenalty 10000
@@ -107,8 +109,9 @@ $\varphi=\the\vlhkost$~\%
 
 \section{Úvod}
  
-V úloze budu měřit moduly pružnosti všeho druhu. Zavádíme je následujícím způsobem: \\
+V úloze budu měřit různé moduly pružnosti. Zavádíme je následujícím způsobem: \\
 
+\noindent
 Pro materiál v tahu platí v nejjednodušším případě Hookův zákon
 
 \begin{equation}
@@ -143,13 +146,13 @@ Měření bude probíhat jako na obrázku 1. Z úchytu visí kolmo dolů drát o
   Do Hookova zákona dosadím za S obsah průřezu drátu a za F gravitační sílu, kterou na drát působí závaží.
 
 \begin{equation}
-\Delta l(m) = \frac{4 g l}{\pi d^2 E}m
+ \frac{4 g m}{\pi d^2} = \frac{\Delta l}{l} E
 \end{equation}
 
 Změřím odchylku pro každé další přidané závaží a modul pružnosti určím ze sklonu lineárního fitu hodnot.
 
 \begin{equation}
-  k = \frac{4 g l}{\pi d^2 E}
+  k = \frac{\Delta l}{m} = \frac{4 g l}{\pi d^2 E}
 \end{equation}
 
 \subsection{Měření modulu pružnosti v tahu z průhybu plného obdélníkového nosníku}
@@ -195,23 +198,49 @@ Přitom T je perioda kmitání. Provedu 10 měření doby 10 period kmitání, v
 
 \subsection{Měření modulu pružnosti v tahu přímou metodou z prodloužení drátu}
 
-Na svislý ocelový drát o průměru d = $(0.50 \pm 0.003)$ mm a délce l = 1567 mm jsem postupně přidával závaží a měřil prodloužení $\Delta l$. Získané hodnoty jsou uvedené v grafu 4.
+Na svislý ocelový drát o průměru d a délce l = 1567 mm jsem postupně přidával závaží a měřil prodloužení $\Delta l$. Získané hodnoty jsou uvedené v grafu 4. Dosazením do vztahu (4) dostávám modul pružnosti drátu E. Pro výpočet nejistoty jsem použil python script uvedený v příloze 1.
 
-\begin{figure}[htpb]
-  \centering
-  \include{prodlouzeni.tex}
-  \caption{Závislost prodloužení drátu na hmotnosti závaží}
-\end{figure}
+\captionsetup[figure]{name=Graf,justification=centering,format=plain}
+\captionsetup[table]{name=Tabulka,justification=centering,format=plain}
 
-Dosazením do vztahu (4) dostávám modul pružnosti drátu E
-
-\begin{equation*}
-E =  (174 \pm 3)\ GPa.
-\end{equation*}
+\begin{table}[htpb]
+  \begin{minipage}{0.62\linewidth}
+    \centering
+    \include{prodlouzeni.tex}
+    \captionof{figure}{Závislost prodloužení drátu na hmotnosti závaží}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.30\linewidth}
+    \centering
+    \begin{tabular}{|c|c|}
+      \hline
+      n & d (mm) \\
+      \hline
+      1 & 0.50 \\
+      2 & 0.50 \\
+      3 & 0.50 \\
+      4 & 0.50 \\
+      5 & 0.51 \\
+      6 & 0.50 \\
+      7 & 0.49 \\
+      8 & 0.50 \\
+      9 & 0.49 \\
+      10 & 0.50 \\
+      \hline
+      x & $(0.5 \pm 0.02)$ \\
+      \hline
+    \end{tabular}
+    \caption{měření průměru drátu mikrometrem}
+  \end{minipage}
+\end{table}
+\vspace{-10pt}
+\begin{center}
+ \vrn{E}{170}{10}{GPa}{99.73}{9} 
+\end{center}
 
 \subsection{Měření modulu pružnosti v tahu z průhybu plného obdélníkového nosníku}
 
-Na obdélníkové nosníky o rozměrech a $\times$ b $\times$ c jsem postupně přidával závaží a měřil prohnutí y. Získané hodnoty jsou uvedené v grafu 5 a dopočítané moduly pružnosti v tabulce 1.
+Na obdélníkové nosníky o rozměrech a $\times$ b $\times$ c (tabulka 2) jsem postupně přidával závaží a měřil prohnutí~y. Získané hodnoty jsou uvedené v grafu 5, python script pro výpočet v příloze 2 a výsledné moduly pružnosti v tabulce 2. Vzdálenost břitů l = ($89.9\pm0.03$) cm jsem změřil pravítkem.
 
 \begin{figure}[htpb]
   \centering
@@ -219,44 +248,158 @@ Na obdélníkové nosníky o rozměrech a $\times$ b $\times$ c jsem postupně p
   \caption{Závislost prohnutí nosníku na hmotnosti závaží.}
 \end{figure}
 
-\begin{table}[htpb]
+\begin{table}[h]
+  \centering
+  \begin{tabular}{| c | c | c | c | c | c | c | c | c |}
+    \hline
+    materiál & \multicolumn{2}{| c |}{dural} & \multicolumn{2}{| c |}{mosaz} & \multicolumn{2}{| c |}{měď} & \multicolumn{2}{| c |}{ocel} \\ \hline
+    rozměry & a (mm) & b (cm) & a (mm) & b (cm) & a (mm) & b (cm) & a (mm) & b (cm) \\ \hline
+    1 & 5.04 & 3.030 & 5.04 & 3.022 & 5.06 & 3.008 & 5.75 & 2.980 \\ 
+    2 & 5.04 & 3.028 & 5.06 & 3.010 & 5.05 & 3.012 & 5.75 & 2.978 \\ 
+    3 & 5.04 & 3.022 & 5.10 & 3.032 & 5.06 & 3.022 & 5.77 & 2.980 \\ 
+    4 & 5.03 & 3.020 & 5.04 & 3.024 & 5.06 & 3.014 & 5.76 & 2.988 \\ 
+    5 & 5.03 & 3.040 & 5.03 & 3.010 & 5.06 & 3.016 & 5.75 & 2.982 \\ 
+    6 & 5.04 & 3.022 & 5.04 & 3.080 & 5.06 & 3.012 & 5.75 & 2.986 \\ 
+    7 & 5.02 & 3.020 & 5.02 & 3.120 & 5.06 & 3.080 & 5.76 & 2.980 \\ 
+    8 & 5.03 & 3.036 & 5.04 & 3.120 & 5.06 & 3.010 & 5.75 & 2.982 \\ 
+    9 & 5.04 & 3.020 & 5.04 & 3.160 & 5.06 & 3.008 & 5.75 & 2.984 \\ 
+    10 & 5.02 & 3.016 & 5.05 & 3.020 & 5.06 & 3.012 & 5.75 & 2.982 \\ \hline
+  \end{tabular}
+  \caption{Měření rozměrů nosníků}
+\end{table}
+\begin{table}[h]
   \centering
   \begin{tabular}{| c | c | c | c | c |}
     \hline
-    materiál & a (mm) & b (cm) & k ($10^{-6}$ mkg$^{-1}$) & E (GPa) \\\hline
-    hliník & 5.03 $\pm$ 0.03 & 3.03 $\pm$ 0.02 & 6800 $\pm$ 8 & 67.9 $\pm$ 1  \\
-    mosaz & 5.06 $\pm$ 0.01 & 3.02 $\pm$ 0.05 & 4770 $\pm$ 5 & 95.6 $\pm$ 2  \\
-    měď & 5.05 $\pm$ 0.07 & 3.0 $\pm$ 0.1 & 3894 $\pm$ 9 & 116 $\pm$ 6  \\
-    ocel & 5.75 $\pm$ 0.02 & 2.98 $\pm$ 0.01 & 1528 $\pm$ 2 & 205 $\pm$ 2  \\\hline
+    materiál & a (mm) & b (cm) & k ( $\mu$m kg$^{-1}$) & E (GPa) \\\hline
+    dural & 5.033 $\pm$ 0.032 & 3.025 $\pm$ 0.030 & 6800 $\pm$ 8 & (67.9 $\pm$ 0.2) \\
+    mosaz & 5.059 $\pm$ 0.012 & 3.02 $\pm$ 0.08 & 4770 $\pm$ 5 & (95.6 $\pm$ 0.2) \\
+    měď & 5.05 $\pm$ 0.08 & 3.06 $\pm$ 0.22 & 3894 $\pm$ 9 & (120 $\pm$ 10) \\
+    ocel & 5.754 $\pm$ 0.027 & 2.982 $\pm$ 0.012 & 1528.0 $\pm$ 2.0 & (205 $\pm$ 3) \\\hline
   \end{tabular}
-  \caption{Vypočítané moduly pružnosti E z rozměrů měřených nosníků a vzdálenosti břitů \\ l = $89.9\pm0.03$ cm.}
+  \caption{Vypočítané moduly pružnosti E z rozměrů nosníků. ($p=$ 99.73\,\%, $\nu=$ 9)  }
 \end{table}
+
 
 \subsection{Měření modulu pružnosti ve smyku dynamickou metodou}
 
-Uvádím parametry ocelového torzního oscilátoru a změřenou periodu kmitání pro výpočet dynamického modulu pružnosti G ze vztahu~(6).
+Železná koule o poloměru D a hmotnosti m = 5.905 g je zavěšená na drátě o průměru d a délce  l~=~51.450 $\pm$ 0.003 cm. Vychýlil jsem kouli a pokaždé změřil dobu deseti period T. Pro výpočet modulu pružnosti ze vztahu (6) jsem použil python script z přílohy 3.
 
-\begin{flalign*}
-  m &= 5.905 \text{ g} & & \text{hmotnost koule} & \\
-  R &= (49.87 \pm 0.07) \text{ mm} & & \text{poloměr koule} & \\
-  r &= (0.496 \pm 0.005) \text{ mm} & & \text{poloměr drátu} & \\
-  l &= (51.450 \pm 0.003) \text{ cm} & & \text{délka závěsu} & \\
-  T &= (3.983 \pm 0.032) \text{ s} & & \text{změřená perioda kmitání} \\
-\end{flalign*}
-\begin{equation*}
-G = (79 \pm 4) \text{ GPa}
-\end{equation*}
+\begin{table}[h]
+ \centering
+ \begin{tabular}{| c | c | c | c |}
+    \hline
+    měření & d (mm) & D (mm) & 10 $\cdot$ T (s) \\ 
+    \hline
+    1 & 1.00 & 99.60 & 39.89 \\
+    2 & 0.99 & 99.70 & 39.81 \\
+    3 & 0.99 & 99.80 & 39.56 \\
+    4 & 0.99 & 99.78 & 40.05 \\
+    5 & 0.99 & 99.70 & 39.64 \\
+    6 & 0.99 & 99.80 & 39.94 \\
+    7 & 1.00 & 99.72 & 39.82 \\
+    8 & 0.99 & 99.78 & 39.94 \\
+    9 & 0.99 & 99.76 & 39.93 \\
+    10 & 1.00 & 99.76 & 39.72 \\
+    \hline
+    x & 0.993 $\pm$ 0.02 & 99.7 $\pm$ 0.2 & 39.8 $\pm$ 0.6 \\
+    \hline
+ \end{tabular}
+ \caption{ Měření poloměru drátu a na něm zavěšené koule. ($p=$ 99.73\,\%, $\nu=$ 9)}
+\end{table}
+
+\begin{center}
+  \vrn{G}{79}{6}{GPa}{99.73}{9}
+\end{center}
 
 \section{Závěr}
 
-Z prodloužení ocelového drátu jsem změřil modul pružnosti E = $(174 \pm 3)$ GPa. Ne celkové nejistotě se podílela nejistota typu B při měření průměru drátu mikrometrem a nejistota sklonu lineárního fitu hodnot. 
+Z prodloužení ocelového drátu jsem změřil modul pružnosti E = $(174 \pm 3)$ GPa. Ne celkové nejistotě se podílela nejistota měření průměru drátu mikrometrem a nejistota sklonu lineárního fitu hodnot.  \\
 
-Metodou prohnutí nosníků jsem změřil moduly pružnosti hliníku, mědi, mosazi a ocele a výsledné hodnoty uvedl v tabulce 1. Pro všechny čtyři kovy je rozdíl oproti tabulkám z odkazu [1] v řádech několika procent. Je vidět, že metoda průhybu nosníku dosáhla mnohem přesnějšího výsledku, než přímá metoda měření z prodloužení drátu.
+Metodou prohnutí nosníků jsem změřil moduly pružnosti hliníku, mědi, mosazi a ocele a výsledné hodnoty uvedl v tabulce 3. Pro všechny čtyři kovy je rozdíl oproti tabulkám z odkazu [1] v řádech několika procent. Metoda průhybu nosníku dosáhla mnohem přesnějšího výsledku, než přímá metoda měření z prodloužení drátu. \\
 
-Z periody torzních kmitů jsem změřil modul pružnosti ve smyku ocelového drátu G = $(79 \pm 4)$ GPa. Nepřesnost měření je převážně způsobená nejistotou periody kmitání. Bylo by potřeba místo manuálního spouštění stopek použít nějakou přesnější metodu. Tabulková hodnota je 79.3 GPa.
+Pomocí periody torzních kmitů jsem změřil modul pružnosti ve smyku ocelového drátu \linebreak \mbox{G = $(79\pm4)$ GPa.} Nepřesnost měření je převážně způsobená nejistotou periody kmitání. Bylo by potřeba místo manuálního spouštění stopek použít nějakou přesnější metodu. Tabulková hodnota je 79.3 GPa. \\
+
+\vspace{25pt}
 
 \begin{thebibliography}{0}
 \bibitem{moduly_pruznosti} Tabulky Youngových modulů pružnosti ~\url{http://kabinet.fyzika.net/studium/tabulky/modul-pruznosti.php}.   
+\bibitem{navod_k_uloze} návod k úloze \url{https://www.physics.muni.cz/kof/vyuka/fp1_05.pdf}
 \end{thebibliography}
+
+
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstset{
+    backgroundcolor=\color{backcolour},   
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\section{Přílohy}
+
+\begin{lstlisting}[caption={Výpočet modulu pružnosti v tahu přímou metodou }]
+import numpy as np
+import uncertainties as unc
+import math
+
+d = np.array([ 0.50, 0.50, 0.50, 0.50, 0.51, 0.50, 0.49, 0.50, 0.49, 0.50 ]) * 0.001
+d = unc.ufloat(np.mean(d), np.std(d) * 4.094)
+k = unc.ufloat(449, 4) * 1e-6
+l = 1567 * 0.001
+
+print(4 * 9.81 * l / (math.pi * d ** 2 * k))
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Výpočet modulů pružností nosníků}]
+import uncertainties as unc
+import numpy as np
+
+def E(b, a, k):
+    k = unc.ufloat(k[0], k[1]) * 1e-6 
+    a = unc.ufloat(np.mean(a), np.std(a) * 4.094) * 0.001
+    b = unc.ufloat(np.mean(b), np.std(b) * 4.094) * 0.01
+    l = unc.ufloat(89.9, 0.03) * 0.01
+    g = 9.809980
+
+    return g * l**3 / (4 * k * a ** 3 * b)
+
+table = np.loadtxt("nosniky_rozmery.txt")
+print('dural', E(table[:, 0], table[:, 1], (6800, 8)))
+print('mosaz', E(table[:, 4], table[:, 5], (4770, 5)))
+print('med', E(table[:, 2], table[:, 3], (3894, 9)))
+print('ocel', E(table[:, 6], table[:, 7], (1528, 2)))
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Výpočet modulu pružnosti dynamickou metodou}]
+import uncertainties as unc
+import math
+import numpy as np
+
+table = np.loadtxt("oscilator_rozmery.txt")
+d = table[:, 0]
+D = table[:, 1]
+T = table[:, 2]
+
+d = unc.ufloat(np.mean(d), np.std(d) * 4.094) * 0.001
+D = unc.ufloat(np.mean(D), np.std(D) * 4.094) * 0.001
+T = unc.ufloat(np.mean(T), np.std(T) * 4.094) / 10.0
+l = unc.ufloat(51.45, 0.003) * 0.01
+m = 5.905
+
+print(16 * math.pi * m * (D/2) ** 2 * l / (5 * (d/2) ** 4 * T ** 2))
+  
+\end{lstlisting}
+
+\end{document}
 
 \end{document}
