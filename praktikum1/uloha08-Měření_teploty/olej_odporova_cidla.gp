@@ -1,7 +1,7 @@
 set xlabel "teplota °C"
 set ylabel "Odpor [$\\Omega$]"
 
-set xrange [20:130]
+set xrange [0:130]
 
 #f1(x) = a1*x + r1
 f1(x) = r1*(1+a1*(x-70))

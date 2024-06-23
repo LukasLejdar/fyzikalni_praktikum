@@ -155,7 +155,7 @@ krabičky a opět vyčkejte asi 10 minut. Porovnejte a komentujte výsledky.
 
 \subsection{Odporová čidla}
 
-Odpor kovového vodiče s teplotou roste a měřením odporu čidla tím můžeme měřit i teplotu. Tato závislost je na menších teplotních intervalech lineární.
+Odpor kovového vodiče s teplotou roste a měřením odporu čidla tím můžeme měřit i teplotu. Tato závislost je na menších teplotních intervalech lineární
 
 \begin{equation}
 R = R_0(1+\alpha \Delta t),
@@ -279,21 +279,33 @@ Pomocí horkovzdušné pistole jsem zahřál jedno zapouzdřené a jedno nezapou
 
 \subsection{Měření teploty infračerveným teploměrem}
 
-IR teplotměrem jsem snímal teploty měděné desky natřené různě barevnými žáruvzdornými laky. 
-Druhým úkolem bylo měřit teplotu tělesa skrz okénko a bez něj. Naměřené hodnoty jsou uvedeny v tabulkách 1 a 2.
+Měděnou desku, natřenou různě barevnými žáruvzdornými laky jsem zahřál na přibližně 300 $^{\circ}C$ a snímal její teplotu infračerveným teploměrem a teplotním čidlem. To samé jsem provedl se zmrzlou měděnou desku s námrazou a bez námrazy. Druhým úkolem bylo měřit teplotu tělesa skrz okénko a bez něj. Naměřené hodnoty jsou uvedeny v tabulkách 1, 2 a 3.
+
 
 \begin{table}[ht]
   \centering
   \begin{tabular}{ | c | c | c | c | }
     \hline
     Měděná deska & Skutečná teplota (K) & IR (K) & $\epsilon$ \\ \hline
-    černá & 562 & 560 & 0.96 \\
+    černá & 562 & 560 & 0.99 \\
     Bílá & 653 & 545 & 0.49 \\
     Aluminiová & 619 & 444 & 0.26 \\ \hline
   \end{tabular}
   \captionsetup{justification=centering}
-  \caption{Měření měděné desky natřené různými barvamai infračervený teploměrem Optris oproti diferenciálnímu čidlu GMH 3230. 
+  \caption{Měření měděné desky natřené různými barvami infračervený teploměrem Optris oproti diferenciálnímu čidlu GMH 3230. 
   Emisivitu jsem spočítal ze vztahu (5).}
+\end{table}
+
+\begin{table}
+  \centering
+  \begin{tabular}{ | c | c | c | c | }
+    \hline
+    měření & skutečná teplota (K) & IR (K) & $\epsilon$ \\ \hline
+    bez námrazy & 256 & 293 & 1.72   \\
+    s námrazou & 258 & 257 & 0.98 \\\hline
+  \end{tabular}
+  \captionsetup{justification=centering}
+  \caption{Měření teploty zmrzlé měděné destičky s námrazou a bez námrazy pomocí infračerveného teploměru}
 \end{table}
 
 \begin{table}[ht]
@@ -326,6 +338,8 @@ a přivedeným napětím  $U_0$ = $2.20$ V. Nejprve jsem obě čidla umístili b
   \caption{ Závislost přepočítaného rozdílu teplot pomocí vztahu (7) na čase.}
 \end{figure}
 
+\newpage
+
 \section{Závěr}
 
 Změřil jsem kalibrační hodnoty dvou odporových a jednoho diferenciálního čidla 
@@ -338,11 +352,11 @@ Změřil jsem kalibrační hodnoty dvou odporových a jednoho diferenciálního 
 \noindent
 Termoelektrický koeficient $\beta$ diferenciálního čidla odpovídá podle tabulek přibližně chromelovému článku typu K a odporový koeficient $\alpha_1$ odporového čidla asi Pt100. Hodnota $\alpha_2$ se mi nepodařila identifikovat.
 
-Z grafů 4 a 5 jsem fitem podle vztahu (3) změřil relaxační dobu zapouzdřeného a nezapouzdřeného čidla. Relaxace toho zapouzdřeného trvala o něco déle, protože je líp izolované od svého okolí. Můžeme říct, že má nějakou setrvačnost ve formě tepla svého pouzdra a rychlé výchylky teploty tím na rozdíl od nezapouzdřeného nezachytí. \\
+Z grafů 4 a 5 jsem fitem podle vztahu (3) změřil relaxační dobu zapouzdřeného a nezapouzdřeného čidla. Relaxace toho zapouzdřeného trvala o něco déle, protože je líp izolované od svého okolí. Můžeme říct, že má nějakou setrvačnost ve formě tepla svého pouzdra a rychlé výchylky teploty tím na rozdíl od nezapouzdřeného nezachytí.
 
-Určil jsem emisivitu černého žáruvzdorného laku $\epsilon =$ 0.96, bílého barvy $\epsilon =$ 0.49 a aluminiového povrchu $\epsilon =$ 0.26. Emisivita černého tělesa je správně blízká jedné, bílá barva se pohybuje kolem 0.5 a aluminium je níž kvůli své reflexivitě. Dál jsem měřil propustnosti okének ze zadaných materiálů uvedené v tabulce 2. Největší propustnost měl bromid draselný, který je totiž v infračervené spektru úplně neaktivní a často se pro tuto vlastnost používá třeba ve spektroskopii. Naopak nejmenší propustnost mají polykarbonát, sklo a oxid křemičitý. \\
+Určil jsem emisivitu černého žáruvzdorného laku $\epsilon =$ 0.96, bílého žáruvzdorného laku $\epsilon =$ 0.49 a aluminiového povrchu $\epsilon =$ 0.26. Emisivita černého tělesa je správně blízká jedné, bílá barva se pohybuje kolem 0.5 a aluminium je níž kvůli své reflexivitě. Přirozeně velmi reflexivní je i měď, jak ukazuje tabulka 2. Teplota zmrzlé měděné destičky změřená infračerveným teploměrem byla totiž téměř 20~$^{\circ}$C. Z povrchu desky se odráží většina světla co na ní dopadá a IR teploměr změří hodnoty blízké teplotě místnosti. Když jsem ale měřil teplotu desky s námrazou, tento efekt nehrál roli a vyšla reálná teplota -15 $^{\circ}$C. Dál jsem měřil propustnosti okének ze zadaných materiálů uvedené v tabulce 3. Největší propustnost měl bromid draselný, který je v infračervené spektru úplně neaktivní a často se pro tuto vlastnost používá třeba ve spektroskopii. Naopak nejmenší propustnost mají polykarbonát, sklo a oxid křemičitý.
 
-V grafu měření můstkem je rozdíl teplot v čase t $\in$  [0,  100] s blízké nule.
+V grafu měření můstkem je rozdíl teplot v čase t $\in$  [0,  100] s blízký nule.
 Po vložení do izolující polystyrénové krabičky začal můstek měřit malý teplotní rozdíl.
 Čidlem totiž protéká drobný proud a tím se zahřívá. Pokud jedno zaizolujeme, projeví se to i na grafu. 
 Měříme vlastně míru vlastního ohřevu čidla. Kolem času 400 s jsem čidla vyměnili a rozdíl teplot se téměř vyrovnal 
