@@ -33,6 +33,7 @@
 \usepackage{wrapfig}
 \usepackage{subcaption}
 \usepackage{xcolor}
+\usepackage{listings}
 
 %%%%%% Zamezeni parchantu:
 \widowpenalty 10000 \clubpenalty 10000 \displaywidowpenalty 10000
@@ -268,7 +269,7 @@ Po vydělení obou rovnic dostávám pro disperzní složku povrchové energie v
 
 \subsection{Absolutní měření viskozity Mariottovou lahví}
 
-Za dobu t = 128 s vytekl kapilárou objem V = $38.2 \pm 3$ cm$^{3}$ destilované vody. Uvádím taky parametry použité Mariottovy láhve pro výpočet dynamické viskozity ze vztahu (6).
+Za dobu t = 128 s vytekl kapilárou objem V = $38.2 \pm 0.3$ cm$^{3}$ destilované vody. Uvádím taky parametry použité Mariottovy láhve pro výpočet dynamické viskozity ze vztahu (6).
 \begin{flalign*}
   & \text{poloměr kapiláry} & R &= 0.570 \pm 0.001 \text{ mm} &  \\
   & \text{délka kapiláry} & L &= 165.0 \pm 0.5 \text{ mm} & \\
@@ -305,16 +306,16 @@ Provedl jsem 3 měření kinematické viskozity vody. Jedno při laboratorní te
 
 Na závěsných vahách jsem změřil vztlak ponořeného tělíska v destilované vodě a v lihu. Hustotu dopočítám ze vztahu (12).
 \begin{flalign*}
-  & \text{tíha tělíska ponořeného v lihu} & m_{\text{l}} &= 36.37 \pm 0.03 \text{ mN} \\
-  & \text{tíha tělíska ponořeného ve vodě} & m_{\text{v}} &= 41.08 \pm 0.03 \text{ mN} & \\
-  & \text{hustota destilované vody} & \rho_{\text{v}} &= 997 \text{ kgm}^{-3} &
+  & \text{tíha tělíska ponořeného v lihu} & m_{\text{l}} &= 34.71 \pm 0.03 \text{ mN} \\
+  & \text{tíha tělíska ponořeného ve vodě} & m_{\text{v}} &= 43.08 \pm 0.03 \text{ mN} & \\
+  & \text{hustota destilované vody} & \rho_{\text{v}} &= 998.2 \text{ kgm}^{-3} &
 \end{flalign*}
 \begin{equation*}
   \rho_{\text{l}} = 804.4 \pm 0.9 \text{ kgm}^{-3}
 \end{equation*}
 \subsection{Měření hustoty pyknometrem}
 
-Ze vztahu (13) dopočítám hustotu lihu $\rho_{\text{l}}$, pomocí známé hustoty destilované vody $\rho_{\text{v}} = 997$ kgm$^{-3}$.
+Ze vztahu (13) dopočítám hustotu lihu $\rho_{\text{l}}$, pomocí známé hustoty destilované vody $\rho_{\text{v}} = 998.2$ kgm$^{-3}$.
 \begin{flalign*}
   & \text{hmotnost prázdného pyknometru} & m &= 17.728 \pm 0.003\ g & \\
   & \text{hmotnost pyknometru s lihem} & m_\text{l} &= 38.580 \pm 0.003\ g & \\
@@ -388,5 +389,80 @@ Měřením kontaktního úhlu kapky destilované vody přisedlé na podložce z 
 \begin{thebibliography}{0}
 \bibitem{tabulky} Kinematická a dynamická viskozita vody ~\url{https://wiki.anton-paar.com/en/water/}.   
 \end{thebibliography}
+
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstset{
+    backgroundcolor=\color{backcolour},   
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\section{Přílohy}
+
+\begin{lstlisting}[caption={Výpočet dynamické viskozity Mariottovou lahví}]
+import uncertainties as unc
+import math
+
+R = unc.ufloat(0.570, 0.001) * 0.001
+L = unc.ufloat(165, 0.5) * 0.001
+p = unc.ufloat(1117, 4) + 101
+V = unc.ufloat(38.2, 0.3) * 1e-6
+t = unc.ufloat(128, 0.5) 
+
+print( math.pi * R ** 4 * p * t / (8 * V * L) )
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Výpočet hustoty lihu metodou ponorného tělíska}]
+import uncertainties as unc
+
+m1 = unc.ufloat(34.71, 0.03) * 0.001
+mv = unc.ufloat(43.08, 0.03) * 0.001
+rho = 998.2
+
+print(rho * m1/mv)
+  
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Výpočet hustoty lihu pomocí pyknometru}]
+import uncertainties as unc
+
+m = unc.ufloat(17.728, 0.003)
+m1 = unc.ufloat(38.580, 0.003)
+mv = unc.ufloat(43.740, 0.003)
+rho_vz = 1.204
+rho = 998.2
+
+print((rho - rho_vz) * (m1 - m) / (mv - m) + rho_vz )
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Měření povrchového napětí du Noüyho metodou}]
+import math
+import numpy as np
+import uncertainties as unc
+import scipy.stats as stats
+
+def S(Fmax):
+    f = 0.77
+    R = unc.ufloat(58.0, 0.1) * 0.001 / 2.0
+    k = stats.t.ppf(0.5 + 0.9973 / 2, df=len(Fmax)-1)
+    Fmax = unc.ufloat(np.mean(Fmax), np.std(Fmax, ddof=1) / math.sqrt(len(Fmax)) * k)
+    return Fmax * f / (4 * math.pi * R)
+
+table = np.loadtxt('nouyho-krouzek.txt')
+print('lih', S(table[:, 0]))
+print('voda', S(table[:, 1]))
+\end{lstlisting}
+
+
 
 \end{document}
