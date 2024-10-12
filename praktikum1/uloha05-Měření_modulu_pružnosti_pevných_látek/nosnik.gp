@@ -35,7 +35,7 @@ plot \
 "nosnik_summed.txt" u 1:5 ps 1.4 lc 0 lt 7 t "", \
 "nosnik_summed.txt" u 1:7 ps 1.4 lc 0 lt 7 t "", \
 "nosnik_summed.txt" u 1:9 ps 1.4 lc 0 lt 7 t "", \
-[0:1100] f1(x) lc 9 lt 0 lw 5 t  "hliník", \
+[0:1100] f1(x) lc 9 lt 0 lw 5 t  "dural", \
 [0:1100] f3(x) lc 3 lt 0 lw 5 t  "mosaz", \
 [0:1100] f2(x) lc 4 lt 0 lw 5 t  "měď"   , \
 [0:1100] f4(x) lc 5 lt 0 lw 5 t  "ocel"
