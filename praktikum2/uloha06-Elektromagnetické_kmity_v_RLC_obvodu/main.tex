@@ -149,19 +149,10 @@ Pokud na osciloskopu nastavím rozdíl měřených napětí $ U_1 $ a $ U_2 $, m
 \subsection{Frekvenční charakteristika RLC obvodu}
 
 Bude mě zajímat celková impedance RLC obvodu $ \hat{Z} $, v závislosti na nastavené frekvenci $ f = \frac{\omega}{2 \pi} $ harmonického generátoru napětí. Opět použiju zapojení z obrázku 1 a), kde za součástku dosadím sériově zapojený RLC obvod pro odpor, cívku a kondenzátor. Po ustálení platí opět platí (1), kde
-
-%\begin{align*}
-%    \hat{U}_1 = U_1 e^{i \omega t} &= \hat{U}_Z + \hat{U}_I \\
-%    U_1 e^{i \omega t} &=  (R_R + i \omega L + R_L + \frac{1}{i \omega C} + R_C + R_I) \hat{I} \\
-%    U_1 e^{i \omega t} &=  Z e^{ i \varphi_Z } \cdot I e^{i (\omega t - \varphi_Z)} \\
-%    U_1 e^{i \omega t} &=  Z I e^{i \omega t},
-%\end{align*}
-
 \begin{align}
     Z^2 &= R_{\rm celk}^2 + \left(\omega L - \frac{1}{\omega C}\right)^2 \\
     \varphi_Z &= \arctan\left(\frac{ \omega L - \frac{1}{\omega C} }{R_{\rm celk}}\right).
 \end{align}
-
 
 $ Z $ nabývá minima, když $ \omega = \omega_0 = \frac{1}{\sqrt{LC} } $ s odpovídajícím $ \varphi_0 = 0 $. Použiju stejné součástky jako v 1. části a hodnotu $ \omega_0 $ nejdřív spočítám teoreticky. Nastavím frekvenci $ f_0 = \frac{w_0}{2 \pi} $ a v jejím okolí postupně proměřím závislost vodivosti $ G(\omega) = \frac{1}{Z(\omega)} $ a fázový posun $ \varphi(w) $.
 
@@ -208,6 +199,10 @@ Veličiny $ C_1 $ i $ \varphi $ jdou taky vyjádřit pomocí počátečních pod
 \end{wrapfigure}
 
 Impedanci a fázový posun součástek jsem nejdřív měřil pomocí RLC metru nastaveného na 1 khz a výsledky uvedl v tabulce 1 spolu s odporem cívky při stejnosměrném proudu $ R_L^{LC} $ a~dopočítanou vlastní frekvencí $ f_0 $. Součástky jsem dál měřil i vlastním obvodem podle postupu ze sekce 2.1 pro různé frekvence zdroje. Výsledky tohoto měření jsou v tabulce 2.
+
+\newpage
+
+\vspace{-30pt}
 
 \begin{table}[htpb]
     \centering
@@ -266,6 +261,8 @@ Impedanci a fázový posun součástek jsem nejdřív měřil pomocí RLC metru 
 %    \caption{Část 2(a), frekvenční závislost rezonance RLC obvodu.}
 %\end{table}
 
+\vspace{-27pt}
+
 \subsection{Frekvenční charakteristika RLC obvodu}
 
 \begin{wrapfigure}[15]{tr}{0.35\textwidth}
@@ -274,7 +271,7 @@ Impedanci a fázový posun součástek jsem nejdřív měřil pomocí RLC metru 
         \hline \hline
         2b \\
         \hline
-        $R = 20.42 \Omega$\\
+        $R = 20.42\ \Omega$\\
         $C = 217 \pm 1 $ nF \\
         $L = 113.8 \pm 0.6 $ mH \\
         $F = 8.79 \pm  0.04$  1/H\\
@@ -289,46 +286,72 @@ Impedanci a fázový posun součástek jsem nejdřív měřil pomocí RLC metru 
 \end{wrapfigure}
 
 Podle postupu ze sekce 2.2 jsem změřil závislost vodivosti $ G(\omega) = \frac{1}{Z(\omega)} $ a fázový posun $ \varphi(w) $ pro sériově zapojený obvod ze součástek z~1. části. Výsledné hodnoty jsou vyneseny do grafů~1 a) a b), kde fit vodivosti je vztahem
-\begin{equation}
+\begin{equation*}
 G(\omega) = \frac{G_0}{\sqrt{ (\frac{\omega_0^2 - \omega^2}{\omega \alpha})^{2} + 1 } }.
-\end{equation}
+\end{equation*}
 
 \noindent
 Je to vyjádření rovnice (2) pomocí proměnných $ \omega_0 $ a $ \alpha $, které tím získám přímo a jsou k nalezení v tabulce 2 spolu s ostatními dopočítanými hodnotami. Fázový posun už fitovaný není, jen jsou do vztahu (3) dosazené nalezené hodnoty.
 
-\begin{equation}
+\begin{equation*}
 \varphi = \arctan\left(\frac{\omega_0^2 - \omega^2}{\omega \alpha}\right)
-\end{equation}
+\end{equation*}
 
 \begin{table}[htpb]
-    \centering
-    \begin{tabular}{ll}
-        a) amplituda vodivosti & b) fázový posun \\
-        \resizebox{.45\textwidth}{!}{ \input{resonance_G.tex} } &
-        \resizebox{.45\textwidth}{!}{ \input{resonance_phi.tex} } \\
-    \end{tabular}
-    \vspace{5pt}
+    \begin{minipage}[b]{.45\linewidth}
+        \centering
+        \resizebox{\textwidth}{!}{ \input{resonance_G.tex} }
+    \end{minipage} 
+    \hfill
+    \begin{minipage}[b]{.45\linewidth}
+        \centering
+        \resizebox{\textwidth}{!}{ \input{resonance_phi.tex} } \\
+    \end{minipage} 
+    \vspace{10pt}
     \captionsetup{type=graph}
     \caption{Závsilost amplitudy vodivosti (a) a její fáze (b) na úhlové frekvenci $ \omega $ sériového obvodu RLC.}
 \end{table}
 
 \subsection{Přechodové jevy}
 
-Sestavil jsem obvod z obrázku 1 (b) a podle postupu v sekci 2.3 měřil kritické, podkritické a nadkritické tlumení. Fit naměřených dat je vztahy (5) (6) a (7), ze kterých získám tlumení $ \alpha $ odkud dopočítám odpor obvodu $ R = R_{\rm celk} + R_G $, kde $ R_G \approx 50\ \Omega $ a $ R_{\rm celk} = R_R + R_L + R_C $. V případě podkritického tlumení bude $ \alpha \ll \omega_0 \implies \omega \approx \omega_0 $ a proto předpokládám $ R_L \approx 16\ \Omega $ a $ R_C \approx 3\ \Omega $ z tabulky 1. V případě kritického a nadkritického tlumení lze očekávat odpor cívky $ R_L \approx R_{L}^{DC} $, jelikož cívkou protéká stejnosměrný proud a odpor kondenzátoru $ R_C $ řádově 10, což vyvozuji z tabulky 2. Přesné odpory za těchto podmínek neznám.
+Sestavil jsem obvod z obrázku 1 b) a podle postupu v sekci 2.3 měřil kritické, podkritické a nadkritické tlumení. Fit naměřených dat je vztahy (5) (6) a (7), ze kterých získám tlumení $ \alpha $ odkud dopočítám odpor obvodu $ R = R_{\rm celk} + R_G $, kde $ R_G \approx 50\ \Omega $ a $ R_{\rm celk} = R_R + R_L + R_C $. V případě podkritického tlumení bude $ \alpha \ll \omega_0 \implies \omega \approx \omega_0 $ a proto předpokládám $ R_L \approx 16\ \Omega $ a $ R_C \approx 3\ \Omega $ z tabulky 1. V případě kritického a nadkritického tlumení lze očekávat odpor cívky $ R_L \approx R_{L}^{DC} $, jelikož cívkou protéká stejnosměrný proud a odpor kondenzátoru $ R_C $ řádově 10, což vyvozuji z tabulky 2. Přesné odpory za těchto podmínek neznám.
 
 \begin{table}[htpb]
-    \centering
-    \begin{tabular}{ll}
-        a) podkritické tlumení & b) kritické tlumení \\ 
-        \resizebox{.45\textwidth}{!}{ \input{podkriticke.tex} } &
-        \resizebox{.45\textwidth}{!}{ \input{kriticke.tex} } \\
-        \\
-        c) nadkritické tlumení \\
-        \resizebox{.46\textwidth}{!}{ \input{nadkriticke} }
-    \end{tabular}
-    \vspace{15pt}
-    \caption{Měření přechodových jevů RLC obvodu.}
+    \hfill
+    \begin{minipage}[b]{.4\linewidth}
+        \centering
+        \captionsetup{labelformat=empty}
+        \caption{a) podkritické tlumení}
+        \vspace{-10pt}
+        \resizebox{\textwidth}{!}{ \input{podkriticke.tex} }
+    \end{minipage} 
+    \hfill
+    \begin{minipage}[b]{.4\linewidth}
+        \centering
+        \captionsetup{labelformat=empty}
+        \caption{b) kritické tlumení}
+        \vspace{-10pt}
+        \resizebox{\textwidth}{!}{ \input{kriticke.tex} } \\
+    \end{minipage} 
+    \hfill
 \end{table}
+\vspace{-25pt}
+
+\begin{table}[htpb]
+    \hfill
+    \begin{minipage}[b]{.4\linewidth}
+        \centering
+        \captionsetup{labelformat=empty}
+        \caption{c) nadkritické tlumení}
+        \vspace{-10pt}
+        \resizebox{\textwidth}{!}{ \input{nadkriticke.tex} }
+    \end{minipage} 
+    \hfill
+    \captionsetup{type=graph}
+    \vspace{20pt}
+    \caption{Měření přechodových jevů RLC obvodu pro různé odpory $ R_R $}
+\end{table}
+
 
 \begin{table}[htpb]
     \hfill
@@ -394,8 +417,11 @@ Sestavil jsem obvod z obrázku 1 (b) a podle postupu v sekci 2.3 měřil kritick
 
 \section{Závěr}
 
-\begin{thebibliography}{0}
-\bibitem{tabulky} Hustota pevných látek. Dostupné z~\url{http://www.converter.cz/tabulky/hustota-pevne.htmf}.   
-\end{thebibliography}
+Změřil jsem impedance a fázový posun jednoho odporu, cívky a kondenzátoru prvně pomocí RLC metru a potom jen pomocí osciloskopu. Výsledné hodnoty obou metod si přibližně odpovídají a lze je nalézt v tabulkách 1 a 2.
+
+V druhé části jsem měřil impedanci a fázový posun nuceného kmitání sériového RLC obvodu v závislosti na fázové frekvenci budícího napětí. Hodnoty jsou vyneseny do grafů 1 a) a b), odkud jsem z fitu zpětně dopočítal impedance použitých součástek. Výsledky jsou v tabulce 2 a velmi dobře odpovídají měření z první části.
+
+Nakonec jsem pro tuto cívku a kondenzátor měřil kritické, podkritické a nadkritické kmity, použitím odpovídajícího odporu $ R_R $ v sériovém obvodu. Změřené hodnoty jsou vynesené do grafů 2 odkud jsem fitoval tlumící faktor $ \alpha $, ze kterého lze zpátky dopočítat odpor obvodu. Získané hodnoty veličin jsou uvedeny v tabulce 9 a v rámci chyby sedí.
+
 
 \end{document}
