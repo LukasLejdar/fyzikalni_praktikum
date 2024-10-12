@@ -12,7 +12,7 @@
 
 \jmenopraktika={Fyzikální praktikum 1}
 \jmeno={Lukáš Lejdar}
-\datum={27. února 2023}
+\datum={27. února 2024}
 \obor={F}
 \skupina={Út 16:00}
 
@@ -35,6 +35,14 @@
 \usepackage{indentfirst}
 \usepackage{wrapfig}
 \usepackage{xcolor}
+\usepackage{subfig}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{tikzsymbols}
+\usepackage{newfloat}
+
+\DeclareFloatingEnvironment[fileext=lof]{graph}
+\captionsetup[graph]{labelformat=simple, labelsep=colon, name=Graf}
 
 %%%%%% Zamezeni parchantu:
 \widowpenalty 10000 \clubpenalty 10000 \displaywidowpenalty 10000
@@ -56,6 +64,8 @@
 \newcommand{\vsn}[4]{\ensuremath{#1 =} #2(#3)\,#4}
 \newcommand{\vrn}[6]{\ensuremath{#1 =} (#2 $\pm$ #3)\,#4 ($p=$ #5\,\%, $\nu=$ #6)}
 
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+		\node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Zacatek dokumentu
@@ -109,24 +119,11 @@ $\varphi=\the\vlhkost$~\%
  
 \section{Postup měření}
 
-K měření jsme použili tyto přístroje
-\begin{itemize}
-  \item laboratorní váhy - k měření hmotnosti válečku
-    \item posuvné měřítko (nejmenší dílek 0,02\,cm) -- k měření průměru a vnitřního průměru
-    \item mikrometr (nejmenší dílek 0,01\,cm) - k měření výšky válečku
-    \item stolní Multimetr U3402A - k měření proudu ($R_A=\frac{150}{12}$ $\Omega$)
-    \item ruční multimer ESCORT - k měření napětí ($R_V=10$ $M\Omega$)
-\end{itemize}
-
 \section{Výsledky měření}
-
-\subsection{Stanovení nepřímo měřené veličiny}
 
 \section{Závěr}
 
-
 \begin{thebibliography}{0}
-\bibitem{navody} Bochníček a kol. \textit{Fyzikální praktikum 1, návody k ulohám.} Brno 2024.\\ Dostupné z~\url{https://monoceros.physics.muni.cz/kof/vyuka/fp1_skripta.pdf}.   
 \bibitem{tabulky} Hustota pevných látek. Dostupné z~\url{http://www.converter.cz/tabulky/hustota-pevne.htmf}.   
 \end{thebibliography}
 
