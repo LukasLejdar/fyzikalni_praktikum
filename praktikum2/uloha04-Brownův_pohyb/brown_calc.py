@@ -29,11 +29,7 @@ y = Ls.flatten()
 
 np.savetxt('brown_Ls.txt', np.column_stack([t, y]))
 
-a, b = np.polyfit(t, y, 1) # solve x = at + b
-a, _, _, _ = np.linalg.lstsq(t.reshape(-1, 1), y, rcond=None) # Solve y = ax 
-
 a = unc.ufloat(1.5828e-12, 1.373e-13) 
-
 T = 21.3 + 273.15
 R = 8.31451
 Na = 6.02214076 * 1e23

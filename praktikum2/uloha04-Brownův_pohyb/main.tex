@@ -26,7 +26,6 @@
 
 %%%%%%%%%%% Uzitecne balicky:
 \usepackage[czech]{babel}
-\addto\captionsczech{\renewcommand{\figurename}{Graf}}
 
 \usepackage{graphicx}
 \usepackage{amsmath}
@@ -116,32 +115,82 @@ $\varphi=\the\vlhkost$~\%
 \vskip1cm
 
 \section{Úvod}
+
+V úloze budu zaznamenávat dráhu několika malých částic a ověřím, že odpovídá Einsteinově zákonu pro Brownův pohyb. Z naměřených hodnot pak určím i velikost těchto částic.
  
+\section{Teorie}
+
+Malé mikroskopické částice rozptýlené v kapalině se náhodně srážejí s okolními molekulami, což můžeme pod mikroskopem pozorovat jako Brownův pohyb. Pokud je ale jejich velikost zároveň mnohem větší než molekuly kapaliny, je možné zavést i běžný odpor prostředí Stokesovým zákonem. 
+
+Pro kulovou částici s poloměrem $ r $, pohybující se v kapalině s dynamickou viskozitou $ \eta $ bude pohybová rovnice potom mít tvar
+
+\begin{equation}
+m \frac{d^2x}{dt^2} = F_1 -6 \pi \eta r \frac{dx}{dt},
+\end{equation}
+
+\noindent 
+kde m je hmotnost částice a $ F_1 $ výsledná síla způsobená srážkami s okolními molekulami kapaliny. Aplikujeme-li dál na pohyb Brownovské částice teorii ideálních plynů, lze ukázat platnost následujícího vztahu.
+
+\begin{equation}
+    \langle \Delta x^2 \rangle = \frac{2RT}{6 \pi \eta r N_A}\Delta t, 
+\end{equation}
+
+\noindent
+což je Einsteinův výraz pro střední kvadratické posunutí Brownovské částice.
+
 \section{Postup měření}
 
+V destilované vodě rozmíchám malé množství bílé barvy a pipetou přenesu kapku tohoto roztoku na podložní sklíčko. V mikroskopu potom uvidím malé částice o velikosti několika set nm, takže jejich pohyb by měl odpovídat vztahu (2). Obraz z mikroskopu je v praktiku vyvedený na televizi, na kterou přiložím průsvitný papír. Vyberu si některou částici a v intervalu 5s na něj budu kreslit jejich polohu. Tohle zopakuji ještě alespoň 5x a nakonec ještě vyměním preparát za tzv. Burkerovu komůrku se čtvercovými vrypy o straně $ 50 \ \mu $m. Tuto vzdálenost obkreslím i na průsvitný papír a bude sloužit jako měřítko.
 
+Data budu dál zpracovávat digitálně. Papír vyfotím a odečtu souřadnice jednotlivých zakreslených bodů i velikost měřítka v px. Pro obě odečtené souřadnice $ x $ i $ y $ spočítám $ L^2_{i,j} = (x_{j} - x_{i})^2 = \Delta x^2 $ pro $\Delta t = 5(j - i) $ vteřin a najdu průměry
+
+
+\begin{align*}
+   & \langle L^2_{5} \rangle = \frac{\sum_{i=1}^{n-1} L^2_{i, i+1}}{n-1} & 
+   & \langle L^2_{10} \rangle = \frac{\sum_{i=1}^{n-2} L^2_{i, i+2}}{n-2} & 
+   & \langle L^2_{15} \rangle = \frac{\sum_{i=1}^{n-3} L^2_{i, i+3}}{n-3} 
+\end{align*}
+
+Ideálně bych měl každou částici vyšetřovat zvlášť, ale k tomu by bylo potřeba je pozorovat velmi dlouho. Místo toho je budu všechny považovat za přibližně stejné a průměrovat budu celkově pro všechny. Pokud změřené hodnoty odpovídají vztahu (2), mělo by platit
 
 \begin{equation}
-    \langle x^2 \rangle = \frac{2RT}{6 \pi \nu r N_A}t
+ \langle L_5^2 \rangle : \langle L_{10}^2 \rangle : \langle L_{15}^2 \rangle = 1 : 2 : 3.
 \end{equation}
+
+Druhým úkolem bylo zjistit poloměr částice. Ten zjistím z fitu konstanty přímé úměry kvadrátu posunutí a vyjádřením $ r $.
 
 \begin{equation}
-\langle L^2_{t} \rangle = \frac{\sum_{i=0}^{n-t} L^2_{i, i+t}}{n-t}, \quad  \text{pro } t = 1,2,3 \text{ s}
+    \langle L_t^2 \rangle = \langle \Delta x^2 \rangle = \frac{2RT}{6 \pi \eta r N_A} t
 \end{equation}
-
-\begin{equation*}
- \langle L_5^2 \rangle : \langle L_{10}^2 \rangle : \langle L_{15}^2 \rangle = 1 : 2 : 3
-\end{equation*}
-
-\newpage
 
 \section{Výsledky měření}
 
+Fotku Průsvitného papíru s dráhami částic jsem uvedl na obrázku 1 a odečtené souřadnice v tabulce~1, ve které jsou i spočítané střední hodnoty posunutí v jednotlivých osách i celkově. V konečném průměru byly tyto hodnoty v poměru
+
+\begin{equation*}
+ \langle L_5^2 \rangle : \langle L_{10}^2 \rangle : \langle L_{15}^2 \rangle = 1 : 2.068 : 3.333
+\end{equation*}
+
+Dál jsem všechny $ \langle L_t^2 \rangle $ pro každou částici a osu vynesl do grafu 1 a z fitu přímkou podle vztahu (4) získal konstantu přímé úměry
+
+\begin{equation*}
+     \frac{2RT}{6 \pi \eta r N_A} = 1.6 \pm 0.1 \ \mu\text{m}^2,
+\end{equation*}
+
+\noindent
+odkud po dosazení konstant vychází poloměr částice
+
+\begin{equation*}
+r = 280 \pm 30 \ \text{nm}
+\end{equation*}
+
 \begin{figure}[htpb]
     \centering
-    \includegraphics[trim=10 250 100 200, clip, width=0.7\textwidth]{brown_pct2.jpg}
-    \caption{}
+    \includegraphics[trim=10 250 100 200, clip, width=0.6\textwidth]{brown_pct2.jpg}
+    \caption{Průsvitný papír se zaznamenanými dráhami částic}
 \end{figure}
+
+\newpage
 
 \begin{table}[htpb]
     \centering
@@ -177,20 +226,21 @@ $\varphi=\the\vlhkost$~\%
        $ \langle L_{15}^2 \rangle $ / $ \langle L_5^2 \rangle $ & 3.654 & 4.580 & 2.847 & 1.534 & 4.637 & 5.833 & 4.003 & 1.790 & 2.184 & 2.269 & 3.333 \\
        \hline\hline
 \end{tabular}
-\caption{Zaznamenané souřadnice pěti různých částic, odečtené z fotky v pixelech. Měřítko je 50 $ \mu \text{m} $ : 606.1 px. }
+\caption{Zaznamenané souřadnice pěti různých částic, odečtené z fotky v pixelech a dopočítané střední kvadratické vzdálenosti podle vztahu (2). Měřítko je 50 $ \mu \text{m} $ : 606.1 px. }
 \end{table}
-
-\begin{equation*}
- \langle L_5^2 \rangle : \langle L_{10}^2 \rangle : \langle L_{15}^2 \rangle = 1 : 2.068 : 3.333
-\end{equation*}
 
 \begin{figure}[htpb]
     \centering
     \include{brown_Ls.tex}
-    \caption{}
+    \captionsetup{type=graph}
+    \caption{Změřené hodnoty středního kvadratického posunutí v závislosti na uběhlém čase }
 \end{figure}
 
 \section{Závěr}
+
+Z měření polohy několika mikroskopických částic jsem spočítal střední kvadrát posunu v intervalech po $ t \in {5, 10, 15} $ s a ověřil platnost Einsteinova zákona pro Brownův pohyb.
+
+V druhé části úlohy jsem z naměřených dat spočítal průměrnou velikost částic na $ r = 280 \pm 30 $ nm. Tyto částice jsou příliš malé na to aby se dali pozorovat běžně světlem, místo toho jsou v mikroskopu vidět jen difrakční obrazce. Pořád, ale platí, že pokud je v objektivu vidět černá tečka s poloměrem $ r $, bude i částice mít poloměr přibližně to stejné $ r $. Několik těchto teček jsem přibližně změřil použitím měřítka na papíře a získal poloměr $ r \approx 260 $ nm.
 
 \begin{thebibliography}{0}
 \bibitem{tabulky} Návod k úloze ~\url{https://www.physics.muni.cz/praktika/static/navody/fp2/uloha04.pdf}.   
