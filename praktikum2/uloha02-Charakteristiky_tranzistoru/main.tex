@@ -1,0 +1,264 @@
+\documentclass[a4paper,11pt]{article}
+
+% Kodovani (cestiny) v dokumentu: utf-8
+%\usepackage[cp1250]{inputenc}	% Omezena stredoevropska kodova stranka, pouze MSW.
+\usepackage[utf8]{inputenc}	% Doporucujeme pouzivat UTF-8 (unicode).
+
+\usepackage[margin=2cm]{geometry}
+\newtoks\jmenopraktika \newtoks\jmeno \newtoks\datum
+\newtoks\obor \newtoks\skupina \newtoks\rocnik \newtoks\semestr
+\newtoks\cisloulohy \newtoks\jmenoulohy
+\newtoks\tlak \newtoks\teplota \newtoks\vlhkost
+
+\jmenopraktika={Fyzikální praktikum 2}
+\jmeno={Lukáš Lejdar}
+\datum={26. listopadu 2024}
+\obor={F}
+\skupina={Út 16:00}
+
+\cisloulohy={2}
+\jmenoulohy={Charakteristiky tranzistoru a tranzistor jako zesilovač napětí}
+
+\tlak={100{,}5}
+\teplota={21,3}
+\vlhkost={47}
+
+
+%%%%%%%%%%% Uzitecne balicky:
+\usepackage[czech]{babel}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{xspace}
+\usepackage{url}
+\usepackage{indentfirst}
+\usepackage{wrapfig}
+\usepackage{xcolor}
+\usepackage{subfig}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{tikzsymbols}
+\usepackage{newfloat}
+
+\DeclareFloatingEnvironment[fileext=lof]{graph}
+\captionsetup[graph]{labelformat=simple, labelsep=colon, name=Graf}
+
+%%%%%% Zamezeni parchantu:
+\widowpenalty 10000 \clubpenalty 10000 \displaywidowpenalty 10000
+%%%%%% Parametry pro moznost vsazeni vetsiho poctu obrazku na stranku
+\setcounter{topnumber}{3}	  % max. pocet floatu nahore (specifikace t)
+\setcounter{bottomnumber}{3}	  % max. pocet floatu dole (specifikace b)
+\setcounter{totalnumber}{6}	  % max. pocet floatu na strance celkem
+\renewcommand\topfraction{0.9}	  % max podil stranky pro floaty nahore
+\renewcommand\bottomfraction{0.9} % max podil stranky pro floaty dole
+\renewcommand\textfraction{0.1}	  % min podil stranky, ktery musi obsahovat text
+\intextsep=8mm \textfloatsep=8mm  %\intextsep pro ulozeni [h] floatu a \textfloatsep pro [b] or [t]
+
+% Tecky za cisly sekci:
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
+% Jednopismenna mezera mezi cislem a nazvem kapitoly:
+\makeatletter \def\@seccntformat#1{\csname the#1\endcsname\hspace{1ex}} \makeatother
+%
+\newcommand{\vsn}[4]{\ensuremath{#1 =} #2(#3)\,#4}
+\newcommand{\vrn}[6]{\ensuremath{#1 =} (#2 $\pm$ #3)\,#4 ($p=$ #5\,\%, $\nu=$ #6)}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+		\node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Zacatek dokumentu
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\thispagestyle{empty}
+
+{
+\begin{center}
+\sf 
+{\Large Ústav fyziky a technologií plazmatu Přírodovědecké fakulty Masarykovy univerzity} \\
+\bigskip
+{\huge \bfseries FYZIKÁLNÍ PRAKTIKUM} \\
+\bigskip
+{\Large \the\jmenopraktika}
+\end{center}
+
+\bigskip
+
+\sf
+\noindent
+\setlength{\arrayrulewidth}{1pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l l}
+\large {\bfseries Zpracoval:}  \the\jmeno & \large  {\bfseries Naměřeno:} \the\datum\\[2mm]
+\large  {\bfseries Obor:} \the\obor  \hspace{40mm}  {\bfseries Skupina:} \the\skupina %
+&\large {\bfseries Testováno:}\\
+\\
+\hline
+\end{tabular*}
+}
+
+\bigskip
+
+{
+\sf
+\noindent \begin{tabular}{p{4cm} p{0.6\textwidth}}
+\Large  Úloha č. {\bfseries \the\cisloulohy:} \par
+\smallskip
+$T=\the\teplota$~$^\circ$C \par
+$p=\the\tlak$~kPa \par
+$\varphi=\the\vlhkost$~\%
+&\Large \bfseries \the\jmenoulohy  \\[2mm]
+\end{tabular}
+}
+
+\vskip1cm
+
+\section{Úvod}
+
+V úloze budu měřit charakteristiky unipolárního tranzistoru ve zvoleném pracovním bodě a v druhé části ho zapojím jako zesilovač napětí. Několika způsoby potom určím toto zesílení.
+
+\section{Postup měření}
+
+\subsection{Výstupní a převodní charakteristika transistoru}
+
+ Proud $ I_D $  tekoucí transistorem mezi jeho svorkami $ S $ (Source) a $ D $ (Drain) je určený hradlovým napětím $ U_G $ a napětím $ U_D $ mezi svorkami $ S $ a $ D $. 
+
+ \begin{equation}
+ I_D = f(U_D, U_G)
+ \end{equation}
+
+ Pro měření této závislosti použiju obvod jako na obrázku 1. Na zdroji vlevo se nastavuje napětí $ U_G $ a zdroj vpravo řídí napětí $ U_D $, které způsobí proud tekoucí ze svorky D skrz Ampermetr. Účelem kontaktů $ +S $ a $ -S $ je udržovat stejné napětí jako mezi kontakty + a -, aby nebylo potřeba počítat s vnitřním odporem Ampermetru.
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.65\textwidth]{charakteristiky_schema.jpg}
+    \caption{Zapojení pro měření charakteristik}
+\end{figure}
+
+
+ Pokud se bude tranzistor používat jen v okolí některého pracovního bodu $ (U_{D0}, U_{G0}) $, je běžné funkci $ f $ aproximovat lineárně veličinami
+
+\begin{align}
+    S = \frac{\partial I_D}{\partial U_G}(U_{D0}, U_{G0}) && R_i = \frac{\partial U_D}{\partial I_D}(U_{D0}, U_{G0}).
+\end{align}
+
+$ R_i $  je potom vnitřní odpor tranzistoru a $ S $ se nazývá statická strmost. Další veličina, která se zavádí je zesilovací činitel
+
+\begin{equation}
+\mu = \frac{\partial U_D}{\partial U_G} \Big |_{I_D = konst.}
+\end{equation}
+
+\noindent
+který se dá spočítat jako
+
+\begin{equation}
+\mu = S R_i
+\end{equation}
+
+Zvolím si některý pracovní bod $ (U_{D0}, U_{G0}) $ a změřím charakteristiky $ f(U_{D0}, U_{G}) $  a $ f(U_{D}, U_{G0}) $ , ze kterých dopočítám zmíněné parametry.
+
+
+\subsection{Tranzistor jako zesilovač napětí}
+
+Na obrázku 2 je návrh obvodu pro zesílení vstupu $ U_1 $ střídavého nebo stejnosměrného napětí na výstup $ U_2 $. Před měřením je ale potřeba na zesilovači nastavit napětí $ E $ a zatěžovací odpor $ R_z $ v závislosti na pracovním bodě. Pro můj účel bude dobré použít $ E =  $ 20 V a $ R_z $ dopočítám z
+
+\begin{equation}
+ R_z = \frac{E - U_{D0}}{I_{D0}}
+\end{equation}
+
+Po nastavení zesilovače zapnu generátor střídavého napětí $ U_{1} $ a budu měřit napětí na kolektoru $ U_{2} $ . Zesílení signálu je v takovém případě definované amplitudami jako
+
+\begin{equation}
+    A_M = \frac{U_{m2}}{U_{m1}}
+\end{equation}
+
+Teoreticky je toto zesílení vlastně jen úplná derivace $ U_D $ podle $ U_G $. Jde odvodit, že zároveň platí
+
+\begin{equation}
+A_D = \frac{d U_D}{d U_G} = \frac{-\mu}{1 + \frac{R_i}{R_z}} = -S_d Rz 
+\end{equation}
+
+\begin{equation}
+S_d = \frac{dI_D}{dU_G} = \frac{S}{1 + \frac{R_z}{R_i}}
+\end{equation}
+
+Tuto derivaci můžu aproximovat i z měření v 1. části, pokud z grafů správně odečtu podle zatěžovací přímky (5) pro proměnné $ I_D $ a $ U_D $.
+
+\begin{equation}
+A = \frac{\Delta U_D}{\Delta U_G}
+\end{equation}
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.55\textwidth]{zesilovac.jpg}
+    \caption{Schéma zapojení pro měření vlastností zesilovače}
+\end{figure}
+
+
+\newpage
+
+\section{Výsledky měření}
+
+\subsection{Výstupní a převodní charakteristika transistoru}
+
+Sestavil jsem obvod podle obrázku 1 a změřil výstupní a převodní charakteristiku transistoru pro pracovní bod $ (U_{D0}, U_{G0}) = ( 10 \ V, 3.6 \ V ) $. To stejné měření jsem ještě jednou provedl přesněji za pomoci počítače a výsledky vynesl do grafů 1, 2 a 3. Z lineárního fitu v okolí pracovního bodu jsem získal hodnoty
+
+\begin{align*}
+    I_{D0} &= 7.063 \text{ mA} \\
+    R_i &=  18.9 \pm 2.8 \ \text{k}\Omega \\
+    S &= 0.0617 \pm 0.0041 \ \Omega^{-1} \\
+    \mu &= (1.17 \pm 0.19) \cdot 10^{3} \\ 
+\end{align*}
+
+\begin{table}[htpb]
+    \begin{minipage}[b]{.5\linewidth}
+        \centering
+        \include{vystupni_3V6.tex}
+        \captionsetup{type=graph, justification=centering}
+        \caption{Výstupní charakteristika pro \\ $ U_G = 3.6 $ V }
+    \end{minipage} 
+    \begin{minipage}[b]{.5\linewidth}
+        \centering
+        \include{prevodni_10V.tex}
+        \captionsetup{type=graph, justification=centering}
+        \caption{Převodní charakteristika pro \\ $ U_D = 10 $ V }
+    \end{minipage} 
+\end{table}
+
+\begin{figure}[htpb]
+    \centering
+    \include{charakteristiky.tex}
+    \captionsetup{type=graph}
+    \caption{Automatické měření výstupních charakteristik}
+\end{figure}
+
+\subsection{Tranzistor jako zesilovač napětí}
+
+Sestavil jsem obvod podle obrázku 2 a pro několik vstupních napětí $ U_{m1} $ měřil zesílený signál $ U_{m2} $. Amplitudy jsou vynesené do grafu (4) a fit je přímkou, jejíž sklon je zesílení $ A_M $. Toto zesílení jsem potom počítal i podle vztahu (7) z hodnot z první části měření a taky odečtením z grafu (3), kde se zatěžovací přímka protíná se sousedními hladinamy $ U_G = 3.7 $ V a $ U_G = 3.5 $ V.
+
+\begin{align*}
+   A_M &= 77.5 \pm 0.6 \\
+   A_G &= 80.5 \pm 2 \\
+   A_V &= 78 \pm 4 \\
+   S_d &= 0.058 \pm 0.004 \ \Omega^{-1} \\
+\end{align*}
+
+\begin{figure}[htpb]
+    \centering
+    \include{zesileni.tex}
+    \captionsetup{type=graph}
+    \caption{Závislost amplitud výstupního napětí na vstupním}
+\end{figure}
+
+\section{Závěr}
+
+Změřil vstupní a výstupní charakteristiku tranzistoru v pracovním bodě $ (U_{D0}, U_{G0}) = ( 10 \ V, 3.6 \ V ) $ a dopočítal vnitřní odpor $ R_i = 18.9 \pm 2.8 \ \text{k}\Omega $ a statickou strmost $ S = 0.0617 \pm 0.0041 \ \Omega^{-1} $. Tyto hodnoty jsem potom použil při sestavováni zesilovače napětí, na kterém jsem měřil zesílení střídavého signálu $ A_M = A_M = 77.5 \pm 0.6 $. Tato hodnota dobře odpovídá zesílení určeného z charakteristik $ A_G = 80.5 \pm 2 $ a $ A_V = 78 \pm 4 $.
+   
+   
+
+\begin{thebibliography}{0}
+\bibitem{tabulky} Návod k úloze~\url{https://www.physics.muni.cz/praktika/static/navody/fp2/uloha02.pdf}.   
+\end{thebibliography}
+
+\end{document}
