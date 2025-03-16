@@ -1,0 +1,244 @@
+\documentclass[a4paper,11pt]{article}
+
+% Kodovani (cestiny) v dokumentu: utf-8
+%\usepackage[cp1250]{inputenc}	% Omezena stredoevropska kodova stranka, pouze MSW.
+\usepackage[utf8]{inputenc}	% Doporucujeme pouzivat UTF-8 (unicode).
+
+\usepackage[margin=2cm]{geometry}
+\newtoks\jmenopraktika \newtoks\jmeno \newtoks\datum
+\newtoks\obor \newtoks\skupina \newtoks\rocnik \newtoks\semestr
+\newtoks\cisloulohy \newtoks\jmenoulohy
+\newtoks\tlak \newtoks\teplota \newtoks\vlhkost
+
+\jmenopraktika={Fyzikální praktikum 3}
+\jmeno={Lukáš Lejdar}
+\datum={26. února 2025}
+\obor={F}
+\skupina={Út 14:00}
+
+\cisloulohy={1}
+\jmenoulohy={Band gap width}
+
+\tlak={101{,}35}
+\teplota={21,1}
+\vlhkost={47,7}
+
+
+%%%%%%%%%%% Uzitecne balicky:
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{xspace}
+\usepackage{url}
+\usepackage{indentfirst}
+\usepackage{wrapfig}
+\usepackage{xcolor}
+\usepackage{subfig}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{tikzsymbols}
+\usepackage{newfloat}
+
+\DeclareFloatingEnvironment[fileext=lof]{graph}
+\captionsetup[graph]{labelformat=simple, labelsep=colon, name=Graph}
+
+%%%%%% Zamezeni parchantu:
+\widowpenalty 10000 \clubpenalty 10000 \displaywidowpenalty 10000
+%%%%%% Parametry pro moznost vsazeni vetsiho poctu obrazku na stranku
+\setcounter{topnumber}{3}	  % max. pocet floatu nahore (specifikace t)
+\setcounter{bottomnumber}{3}	  % max. pocet floatu dole (specifikace b)
+\setcounter{totalnumber}{6}	  % max. pocet floatu na strance celkem
+\renewcommand\topfraction{0.9}	  % max podil stranky pro floaty nahore
+\renewcommand\bottomfraction{0.9} % max podil stranky pro floaty dole
+\renewcommand\textfraction{0.1}	  % min podil stranky, ktery musi obsahovat text
+\intextsep=8mm \textfloatsep=8mm  %\intextsep pro ulozeni [h] floatu a \textfloatsep pro [b] or [t]
+
+% Tecky za cisly sekci:
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
+% Jednopismenna mezera mezi cislem a nazvem kapitoly:
+\makeatletter \def\@seccntformat#1{\csname the#1\endcsname\hspace{1ex}} \makeatother
+%
+\newcommand{\vsn}[4]{\ensuremath{#1 =} #2(#3)\,#4}
+\newcommand{\vrn}[6]{\ensuremath{#1 =} (#2 $\pm$ #3)\,#4 ($p=$ #5\,\%, $\nu=$ #6)}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+		\node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Zacatek dokumentu
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\thispagestyle{empty}
+
+{
+\begin{center}
+\sf 
+{\Large Ústav fyziky a technologií plazmatu Přírodovědecké fakulty Masarykovy univerzity} \\
+\bigskip
+{\huge \bfseries FYZIKÁLNÍ PRAKTIKUM} \\
+\bigskip
+{\Large \the\jmenopraktika}
+\end{center}
+
+\bigskip
+
+\sf
+\noindent
+\setlength{\arrayrulewidth}{1pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l l}
+\large {\bfseries Zpracoval:}  \the\jmeno & \large  {\bfseries Naměřeno:} \the\datum\\[2mm]
+\large  {\bfseries Obor:} \the\obor  \hspace{40mm}  {\bfseries Skupina:} \the\skupina %
+&\large {\bfseries Testováno:}\\
+\\
+\hline
+\end{tabular*}
+}
+
+\bigskip
+
+{
+\sf
+\noindent \begin{tabular}{p{4cm} p{0.6\textwidth}}
+\Large  Úloha č. {\bfseries \the\cisloulohy:} \par
+\smallskip
+$T=\the\teplota$~$^\circ$C \par
+$p=\the\tlak$~kPa \par
+$\varphi=\the\vlhkost$~\%
+&\Large \bfseries \the\jmenoulohy  \\[2mm]
+\end{tabular}
+}
+
+\vskip1cm
+
+\section{Introduction}
+
+An important characteristic of semiconductors is the band gap, influencing their electrical conductivity and optical properties. Our aim is to determine the band gap energy ($ E_{g} $ )  of silicon and germanium using the inner photoelectric effect.
+
+\section{Theory}
+
+Electrons bound to atoms can only exist at some discrete set of energy levels and to move around, they have to absorb or emit energy to keep it conserved. Both emission and absorption can happen via light, which is also discretized with photon particles. Each has an associated wave length $ \lambda $ and it's energy  is given by
+
+\begin{equation}
+    E = \frac{h c}{\lambda}
+\end{equation}
+
+Semiconductors are special in that they have a certain energy gap $ E_g $ of banned states between it's electrons in the valance band and the conductive band. If we create a PN junction of these atoms and shine monochromatic light at it with increasing frequency, there comes a point where the photon energy exceeds the band gap $ E_g $. At this threshold, electrons jump to the conduction band, get carried by the junction's voltage, and a measurable voltage begins to build up.
+ 
+\section{Measurement procedure}
+
+Scheme of the experiment can be found on figure $ 1 $. We have a source of white light shining into a monochromator which is than directed onto the diode which has a connected voltmetr. To find the band gap energy $ E_g $, all we need to do is find the largest wave length $ \lambda_{max} $, where voltage starts to build up, and plug into equation (1), to get
+
+\begin{equation}
+E_{g} = \frac{h c}{\lambda_{max}}
+\end{equation}
+
+\vspace{10pt}
+
+We will than also proceed to measure the induced voltage for the whole spectrum. To do this, we also have to account for the fact, that our halogen lamp does not shine light with the same intensity at each wave length. To correct for this, we have a table of values of relative intensity $ D(\lambda) $  emitted by lamp, and we will correct with
+
+\begin{equation}
+ S(\lambda) = \frac{U(\lambda)}{ D(\lambda) }
+\end{equation}
+
+As the last step, we will express each wave length $ \lambda $ as energy of the photon $ E $ and plot the calculated function $ S(E) $.
+
+
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.65\textwidth]{aparatura.jpg}
+    \caption{Scheme of the experiment: 1 - Halogen lamp, 2 - Convex lens, 3 - Monochromator, 4 - Semiconductor photodiode, 5 - Voltmetr}
+\end{figure}
+
+
+\section{Results}
+
+We've separately measured one germanium diode and one made from silicon. The measured voltages as functions of wave length can be seen in graphs 1 and 2. From these graphs, we can directly read the maximal wave lengths $ \lambda_{max} $  and the corresponding energy gaps from equation (2)
+
+\begin{table}[htpb]
+    \centering
+    \begin{tabular}{l c c}
+        & $ \lambda_{max} $ (nm) & $ E_g $ (eV) \\ \hline
+        silicon & 1160 & 1.069 \\
+        germanium & 1930 &  0.642 \\ 
+    \end{tabular}
+\end{table}
+
+ 
+
+\begin{table}[htpb]
+    \begin{minipage}[b]{.45\linewidth}
+        \centering
+        \resizebox{\textwidth}{!}{ \input{silicon.tex} }
+        \captionsetup{type=graph}
+        \caption{Spectral photovoltage dependence for silicon diode}
+    \end{minipage} 
+    \hfill
+    \begin{minipage}[b]{.45\linewidth}
+        \centering
+        \resizebox{\textwidth}{!}{ \input{germanium.tex} }
+        \captionsetup{type=graph}
+        \caption{Spectral photovoltage dependence for germanium diode}
+    \end{minipage} 
+\end{table}
+
+To also get the correct relative intensities of induced voltage, we need to divide by the relative intensity of light emitted by our lamp. The measured relative intensities can be seen in table 1 and for the rest we will interpolate by a polynomial fit.
+
+\begin{table}[htpb]
+    \begin{minipage}[b]{.45\linewidth}
+        \centering
+        \begin{tabular}{c c c c}
+            $ \lambda $ (nm) & D & $ \lambda $ (nm) & D \\ 
+            \hline\hline
+            1000 & 158 & 1500 & 110 \\
+            1100 & 140 & 1600 & 95 \\
+            1150 & 135 & 1700 & 70 \\
+            1250 & 125 & 1800 & 46 \\
+            1350 & 120 & 1850 & 35 \\
+            1400 & 115 & 1900 & 15 \\
+        \end{tabular}
+        \caption{Relative intensities of light emitted by our lamp}
+
+    \end{minipage} 
+    \hfill
+    \begin{minipage}[b]{.49\linewidth}
+        \centering
+        \resizebox{\textwidth}{!}{ \input{cejchovani.tex} }
+        \captionsetup{type=graph}
+        \caption{Fit of relative intensities from table 1}
+    \end{minipage} 
+\end{table}
+
+Our data points don't unfortunately go all the way to the smallest measured wave lengths of $ 0.6 \ \mu m $. It is not a big problem though, since we are mainly interested in the peaks. Using equation (3) we get the following graphs
+
+\begin{table}[htpb]
+    \begin{minipage}[b]{.45\linewidth}
+        \centering
+        \resizebox{\textwidth}{!}{ \input{silicon_S.tex} }
+        \captionsetup{type=graph}
+        \caption{Spectral dependence of photon energy for silicon diode }
+    \end{minipage} 
+    \hfill
+    \begin{minipage}[b]{.45\linewidth}
+        \centering
+        \resizebox{\textwidth}{!}{ \input{germanium_S.tex} }
+        \captionsetup{type=graph}
+        \caption{Spectral dependence of photon energy for germanium diode }
+    \end{minipage} 
+\end{table}
+
+\section{Conclusion}
+
+We've measured the spectral dependence of photo voltage induced by a monochromatic beam of light on PN junctions of a germanium and silicon diode which is shown in graphs 1 and 2. A~measured voltage was only seen from the wave length $ \lambda = 1160 $ nm for silicon and $ \lambda = 1930 $ nm, from which we conclude that the corresponding band gap energies are $ E_g = 1.069 $ eV and $ E_g = 0.642 $~eV respectively. Table values give $ E_g = 1.12 $ eV and $ E = 0.67 $ eV, so it is not a bad result.
+
+Our measured voltages were not completely to scale since the source of light did not emit light at even intensities. We've adjusted for this difference using measured relative intensity of the halogen lamp and plotted the corrected graphs 4 and 5. It can be seen, that both follow a similar shape of one peek, but in the case of germanium there are significant dips at certain wave lengths. It seems like there are other ways of absorbing the photons which only come to effect at those specific wave lengths and reduce the induced voltage. 
+
+
+\begin{thebibliography}{0}
+\bibitem{tabulky} Task instructions ~\url{https://is.muni.cz/auth/el/sci/jaro2025/F4210/um/fp3-8_sirka_pasu.pdf}.   
+\end{thebibliography}
+
+\end{document}
