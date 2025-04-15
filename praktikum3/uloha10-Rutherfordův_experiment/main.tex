@@ -12,17 +12,12 @@
 
 \jmenopraktika={Fyzikální praktikum 3}
 \jmeno={Lukáš Lejdar}
-\datum={26. února 2025}
+\datum={18. března 2025}
 \obor={F}
 \skupina={Út 14:00}
 
-\cisloulohy={1}
-\jmenoulohy={Měření hustoty}
-
-\tlak={101{,}35}
-\teplota={21,1}
-\vlhkost={47,7}
-
+\cisloulohy={10}
+\jmenoulohy={Rutherfordův experiment}
 
 %%%%%%%%%%% Uzitecne balicky:
 \usepackage[czech]{babel}
@@ -105,28 +100,181 @@
 \noindent \begin{tabular}{p{4cm} p{0.6\textwidth}}
 \Large  Úloha č. {\bfseries \the\cisloulohy:} \par
 \smallskip
-$T=\the\teplota$~$^\circ$C \par
-$p=\the\tlak$~kPa \par
-$\varphi=\the\vlhkost$~\%
 &\Large \bfseries \the\jmenoulohy  \\[2mm]
 \end{tabular}
 }
 
-\vskip1cm
+\vspace{-15pt}
 
 \section{Úvod}
- 
-\section{Postup měření}
+
+Ernst Rutherford na základě tohoto experimentu poprvé navrhl, že se atom skládá z nabitého jádra a obalu kolem něj. Principem pokusu bylo měření úhlu $ \chi $ o který se vychýlí alfa částice na velmi tenké zlaté folii, přibližně $ t = 0.4 \ \mu m $. Důležitým předpokladem bude, že na tak malé tloušťce může statisticky dojít jen k jediné interakci s některým atomem folie. Velká většina částic jen proletí. 
+
+Podle tehdejšího Thompsonova modelu by v takovém případě nemělo být možné, aby se částice vychýlila o víc než několik desetin stupně. Výsledek experimentu byl ale jiný. Některé alfa částice se dokonce úplně obrátili a letěli zpět ke zdroji, což vyžaduje obrovskou sílu působící na částici na velmi malé oblasti. Tuto sílu našel Rutherford právě v maličkém jádře atomu, ke kterému se tak $ \alpha $-částice může přiblížit na nepatrnou vzdálenost, protože obalem jen proletí. Cílem praktika je ověřit, že míra rozptylování částic odpovídá tomuto modelu. 
+
+V druhé části praktika budu ověřovat, jestli se rozpad atomu americia řídí Poissonovým rozdělením. 
+
+%Rozptyl částic v Coulombově poli, ať už od kladně nebo záporně nabitého jádra, vede ke stejnému typu trajektorie – hyperbole – a tím pádem i ke stejnému úhlovému rozdělení. 
+
+\section{Teorie rozptylu}
+
+Na obrázku 1 je schéma Rutherfordova modelu. Myšlená $ \alpha $-částice přilétá k jádru pod tzv. záměrnou vzdáleností $ b $ a působením Coulombovy síly se vychyluje od původní trajektorie o úhel $ \chi $. Dá se ukázat, že ať je náboj jádra $ Ze $  kladný, nebo záporný, bude mezi těmito veličinami platit vztah
+
+\begin{equation}
+ b = \frac{Z e^2}{4 \pi \varepsilon_0 E} \text{cotg} \frac{\chi}{2},
+\end{equation}
+
+\noindent
+kde $ E = \frac{1}{2} m v_0^2 $ je celková energie systému. Z toho důvodu nelze tímto experimentem určit znaménko náboje jádra, pouze potvrdit jeho existenci a koncentrovanost.
 
 \begin{figure}[htpb]
     \centering
-    \include{data.tex}
-    \caption{}
+    \includegraphics[width=0.49\textwidth]{rozptyl.jpg}
+    \caption{Schéma rozptylu $ \alpha $-částice. }
 \end{figure}
+
+\section{Postup měření}
+
+Uspořádání experimentu je znázorněné na obrázku 2. Ze zdroje $ \alpha $-částic vyletuje do všech směrů v pravidelném množství $ N_0 $ částic za jednotku času a ty které se trefí na proužek folie mají nějakou šanci se odrazit k detektoru. S uvážením vztahu (1) by se mělo jejich celkové množství za jednotku času řídit vztahem
+
+\begin{equation}
+n = K \frac{\cos \alpha \cos \beta}{r_1^2 r_2^2 \sin^{4} \frac{\chi}{2}},
+\end{equation}
+
+\noindent
+kde $ K $ je konstanta daná experimentálním uspořádáním. Pro ověření tohoto vztahu nejdřív vyjádřím pravou stranu jako koeficient $ \omega $ v vynásobené konstantou $ K $ a změřím, jestli je tato závislost opravdu lineární.
+
+\begin{equation}
+n = K \omega
+\end{equation}
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.7\textwidth]{aparatura.jpg}
+    \caption{Experimentální uspořádání aparatury}
+\end{figure}
+
+\subsection{Poissonovo rozdělení}
+
+Rozpad atomů je čistě náhodný proces, takže by se měl i řídit Poissonovým rozdělením  
+
+\begin{equation}
+P(n) = \frac{\lambda^{n}}{n!}e^{-\lambda},
+\end{equation}
+
+\noindent
+kde $ P(n) $  je pravděpodobnost, že dojde k n rozpadům za časový interval a $ \lambda $  je střední hodnota počtu zaznamenaných rozpadů během měřícího intervalu. Ověření, že rozpady opravdu odpovídají tomuto rozdělení proběhne následovně. Dlouhé měření rozpadů rozdělím na $ N $  stejných časových úseků délky $ T $ a pro každý zjistím počet zaznamenaných částic $ n $ a střední hodnotu $ \lambda = \bar{n}  $. Četnost všech $ n $ označím jako $ K ( n ) $, pro které by mělo přibližně plait $ N P(n) \approx K(n) $.
+
+Vyhodnocení dál proběhne metodou chi-kvadrátu. V případě, že pro nějaké $ n $  platí $ N P_{j} < 5 $ , pak tyto body sloučím s některým z okolních pro $ K_j(n) $ a $ P_j(n) $, tak aby byla splněná podmínka. Zbývá spočítat hodnotu $ \chi^2 $
+
+\begin{equation}
+\chi^2 = \sum_{j} \frac{\left( K_j(n) - N P_j(n) \right)^2 }{ N P_j(n)}.
+\end{equation}
+
+\noindent
+a najít v tabulce hraniční $ \chi_{cr}^2 $ pro požadovanou hladinu spolehlivosti a stupně volnosti  $ n_{max}-1 $. Pokud je $ \chi^2 > \chi_{cr}^2 $, tak se rozpady Poissonovým rozdělením neřídí.
+\newpage
 
 \section{Výsledky měření}
 
+Aparatura pro měření byla už připravená a jen jsem odečetl její rozměry. Vzdálenost mezi zdrojem a detektorem byla $ d = 22.7 $ cm a poloměr zlaté folie $ v = 2 $ cm. Pro několik poloh $ f $ jsem měřil čas, za který na detektor dopadlo 40 částic, a tyto hodnoty uvedl do tabulky 1. Ze vztahu (2) vyplývá, že počet dopadajících částic by měl být symetrický vzhledem ke střední poloze $ \frac{d}{2} = 11.7 $  cm, takže  jsem měřil jen jednu stranu.
+
+
+\begin{table}[htpb]
+    \centering
+    \begin{tabular}{| c c c c c |}
+        \hline
+        $ f $  (cm) & $ t $ (s) &  počet částic & $ n $ (s$^{-1}  $ ) &  $ \omega \cdot 10^{6} $ (m$ ^{-4}  $ )  \\
+        \hline
+        11 &  91  & 40 & 0.440 & 6.05 \\
+        12 &  102 & 40 & 0.392 & 6.02 \\
+        13 &  95  & 40 & 0.421 & 5.80 \\
+        14 &  107 & 40 & 0.374 & 5.41 \\
+        15 &  147 & 40 & 0.272 & 4.86 \\
+        16 &  140 & 40 & 0.286 & 4.17 \\
+        17 &  90  & 15 & 0.167 & 3.40 \\
+        18 &  403 & 43 & 0.141 & 2.58 \\
+        19 &  408 & 38 & 0.093 & 1.77 \\
+        20 &  455 & 40 & 0.088 & 1.04 \\
+        \hline
+    \end{tabular}
+    \caption{Změřená data četnosti dopadajících $ \alpha $-částic }
+    
+\end{table}
+
+Z naměřených hodnot jsem potom podle vztahu (2) vypočítal hodnoty $ \omega $ a vykreslil je do grafu 1. Fit byl přímkou, ze kterého jsem dostal hodnotu
+
+\begin{equation}
+K = (66 \pm 2) \cdot 10^{-8} \text{ m}^{4}\text{s}^{-1}
+\end{equation}
+
+\noindent
+a s ní vykreslil teoretickou závislost $ n(f) $ do grafu 2 i s naměřenými hodnotami. Je vidět, že je opravdu symetrická okolo střední pozice.
+
+\begin{table}[htpb]
+    \begin{minipage}[b]{.48\linewidth}
+        \centering
+        \resizebox{\textwidth}{!}{ \input{cetnost.tex} }
+        \captionsetup{type=graph}
+        \caption{ Závislost počtu dopadajících částic na $ \omega $  }
+    \end{minipage} 
+    \hfill
+    \begin{minipage}[b]{.48\linewidth}
+        \centering
+        \resizebox{\textwidth}{!}{ \input{data.tex} }
+        \captionsetup{type=graph}
+        \caption{ Závislost počtu dopadajících částic na $ f $  }
+    \end{minipage} 
+\end{table}
+
+\subsection{Poissonovo rozdělení rozpadu $ \alpha $ částic }
+
+Folii jsem přesunul doprostřed, aby se zaznamenávalo co nejvíce rozpadů, a po dobu 850 s zapisoval časy detekovaných částic. Podle postupu výpočtu $ \chi $-kvadrátu jsem potom sestavil tabulku 2 a vykreslil teoretické Poissonovo rozdělení vůči vypočítanému do grafu 3. Před vyhodnocením musím sloučit řádky pro $ n = 0-2 $ a  $ n = 8-12 $, aby platili podmínky $ \chi^2 $ testu, odkud potom podle vztahu (5) vychází
+
+\begin{equation}
+\chi^2 = 5.97
+\end{equation}
+
+Hodnota $ \chi_{cr} $ pro hladinu spolehlivost $ 0.05 $ a $ 12 - 1 = 11 $ stupňů volnosti je $ \chi_{cr} = 19.675 $, což je větší než $ \chi^2 $, takže test vychází pozitivně. 
+
+\begin{table}[htpb]
+    \begin{minipage}[b]{.48\linewidth}
+        \centering
+        \begin{tabular}{|  r @{\hspace{20pt}} c @{\hspace{20pt}} r @{\hspace{20pt}} c | }
+            \hline
+            $ n $  & $ K(n) $ & $ P(n) $ & $ K(n) \approx P(n) \cdot N $ \\ 
+            \hline
+            0  & 2  & 0.013 & 1.7  \\
+            1  & 7  & 0.056 & 7.3  \\
+            2  & 20 & 0.122 & 15.9 \\
+            3  & 22 & 0.177 & 23.0 \\
+            4  & 25 & 0.193 & 25.0 \\
+            5  & 25 & 0.167 & 21.8 \\
+            6  & 15 & 0.121 & 15.8 \\
+            7  & 3  & 0.075 & 9.79 \\
+            8  & 6  & 0.041 & 5.32 \\
+            10 & 1  & 0.020 & 2.57 \\
+            11 & 2  & 0.009 & 1.12 \\
+            12 & 1  & 0.003 & 0.44 \\
+            \hline
+        \end{tabular}
+        \caption{Vyhodnocování testu $ \chi^2 $ pro $ N = 130  $ a $ \lambda = 0.43 $ částic $ s^{-1} $.  }
+    \end{minipage} 
+    \hfill
+    \begin{minipage}[b]{.50\linewidth}
+        \centering
+        \resizebox{\textwidth}{!}{ \input{poisson.tex} }
+        \captionsetup{type=graph}
+        \caption{Poissonovo rozdělení rozpadu $ \alpha $-částic. }
+        \vspace{20pt}
+    \end{minipage} 
+\end{table}
+
 \section{Závěr}
+
+Na aparatuře Rutherfordova experimentu jsem měřil množství částic odražených na velmi tenké zlaté folii o úhly $ \chi $, a zjistil, že změřená data se dají vysvětlit Rutherfordovým modelem atomu, zatímco ten Thompsonův toto nedokáže. 
+
+Druhým úkolem bylo ověřit, že rozpad atomů na $ \alpha $-částice probíhá podle Poissonova rozdělení. K tomuto účelu jsem použil $ \chi^2 $ test, který vyšel pozitivně pro hladinu spolehlivosti alespoň $ 0.05 $.
 
 \begin{thebibliography}{0}
 \bibitem{tabulky} Hustota pevných látek. Dostupné z~\url{http://www.converter.cz/tabulky/hustota-pevne.htmf}.   
