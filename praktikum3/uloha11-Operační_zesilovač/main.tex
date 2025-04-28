@@ -12,17 +12,12 @@
 
 \jmenopraktika={Fyzikální praktikum 3}
 \jmeno={Lukáš Lejdar}
-\datum={26. února 2025}
+\datum={25. března 2025}
 \obor={F}
 \skupina={Út 14:00}
 
-\cisloulohy={1}
-\jmenoulohy={Měření hustoty}
-
-\tlak={101{,}35}
-\teplota={21,1}
-\vlhkost={47,7}
-
+\cisloulohy={11}
+\jmenoulohy={Operační zesilovač}
 
 %%%%%%%%%%% Uzitecne balicky:
 \usepackage[czech]{babel}
@@ -72,7 +67,6 @@
 
 \begin{document}
 
-\thispagestyle{empty}
 
 {
 \begin{center}
@@ -105,28 +99,323 @@
 \noindent \begin{tabular}{p{4cm} p{0.6\textwidth}}
 \Large  Úloha č. {\bfseries \the\cisloulohy:} \par
 \smallskip
-$T=\the\teplota$~$^\circ$C \par
-$p=\the\tlak$~kPa \par
-$\varphi=\the\vlhkost$~\%
 &\Large \bfseries \the\jmenoulohy  \\[2mm]
 \end{tabular}
 }
 
-\vskip1cm
+\vspace{-10pt}
 
 \section{Úvod}
- 
-\section{Postup měření}
 
-\section{Výsledky měření}
+Operační zesilovač je součástka reprezentovaná diagramem na obrázku 1, která zesiluje rozdíl napětí mezi jeho invertujícím a neinvertujícím vstupem. Je to aktivní součástka, kterou je potřeba napájet, což reprezentují dva volné vstupy pod zesilovačem.
 
 \begin{figure}[htpb]
     \centering
-    \include{dolnofrekvencni_propust.tex}
-    \caption{}
+    \includegraphics[width=0.35\textwidth]{zesilovac.jpg}
+    \caption{Schématická značka operačního zesilovače}
 \end{figure}
 
+%Ideální operační zesilovač by měl mít nekonečné zesílení, nekonečný vstupní odpor, nulový výstupní odpor a nekonečnou šířku pásma (tedy zesilovat všechny frekvence stejně). Reálné zesilovače se těmto vlastnostem pouze přibližují - mají vysoké, ale konečné zesílení, vysoký vstupní odpor (řádově $ M \Omega $ ), nízký výstupní odpor (desítky $ \Omega $ ) a omezenou šířku pásma.
+
+Ideální zesilovač má nekonečné zesílení a neteče skrz něj proud. V tomto praktiku ověřím jeho základní vlastnosti v několika jednoduchých zapojeních a chování při střídavém vstupu.
+
+\section{Měření}
+
+\subsection{Komparátor}
+
+Operační zesilovač jsem zapojil podle obrázku 2 a sledoval která z diod se rozsvítí, jak se mění napětí $ U_1 $  a $ U_\text{ref} $. V případě, že $ U_1 $ bylo větší než $ U_{\text{ref}} $, rozsvítila se dioda propouštějící proud nahoru, tj. na výstupu bylo záporné napětí a v opačném případě naopak.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.3\textwidth]{komparator.jpg}
+    \caption{Komparátor}
+    \vspace{-10pt}
+\end{figure}
+
+\subsection{Zapojení s invertujícím vstupem}
+
+Schéma zapojení je na obrázku 3, kde smyslem obvodu je zesílit napětí $ U_1 $ o nějaký násobek a obrátit jeho polaritu. K obrácení dochází kvůli zapojení na invertující vstup a zvětšení zajišťuje zpětnovazební rezistoru, který uzemní vstup A, takže rezistory $ R_1 $ a $ R_2 $ teče stejný proud.
+
+\begin{equation}
+U_{0} = - \frac{R_2}{R_1} U_1
+\end{equation}
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.4\textwidth]{invertujici_sch.jpg}
+    \caption{Zapojení zesilovače s invertujícím vstupem}
+\end{figure}
+
+Jako odpory jsem použil $ R_1 = 10 \text{ k} \Omega $ a $ R_2 = 20 \text{ k} \Omega  $ , takže zesílení čekám o velikosti $ - R_2 / R_1 = -2 $. Změřená data pro několik vstupních napětí jsou v tabulce $ 1 $, které jsem nafitoval přímkou pro sklon 
+
+\begin{equation}
+\frac{U_0}{U_1} = -2.033 \pm 0.001.
+\end{equation}
+
+\begin{table}[h]
+    \begin{minipage}{.45\linewidth}
+    \vspace{-15pt}
+    \centering
+    \begin{tabular}{| c c c | }
+        \hline
+        $ U_1 $ (V) & $ U_0 $ (V) & $ U_0 $ (V)  teoretická \\ \hline
+        1.49 & -3.04 & -2.98 \\
+        1.76 & -3.58 & -3.52 \\
+        1.99 & -4.06 & -3.98 \\
+        2.26 & -4.59 & -4.52 \\
+        2.47 & -5.02 & -4.94 \\
+        2.97 & -6.04 & -5.94 \\
+        3.25 & -6.59 & -6.50 \\
+        3.48 & -7.08 & -6.96 \\
+        3.74 & -7.60 & -7.48 \\
+        \hline
+    \end{tabular}
+    \caption{Naměřené napětí při zapojení s invertujícím vstupem}
+    \end{minipage} 
+    \hfill
+    \begin{minipage}{.5\linewidth}
+        \centering
+        \resizebox{\textwidth}{!}{ \input{invertujici.tex} }
+        \captionsetup{type=graph}
+        \caption{Závislost výstupního napětí na vstupním při zapojení s invertujícím vstupem}
+    \end{minipage} 
+\end{table}
+
+\subsection{Šířka pásma}
+
+Zapojení nechám stejné, ale tentokrát na vstup přivedu střídavé napětí o frekvenci $ \omega $ a výstup budu měřit osciloskopem. Naměřená data jsou uvedená v tabulce 3 a zesílení $ A_u = U_0 / U_1 $ jsem vynesl do grafu 2. Je vidět, že zesílení si drží hodnotu $ 2 $ až do frekvence vstupu $ \omega = 25 $ Hz a pak postupně klesá k nule. Šířka operačního pásma je tedy rozmezí $ (0, 25) $ Hz. 
+
+\newpage
+
+\begin{table}[htpb]
+    \begin{minipage}{.45\linewidth}
+        \centering
+        \begin{tabular}{| c c c c |}
+            \hline
+            $ \omega $  (Hz) & $ U_0 $ (V) & $ U_1 $ (V) & $ A_u $  \\
+            \hline
+            00.500 & 4.266 & 2.133 & 2.000 \\
+            10.000 & 4.296 & 2.133 & 2.014 \\
+            20.000 & 4.297 & 2.133 & 2.015 \\
+            25.000 & 4.210 & 2.133 & 1.974 \\
+            30.000 & 3.906 & 2.133 & 1.831 \\
+            32.000 & 3.600 & 2.133 & 1.688 \\
+            34.000 & 3.515 & 2.133 & 1.648 \\
+            36.000 & 3.320 & 2.133 & 1.556 \\
+            38.000 & 3.125 & 2.133 & 1.465 \\
+            40.000 & 3.027 & 2.133 & 1.419 \\
+            42.000 & 2.832 & 2.133 & 1.328 \\
+            45.000 & 2.637 & 2.133 & 1.236 \\
+            47.000 & 2.539 & 2.133 & 1.190 \\
+            50.000 & 2.441 & 2.133 & 1.144 \\
+            60.000 & 1.953 & 2.133 & 0.916 \\
+            \hline
+        \end{tabular}
+        \caption{Změřené amplitudy napětí střídavého vstupního a výstupního napětí}
+    \end{minipage} 
+    \hfill
+    \begin{minipage}{.45\linewidth}
+        \centering
+        \resizebox{\textwidth}{!}{ \input{pasmo.tex} }
+        \captionsetup{type=graph}
+        \caption{Závislost zesílení na na frekvenci }
+    \end{minipage} 
+\end{table}
+
+\subsection{Dolnofrekvenční propust}
+
+Malou změnou zapojení z obrázku 2 na 4 dostaneme zapojení, které propouští pouze nízké frekvence vstupního signálu. Přidaný kondenzátor snižuje impedanci zpětnovazební větve pro vysoké frekvence, což vede k zesílení
+
+\begin{equation}
+\frac{U_0}{U_1} = A_u = -\frac{R_F}{R_A} \frac{1}{ \sqrt{1 + \omega^2 C_F^2 R_F^2} } 
+\end{equation}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth]{propust.jpg}
+    \caption{Dolnofrekvenční propust}
+\end{figure}
+
+Použil jsem kondenzátor o kapacitě $ C_F = 10  $ nF a odpory $ R_F = 100 $ k$\Omega$ a $ R_A = 10 $ k$ \Omega $, takže očekávám maximální zesílení pro $ \omega = 0 $ 
+
+\begin{equation}
+A_{\text{u max}} = 10.0
+\end{equation}
+
+
+Na vstup jsem přivedl střídavé napětí o frekvenci $ \omega $ a stabilní amplitudě $ U_1 = 1.120 $ a měřil amplitudu výstupního napětí. Naměřená data jsou v tabulce 3 a graf 3 je porovnává s teoretickým vztahem (3).
+
+\begin{table}[h]
+    \begin{minipage}{.5\linewidth}
+        \centering
+        \begin{tabular}{| c c c c c |}
+            \hline
+            $ \omega $ (Hz) & $ U_1 $ (V)  & $ U_0 $  (V) & $ U_0 $ teorie (V) & $ A_u $  \\
+            \hline    
+            10  & 1.120 &  -10.898  &  11.16 & -9.980 \\
+            50  & 1.120 &  -10.494  &  10.67 & -9.540 \\
+            80  & 1.120 &  -10.0    &  9.98  & -8.935 \\
+            100 & 1.120 &  -9.28    &  9.46  & -8.467 \\
+            130 & 1.120 &  -8.476   &  8.65  & -7.744 \\
+            150 & 1.120 &  -8.072   &  8.13  & -7.277 \\
+            170 & 1.120 &  -7.669   &  7.64  & -6.834 \\
+            200 & 1.120 &  -7.26    &  6.96  & -6.226 \\
+            220 & 1.120 &  -6.86    &  6.55  & -5.861 \\
+            250 & 1.120 &  -6.054   &  6.00  & -5.370 \\
+            270 & 1.120 &  -5.65    &  5.67  & -5.078 \\
+            300 & 1.120 &  -5.24    &  5.23  & -4.686 \\
+            350 & 1.120 &  -4.84    &  4.62  & -4.139 \\
+            400 & 1.120 &  -4.43    &  4.13  & -3.696 \\
+            500 & 1.120 &  -3.63    &  3.39  & -3.033 \\
+            600 & 1.120 &  -3.229   &  2.86  & -2.563 \\
+            \hline
+        \end{tabular}
+        \caption{Měření dolnofrekvenční propustnosti}
+    \end{minipage} 
+    \hfill
+    \begin{minipage}{.45\linewidth}
+        \centering
+        \resizebox{\textwidth}{!}{ \input{dolnofrekvencni_propust.tex} }
+        \captionsetup{type=graph}
+        \caption{Závislost zesílení na frekvenci vstupního napětí}
+    \end{minipage} 
+\end{table}
+
+\subsection{Zapojení s neinvertujícím vstupem}
+
+Zapojení je stejné jako při invertujícím, ale napětí $ U_1 $ je tentokrát přivedeme na neinvertující vstup. Obvod se ustálí ve stavu, kdy je na invertujícím vstupu stejné napětí jako na neinvertujícím a poměr napětí opět získáme z úvahy o proudu.
+
+\begin{equation}
+U_0 = \left( 1 + \frac{R_2}{R_1} \right) U_1
+\end{equation}
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth]{neinvertujici_sch.jpg}
+    \caption{Zapojení neinvertujícího zesilovače}
+\end{figure}
+
+Odpory $ R_2 = 20 \text{ k} \Omega $, $ R_1 = 10 \text{ k} \Omega $ zůstali stejné, takže zesílení signálu bude $ R_2 / (R_1 + R_2) = 3 $. Naměřená data jsou v tabulce (3) a fitem přímkou jsem dostal zesílení
+
+\begin{equation}
+\frac{U_0}{U_1} = 3.045 \pm 0.002
+\end{equation}
+
+\begin{table}[h]
+    \begin{minipage}{.45\linewidth}
+    \vspace{-15pt}
+    \centering
+    \begin{tabular}{| c c c | }
+        \hline
+        $ U_1 $ (V) & $ U_0 $ (V) & $ U_0 $ (V)  teoretická \\ \hline
+       1.25 & 3.83  &  3.75  \\
+       1.49 & 4.54  &  4.47  \\
+       1.76 & 5.37  &  5.28  \\
+       1.99 & 6.07  &  5.97  \\
+       2.25 & 6.86  &  6.75  \\
+       2.50 & 7.61  &  7.5   \\
+       2.75 & 8.38  &  8.25  \\
+       2.99 & 9.09  &  8.97  \\
+       3.26 & 9.91  &  9.78  \\
+       3.49 & 10.62 &  10.47 \\
+        \hline
+    \end{tabular}
+    \caption{Naměřené napětí při zapojení s neinvertujícím vstupem}
+    \end{minipage} 
+    \hfill
+    \begin{minipage}{.5\linewidth}
+        \centering
+        \resizebox{\textwidth}{!}{ \input{neinvertujici.tex} }
+        \captionsetup{type=graph}
+        \caption{Závislost výstupního napětí na vstupním při zapojení s neinvertujícím vstupem}
+    \end{minipage} 
+\end{table}
+
+\newpage
+
+\subsection{Rozdílový zesilovač}
+
+Kombinací invertujícího a neinvertujícího zesilovače jde vytvořit rozdílový zesilovač uvedený na obrázku 6. Pro jeho výstupní napětí platí vztah
+
+\begin{equation}
+    U_0 = U_2 \frac{R_4 (R_1 + R_2)}{R_1 (R_3 + R_4)} - U_1 \frac{R_2}{R_1}.
+\end{equation}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth]{rozdilovy_sch.jpg}
+    \caption{Rozdílový zesilovač}
+\end{figure}
+
+Velikost rezistorů zvolím $ R_1 = R_3 = 10 \text{ k} \Omega $ a $ R_2 = R_4 = 20 \text{ k}\Omega $, čímž se vztah (6) zjednoduší na tvar $ U_0 = 2(U_2 - U_1) $. Naměřená data jsou v tabulce 5 a z fitu přímkou vyšlo zesílení
+
+\begin{equation}
+\frac{U_0}{U_2 - U_1} =  2.028 \pm 0.002 
+\end{equation}
+
+\begin{table}[h]
+    \begin{minipage}[b]{.45\linewidth}
+        \centering
+        \begin{tabular}{ | c c c c | }
+            \hline
+            $ U_1 $ (V) & $ U_2 $ (V) & $ U_0 $ (V) & $ U_0 $ (V) teoretická\\
+            \hline
+            1.49 & 1.26 & -0.46 & -0.46 \\
+            1.49 & 1.49 & 0.00  & 0.00   \\
+            1.49 & 2.00 & 1.04  & 1.02 \\
+            1.49 & 2.24 & 1.52  & 1.50  \\
+            1.49 & 2.50 & 2.04  & 2.02 \\
+            1.49 & 2.75 & 2.56  & 2.52 \\
+            1.49 & 2.97 & 3.02  & 2.96 \\
+            1.49 & 3.25 & 3.57  & 3.52 \\
+            1.49 & 3.50 & 4.08  & 4.02 \\
+            1.49 & 3.74 & 4.57  & 4.50  \\
+            1.49 & 4.00 & 5.08  & 5.02 \\
+            2.05 & 1.50 & -1.09 & -1.1 \\
+            2.05 & 1.75 & -0.60 & -0.6 \\
+            \hline
+        \end{tabular}
+        \caption{Naměřená vstupní a výstupní napětí}
+    \end{minipage} 
+    \hfill
+    \begin{minipage}[b]{.45\linewidth}
+        \centering
+        \resizebox{\textwidth}{!}{ \input{rozdilovy.tex} }
+        \captionsetup{type=graph}
+        \caption{Závislost výstupního napětí na vstupních rozdílu napětí.}
+    \end{minipage} 
+\end{table}
+
+\newpage
+
+\subsection{Derivátor}
+
+Derivátor je zapojení, které by mělo na výstupu $ U_0 $ udávat derivaci vstupního napětí $ U_1 $. Je stejné jako zapojení s invertujícím vstupem, s rozdílem, že jeden odpor je nahrazený kondenzátorem. Proud jím tekoucí je přímo úměrný derivaci napětí na něm, a protože oběma větvemi teče stejný proud, máme
+
+\begin{equation}
+U_0 = - \frac{R}{C} \dot U_1
+\end{equation}
+
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.4\textwidth]{derivator_sch.jpg}
+    \caption{Zapojení zesilovače jako derivátoru}
+\end{figure}
+
+
+Na vstupním napětí jsem nastavil sinusový signál $ \sin(x) $  a na výstupu pozoroval $ - \cos(x) $, jak to předpovídá vztah (8). Druhým testem bylo vstupní napětí ve tvaru pily, kde na výstupu byly vidět obdélníkové pulzy. 
+
 \section{Závěr}
+
+V této úloze jsem ověřil základní vlastnosti operačního zesilovače. U zapojení komparátoru jsem pozoroval očekávané přepínání polarity výstupního napětí v závislosti na rozdílu vstupních hodnot $U_1$ a $U_\text{ref}$ a při zapojení s invertujícím a neinvertujícím vstupem jsem získal zesílení $-2.033 \pm 0.001$ a $ 3.045 \pm 0.002 $, což bylo v dobré shodě s předpokládanou hodnotou $ -2 $ a $ 3 $.
+
+Šířku pásma zesilovače jsem určil přibližně do $25,\mathrm{Hz}$, nad touto frekvencí zesílení začínalo klesat asymptoticky až k nule. U zapojení dolnofrekvenční propustnosti se potvrdila její funkce - pro nízké frekvence byla zachována vysoká úroveň zesílení, zatímco pro vyšší frekvence amplituda signálu klesala v souladu s teoretickým modelem.
+
+Dobře fungovalo i zapojení derivátoru, kde jsem na výstupu pozoroval časovou derivaci napětí na vstupu. 
+
+
 
 \begin{thebibliography}{0}
 \bibitem{tabulky} Hustota pevných látek. Dostupné z~\url{http://www.converter.cz/tabulky/hustota-pevne.htmf}.   
