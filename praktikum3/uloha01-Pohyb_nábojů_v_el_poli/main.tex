@@ -17,7 +17,7 @@
 \skupina={Út 14:00}
 
 \cisloulohy={1}
-\jmenoulohy={Měření hustoty}
+\jmenoulohy={Pohyb nábojů v elektrickém a magnetickém poli}
 
 %%%%%%%%%%% Uzitecne balicky:
 \usepackage[czech]{babel}
@@ -34,6 +34,7 @@
 \usepackage{enumitem}
 \usepackage{tikzsymbols}
 \usepackage{newfloat}
+\usepackage{float}
 
 \DeclareFloatingEnvironment[fileext=lof]{graph}
 \captionsetup[graph]{labelformat=simple, labelsep=colon, name=Graf}
@@ -108,52 +109,217 @@
 
 \section{Úvod}
 
-
+Toto praktikum je zaměřené na způsoby, jakými se dá usměrňovat, nebo zaostřovat svazek elektronů, pomocí cívek a elektrod.
+Na těchto principech fungovali například první televize, která bude i předmětem měření. 
  
+\section{Teorie}
+
+Schéma uspořádání součástí televize je vidět na obrázku 1. Z katody vzadu televize vyletují elektrony, které jsou potom urychlené napětím na anodách. Svazek je potom možné fokusovat, nebo vychylovat a jeho stopu uvidíme na luminiscenčním stínítku televize. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{obrazovka.jpg}
+    \caption{ Schématické znázornění uspořádání obrazovky s magnetickou fokusací a s magnetickým
+vychylováním. K - katoda, W - Wehneltův válec, $ A_1 $  a $ A_2 $  - anody, F C - fokusační cívka, V C -
+dva páry vychylovacích cívek, S - stínítko. }
+\end{figure}
+
+Zaostření elektronů můžeme provádět krátkou magentickou čočkou. Je to krátká cívka, jejíž rotační magnetické pole fokusuje původně divergentní svazek do bodové stopy na stínítku. Pro její ohniskovou vzdálenost platí vztah
+
+\begin{equation}
+f = 98 \frac{r}{n^2} \frac{U_a}{ I_f^2},
+\end{equation}
+
+\noindent
+kde $ r $  je poloměr cívky, $ n $ počet závitů, $ I_f $ proud tekoucí cívkou a $ U_a $ anodové napětí.
+
+Pokud je vychylovací cívka vypnutá, bude svazek dopadat doprostřed obrazovky. Pro jeho výchylku $ y $ od středu při zvyšování magnetického pole jde odvodit druhý vztah
+
+\begin{equation}
+y = \sqrt{\frac{e}{2m}} L_1 L_2 \frac{B}{\sqrt{U_a} },
+\end{equation}
+
+\noindent
+kde $ L_1 $ je délka působení vychylovacích cívek, $ L_2 $ je vzdálenost ke stínítku a B je indukované magnetické pole, které je zároveň přímo úměrné vychylovacímu proudu $ I_v $ . 
+
 \section{Postup měření}
 
+Schéma pro praktické měření pohybu nábojů je na obrázku (2). Anodové napětí a fokusační a vychylovací proudy se dají ovládat pomocí připojených potenciometrů a všechny tyto veličiny se měří zapojením dvou ampérmetrů a voltmetru. 
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{schema.jpg}
+    \caption{Elektrické schéma zapojení obvodů pro měření na obrazovce}
+\end{figure}
+
+\newpage
 
 \section{Výsledky měření}
 
-\begin{figure}[htpb]
-    \centering
-    \include{ohnisko.tex}
-    \caption{}
-\end{figure}
+\subsection{Ohnisková vzdálenost}
+
+Obrazovku jsem zapojil podle schematu na obrázku 1 a zkontroloval, že funguje zaostřování i vychylování posunováním jezdců potenciometrů. Pro ověření vztahu (1) jsem začal na nízkém anodovém napětí $ U_a $ a potom měnil fokusační proud, tak aby byl obraz ostrý. Do grafu 1 jsem potom vykreslil lineární závislost (1) a z fitu přímkou určil ohniskovou vzdálenost
 
 \begin{equation}
-f = 452 \pm 2 \text{ mm}
+f = 45.2 \pm 0.2 \text{ cm}
 \end{equation}
 
-\begin{figure}[htpb]
+\begin{table}[h]
+    \begin{minipage}{.40\linewidth}
+        \centering
+        \begin{tabular}{| c c |}
+            \hline
+            $ U_a $ (kV)  &  $ I_f $ (mA) \\
+            \hline
+            2.00 & 93.5 \\
+            1.95 & 91.9 \\
+            1.90 & 91.5 \\
+            1.85 & 90.4 \\
+            1.80 & 88.1 \\
+            1.75 & 87.0 \\
+            1.70 & 86.1 \\
+            1.65 & 84.2 \\
+            1.60 & 82.2 \\
+            1.55 & 81.3 \\
+            1.50 & 79.5 \\
+            \hline
+        \end{tabular}
+        \caption{Naměřené napětí a fokusační proudy při ostrém obrazu na stínítku}
+    \end{minipage} 
+    \hfill
+    \begin{minipage}{.5\linewidth}
+        \centering
+        \resizebox{\textwidth}{!}{ \input{ohnisko.tex} }
+        \captionsetup{type=graph}
+        \caption{Závislost čtverce fokusačního proudu na anodovém napětí}
+    \end{minipage} 
+\end{table}
+
+\subsection{Vychýlení svazku}
+
+Druhým úkolem bylo ověřit platnost vztahu (2). Podle něj by měla výchylka svazku $ y $ být přímo úměrná magnetické indukci $ y \propto B \propto I_v $ a taky $ y \propto U_a^{-0.5} $. Není ale úplně jednoduché zjistit, kde přesně je střed obrazovky, od kterého by se mělo $ y $  měřit. Namísto toho použiju střídavý proud $ I_v $ , což na stínítku vytvoří čáru a výchylka $ y $ je polovina délky této čáry. Budu měřit výchylky jednou při konstantním napětí a podruhé při konstantním proudu a zjistím, jestli je y na veličinách přímo úměrné jednotlivě. Naměřená data jsou v tabulkách 2 a závislosti jsou vykreslené do grafů 2 a 3. 
+
+\begin{table}[h]
+    \begin{minipage}[b]{.48\linewidth}
+        \centering
+        \resizebox{\textwidth}{!}{ \input{vychylovani_Ifkonst.tex} }
+        \captionsetup{type=graph}
+        \caption{Závislost výchylky $ y $ na vychylovacím proudu $ I_v $  }
+    \end{minipage} 
+    \hfill
+    \begin{minipage}[b]{.48\linewidth}
+        \centering
+        \resizebox{\textwidth}{!}{ \input{vychylovani_Ivkonst.tex} }
+        \captionsetup{type=graph}
+        \caption{Závislost výchylky $ y $ na urychlovacím napětí $ U_a $ }
+    \end{minipage} 
+\end{table}
+
+\newpage
+
+\begin{figure}[h]
+    \footnotesize
     \centering
-    \include{vychylovani_Iv87.tex}
-    \caption{}
+    \subfloat[$ I_v \approx 82 $ mA ]{
+    \begin{tabular}{| c c c c |}
+        \hline
+        $ U_a $ (V) & $ I_f $ (mA) & $ I_v $ (mA) & $ 2 y $ (cm)   \\
+        \hline
+        1500 & 75.8 & 83.8 & 20.8 \\
+        1550 & 80.3 & 83.5 & 20.1 \\
+        1600 & 81.0 & 82.0 & 19.8 \\
+        1650 & 82.4 & 81.3 & 19.5 \\
+        1700 & 85.7 & 81.3 & 19.2 \\
+        1750 & 86.1 & 82.4 & 18.8 \\
+        1800 & 88.7 & 82.8 & 18.5 \\
+        1850 & 88.2 & 83.0 & 18.3 \\
+        1900 & 88.1 & 81.2 & 18.0 \\
+        1950 & 91.8 & 81.6 & 17.5 \\ 
+        2000 & 93.9 & 82.3 & 17.4 \\
+        \hline
+    \end{tabular}
+    }
+    \hspace{1cm}
+    \subfloat[$ I_v \approx 62.8 $  mA ]{
+    \begin{tabular}{| c c c c |}
+        \hline
+        $ U_a $ (V) & $ I_f $ (mA) & $ I_v $ (mA) & $ 2 y $ (cm)   \\
+        \hline
+        1500 & 79.4 & 62.7 & 15.4 \\
+        1550 & 81.6 & 62.8 & 14.9 \\
+        1600 & 83.9 & 62.9 & 14.4 \\
+        1650 & 83.6 & 62.2 & 14.1 \\
+        1700 & 86.9 & 62.8 & 13.8 \\
+        1750 & 88.2 & 62.7 & 13.7 \\
+        1800 & 88.7 & 62.9 & 13.5 \\
+        1850 & 89.1 & 62.8 & 13.4 \\
+        1900 & 91.5 & 62.7 & 13.2 \\
+        1950 & 91.3 & 62.8 & 13.0 \\
+        2000 & 94.3 & 63.0 & 12.8 \\
+        \hline
+    \end{tabular}
+    }
+    \vspace{1cm}
+    \subfloat[$ U_a \approx 1750 $ V ]{
+    \begin{tabular}{| c c c c |}
+        \hline
+        $ U_a $ (V) & $ I_f $ (mA) & $ I_v $ (mA) & $ 2 y $ (cm)   \\
+        \hline
+        1750 & 83.1 & 93.0 & 21.9 \\
+        1750 & 84.1 & 88.5 & 20.7 \\
+        1750 & 85.7 & 81.8 & 18.4 \\
+        1750 & 86.3 & 73.5 & 16.4 \\
+        1750 & 86.3 & 68.0 & 14.9 \\
+        1750 & 86.3 & 60.5 & 13.1 \\ 
+        1750 & 86.3 & 53.6 & 11.1 \\
+        1750 & 86.3 & 46.7 & 10.2 \\
+        1750 & 86.3 & 38.4 & 8.30 \\
+        1750 & 86.3 & 30.6 & 6.60 \\
+        1750 & 86.3 & 26.9 & 5.80 \\
+        \hline
+    \end{tabular}
+    }
+    \hspace{1cm}
+    \subfloat[$ U_a \approx 2000 $ V]{ 
+    \begin{tabular}{| c c c c |}
+        \hline
+        $ U_a $ (V) & $ I_f $ (mA) & $ I_v $ (mA) & $ 2 y $ (cm)   \\
+        \hline
+        2000 & 92.2 & 102 & 21.8 \\
+        2000 & 92.2 & 88.1 & 18.7 \\
+        2000 & 92.2 & 78.2 & 16.2 \\
+        2000 & 92.2 & 67.9 & 14.0 \\
+        2000 & 92.2 & 62.1 & 12.6 \\
+        2000 & 92.2 & 52.8 & 10.6 \\
+        2000 & 92.2 & 45.3 & 9.10 \\
+        2000 & 92.2 & 38.2 & 7.70 \\
+        2000 & 92.2 & 33.2 & 6.70 \\
+        2000 & 92.2 & 28.1 & 5.20 \\
+        2000 & 92.2 & 23.9 & 4.80 \\
+        \hline
+    \end{tabular}
+    }
+    \captionsetup{type=table}
+    \caption{Naměřená data vychýlení bodu na obrazovce v závislosti na urychlovacím napětí $ U_a $ a vychylovacím proudu $ I_v $.  }
 \end{figure}
 
-\begin{figure}[htpb]
+\begin{figure}[H]
     \centering
-    \include{vychylovani2.tex}
-    \caption{}
+    \resizebox{0.7\textwidth}{!}{ \input{3dvychylovani.tex} }
+    \captionsetup{type=graph}
+    \caption{Závislost výchylky $ y $ na urychlovacím napětí $ U_a^{-\frac{1}{2}} $ a vychylovacím napětí $ I_v $.    }
 \end{figure}
 
-\begin{figure}[htpb]
-    \centering
-    \include{vychylovani3.tex}
-    \caption{}
-\end{figure}
-
-\begin{figure}[htpb]
-    \centering
-    \include{vychylovani4.tex}
-    \caption{}
-\end{figure}
+\newpage
 
 \section{Závěr}
 
+ V první části úlohy jsem ověřil vztah (1) pro ohniskovou vzdálenost magnetické čočky a určil její hodnotu $ f = 45.2 \pm 0.2 $ mm. Přes dobrou přesnost tato hodnota určitě není správná, protože televize je dlouhá jenom asi 30 cm. Myslím, že hodnoty všechny hodnoty byli změřené dostatečně přesně, takže závěrem je že vztah (1) alespoň v mé aparatuře není úplně přesný. Potvrdilo se ale, že mezi napětím $ U_a $ proudem $ I_f^2 $ a ohniskovou vzdáleností $ f $  existuje lineární vztah, jak ukazuje graf 1. 
+
+ V druhé části jsem měl za úkol ověřit, že výchylka bodu na stínítku je přímo úměrná magnetickému poli, tedy i vychylovacímu proudu $ B \propto I_v $ a energii elektronů, nebo napětí $ E^{-0.5} \propto U_a^{-0.5} $. Obě tyto závislosti se potvrdili jak ukazují grafy 2, 3 a 4.
+
 \begin{thebibliography}{0}
-\bibitem{tabulky} Hustota pevných látek. Dostupné z~\url{http://www.converter.cz/tabulky/hustota-pevne.htmf}.   
+\bibitem{tabulky} návod k úloze ~\url{https://is.muni.cz/auth/el/sci/jaro2025/F4210/um/fp3-1_obrazovka.pdf}.   
 \end{thebibliography}
 
 \end{document}
