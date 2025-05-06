@@ -1,7 +1,7 @@
 set ylabel ""
 set xlabel ""
 
-K = 7 * 1e-8
+K = 66 * 1e-8
 
 v = 0.02
 d = 0.227
@@ -15,6 +15,10 @@ beta(x) = acos((d - x)/r2(x))
 c(x) = cos(alpha(x))*cos(beta(x)) / ( r1(x)**2 * r2(x)**2 * sin( (alpha(x) + beta(x))/2 )**4 )
 
 n(x) = K * c(x)
+
+f(x) = K*x
+
+fit n(x) "data.txt" u 1:($3/$2) via K
 
 set xlabel "$f$ (cm)"
 set ylabel "$n$ (s$^{-1}$)"
@@ -35,8 +39,7 @@ set term epslatex size 3.7,2.5
 set output "cetnost.tex"
 unset xrange
 
-f(x) = K*x
-
-fit f(x) "data.txt" u ($4):($3/$2) via K
-
 plot "data.txt" u ($4*1e-6):($3/$2) lc -1 lt 7 t "", f(x*1e6) lc 7 t "fit"
+
+print( ( 0.5 ) / c(d/2) )
+print(c(d/2))

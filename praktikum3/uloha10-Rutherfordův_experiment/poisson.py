@@ -42,8 +42,9 @@ def c(x):
     a = alpha(x)
     b = beta(x)
     numerator = np.cos(a) * np.cos(b)
-    denominator = (r1(x)**2) * (r2(x)**2) * (np.sin((a + b) / 2)**4)
+    denominator = r1(x)**2 * r2(x)**2 * np.sin( (a + b) / 2 )**4
     return numerator / denominator
+
 
 rate = 26/60  # events/sec
 
@@ -61,6 +62,10 @@ while t <= T:
    event_times.append(t)
 
 data = np.loadtxt('data.txt')
+
+print( (30/60) / c(d/2) )
+
+print(c(data[:, 0]))
 
 
 #print(data[:, 2] / data[:, 1])

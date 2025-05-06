@@ -163,9 +163,9 @@ P(n) = \frac{\lambda^{n}}{n!}e^{-\lambda},
 \end{equation}
 
 \noindent
-kde $ P(n) $  je pravděpodobnost, že dojde k n rozpadům za časový interval a $ \lambda $  je střední hodnota počtu zaznamenaných rozpadů během měřícího intervalu. Ověření, že rozpady opravdu odpovídají tomuto rozdělení proběhne následovně. Dlouhé měření rozpadů rozdělím na $ N $  stejných časových úseků délky $ T $ a pro každý zjistím počet zaznamenaných částic $ n $ a střední hodnotu $ \lambda = \bar{n}  $. Četnost všech $ n $ označím jako $ K ( n ) $, pro které by mělo přibližně plait $ N P(n) \approx K(n) $.
+kde $ P(n) $  je pravděpodobnost, že dojde k n rozpadům za časový interval a $ \lambda $  je střední hodnota počtu zaznamenaných rozpadů během měřícího intervalu. Ověření, že rozpady opravdu odpovídají tomuto rozdělení proběhne následovně. Dlouhé měření rozpadů rozdělím na $ N $  stejných časových úseků délky $ T $ a pro každý zjistím počet zaznamenaných částic $ n $ a střední hodnotu $ \lambda = \bar{n}  $. Četnost všech $ n $ označím jako $ K ( n ) $, pro které by mělo přibližně platit $ N P(n) \approx K(n) $.
 
-Vyhodnocení dál proběhne metodou chi-kvadrátu. V případě, že pro nějaké $ n $  platí $ N P_{j} < 5 $ , pak tyto body sloučím s některým z okolních pro $ K_j(n) $ a $ P_j(n) $, tak aby byla splněná podmínka. Zbývá spočítat hodnotu $ \chi^2 $
+Vyhodnocení dál proběhne metodou $ \chi $  kvadrátu. V případě, že pro nějaké $ n $  platí $ N P_{j} < 5 $ , pak tyto body sloučím s některým z okolních pro $ K_j(n) $ a $ P_j(n) $, tak aby byla splněná podmínka. Zbývá spočítat hodnotu $ \chi^2 $
 
 \begin{equation}
 \chi^2 = \sum_{j} \frac{\left( K_j(n) - N P_j(n) \right)^2 }{ N P_j(n)}.
@@ -205,11 +205,18 @@ Aparatura pro měření byla už připravená a jen jsem odečetl její rozměry
 Z naměřených hodnot jsem potom podle vztahu (2) vypočítal hodnoty $ \omega $ a vykreslil je do grafu 1. Fit byl přímkou, ze kterého jsem dostal hodnotu
 
 \begin{equation}
-K = (66 \pm 2) \cdot 10^{-8} \text{ m}^{4}\text{s}^{-1}
+K = (6.6 \pm 0.2) \cdot 10^{-8} \text{ m}^{4}\text{s}^{-1}
 \end{equation}
 
 \noindent
-a s ní vykreslil teoretickou závislost $ n(f) $ do grafu 2 i s naměřenými hodnotami. Je vidět, že je opravdu symetrická okolo střední pozice.
+a s ní vykreslil teoretickou závislost $ n(f) $ do grafu 2 i s naměřenými hodnotami.  Grafy opravdu přibližně kopírují teoretické závislosti, ale měření nebylo dostatečně dlouhé, aby se dalo spolehlivě rozhodnout. Podle návodu k praktiku by mělo ve střední pozici na detektor dopadat 30 částic za sekundu, což vede spíš na hodnotu 
+
+\begin{equation}
+K = 8.248  \cdot 10^{-8} \text{ m}^{4}\text{s}^{-1}
+\end{equation}
+
+\noindent
+a grafy by byly o kousek vyšší. V každém případě ale není možné změřená data vysvětlit Thompsonovým modelem. 
 
 \begin{table}[htpb]
     \begin{minipage}[b]{.48\linewidth}
@@ -229,7 +236,7 @@ a s ní vykreslil teoretickou závislost $ n(f) $ do grafu 2 i s naměřenými h
 
 \subsection{Poissonovo rozdělení rozpadu $ \alpha $ částic }
 
-Folii jsem přesunul doprostřed, aby se zaznamenávalo co nejvíce rozpadů, a po dobu 850 s zapisoval časy detekovaných částic. Podle postupu výpočtu $ \chi $-kvadrátu jsem potom sestavil tabulku 2 a vykreslil teoretické Poissonovo rozdělení vůči vypočítanému do grafu 3. Před vyhodnocením musím sloučit řádky pro $ n = 0-2 $ a  $ n = 8-12 $, aby platili podmínky $ \chi^2 $ testu, odkud potom podle vztahu (5) vychází
+Folii jsem přesunul doprostřed, aby se zaznamenávalo co nejvíce rozpadů, a po dobu 850 s zapisoval časy detekovaných částic. Podle postupu výpočtu $ \chi $ kvadrátu jsem potom sestavil tabulku 2 a vykreslil teoretické Poissonovo rozdělení vůči vypočítanému do grafu 3. Před vyhodnocením musím sloučit řádky pro $ n = 0-2 $ a  $ n = 8-12 $, aby platili podmínky $ \chi^2 $ testu, odkud potom podle vztahu (5) vychází
 
 \begin{equation}
 \chi^2 = 5.97
@@ -274,7 +281,7 @@ Hodnota $ \chi_{cr} $ pro hladinu spolehlivost $ 0.05 $ a $ 12 - 1 = 11 $ stupň
 
 Na aparatuře Rutherfordova experimentu jsem měřil množství částic odražených na velmi tenké zlaté folii o úhly $ \chi $, a zjistil, že změřená data se dají vysvětlit Rutherfordovým modelem atomu, zatímco ten Thompsonův toto nedokáže. 
 
-Druhým úkolem bylo ověřit, že rozpad atomů na $ \alpha $-částice probíhá podle Poissonova rozdělení. K tomuto účelu jsem použil $ \chi^2 $ test, který vyšel pozitivně pro hladinu spolehlivosti alespoň $ 0.05 $.
+Druhým úkolem bylo ověřit, že rozpad atomů na $ \alpha $-částice probíhá podle Poissonova rozdělení. K tomuto účelu jsem použil $ \chi^2 $ test, který vyšel pozitivně pro hladinu spolehlivosti alespoň $ 0.05 $. Pro lepší spolehlivost by bylo potřeba měřit mnohem déle. Na to ale v praktiku už nezbyl čas. 
 
 \begin{thebibliography}{0}
 \bibitem{tabulky} Hustota pevných látek. Dostupné z~\url{http://www.converter.cz/tabulky/hustota-pevne.htmf}.   
