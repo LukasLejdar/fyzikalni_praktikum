@@ -117,24 +117,36 @@ Operační zesilovač je součástka reprezentovaná diagramem na obrázku 1, kt
 
 %Ideální operační zesilovač by měl mít nekonečné zesílení, nekonečný vstupní odpor, nulový výstupní odpor a nekonečnou šířku pásma (tedy zesilovat všechny frekvence stejně). Reálné zesilovače se těmto vlastnostem pouze přibližují - mají vysoké, ale konečné zesílení, vysoký vstupní odpor (řádově $ M \Omega $ ), nízký výstupní odpor (desítky $ \Omega $ ) a omezenou šířku pásma.
 
-Ideální zesilovač má nekonečné zesílení a neteče skrz něj proud. V tomto praktiku ověřím jeho základní vlastnosti v několika jednoduchých zapojeních a chování při střídavém vstupu.
+Ideální zesilovač má nekonečné zesílení a neteče skrz něj proud. Umí pracovat i se střídavým proudem na vstupu a v takovém případě by měl na všech frekvencích zesilovat stejně. Reálný zesilovač ale funguje dobře jen na nějakém rozmezí. Zavádí se proto pojem šířka pásma, jako ty frekvence při kterých zesílení klesne na nejméně $ A_{u, max} / \sqrt{2}  $  maximální hodnoty. V tomto praktiku ověřím základní vlastnosti zesilovače v několika jednoduchých zapojeních a chování při střídavém signálu na vstupu.
+
+\vspace{20pt}
 
 \section{Měření}
 
 \subsection{Komparátor}
 
-Operační zesilovač jsem zapojil podle obrázku 2 a sledoval která z diod se rozsvítí, jak se mění napětí $ U_1 $  a $ U_\text{ref} $. V případě, že $ U_1 $ bylo větší než $ U_{\text{ref}} $, rozsvítila se dioda propouštějící proud nahoru, tj. na výstupu bylo záporné napětí a v opačném případě naopak.
-
-\begin{figure}[h]
+\begin{wrapfigure}[7]{r}{0.4\textwidth}
+    \vspace{-30pt}
     \centering
     \includegraphics[width=0.3\textwidth]{komparator.jpg}
     \caption{Komparátor}
-    \vspace{-10pt}
-\end{figure}
+\end{wrapfigure}
+
+Operační zesilovač jsem zapojil podle obrázku 2 a sledoval která z diod se rozsvítí, jak se mění napětí $ U_1 $  a $ U_\text{ref} $. V případě, že $ U_1 $ bylo větší než $ U_{\text{ref}} $, rozsvítila se dioda propouštějící proud nahoru, tj. na výstupu bylo záporné napětí a v opačném případě kdy polarita byla obrácená svítila druhá dioda. Tímto způsobem se tedy dají binárně porovnávat dvě různé napětí.
+
+
+%\begin{figure}[h]
+%    \centering
+%    \includegraphics[width=0.3\textwidth]{komparator.jpg}
+%    \caption{Komparátor}
+%    \vspace{-10pt}
+%\end{figure}
+
+\par\noindent
 
 \subsection{Zapojení s invertujícím vstupem}
 
-Schéma zapojení je na obrázku 3, kde smyslem obvodu je zesílit napětí $ U_1 $ o nějaký násobek a obrátit jeho polaritu. K obrácení dochází kvůli zapojení na invertující vstup a zvětšení zajišťuje zpětnovazební rezistoru, který uzemní vstup A, takže rezistory $ R_1 $ a $ R_2 $ teče stejný proud.
+Schéma zapojení je na obrázku 3, kde smyslem obvodu je zesílit napětí $ U_1 $ o nějaký násobek a obrátit jeho polaritu. K obrácení dochází kvůli zapojení na invertující vstup a zvětšení zajišťuje zpětnovazební rezistor, který uzemní vstup A, takže rezistory $ R_1 $ a $ R_2 $ teče stejný proud.
 
 \begin{equation}
 U_{0} = - \frac{R_2}{R_1} U_1
@@ -181,9 +193,9 @@ Jako odpory jsem použil $ R_1 = 10 \text{ k} \Omega $ a $ R_2 = 20 \text{ k} \O
     \end{minipage} 
 \end{table}
 
-\subsection{Šířka pásma}
+\subsection{Šířka pásma zapojení s invertujícím vstupem}
 
-Zapojení nechám stejné, ale tentokrát na vstup přivedu střídavé napětí o frekvenci $ \omega $ a výstup budu měřit osciloskopem. Naměřená data jsou uvedená v tabulce 3 a zesílení $ A_u = U_0 / U_1 $ jsem vynesl do grafu 2. Je vidět, že zesílení si drží hodnotu $ 2 $ až do frekvence vstupu $ \omega = 25 $ Hz a pak postupně klesá k nule. Šířka operačního pásma je tedy rozmezí $ (0, 25) $ Hz. 
+Zapojení nechám stejné, ale tentokrát na vstup přivedu střídavé napětí o frekvenci $ \omega $ a výstup budu měřit osciloskopem. Naměřená data jsou uvedená v tabulce 3 a zesílení $ A_u = U_0 / U_1 $ jsem vynesl do grafu 2. Je vidět, že zesílení si drží hodnotu $ 2 $ až do frekvence vstupu $ \omega = 25 $ kHz a pak postupně klesá k nule. Šířka operačního pásma je tedy rozmezí, kdy hodnoty překračují hodnotu $ A_{u,max} / \sqrt{2} = 2 / \sqrt{2} = \sqrt{2}    $, takže interval $ \omega \in (0, 40) $   kHz.
 
 \newpage
 
@@ -192,7 +204,7 @@ Zapojení nechám stejné, ale tentokrát na vstup přivedu střídavé napětí
         \centering
         \begin{tabular}{| c c c c |}
             \hline
-            $ \omega $  (Hz) & $ U_0 $ (V) & $ U_1 $ (V) & $ A_u $  \\
+            $ \omega $  (kHz) & $ U_0 $ (V) & $ U_1 $ (V) & $ A_u $  \\
             \hline
             00.500 & 4.266 & 2.133 & 2.000 \\
             10.000 & 4.296 & 2.133 & 2.014 \\
@@ -224,7 +236,7 @@ Zapojení nechám stejné, ale tentokrát na vstup přivedu střídavé napětí
 
 \subsection{Dolnofrekvenční propust}
 
-Malou změnou zapojení z obrázku 2 na 4 dostaneme zapojení, které propouští pouze nízké frekvence vstupního signálu. Přidaný kondenzátor snižuje impedanci zpětnovazební větve pro vysoké frekvence, což vede k zesílení
+Malou změnou zapojení z obrázku 3 na 4 dostaneme zapojení, které propouští pouze nízké frekvence vstupního signálu. Přidaný kondenzátor snižuje impedanci zpětnovazební větve pro vysoké frekvence, což vede k zesílení
 
 \begin{equation}
 \frac{U_0}{U_1} = A_u = -\frac{R_F}{R_A} \frac{1}{ \sqrt{1 + \omega^2 C_F^2 R_F^2} } 
@@ -239,38 +251,38 @@ Malou změnou zapojení z obrázku 2 na 4 dostaneme zapojení, které propoušt�
 Použil jsem kondenzátor o kapacitě $ C_F = 10  $ nF a odpory $ R_F = 100 $ k$\Omega$ a $ R_A = 10 $ k$ \Omega $, takže očekávám maximální zesílení pro $ \omega = 0 $ 
 
 \begin{equation}
-A_{\text{u max}} = 10.0
+A_{\text{u max}} = - 10.0
 \end{equation}
 
 
-Na vstup jsem přivedl střídavé napětí o frekvenci $ \omega $ a stabilní amplitudě $ U_1 = 1.120 $ a měřil amplitudu výstupního napětí. Naměřená data jsou v tabulce 3 a graf 3 je porovnává s teoretickým vztahem (3).
+Na vstup jsem přivedl střídavé napětí o frekvenci $ \omega $ a stabilní amplitudě $ U_1 = 1.120 $ V a měřil amplitudu výstupního napětí. Naměřená data jsou v tabulce 3 a graf 3 je porovnává s teoretickým vztahem (3). Šířka pásma je v tomto případě $ \omega \in (0, 168) $ kHz.
 
 \begin{table}[h]
     \begin{minipage}{.5\linewidth}
         \centering
         \begin{tabular}{| c c c c c |}
             \hline
-            $ \omega $ (Hz) & $ U_1 $ (V)  & $ U_0 $  (V) & $ U_0 $ teorie (V) & $ A_u $  \\
+            $ \omega $ (kHz) & $ U_1 $ (V)  & $ U_0 $  (V) & $ U_0 $ teorie (V) & $ A_u $  \\
             \hline    
-            10  & 1.120 &  -10.898  &  11.16 & -9.980 \\
-            50  & 1.120 &  -10.494  &  10.67 & -9.540 \\
-            80  & 1.120 &  -10.0    &  9.98  & -8.935 \\
-            100 & 1.120 &  -9.28    &  9.46  & -8.467 \\
-            130 & 1.120 &  -8.476   &  8.65  & -7.744 \\
-            150 & 1.120 &  -8.072   &  8.13  & -7.277 \\
-            170 & 1.120 &  -7.669   &  7.64  & -6.834 \\
-            200 & 1.120 &  -7.26    &  6.96  & -6.226 \\
-            220 & 1.120 &  -6.86    &  6.55  & -5.861 \\
-            250 & 1.120 &  -6.054   &  6.00  & -5.370 \\
-            270 & 1.120 &  -5.65    &  5.67  & -5.078 \\
-            300 & 1.120 &  -5.24    &  5.23  & -4.686 \\
-            350 & 1.120 &  -4.84    &  4.62  & -4.139 \\
-            400 & 1.120 &  -4.43    &  4.13  & -3.696 \\
-            500 & 1.120 &  -3.63    &  3.39  & -3.033 \\
-            600 & 1.120 &  -3.229   &  2.86  & -2.563 \\
+            10  & 1.120 &  -10.898  &  -11.16 & -9.980 \\
+            50  & 1.120 &  -10.494  &  -10.67 & -9.540 \\
+            80  & 1.120 &  -10.0    &  -9.98  & -8.935 \\
+            100 & 1.120 &  -9.28    &  -9.46  & -8.467 \\
+            130 & 1.120 &  -8.476   &  -8.65  & -7.744 \\
+            150 & 1.120 &  -8.072   &  -8.13  & -7.277 \\
+            170 & 1.120 &  -7.669   &  -7.64  & -6.834 \\
+            200 & 1.120 &  -7.26    &  -6.96  & -6.226 \\
+            220 & 1.120 &  -6.86    &  -6.55  & -5.861 \\
+            250 & 1.120 &  -6.054   &  -6.00  & -5.370 \\
+            270 & 1.120 &  -5.65    &  -5.67  & -5.078 \\
+            300 & 1.120 &  -5.24    &  -5.23  & -4.686 \\
+            350 & 1.120 &  -4.84    &  -4.62  & -4.139 \\
+            400 & 1.120 &  -4.43    &  -4.13  & -3.696 \\
+            500 & 1.120 &  -3.63    &  -3.39  & -3.033 \\
+            600 & 1.120 &  -3.229   &  -2.86  & -2.563 \\
             \hline
         \end{tabular}
-        \caption{Měření dolnofrekvenční propustnosti}
+        \caption{Měření dolnofrekvenční propusti}
     \end{minipage} 
     \hfill
     \begin{minipage}{.45\linewidth}
@@ -283,7 +295,14 @@ Na vstup jsem přivedl střídavé napětí o frekvenci $ \omega $ a stabilní a
 
 \subsection{Zapojení s neinvertujícím vstupem}
 
-Zapojení je stejné jako při invertujícím, ale napětí $ U_1 $ je tentokrát přivedeme na neinvertující vstup. Obvod se ustálí ve stavu, kdy je na invertujícím vstupu stejné napětí jako na neinvertujícím a poměr napětí opět získáme z úvahy o proudu.
+Zapojení je stejné jako při invertujícím, ale napětí $ U_1 $ je tentokrát přivedeme na neinvertující vstup. Obvod se ustálí ve stavu, kdy je na invertujícím vstupu stejné napětí jako na neinvertujícím a pokud proud opět teče jen skrz odpory $ R_1 $ a $ R_2 $, musí platit
+
+\begin{equation}
+\frac{U_1}{R_1} = \frac{U_0}{R_1 + R_2}
+\end{equation}
+
+\noindent
+odkud po úpravě vychází
 
 \begin{equation}
 U_0 = \left( 1 + \frac{R_2}{R_1} \right) U_1
@@ -411,14 +430,16 @@ Na vstupním napětí jsem nastavil sinusový signál $ \sin(x) $  a na výstupu
 
 V této úloze jsem ověřil základní vlastnosti operačního zesilovače. U zapojení komparátoru jsem pozoroval očekávané přepínání polarity výstupního napětí v závislosti na rozdílu vstupních hodnot $U_1$ a $U_\text{ref}$ a při zapojení s invertujícím a neinvertujícím vstupem jsem získal zesílení $-2.033 \pm 0.001$ a $ 3.045 \pm 0.002 $, což bylo v dobré shodě s předpokládanou hodnotou $ -2 $ a $ 3 $.
 
-Šířku pásma zesilovače jsem určil přibližně do $25,\mathrm{Hz}$, nad touto frekvencí zesílení začínalo klesat asymptoticky až k nule. U zapojení dolnofrekvenční propustnosti se potvrdila její funkce - pro nízké frekvence byla zachována vysoká úroveň zesílení, zatímco pro vyšší frekvence amplituda signálu klesala v souladu s teoretickým modelem.
+Šířku pásma zesilovače jsem určil do $40 $ kHz při zapojení s invertujícím vstupem a zjistil, že se toto rozmezí dá rozšířit zapojením paralelního kondenzátoru do zpětnovazební větve u tzv. dolnofrekvenční propusti, kdy se šířka zvětšila na $ 168 $  kHz, při kapacitě kondenzátoru $ 10 $ nF.
+
+Dalším úkolem bylo zapojení rozdílového zesilovače, kde jsem na výstupu pozoroval zesílení rozdílu vstupních napětí o $ 2.028 \pm 0.002 $, když předpokládaná hodnota měla být $ 2 $.
 
 Dobře fungovalo i zapojení derivátoru, kde jsem na výstupu pozoroval časovou derivaci napětí na vstupu. 
 
 
 
 \begin{thebibliography}{0}
-\bibitem{tabulky} Hustota pevných látek. Dostupné z~\url{http://www.converter.cz/tabulky/hustota-pevne.htmf}.   
+\bibitem{tabulky} Návod k úloze ~\url{}.   
 \end{thebibliography}
 
 \end{document}
