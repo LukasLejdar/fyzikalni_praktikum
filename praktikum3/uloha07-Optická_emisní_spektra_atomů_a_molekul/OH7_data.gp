@@ -10,6 +10,9 @@ set xrange [306:312]
 set xtics rotate by 90 offset 0,-3 0,100,4000
 set xtics add (306, 307, 309, 310, 311, 312)
 
+set yrange [0:50000]
+
 plot \
-"OH7_corrected.txt" u 1:2 w l lw 1 lc 6 lt 7 t "", \
-"OH7_spectral_lines.txt" u 3:6:xtic(4) lt 20 lc 1 t ""
+"OH7_corrected.txt" u 1:2 w l lw 1 lc 0 lt 7 t "", \
+"OH7_spectral_lines.txt" u 3:6:xtic(4) lt 20 lc 1 t "", \
+"OH7_spectral_lines.txt" u 3:6:(0):(-$6) with vectors nohead lt 1 lc 1 t ""

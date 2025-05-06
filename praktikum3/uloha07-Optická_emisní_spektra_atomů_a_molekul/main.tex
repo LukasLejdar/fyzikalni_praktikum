@@ -12,17 +12,12 @@
 
 \jmenopraktika={Fyzikální praktikum 3}
 \jmeno={Lukáš Lejdar}
-\datum={26. února 2025}
+\datum={25. února 2025}
 \obor={F}
 \skupina={Út 14:00}
 
 \cisloulohy={7}
 \jmenoulohy={Optická emisní spektra atomů a molekul}
-
-\tlak={101{,}35}
-\teplota={21,1}
-\vlhkost={47,7}
-
 
 %%%%%%%%%%% Uzitecne balicky:
 \usepackage[czech]{babel}
@@ -68,6 +63,15 @@
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
 		\node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
 
+\newcommand{\upsub}[1]{\sb{\mathrm{#1}}}
+
+\begingroup\lccode`\~=`_\lowercase{\endgroup\let~\upsub}
+
+\AtBeginDocument{%
+  \catcode`_=12
+  \mathcode`_="8000
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Zacatek dokumentu
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -107,9 +111,6 @@
 \noindent \begin{tabular}{p{4cm} p{0.6\textwidth}}
 \Large  Úloha č. {\bfseries \the\cisloulohy:} \par
 \smallskip
-$T=\the\teplota$~$^\circ$C \par
-$p=\the\tlak$~kPa \par
-$\varphi=\the\vlhkost$~\%
 &\Large \bfseries \the\jmenoulohy  \\[2mm]
 \end{tabular}
 }
@@ -124,17 +125,17 @@ Cílem úlohy je identifikovat spektrální čáry par železa v obloukovém vý
 
 \subsection{Intenzita spektrálních čar}
 
-Při přechodu elektronu z m-té hladiny o energii \( E_m \) na nižší s energií \( E_n \) se vyzáří světlo, které pozorujeme jako spektrální čáru o vlnové délce \( \lambda_{mn} \) a relativní intenzitě
+Při přechodu elektronu z m-té hladiny o energii \( E_\mathrm{m} \) na nižší s energií \( E_\mathrm{n} \) se vyzáří světlo, které pozorujeme jako spektrální čáru o vlnové délce \( \lambda_\mathrm{mn} \) a relativní intenzitě
 
 \begin{equation}
     I_{mn} =  \frac{A_{mn}g_m}{\lambda_{mn}} \exp \left( -\frac{E_m}{kT} \right),
 \end{equation}
 
 \noindent
-kde $ A_{mn} $  je pravděpodobnost přechodu z m-té hladiny na n-tou a $ g_m $  je statistická váha horního energetického stavu. Experimentálně jsou přímo měřitelné intenzity spektrálních čar a ke každé známe i součin $ A_{mn} g_m $ a excitační energie $ E_m $. Úpravou vztahu (1) dostávám
+kde $ A_{mn} $  je pravděpodobnost přechodu z m-té hladiny na n-tou a $ g_m $  je statistická váha horního energetického stavu. $ T $ je absolutní teplota zářící látky a $ k $ boltzmannova konstanta.  Experimentálně jsou přímo měřitelné intenzity spektrálních čar a ke každé známe i součin $ A_{mn} g_m $ a excitační energie $ E_m $. Úpravou vztahu (1) dostávám
 
 \begin{equation}
-\ln \left( \frac{I_{mn}\lambda_{mn}}{A_{mn}g_m} \right) = \left( - \frac{E_m}{kT} \right) = f(E_m).
+\ln \left( \frac{I_{mn}\lambda_{mn}}{A_{mn}g_m} \right) = \left( - \frac{E_m}{kT} \right) = \mathrm{f} (E_m).
 \end{equation}
 
 Graf závislosti $ f(E_m) $ je známý jako pyrometrická přímka se sklonem $ - \frac{1}{kT} $.
@@ -144,14 +145,14 @@ Graf závislosti $ f(E_m) $ je známý jako pyrometrická přímka se sklonem $ 
 Rotační energie molekuly je na rozdíl od té translační kvantovaná. Můžeme tedy pozorovat i spektrální čáry způsobené změnou stavu rotace molekuly a pro její intenzitu platí vztah
 
 \begin{equation}
-I_{n''v''J''}^{n'v'J'} = C_{n''v''J''}^{n'v'J'} \bar{\nu}^{4} S_{J'J''}e^{-\frac{B_{v'} N' (N' + 1) hc}{kT}}
+I_{n''v''J''}^\mathrm{n'v'J'} = C_{n''v''J''}^\mathrm{n'v'J'} \bar{\nu}^{4} S_{J'J''}\exp \left(-\frac{B_{v'} N' (N' + 1) hc}{kT} \right)
 \end{equation}
 
 \noindent
 $ B_{v'} $  je rotační konstanta pro horní vibrační stav, $ N' $  je rotační kvantové číslo horního stavu, $ \bar{\nu}^{4} = \lambda^{-4} $ je vlnočet rotační čáry, $ S_{J'J''} $ je Hönl-Londonův intenzitní faktor a $ J' $ je kvantové číslo pro celkový moment hybnosti. V případě dat měřených v praktiku platí $ N' = J' - \frac{1}{2} $. Rovnici (3) můžeme opět upravit na pyrometrický tvar
 
 \begin{equation}
-\ln \frac{I_{n''v''J''}^{n'v'J'}}{\bar{\nu}^{4} S_{J'J''}} = -\frac{B_{v'} hc}{kT} N' (N' + 1)  + konst. = f(N' (N' + 1))
+\ln \frac{I_{n''v''J''}^\mathrm{n'v'J'}}{\bar{\nu}^{4} S_{J'J''}} = -\frac{B_{v'} hc}{kT} N' (N' + 1)  + konst. = f(N' (N' + 1))
 \end{equation}
 
 
@@ -161,11 +162,11 @@ $ B_{v'} $  je rotační konstanta pro horní vibrační stav, $ N' $  je rotač
 
 \subsection{Atomové spektrum par železa}
 
-Spektrální závislost z grafu 1 jsem dostal už naměřenou a data jsem jen zpracovával. Soubor jsem otevřel v programu Span 1.7 a označil vybrané spektrální čáry pro vlnové délky podle tabulky 1, kde ve 4. sloupci jsou i programem odečtené intenzity
+Spektrální závislost z grafu 1 jsem dostal už naměřenou ze sady 7 a data jsem jen zpracovával. Naměřené emisní spektrum bývá posunuté až o několik nanometrů, takže je potřeba ho nejdřív lineárně transformovat, aby odpovídalo známým vlnovým délkám spektrálních čar. Soubor jsem otevřel v programu Span 1.7 a označil vybrané spektrální čáry podle předpokládaného tvaru spektrální závislosti, který se dá zjistit třeba pomocí programu Lifebase 2.1. Jejich vlnové délky jsou uvedené v tabulce 1, kde ve 4. sloupci jsou i programem odečtené intenzity. 
 
 \begin{figure}[htpb]
     \centering
-    \include{fe7_data.tex}
+    \resizebox{0.8\textwidth}{!}{ \input{fe7_data.tex} }
     \vspace{40pt}
     \captionsetup{type=graph}
     \caption{Naměřená spektrální závislost par železa měřené v obloukovém výboji. Graf je korektovaný podle známých vlnových délek spektrálních čar a šumu pozadí.}
@@ -232,11 +233,11 @@ Z tabulky 1 jsem potom sestrojil graf 2 podle rovnice $ y = f(E_m) $ ze vztahu 2
 
 \subsection{Spektrum radikálů OH}
 
-Data jsem zase dostal už naměřená a zpracovávání probíhalo podobně jako v předchozím případě. Nejdřív jsem označil spektrální čáry z tabulky 2, které odpovídají rotačním přechodům a pomocí programu Span 1.7 zjistil jejich intenzitu.
+Data jsem zase dostal už naměřená ze sady 7 a zpracovávání probíhalo podobně jako v předchozím případě. Nejdřív jsem označil spektrální čáry z tabulky 2, které odpovídají rotačním přechodům a pomocí programu Span 1.7 zjistil jejich intenzitu.
 
 \begin{figure}[htpb]
     \centering
-    \include{OH7_data.tex}
+    \resizebox{0.8\textwidth}{!}{ \input{OH7_data.tex} }
     \vspace{40pt}
     \captionsetup{type=graph}
     \caption{Naměřená spektrální závislost radikálů OH. Graf je korektovaný podle známých vlnových délek spektrálních čar a šumu pozadí.}
@@ -292,9 +293,9 @@ Z tabulky 2 sestrojím graf pyrometrické přímky podle vztahu (4) a ze sklonu 
 
 \section{Závěr}
 
-Pomocí programu Span 1.7 jsem zjistil intenzitu vybraných spektrálních čar par železa a z pyrometrické přímky určil teplotu plazmatu na $ T = 6000 \pm 500 $ K. Program zároveň umožňuje vyhodnotit teplotu automaticky, odkud mám hodnotu $ T = 6552 $ K. Rozdíl výsledků je pravděpodobně způsobený sofistikovanějším postupem, použitým v programu. 
+Pomocí programu Span 1.7 jsem zjistil intenzitu vybraných spektrálních čar par železa a z pyrometrické přímky určil teplotu plazmatu na $ T = 6000 \pm 500 $ K. Program zároveň umožňuje vyhodnotit teplotu automaticky, odkud mám hodnotu $ T = 6500 \pm 950 $ K. Zpracované spektrum vzniklo ze záření obloukového výboje, takže by spočítané hodnoty mohli být reálné. 
 
-Při vyhodnocování radikálů OH jsem použil jen 5 čar, ale zato vyšla velmi dobrá přímka a výsledná teplota $ T = 273 \pm 10 $ K má menší relativní nejistotu. Program znovu vyhodnotil teplotu o něco výš na $ T = 312 $, pravděpodobně ze stejného důvodu.
+Při vyhodnocování radikálů OH jsem použil jen 5 čar, ale zato vyšla velmi dobrá přímka a výsledná teplota $ T = 273 \pm 10 $ K má menší relativní nejistotu. Program vyhodnotil teplotu o něco výš na $ T = 312 \pm 12 $ K, pravděpodobně protože využívá sofistikovanější způsob výpočtu teploty. 
 
 \begin{thebibliography}{0}
 \bibitem{tabulky} Návod k úloze ~\url{https://is.muni.cz/auth/el/sci/jaro2025/F4210/um/fp3-7_spektra.pdf}.   

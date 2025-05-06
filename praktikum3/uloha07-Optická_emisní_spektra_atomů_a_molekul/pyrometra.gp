@@ -12,7 +12,7 @@ C = 10
 f(x) = x*q + C
 fit f(x) "OH7_spectral_lines.txt" u ($1*($1+1)):(log($8 * $4**4 / $2)) via q,C
 
-set bmargin at screen 0.03
+set bmargin at screen 0.05
 set term epslatex size 3,1.5
 set output "intenzity.tex"
 
