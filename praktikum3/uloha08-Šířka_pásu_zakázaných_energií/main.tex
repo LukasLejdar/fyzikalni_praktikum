@@ -16,13 +16,8 @@
 \obor={F}
 \skupina={Út 14:00}
 
-\cisloulohy={1}
+\cisloulohy={8}
 \jmenoulohy={Band gap width}
-
-\tlak={101{,}35}
-\teplota={21,1}
-\vlhkost={47,7}
-
 
 %%%%%%%%%%% Uzitecne balicky:
 
@@ -104,9 +99,6 @@
 \noindent \begin{tabular}{p{4cm} p{0.6\textwidth}}
 \Large  Úloha č. {\bfseries \the\cisloulohy:} \par
 \smallskip
-$T=\the\teplota$~$^\circ$C \par
-$p=\the\tlak$~kPa \par
-$\varphi=\the\vlhkost$~\%
 &\Large \bfseries \the\jmenoulohy  \\[2mm]
 \end{tabular}
 }
@@ -119,7 +111,7 @@ An important characteristic of semiconductors is the band gap, influencing their
 
 \section{Theory}
 
-Electrons bound to atoms can only exist at some discrete set of energy levels and to move around, they have to absorb or emit energy to keep it conserved. Both emission and absorption can happen via light, which is also discretized with photon particles. Each has an associated wave length $ \lambda $ and it's energy  is given by
+Electrons bound to atoms can only exist at some discrete set of energy levels and to move around, they have to absorb or emit energy to keep it conserved. Both emission and absorption can happen via light, which is also discretized with photon particles. Each has an associated wavelength $ \lambda $ and it's energy  is given by
 
 \begin{equation}
     E = \frac{h c}{\lambda}
@@ -129,7 +121,7 @@ Semiconductors are special in that they have a certain energy gap $ E_g $ of ban
  
 \section{Measurement procedure}
 
-Scheme of the experiment can be found on figure $ 1 $. We have a source of white light shining into a monochromator which is than directed onto the diode which has a connected voltmetr. To find the band gap energy $ E_g $, all we need to do is find the largest wave length $ \lambda_{max} $, where voltage starts to build up, and plug into equation (1), to get
+The scheme of the experiment can be found in Figure $ 1 $. We have a source of white light shining into a monochromator, which is then directed onto the diode which has a connected voltmeter. To find the band gap energy $ E_g $, all we need to do is find the largest wavelength $ \lambda_{max} $, where the voltage starts to build up and plug into equation (1), to get
 
 \begin{equation}
 E_{g} = \frac{h c}{\lambda_{max}}
@@ -137,7 +129,7 @@ E_{g} = \frac{h c}{\lambda_{max}}
 
 \vspace{10pt}
 
-We will than also proceed to measure the induced voltage for the whole spectrum. To do this, we also have to account for the fact, that our halogen lamp does not shine light with the same intensity at each wave length. To correct for this, we have a table of values of relative intensity $ D(\lambda) $  emitted by lamp, and we will correct with
+We will then also proceed to measure the induced voltage for the whole spectrum. To do this, we also have to account for the fact, that our halogen lamp does not shine light with the same intensity at each wave length. To correct for this, we have a table of values of relative intensity $ D(\lambda) $  emitted by lamp, and we will correct with
 
 \begin{equation}
  S(\lambda) = \frac{U(\lambda)}{ D(\lambda) }
@@ -156,7 +148,7 @@ As the last step, we will express each wave length $ \lambda $ as energy of the 
 
 \section{Results}
 
-We've separately measured one germanium diode and one made from silicon. The measured voltages as functions of wave length can be seen in graphs 1 and 2. From these graphs, we can directly read the maximal wave lengths $ \lambda_{max} $  and the corresponding energy gaps from equation (2)
+We've separately measured one germanium diode and one made from silicon. The measured voltages as functions of wavelength can be seen in graphs 1 and 2. From these graphs, we can directly read the maximal wavelengths $ \lambda_{max} $  and the corresponding energy gaps from equation (2)
 
 \begin{table}[htpb]
     \centering
@@ -185,7 +177,7 @@ We've separately measured one germanium diode and one made from silicon. The mea
     \end{minipage} 
 \end{table}
 
-To also get the correct relative intensities of induced voltage, we need to divide by the relative intensity of light emitted by our lamp. The measured relative intensities can be seen in table 1 and for the rest we will interpolate by a polynomial fit.
+To also get the correct relative intensities of induced voltage, we need to divide by the relative intensity of light emitted by our lamp. The measured relative intensities can be seen in Table 1 and for the rest we will interpolate by a polynomial fit.
 
 \begin{table}[htpb]
     \begin{minipage}[b]{.45\linewidth}
@@ -208,11 +200,11 @@ To also get the correct relative intensities of induced voltage, we need to divi
         \centering
         \resizebox{\textwidth}{!}{ \input{cejchovani.tex} }
         \captionsetup{type=graph}
-        \caption{Fit of relative intensities from table 1}
+        \caption{Fit of relative intensities from Table 1}
     \end{minipage} 
 \end{table}
 
-Our data points don't unfortunately go all the way to the smallest measured wave lengths of $ 0.6 \ \mu m $. It is not a big problem though, since we are mainly interested in the peaks. Using equation (3) we get the following graphs
+Our data points don't unfortunately go all the way to the smallest measured wavelengths of $ 0.6 \ \mu m $. It is not a big problem though, since we are mainly interested in the peaks. Using equation (3) we get the following graphs
 
 \begin{table}[htpb]
     \begin{minipage}[b]{.45\linewidth}
@@ -232,9 +224,9 @@ Our data points don't unfortunately go all the way to the smallest measured wave
 
 \section{Conclusion}
 
-We've measured the spectral dependence of photo voltage induced by a monochromatic beam of light on PN junctions of a germanium and silicon diode which is shown in graphs 1 and 2. A~measured voltage was only seen from the wave length $ \lambda = 1160 $ nm for silicon and $ \lambda = 1930 $ nm, from which we conclude that the corresponding band gap energies are $ E_g = 1.069 $ eV and $ E_g = 0.642 $~eV respectively. Table values give $ E_g = 1.12 $ eV and $ E = 0.67 $ eV, so it is not a bad result.
+We've measured the spectral dependence of photovoltage induced by a monochromatic beam of light on PN junctions of a germanium and silicon diode which is shown in Graphs 1 and 2. A~measured voltage was only seen from the wavelength $ \lambda = 1160 $ nm for silicon and $ \lambda = 1930 $ nm, from which we conclude that the corresponding band gap energies are $ E_g = 1.069 $ eV and $ E_g = 0.642 $~eV respectively. Table values give $ E_g = 1.12 $ eV and $ E = 0.67 $ eV, which is not a bad result. The slight differences are likely due to measurement inaccuracies on my part.
 
-Our measured voltages were not completely to scale since the source of light did not emit light at even intensities. We've adjusted for this difference using measured relative intensity of the halogen lamp and plotted the corrected graphs 4 and 5. It can be seen, that both follow a similar shape of one peek, but in the case of germanium there are significant dips at certain wave lengths. It seems like there are other ways of absorbing the photons which only come to effect at those specific wave lengths and reduce the induced voltage. 
+Our measured voltages were not completely to scale since the source of light did not emit light at even intensities. We've adjusted for this difference using measured relative intensity of the halogen lamp and plotted the corrected Graphs 4 and 5. It can be seen, that both follow a similar shape of one peek, but in the case of germanium there are significant dips at specific wavelengths. It seems like there are other ways of absorbing the photons which only come to effect at those specific wave lengths and reduce the induced voltage. 
 
 
 \begin{thebibliography}{0}
