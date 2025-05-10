@@ -115,8 +115,6 @@ Operační zesilovač je součástka reprezentovaná diagramem na obrázku 1, kt
     \caption{Schématická značka operačního zesilovače}
 \end{figure}
 
-%Ideální operační zesilovač by měl mít nekonečné zesílení, nekonečný vstupní odpor, nulový výstupní odpor a nekonečnou šířku pásma (tedy zesilovat všechny frekvence stejně). Reálné zesilovače se těmto vlastnostem pouze přibližují - mají vysoké, ale konečné zesílení, vysoký vstupní odpor (řádově $ M \Omega $ ), nízký výstupní odpor (desítky $ \Omega $ ) a omezenou šířku pásma.
-
 Ideální zesilovač má nekonečné zesílení a neteče skrz něj proud. Umí pracovat i se střídavým proudem na vstupu a v takovém případě by měl na všech frekvencích zesilovat stejně. Reálný zesilovač ale funguje dobře jen na nějakém rozmezí. Zavádí se proto pojem šířka pásma, jako ty frekvence při kterých zesílení klesne na nejméně $ A_{u, max} / \sqrt{2}  $  maximální hodnoty. V tomto praktiku ověřím základní vlastnosti zesilovače v několika jednoduchých zapojeních a chování při střídavém signálu na vstupu.
 
 \vspace{20pt}
@@ -195,7 +193,7 @@ Jako odpory jsem použil $ R_1 = 10 \text{ k} \Omega $ a $ R_2 = 20 \text{ k} \O
 
 \subsection{Šířka pásma zapojení s invertujícím vstupem}
 
-Zapojení nechám stejné, ale tentokrát na vstup přivedu střídavé napětí o frekvenci $ \omega $ a výstup budu měřit osciloskopem. Naměřená data jsou uvedená v tabulce 3 a zesílení $ A_u = U_0 / U_1 $ jsem vynesl do grafu 2. Je vidět, že zesílení si drží hodnotu $ 2 $ až do frekvence vstupu $ \omega = 25 $ kHz a pak postupně klesá k nule. Šířka operačního pásma je tedy rozmezí, kdy hodnoty překračují hodnotu $ A_{u,max} / \sqrt{2} = 2 / \sqrt{2} = \sqrt{2}    $, takže interval $ \omega \in (0, 40) $   kHz.
+Zapojení nechám stejné, ale tentokrát na vstup přivedu střídavé napětí o frekvenci $ f $ a výstup budu měřit osciloskopem. Naměřená data jsou uvedená v tabulce 3 a zesílení $ A_u = U_0 / U_1 $ jsem vynesl do grafu 2. Je vidět, že zesílení si drží hodnotu $ 2 $ až do frekvence vstupu $ f = 25 $ kHz a pak postupně klesá k nule. Šířka operačního pásma je tedy rozmezí, kdy hodnoty překračují hodnotu $ A_{u,max} / \sqrt{2} = 2 / \sqrt{2} = \sqrt{2}    $, takže interval $ f \in (0, 40) $   kHz.
 
 \newpage
 
@@ -204,7 +202,7 @@ Zapojení nechám stejné, ale tentokrát na vstup přivedu střídavé napětí
         \centering
         \begin{tabular}{| c c c c |}
             \hline
-            $ \omega $  (kHz) & $ U_0 $ (V) & $ U_1 $ (V) & $ A_u $  \\
+            $ f $  (kHz) & $ U_0 $ (V) & $ U_1 $ (V) & $ A_u $  \\
             \hline
             00.500 & 4.266 & 2.133 & 2.000 \\
             10.000 & 4.296 & 2.133 & 2.014 \\
@@ -255,14 +253,14 @@ A_{\text{u max}} = - 10.0
 \end{equation}
 
 
-Na vstup jsem přivedl střídavé napětí o frekvenci $ \omega $ a stabilní amplitudě $ U_1 = 1.120 $ V a měřil amplitudu výstupního napětí. Naměřená data jsou v tabulce 3 a graf 3 je porovnává s teoretickým vztahem (3). Šířka pásma je v tomto případě $ \omega \in (0, 168) $ kHz.
+Na vstup jsem přivedl střídavé napětí o frekvenci $ \omega $ a stabilní amplitudě $ U_1 = 1.120 $ V a měřil amplitudu výstupního napětí. Naměřená data jsou v tabulce 3 a graf 3 je porovnává s teoretickým vztahem (3). Šířka pásma je v tomto případě $ \omega \in (0, 168) $ Hz.
 
 \begin{table}[h]
     \begin{minipage}{.5\linewidth}
         \centering
         \begin{tabular}{| c c c c c |}
             \hline
-            $ \omega $ (kHz) & $ U_1 $ (V)  & $ U_0 $  (V) & $ U_0 $ teorie (V) & $ A_u $  \\
+            $ f $ (kHz) & $ U_1 $ (V)  & $ U_0 $  (V) & $ U_0 $ teorie (V) & $ A_u $  \\
             \hline    
             10  & 1.120 &  -10.898  &  -11.16 & -9.980 \\
             50  & 1.120 &  -10.494  &  -10.67 & -9.540 \\
@@ -430,7 +428,7 @@ Na vstupním napětí jsem nastavil sinusový signál $ \sin(x) $  a na výstupu
 
 V této úloze jsem ověřil základní vlastnosti operačního zesilovače. U zapojení komparátoru jsem pozoroval očekávané přepínání polarity výstupního napětí v závislosti na rozdílu vstupních hodnot $U_1$ a $U_\text{ref}$ a při zapojení s invertujícím a neinvertujícím vstupem jsem získal zesílení $-2.033 \pm 0.001$ a $ 3.045 \pm 0.002 $, což bylo v dobré shodě s předpokládanou hodnotou $ -2 $ a $ 3 $.
 
-Šířku pásma zesilovače jsem určil do $40 $ kHz při zapojení s invertujícím vstupem a zjistil, že se toto rozmezí dá rozšířit zapojením paralelního kondenzátoru do zpětnovazební větve u tzv. dolnofrekvenční propusti, kdy se šířka zvětšila na $ 168 $  kHz, při kapacitě kondenzátoru $ 10 $ nF.
+Šířku pásma zesilovače jsem určil do $40 $ kHz při zapojení s invertujícím vstupem a zjistil, že se toto rozmezí dá zmenšit zapojením paralelního kondenzátoru do zpětnovazební větve u tzv. dolnofrekvenční propusti, kdy se šířka zmenšila na $ 168 $  Hz, při kapacitě kondenzátoru $ 10 $ nF.
 
 Dalším úkolem bylo zapojení rozdílového zesilovače, kde jsem na výstupu pozoroval zesílení rozdílu vstupních napětí o $ 2.028 \pm 0.002 $, když předpokládaná hodnota měla být $ 2 $.
 

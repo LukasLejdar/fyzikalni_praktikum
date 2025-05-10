@@ -1,5 +1,5 @@
 set ylabel "$ A_u $"
-set xlabel "$ \\omega $ (kHz) "
+set xlabel "$ f $ (kHz) "
 
 set term epslatex size 4,2.8
 set output "pasmo.tex"

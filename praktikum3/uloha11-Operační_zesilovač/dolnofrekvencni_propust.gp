@@ -1,4 +1,4 @@
-set xlabel "$ \\omega $ (kHz)"
+set xlabel "$ f $ (Hz)"
 set ylabel "$ A_u $"
 
 CF = 10e-9
