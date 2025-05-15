@@ -1,0 +1,195 @@
+\documentclass[a4paper,11pt]{article}
+
+% Kodovani (cestiny) v dokumentu: utf-8
+%\usepackage[cp1250]{inputenc}	% Omezena stredoevropska kodova stranka, pouze MSW.
+\usepackage[utf8]{inputenc}	% Doporucujeme pouzivat UTF-8 (unicode).
+
+\usepackage[margin=2cm]{geometry}
+\newtoks\jmenopraktika \newtoks\jmeno \newtoks\datum
+\newtoks\obor \newtoks\skupina \newtoks\rocnik \newtoks\semestr
+\newtoks\cisloulohy \newtoks\jmenoulohy
+\newtoks\tlak \newtoks\teplota \newtoks\vlhkost
+
+\jmenopraktika={Fyzikální praktikum 3}
+\jmeno={Lukáš Lejdar}
+\datum={29. dubna 2025}
+\obor={F}
+\skupina={Út 14:00}
+
+\cisloulohy={3}
+\jmenoulohy={Millikanův experiment}
+
+\tlak={101{,}35}
+\teplota={21,1}
+\vlhkost={47,7}
+
+
+%%%%%%%%%%% Uzitecne balicky:
+\usepackage[czech]{babel}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{xspace}
+\usepackage{url}
+\usepackage{indentfirst}
+\usepackage{wrapfig}
+\usepackage{xcolor}
+\usepackage{subfig}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{tikzsymbols}
+\usepackage{newfloat}
+
+\DeclareFloatingEnvironment[fileext=lof]{graph}
+\captionsetup[graph]{labelformat=simple, labelsep=colon, name=Graf}
+
+%%%%%% Zamezeni parchantu:
+\widowpenalty 10000 \clubpenalty 10000 \displaywidowpenalty 10000
+%%%%%% Parametry pro moznost vsazeni vetsiho poctu obrazku na stranku
+\setcounter{topnumber}{3}	  % max. pocet floatu nahore (specifikace t)
+\setcounter{bottomnumber}{3}	  % max. pocet floatu dole (specifikace b)
+\setcounter{totalnumber}{6}	  % max. pocet floatu na strance celkem
+\renewcommand\topfraction{0.9}	  % max podil stranky pro floaty nahore
+\renewcommand\bottomfraction{0.9} % max podil stranky pro floaty dole
+\renewcommand\textfraction{0.1}	  % min podil stranky, ktery musi obsahovat text
+\intextsep=8mm \textfloatsep=8mm  %\intextsep pro ulozeni [h] floatu a \textfloatsep pro [b] or [t]
+
+% Tecky za cisly sekci:
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
+% Jednopismenna mezera mezi cislem a nazvem kapitoly:
+\makeatletter \def\@seccntformat#1{\csname the#1\endcsname\hspace{1ex}} \makeatother
+%
+\newcommand{\vsn}[4]{\ensuremath{#1 =} #2(#3)\,#4}
+\newcommand{\vrn}[6]{\ensuremath{#1 =} (#2 $\pm$ #3)\,#4 ($p=$ #5\,\%, $\nu=$ #6)}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+		\node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Zacatek dokumentu
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\thispagestyle{empty}
+
+{
+\begin{center}
+\sf 
+{\Large Ústav fyziky a technologií plazmatu Přírodovědecké fakulty Masarykovy univerzity} \\
+\bigskip
+{\huge \bfseries FYZIKÁLNÍ PRAKTIKUM} \\
+\bigskip
+{\Large \the\jmenopraktika}
+\end{center}
+
+\bigskip
+
+\sf
+\noindent
+\setlength{\arrayrulewidth}{1pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l l}
+\large {\bfseries Zpracoval:}  \the\jmeno & \large  {\bfseries Naměřeno:} \the\datum\\[2mm]
+\large  {\bfseries Obor:} \the\obor  \hspace{40mm}  {\bfseries Skupina:} \the\skupina %
+&\large {\bfseries Testováno:}\\
+\\
+\hline
+\end{tabular*}
+}
+
+\bigskip
+
+{
+\sf
+\noindent \begin{tabular}{p{4cm} p{0.6\textwidth}}
+\Large  Úloha č. {\bfseries \the\cisloulohy:} \par
+\smallskip
+&\Large \bfseries \the\jmenoulohy  \\[2mm]
+\end{tabular}
+}
+
+\vskip1cm
+
+\section{Úvod}
+
+\section{Teorie}
+
+Principem Millikanova experimentu je měření rovnovážné rychlosti kapičky oleje nabitých na jednotky elementárního náboje. Síla působící na takovou kapičku v důsledku intenzity elektrického pole $ E $ bude
+
+\begin{equation}
+F_e =  \mid q \mid E
+\end{equation}
+
+\noindent
+kde $ q $ je náboj kapičky. Mimo to bude uvnitř měřící komory působit několik dalších sil, které je potřeba započíst. První z nich je gravitační síla
+
+\begin{equation}
+F_g = \frac{4}{3} \pi r^{3} \rho g
+\end{equation}
+
+\noindent
+kde $ r $ je poloměr kapičky, $ \rho $ je hustota oleje a $ g $ je tíhové zrychlení. Na kapičky ve vzduchu bude taky působit vztlaková síla
+
+\begin{equation}
+F_{vz} =  \frac{4}{3} \pi r^{3} \rho_{vz} g
+\end{equation}
+
+\noindent
+kde $ \rho_{vz} $ je hustota vzduchu a odporová síla vyjádřená Stokesovým zákonem
+
+\begin{equation}
+ F_t = 6 \pi \eta r v
+\end{equation}
+
+\noindent
+kde $ \eta $ je viskozita vzduchu a $ v $ rychlosti kapičky. Síla elektrického pole bude v experimentálním uspořádání působit buď směrem proti gravitačnímu zrychlení nebo s ním. Pokud naměříme rovnovážnou rychlost jedné kapičky v obou případech, dostaneme dvě rovnice o neznámých $ r $ a $ q $ 
+
+\begin{align*}
+    \frac{4}{3} \pi r^{3} \rho g + 6 \pi \eta r v_2 = | q |  E + \frac{4}{3} \pi r^{3} \rho_{vz} g \\
+    \frac{4}{3} \pi r^{3} \rho g + 6 \pi \eta r v_2  + | q |  E = \frac{4}{3} \pi r^{3} \rho_{vz} g
+\end{align*}
+
+\noindent
+které z nich vyjádříme jako
+
+\begin{equation}
+r^2 = \frac{9 \eta (v_1 - v_2) }{4 g (\rho - \rho_{vz})}
+\end{equation}
+
+\begin{equation}
+|q| = 3 \pi \eta r \frac{v_1 + v_2}{E}
+\end{equation}
+
+\section{Postup měření}
+
+Fotka měřící aparatury je na obrázku (1). Základem je komůrka s kondenzátorem kam se  vstřikují olejové kapičky ze skleněné nádoby pomocí gumového balónku. Některé kapky se při vstřikování navíjejí třením, další mohou získat náboj díky připojenému zdroji $ \alpha $-částic  ($ ^{241} $Am, 74 kBq ).
+
+Komůrka je vybavená vodováhou, osvětlovací lampou a mikroskopem pro sledování kapek. Napětí na kondenzátoru zajišťuje zdroj regulovatelného napětí napětí v rozmezí (0-300V), který je možné zapojit do série s druhým o fixním napětí (300V). Sledovat pohyb kapek umožňuje kamera skrz zvětšovací objektiv připojená k počítači. 
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.6\textwidth]{aparatura.jpg}
+    \caption{Zapojení aparatury, 1 - komůrka s kondenzátorem, 2 - mikroskop, 3 - přepínač napětí, 4 - kamera, 5 - zdroj napětí}
+\end{figure}
+
+\section{Zpracování měření}
+
+Celkem jsem nahrál 2 videa pro každé napětí na kondenzátoru v rozmezí (300 - 600) V po 50 V a dvě video při 100 V. Prvním krokem při zpracování je zjisti náboj alespoň 50 kapiček z jejich rychlostí před a po změně polarity napětí. Z videí bylo potřeba nejdřív digitálně odstranit pozadí 
+
+
+\section{Výsledky měření}
+
+\begin{figure}[htpb]
+    \centering
+    \include{charges.tex}
+    \caption{}
+\end{figure}
+
+\section{Závěr}
+
+\begin{thebibliography}{0}
+\bibitem{tabulky} Hustota pevných látek. Dostupné z~\url{http://www.converter.cz/tabulky/hustota-pevne.htmf}.   
+\end{thebibliography}
+
+\end{document}
