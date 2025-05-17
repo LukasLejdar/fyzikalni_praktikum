@@ -70,6 +70,22 @@
 % Zacatek dokumentu
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\usepackage{listings}
+
+\definecolor{codegray}{gray}{0.95}
+
+\lstdefinestyle{mypython}{
+    backgroundcolor=\color{codegray},
+    language=Python,
+    basicstyle=\ttfamily\footnotesize,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!60!black},
+    stringstyle=\color{orange},
+    showstringspaces=false,
+    breaklines=true,
+    tabsize=4
+}
+
 \begin{document}
 
 \thispagestyle{empty}
@@ -109,13 +125,15 @@
 \end{tabular}
 }
 
-\vskip1cm
+\vspace{-10pt}
 
 \section{Úvod}
 
+V této úloze budu měřit náboje malých olejových kapiček. Ukáže se, že tyto náboje jsou celočíselnými násobky elementárního náboje, který je pak možné vypočítat. Tento experiment poprvé provedl Robert A. Millikan v roce 1913, za který později dostal Nobelovu cenu za Fyziku.
+
 \section{Teorie}
 
-Principem Millikanova experimentu je měření rovnovážné rychlosti kapičky oleje nabitých na jednotky elementárního náboje. Síla působící na takovou kapičku v důsledku intenzity elektrického pole $ E $ bude
+Principem Millikanova experimentu je měření rovnovážné rychlosti kapičky oleje. Síla působící na takovou kapičku v důsledku intenzity elektrického pole $ E $ bude
 
 \begin{equation}
 F_e =  \mid q \mid E
@@ -129,7 +147,7 @@ F_g = \frac{4}{3} \pi r^{3} \rho g
 \end{equation}
 
 \noindent
-kde $ r $ je poloměr kapičky, $ \rho $ je hustota oleje a $ g $ je tíhové zrychlení. Na kapičky ve vzduchu bude taky působit vztlaková síla
+kde $ r $ je poloměr kapičky, $ \rho $ je hustota oleje a $ g $ je tíhové zrychlení. Potom vztlaková síla
 
 \begin{equation}
 F_{vz} =  \frac{4}{3} \pi r^{3} \rho_{vz} g
@@ -146,7 +164,7 @@ kde $ \rho_{vz} $ je hustota vzduchu a odporová síla vyjádřená Stokesovým 
 kde $ \eta $ je viskozita vzduchu a $ v $ rychlosti kapičky. Síla elektrického pole bude v experimentálním uspořádání působit buď směrem proti gravitačnímu zrychlení nebo s ním. Pokud naměříme rovnovážnou rychlost jedné kapičky v obou případech, dostaneme dvě rovnice o neznámých $ r $ a $ q $ 
 
 \begin{align*}
-    \frac{4}{3} \pi r^{3} \rho g + 6 \pi \eta r v_2 = | q |  E + \frac{4}{3} \pi r^{3} \rho_{vz} g \\
+    \frac{4}{3} \pi r^{3} \rho g + 6 \pi \eta r v_1 = | q |  E + \frac{4}{3} \pi r^{3} \rho_{vz} g \\
     \frac{4}{3} \pi r^{3} \rho g + 6 \pi \eta r v_2  + | q |  E = \frac{4}{3} \pi r^{3} \rho_{vz} g
 \end{align*}
 
@@ -163,9 +181,9 @@ r^2 = \frac{9 \eta (v_1 - v_2) }{4 g (\rho - \rho_{vz})}
 
 \section{Postup měření}
 
-Fotka měřící aparatury je na obrázku (1). Základem je komůrka s kondenzátorem kam se  vstřikují olejové kapičky ze skleněné nádoby pomocí gumového balónku. Některé kapky se při vstřikování navíjejí třením, další mohou získat náboj díky připojenému zdroji $ \alpha $-částic  ($ ^{241} $Am, 74 kBq ).
+Fotka měřící aparatury je na Obrázku (1). Základem je komůrka s kondenzátorem kam se  vstřikují olejové kapičky ze skleněné nádoby pomocí gumového balónku. Některé kapky se při vstřikování nabíjejí třením, další mohou získat náboj díky připojenému zdroji $ \alpha $-částic  ($ ^{241} $Am, 74 kBq ).
 
-Komůrka je vybavená vodováhou, osvětlovací lampou a mikroskopem pro sledování kapek. Napětí na kondenzátoru zajišťuje zdroj regulovatelného napětí napětí v rozmezí (0-300V), který je možné zapojit do série s druhým o fixním napětí (300V). Sledovat pohyb kapek umožňuje kamera skrz zvětšovací objektiv připojená k počítači. 
+Komůrka je vybavená vodováhou, osvětlovací lampou a mikroskopem pro sledování kapek. Napětí na kondenzátoru zajišťuje zdroj regulovatelného napětí v rozmezí (0-300V) a druhý zdroj zapojený do série s prvním o fixním napětí (300V). Sledovat pohyb kapek umožňuje kamera skrz zvětšovací objektiv. 
 
 \begin{figure}[htpb]
     \centering
@@ -175,21 +193,62 @@ Komůrka je vybavená vodováhou, osvětlovací lampou a mikroskopem pro sledov�
 
 \section{Zpracování měření}
 
-Celkem jsem nahrál 2 videa pro každé napětí na kondenzátoru v rozmezí (300 - 600) V po 50 V a dvě video při 100 V. Prvním krokem při zpracování je zjisti náboj alespoň 50 kapiček z jejich rychlostí před a po změně polarity napětí. Z videí bylo potřeba nejdřív digitálně odstranit pozadí 
+Celkem jsem nahrál 2 až 3 videa pro každé napětí na kondenzátoru v rozmezí (300 - 600) V po 50 Voltech. Prvním krokem při zpracování je zjistit náboj alespoň 50 kapiček z jejich rychlostí před a po změně polarity napětí. Z videí bylo potřeba nejdřív digitálně odstranit pozadí a potom v každém obrázku rozpoznat kapičky. Pro tento účel existuje v pythonu knihovna trackpy, která pomocí funkce \texttt{trackpy.locate} dokáže kapičky v každém framu najít a označit. Proces zpracování jednoho framu je uvedený na Obrázcích 2.
 
+%\begin{lstlisting}[style=mypython]
+%features = trackpy.locate(gray, diameter=13, minmass=10)
+%\end{lstlisting}
 
-\section{Výsledky měření}
+\begin{table}[htpb]
+    \begin{minipage}{.3\linewidth}
+        \centering
+        \includegraphics[width=\textwidth]{frame_o.jpg}
+    \end{minipage} 
+    \hfill
+    \begin{minipage}{.3\linewidth}
+        \centering
+        \includegraphics[width=\textwidth]{frame_bc.jpg}
+    \end{minipage} 
+    \hfill
+    \begin{minipage}{.3\linewidth}
+        \centering
+        \includegraphics[width=\textwidth]{frame_f.jpg}
+    \end{minipage} 
+    \hfill
+    \captionsetup{type=figure}
+    \caption{Postup zpracování každého framu z videa. Nalevo je vidět původní obrázek, uprostřed bylo odebrané pozadí a napravo je jsou anotované rozpoznané kapičky. }
+\end{table}
+
+Rozpoznání kapek v každém jednotlivém framu ještě neumožňuje určit, která kapička odpovídá které v následujícím framu. K propojení těchto bodů do trajektorií napříč framy souží v knihovně funkce \texttt{trackpy.link}. V Grafu 3 je uveden příklad zpracovaného videa při napětí 300 V. 
 
 \begin{figure}[htpb]
     \centering
-    \include{charges.tex}
-    \caption{}
+    \input{traj.tex}
+    \captionsetup{type=graph}
+    \caption{Trajektorie kapiček při napětí 300 V}
 \end{figure}
+
+V obrázku jsou jasně rozpoznatelné místa, kde několik kapek ostře změní směr letu, kvůli změně polarity napětí. Z trajektorií jsem vybíral jen ty, které jsou co nejpřímější před a po změně napětí a z lineárního fitu určil jejich rychlosti $ v_1 $ a $ v_2 $. Tímto způsobem jsem z 15 videí získal 61 měření a podle vztahů (5) a (6) vypočítal výsledné náboje. Tyto náboje jsou ve vzestupném pořadí vykreslené do Grafu 2.
+
+\begin{figure}[htpb]
+    \centering
+    \input{all_charges.tex}
+    \captionsetup{type=graph}
+    \caption{Zjištěné náboje kapiček, označené barevně podle napětí při kterých byli měřené.}
+\end{figure}
+
+Graf má spíš schodovitý charakter než spojitý průběh přímky. Některé body ale schodovitý tvar narušují, takže je vyřadím jako chybné měření. Zbylé hodnoty jsem rozdělil do skupiny a pro každou určil střední hodnotu, které vyšly postupně $ \bar{q}_1 = 1.58 $, $ \bar{q}_2 = 3.23 $, $ \bar{q}_3 = 4.84 $ a $ \bar{q}_3 = 6.36 $ v jednotkách $ 10 ^{-19} $ C. Krok mezi skupinami je přibližně 1.6, což naznačuje, že jednotlivé skupiny odpovídají celým násobkům elemntárního náboje od 1 do 4. Každé hodnotě jsem tedy přiřadil počet elementárních nábojů a získal hodnoty $ e_i = \frac{q_i}{n} $. Statistickým vyhodnocením pak vyšla konečná hodnota náboje
+
+\begin{equation}
+e = (1.61 \pm 0.03) \cdot 10^{-19} \text{ C } \ (p= 99\,\%, \nu= 52)
+\end{equation}
 
 \section{Závěr}
 
+Změřil jsem rovnovážnou rychlost 60 kapiček při různých polaritách napětí v komoře a podle vztahů (5) a (6) potom určil jejich náboj. Ukázalo se, že náboje spadaly do rovnoměrně oddělených diskrétních hodnot, odpovídajících počtu nábojů v kapičkách. Z těchto dat už bylo možné vypočítat elementární náboj $ e = (1.61 \pm 0.03) \cdot 10^{-19} \text{ C } $. Tabulková hodnota je $ e = 1.602 \cdot 10 ^{-19} $. Největším zdrojem nejistoty je pravděpodobně výběr měřených kapiček. Nejlépe vycházejí ty, které letí rovnoměrně přímo dolů a pak nahoru, ale takových je v natočených videích málo. 
+
 \begin{thebibliography}{0}
-\bibitem{tabulky} Hustota pevných látek. Dostupné z~\url{http://www.converter.cz/tabulky/hustota-pevne.htmf}.   
+\bibitem{tabulky} Návod k úloze ~\url{https://is.muni.cz/auth/el/sci/jaro2025/F4210/um/fp3-3_Millikan.pdf}.   
 \end{thebibliography}
 
 \end{document}

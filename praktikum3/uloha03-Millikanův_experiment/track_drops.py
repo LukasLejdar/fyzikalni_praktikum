@@ -22,7 +22,8 @@ def get_video_frames(video):
         i += 1
         yield i, frame
 
-for video_file in os.listdir(mereni_dir):
+#for video_file in os.listdir(mereni_dir):
+for video_file in ['300V_0']:
     video = cv2.VideoCapture(mereni_dir + video_file)
     if not video.isOpened():
         print("Error: Cannot open video " + video_file)
@@ -33,12 +34,11 @@ for video_file in os.listdir(mereni_dir):
     background = np.median([frame for _, frame in get_video_frames(video)], axis=0).astype(np.uint8)
 
     video.set(cv2.CAP_PROP_POS_FRAMES, 0)
+
     all_features = []
 
-    for i, oframe in get_video_frames(video):
-        print(i)
-
-        frame = cv2.absdiff(oframe, background)
+    for i, frame in get_video_frames(video):
+        frame = cv2.absdiff(frame, background)
         frame = cv2.medianBlur(frame, blur)
         frame = cv2.convertScaleAbs(frame, alpha=contrast, beta=brightness)
 
@@ -48,17 +48,11 @@ for video_file in os.listdir(mereni_dir):
         features = tp.locate(gray, diameter=13, minmass=10)
         features['frame'] = i
 
-        if i == 40:
-            cv2.imwrite('frame_0_10.jpg', oframe)
-            cv2.imwrite('frame_10.jpg', frame)
-            print()
-
-        #tp.annotate(features, frame)
-
         all_features.append(features)
 
     f = pd.concat(all_features).reset_index(drop=True)
     t = tp.link(f, search_range=10, memory=3)
+
 
     print('saving to trajectories/' + video_file + ".csv")
     t.to_csv('trajectories/' + video_file + ".csv" , index=False)
@@ -75,7 +69,7 @@ for video_file in os.listdir(mereni_dir):
 
     ax.set_xlabel('Frame (time)')
     ax.set_ylabel('y-position (pixels)')
-    ax.set_title(video_file + ' Click on trajectories to select')
+    ax.set_title(video_file)
     ax.grid(True)
 
     plt.show()

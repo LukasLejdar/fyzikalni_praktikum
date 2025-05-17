@@ -1,9 +1,9 @@
 %!PS-Adobe-2.0 EPSF-2.0
-%%Title: charges.tex
+%%Title: all_charges.tex
 %%Creator: gnuplot 5.4 patchlevel 4
 %%CreationDate: Sat May 17 14:08:36 2025
 %%DocumentFonts: 
-%%BoundingBox: 50 50 302 222
+%%BoundingBox: 50 50 366 230
 %%EndComments
 %%BeginProlog
 /gnudict 256 dict def
@@ -43,7 +43,7 @@ gnudict begin
 /vpt vpt_ def
 /doclip {
   ClipToBoundingBox {
-    newpath 50 50 moveto 302 50 lineto 302 222 lineto 50 222 lineto closepath
+    newpath 50 50 moveto 366 50 lineto 366 230 lineto 50 230 lineto closepath
     clip
   } if
 } def
@@ -436,7 +436,7 @@ systemdict /pdfmark known not {
   userdict /pdfmark systemdict /cleartomark get put
 } if
 SDict begin [
-  /Title (charges.tex)
+  /Title (all_charges.tex)
   /Subject (gnuplot plot)
   /Creator (gnuplot 5.4 patchlevel 4)
 %  /Producer (gnuplot)
@@ -481,167 +481,707 @@ doclip
 0.050 0.050 scale
 0 setgray
 newpath
+gsave % colour palette begin
+/maxcolors 7 def
+/HSV2RGB {  exch dup 0.0 eq {pop exch pop dup dup} % achromatic gray
+  { /HSVs exch def /HSVv exch def 6.0 mul dup floor dup 3 1 roll sub
+     /HSVf exch def /HSVi exch cvi def /HSVp HSVv 1.0 HSVs sub mul def
+	 /HSVq HSVv 1.0 HSVs HSVf mul sub mul def 
+	 /HSVt HSVv 1.0 HSVs 1.0 HSVf sub mul sub mul def
+	 /HSVi HSVi 6 mod def 0 HSVi eq {HSVv HSVt HSVp}
+	 {1 HSVi eq {HSVq HSVv HSVp}{2 HSVi eq {HSVp HSVv HSVt}
+	 {3 HSVi eq {HSVp HSVq HSVv}{4 HSVi eq {HSVt HSVp HSVv}
+	 {HSVv HSVp HSVq} ifelse} ifelse} ifelse} ifelse} ifelse
+  } ifelse} def
+/Constrain {
+  dup 0 lt {0 exch pop}{dup 1 gt {1 exch pop} if} ifelse} def
+/CMY2RGB {  1 exch sub exch 1 exch sub 3 2 roll 1 exch sub 3 1 roll exch } def
+/SelectSpace {ColorSpace (HSV) eq {HSV2RGB} {ColorSpace (CMY) eq
+  {CMY2RGB} if} ifelse} def
+/InterpolatedColor true def
+/grayindex {/gidx 0 def
+  {GrayA gidx get grayv ge {exit} if /gidx gidx 1 add def} loop} def
+/dgdx {grayv GrayA gidx get sub GrayA gidx 1 sub get
+  GrayA gidx get sub div} def 
+/redvalue {RedA gidx get RedA gidx 1 sub get
+  RedA gidx get sub dgdxval mul add} def
+/greenvalue {GreenA gidx get GreenA gidx 1 sub get
+  GreenA gidx get sub dgdxval mul add} def
+/bluevalue {BlueA gidx get BlueA gidx 1 sub get
+  BlueA gidx get sub dgdxval mul add} def
+/interpolate {
+  grayindex grayv GrayA gidx get sub abs 1e-5 le
+    {RedA gidx get GreenA gidx get BlueA gidx get}
+    {/dgdxval dgdx def redvalue greenvalue bluevalue} ifelse} def
+/GrayA [0 .1667 .3333 .5 .6667 .8333 1 ] def
+/RedA [.2667 .2431 .1922 .1216 .2078 .7059 .9922 ] def
+/GreenA [.0039 .2863 .4078 .6196 .7176 .8706 .9059 ] def
+/BlueA [.3294 .5373 .5569 .5373 .4745 .1725 .1451 ] def
+/pm3dround {maxcolors 0 gt {dup 1 ge
+	{pop 1} {maxcolors mul floor maxcolors 1 sub div} ifelse} if} def
+/pm3dGamma 1.0 1.5 Gamma mul div def
+/ColorSpace (RGB) def
+Color InterpolatedColor or { % COLOUR vs. GRAY map
+  InterpolatedColor { %% Interpolation vs. RGB-Formula
+    /g {stroke pm3dround /grayv exch def interpolate
+        SelectSpace setrgbcolor} bind def
+  }{
+  /g {stroke pm3dround dup cF7 Constrain exch dup cF5 Constrain exch cF15 Constrain 
+       SelectSpace setrgbcolor} bind def
+  } ifelse
+}{
+  /g {stroke pm3dround pm3dGamma exp setgray} bind def
+} ifelse
 1.000 UL
 LTb
 LCb setrgbcolor
 [] 0 setdash
 682 704 M
 63 0 V
-3898 0 R
+4259 0 R
 -63 0 V
 stroke
 LTb
-682 1066 M
+682 1086 M
 63 0 V
-3898 0 R
+4259 0 R
 -63 0 V
 stroke
-682 1427 M
+682 1468 M
 63 0 V
-3898 0 R
+4259 0 R
 -63 0 V
 stroke
-682 1789 M
+682 1850 M
 63 0 V
-3898 0 R
+4259 0 R
 -63 0 V
 stroke
-682 2150 M
+682 2233 M
 63 0 V
-3898 0 R
+4259 0 R
 -63 0 V
 stroke
-682 2512 M
+682 2615 M
 63 0 V
-3898 0 R
+4259 0 R
 -63 0 V
 stroke
-682 2873 M
+682 2997 M
 63 0 V
-3898 0 R
+4259 0 R
 -63 0 V
 stroke
-682 3235 M
+682 3379 M
 63 0 V
-3898 0 R
+4259 0 R
 -63 0 V
 stroke
 682 704 M
 0 63 V
-0 2468 R
+0 2612 R
 0 -63 V
 stroke
-1416 704 M
+1379 704 M
 0 63 V
-0 2468 R
+0 2612 R
 0 -63 V
 stroke
-2149 704 M
+2076 704 M
 0 63 V
-0 2468 R
+0 2612 R
 0 -63 V
 stroke
-2883 704 M
+2773 704 M
 0 63 V
-0 2468 R
+0 2612 R
 0 -63 V
 stroke
-3616 704 M
+3470 704 M
 0 63 V
-0 2468 R
+0 2612 R
 0 -63 V
 stroke
-4350 704 M
+4167 704 M
 0 63 V
-0 2468 R
+0 2612 R
+0 -63 V
+stroke
+4865 704 M
+0 63 V
+0 2612 R
 0 -63 V
 stroke
 1.000 UL
 LTb
-682 3235 N
+682 3379 N
 682 704 L
-3961 0 V
-0 2531 V
--3961 0 V
+4322 0 V
+0 2675 V
+-4322 0 V
 Z stroke
 1.000 UP
 1.000 UL
 LTb
 % Begin plot #1
+1.000 UL
+LTb
+0.83 0.83 0.83 C
+682 1308 M
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+stroke
+LTw
+% End plot #1
+% Begin plot #2
+1.000 UL
+LTb
+LCb setrgbcolor
+[] 0 setdash
+0.83 0.83 0.83 C
+682 1938 M
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+stroke
+LTw
+% End plot #2
+% Begin plot #3
+1.000 UL
+LTb
+LCb setrgbcolor
+[] 0 setdash
+0.83 0.83 0.83 C
+682 2554 M
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+stroke
+LTw
+% End plot #3
+% Begin plot #4
+1.000 UL
+LTb
+LCb setrgbcolor
+[] 0 setdash
+0.83 0.83 0.83 C
+682 3134 M
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+44 0 V
+43 0 V
+44 0 V
+stroke
+LTw
+% End plot #4
+% Begin plot #5
 1.000 UP
 1.000 UL
 LTb
-LCa setrgbcolor
-755 1270 CircleF
-829 1271 CircleF
-902 1279 CircleF
-975 1285 CircleF
-1049 1285 CircleF
-1122 1796 CircleF
-1195 1815 CircleF
-1269 1839 CircleF
-1342 1848 CircleF
-1416 1866 CircleF
-1489 1869 CircleF
-1562 1874 CircleF
-1636 1904 CircleF
-1709 1909 CircleF
-1782 1914 CircleF
-1856 1917 CircleF
-1929 1945 CircleF
-2002 2277 CircleF
-2076 2279 CircleF
-2149 2280 CircleF
-2222 2346 CircleF
-2296 2348 CircleF
-2369 2352 CircleF
-2442 2377 CircleF
-2516 2391 CircleF
-2589 2406 CircleF
-2663 2414 CircleF
-2736 2425 CircleF
-2809 2432 CircleF
-2883 2445 CircleF
-2956 2454 CircleF
-3029 2458 CircleF
-3103 2477 CircleF
-3176 2489 CircleF
-3249 2512 CircleF
-3323 2558 CircleF
-3396 2569 CircleF
-3469 2586 CircleF
-3543 2587 CircleF
-3616 2587 CircleF
-3689 2593 CircleF
-3763 2596 CircleF
-3836 2629 CircleF
-3909 2882 CircleF
-3983 2896 CircleF
-4056 2977 CircleF
-4130 2988 CircleF
-4203 3005 CircleF
-4276 3018 CircleF
-4350 3018 CircleF
-4423 3071 CircleF
-4496 3072 CircleF
-4570 3129 CircleF
+LCb setrgbcolor
+[] 0 setdash
+0 g .9286 g 752 1191 CircleF
+.7857 g 821 1302 CircleF
+.9286 g 891 1303 CircleF
+.5 g 961 1312 CircleF
+.9286 g 1031 1318 CircleF
+.7857 g 1100 1319 CircleF
+.2143 g 1170 1519 CircleF
+.9286 g 1240 1859 CircleF
+.2143 g 1309 1878 CircleF
+.9286 g 1379 1904 CircleF
+.7857 g 1449 1913 CircleF
+.3571 g 1519 1932 CircleF
+.0714 g 1588 1935 CircleF
+.6429 g 1658 1941 CircleF
+1728 1973 CircleF
+.9286 g 1797 1977 CircleF
+.7857 g 1867 1983 CircleF
+.6429 g 1937 1986 CircleF
+.5 g 2006 2016 CircleF
+.9286 g 2076 2099 CircleF
+.7857 g 2146 2203 CircleF
+.5 g 2216 2232 CircleF
+.9286 g 2285 2239 CircleF
+.3571 g 2355 2355 CircleF
+2425 2366 CircleF
+.6429 g 2494 2369 CircleF
+.3571 g 2564 2370 CircleF
+.6429 g 2634 2439 CircleF
+.7857 g 2704 2442 CircleF
+.6429 g 2773 2446 CircleF
+.0714 g 2843 2472 CircleF
+.6429 g 2913 2487 CircleF
+.5 g 2982 2503 CircleF
+3052 2512 CircleF
+.3571 g 3122 2522 CircleF
+.2143 g 3192 2530 CircleF
+3261 2544 CircleF
+.3571 g 3331 2553 CircleF
+.5 g 3401 2557 CircleF
+3470 2578 CircleF
+3540 2590 CircleF
+3610 2615 CircleF
+3680 2664 CircleF
+.3571 g 3749 2675 CircleF
+.5 g 3819 2693 CircleF
+3889 2694 CircleF
+.2143 g 3958 2695 CircleF
+.3571 g 4028 2700 CircleF
+.0714 g 4098 2704 CircleF
+.2143 g 4167 2739 CircleF
+4237 2796 CircleF
+.5 g 4307 3006 CircleF
+.3571 g 4377 3021 CircleF
+.0714 g 4446 3106 CircleF
+.3571 g 4516 3118 CircleF
+.0714 g 4586 3136 CircleF
+.2143 g 4655 3150 CircleF
+.3571 g 4725 3150 CircleF
+.2143 g 4795 3206 CircleF
+.0714 g 4865 3207 CircleF
+.2143 g 4934 3267 CircleF
 LTw
-% End plot #1
+% End plot #5
 2.000 UL
 LTb
 LCb setrgbcolor
 [] 0 setdash
 1.000 UL
 LTb
-682 3235 N
+682 3379 N
 682 704 L
-3961 0 V
-0 2531 V
--3961 0 V
+4322 0 V
+0 2675 V
+-4322 0 V
 Z stroke
-1.000 UP
+stroke gsave	%% draw gray scale smooth box
+maxcolors 0 gt {/imax maxcolors def} {/imax 1024 def} ifelse
+5112 704 translate 216 2675 scale 0 setlinewidth
+/ystep 1 imax div def /y0 0 def /ii 0 def
+{ y0 g 0 y0 N 1 0 V 0 ystep V -1 0 f
+/y0 y0 ystep add def /ii ii 1 add def
+ii imax ge {exit} if } loop
+grestore 0 setgray
 1.000 UL
 LTb
+5112 704 N
+216 0 V
+0 2675 V
+-216 0 V
+0 -2675 V
+Z stroke
+1.000 UL
+LTb
+1.000 UL
+LTb
+5328 895 M
+stroke
+5112 895 M
+216 382 R
+stroke
+5112 1277 M
+216 382 R
+stroke
+5112 1659 M
+216 382 R
+stroke
+5112 2041 M
+216 382 R
+stroke
+5112 2423 M
+216 382 R
+stroke
+5112 2805 M
+216 382 R
+stroke
+5112 3187 M
+1.000 UP
+stroke
+grestore % colour palette end
 stroke
 grestore
 end

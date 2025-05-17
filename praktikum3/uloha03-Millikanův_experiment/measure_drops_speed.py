@@ -1,29 +1,12 @@
-import cv2
-import numpy as np
-import argparse
-from background_remover import BackgroundRemover
-from drops_manager import DropsManager
-
-from drop_detector import find_drops, request_threshold
-from drops_tracker import DropsTracker
-
-from scipy.spatial import distance
-from scipy.optimize import linear_sum_assignment
-
-import matplotlib.pyplot as plt
-
 import os
-import mplcursors
-
+import cv2
+import ast
+import numpy as np
 import pandas as pd
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import r2_score
-import matplotlib.pyplot as plt
-
-import trackpy as tp
-
 from scipy.stats import linregress
 
+import mplcursors
+import matplotlib.pyplot as plt
 
 voltages = {
  '300V_0.csv' : 300,
@@ -60,7 +43,12 @@ csv_dir = 'trajectories/'
 
 particle_vels = {}
 
-for csv in os.listdir(csv_dir):
+with open('particles.txt', 'r') as file:
+    data = file.read()
+    particles_vels = ast.literal_eval(data)
+
+#for csv in os.listdir(csv_dir):
+for csv in ['300V_0.csv']:
 
     t = pd.read_csv('trajectories/' + csv)
 

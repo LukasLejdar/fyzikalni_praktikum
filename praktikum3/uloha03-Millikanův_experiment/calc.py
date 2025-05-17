@@ -36,6 +36,8 @@ air_density = 1.204
 g = 9.806
 d = 2.5e-3
 
+print(4/3 * np.pi * (0.0297e-3 / 30)**3 * g * (oil_density - air_density) * d / 300 )
+
 charges = []
 vx = []
 ch_voltages = []
@@ -69,22 +71,19 @@ combined = sorted(zip(charges, vx, ch_voltages))
 charges_sorted, vx_sorted, ch_voltages = zip(*combined)
 
 bounds = [ 
-    [1, 5],
-    [17, 18],
-    [23, 49],
-    [51, 60],
+    [0, 7],
+    [7, 23],
+    [23, 50],
+    [50, 61],
 ]
 
 charges_sorted = np.array(charges_sorted)
 ch_voltages = np.array(ch_voltages)
 
-print(np.hstack([charges_sorted[:, None], ch_voltages[:, None]]))
-
-
 for i in range(len(bounds)):
     bound = bounds[i]
-    for charge in charges_sorted[bound[0]:bound[1] + 1]:
-        print(charge, i+1, ch_voltages[i])
+    for k in range(bound[0], bound[1]):
+        print(charges_sorted[k], i+1, ch_voltages[k])
 
 
 plt.figure(figsize=(10, 5))
@@ -93,7 +92,9 @@ scatter = plt.scatter(np.arange(len(charges_sorted)), charges_sorted / q,
 plt.colorbar(scatter, label='Channel Voltage')
 plt.xlabel('Index')
 plt.ylabel('Charge / q')
+plt.yticks(np.arange(0, 5))
 plt.title('Charges Color-Coded by Voltage')
+plt.grid(True)
 plt.show()
 
 #plt.scatter(np.arange(len(charges)), charges_sorted / q)

@@ -9,6 +9,11 @@ def average(arr):
 
 # Load the data
 data = np.loadtxt('charges.txt')
-charge = data[:, 0] / data[:, 1]
+charge = data[:, 0] / data[:, 2]
+
+print(np.mean(data[data[:, 2] == 1, 0]))
+print(np.mean(data[data[:, 2] == 2, 0]))
+print(np.mean(data[data[:, 2] == 3, 0]))
+print(np.mean(data[data[:, 2] == 4, 0]))
 
 print(average(charge))
