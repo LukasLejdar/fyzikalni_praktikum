@@ -16,13 +16,16 @@ e = 2614.67
 f(x) = a*x**4 + b*x**3 + c*x**2 + d*x + e
 
 h = 6.6260 * 1e-34
-c = 299792458
+cl = 299792458
 eV = 1.602176634 * 1e-19
 
+set yrange[0:5]
+set ytics 0,1,6
 
-set ylabel "S"
-set xlabel "E (eV)"
+
+set ylabel "$ S \\cdot 10^{-6} $ "
+set xlabel "$ E $ (eV)"
 set output "silicon_S.tex"
-plot "silicon.txt" u (h*c/($1*1e-6*eV)):($2*1e9/f($1)) w lp lc -1 lt 7 t ""
+plot "silicon.txt" u (h*cl/($1*1e-6*eV)):($2*1e-3*0.3*1e6/f($1)) w lp lc -1 lt 7 t ""
 
 print(f(1))

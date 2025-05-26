@@ -129,13 +129,13 @@ E_{g} = \frac{h c}{\lambda_{max}}
 
 \vspace{10pt}
 
-We will then also proceed to measure the induced voltage for the whole spectrum. To do this, we also have to account for the fact, that our halogen lamp does not shine light with the same intensity at each wave length. To correct for this, we have a table of values of relative intensity $ D(\lambda) $  emitted by lamp, and we will correct with
+We will then also proceed to measure the induced voltage for the whole spectrum. To do this, we also have to account for the fact, that our halogen lamp does not shine light with the same intensity at each wavelength. To correct for this, we have a table of values of relative intensity $ D(\lambda) $  emitted by lamp, and we will correct with
 
 \begin{equation}
  S(\lambda) = \frac{U(\lambda)}{ D(\lambda) }
 \end{equation}
 
-As the last step, we will express each wave length $ \lambda $ as energy of the photon $ E $ and plot the calculated function $ S(E) $.
+As the last step, we will express each wavelength $ \lambda $ as energy of the photon $ E $ and plot the calculated function $ S(E) $.
 
 
 
@@ -148,7 +148,7 @@ As the last step, we will express each wave length $ \lambda $ as energy of the 
 
 \section{Results}
 
-We've separately measured one germanium diode and one made from silicon. The measured voltages as functions of wavelength can be seen in graphs 1 and 2. From these graphs, we can directly read the maximal wavelengths $ \lambda_{max} $  and the corresponding energy gaps from equation (2)
+We've measured one germanium diode and one made from silicon. The resulting voltages, as functions of wavelength, are presented in Table 1 and 2 and illustrated in Graphs 1 and 2. From these graphs, we can directly determine the maximum wavelengths $ \lambda_{max} $ and calculate the corresponding energy gaps using Equation (2).
 
 \begin{table}[htpb]
     \centering
@@ -159,7 +159,66 @@ We've separately measured one germanium diode and one made from silicon. The mea
     \end{tabular}
 \end{table}
 
- 
+\begin{table}[h]
+    \scriptsize
+    \centering
+    \begin{tabular}{| c c c c | c c c c | c c c c | }
+        \hline
+        $ \lambda $ (nm) & $ U_m $ (mV) & $ E $ (eV) & $ S \cdot 10^{6} $ & $ \lambda $ (nm) & $ U_m $ (mV) & $ E $ (eV) & $ S \cdot 10^{6} $ & $ \lambda $ (nm) & $ U_m $ (mV) & $ E $ (eV) & $ S \cdot 10^{6} $ \\
+        \hline
+        0.792 & 0.03 & 1.56 & 0.14 & 1.154 & 0.58 & 1.07 & 4.27 & 1.525 & 0.46 & 0.81 & 4.45 \\
+        0.853 & 0.06 & 1.45 & 0.31 & 1.160 & 0.57 & 1.06 & 4.24 & 1.550 & 0.42 & 0.79 & 4.19 \\
+        0.879 & 0.09 & 1.41 & 0.49 & 1.175 & 0.57 & 1.05 & 4.27 & 1.575 & 0.42 & 0.78 & 4.31 \\
+        0.899 & 0.12 & 1.37 & 0.67 & 1.200 & 0.62 & 1.03 & 4.69 & 1.600 & 0.36 & 0.77 & 3.90 \\
+        0.914 & 0.15 & 1.35 & 0.86 & 1.225 & 0.67 & 1.01 & 5.19 & 1.625 & 0.33 & 0.76 & 3.70 \\
+        0.925 & 0.18 & 1.34 & 1.05 & 1.250 & 0.72 & 0.99 & 5.70 & 1.650 & 0.32 & 0.75 & 3.75 \\
+        0.942 & 0.21 & 1.31 & 1.25 & 1.275 & 0.74 & 0.97 & 5.88 & 1.675 & 0.27 & 0.74 & 3.37 \\
+        0.960 & 0.24 & 1.29 & 1.46 & 1.300 & 0.77 & 0.95 & 6.22 & 1.680 & 0.24 & 0.73 & 3.04 \\
+        0.975 & 0.27 & 1.27 & 1.67 & 1.325 & 0.78 & 0.93 & 6.44 & 1.700 & 0.20 & 0.72 & 2.68 \\
+        0.985 & 0.30 & 1.25 & 1.88 & 1.350 & 0.75 & 0.91 & 6.29 & 1.725 & 0.21 & 0.71 & 3.04 \\
+        1.000 & 0.33 & 1.23 & 2.11 & 1.362 & 0.69 & 0.91 & 5.83 & 1.750 & 0.17 & 0.70 & 2.62 \\
+        1.015 & 0.36 & 1.22 & 2.34 & 1.375 & 0.66 & 0.90 & 5.63 & 1.775 & 0.20 & 0.69 & 3.62 \\
+        1.030 & 0.39 & 1.20 & 2.57 & 1.400 & 0.63 & 0.88 & 5.49 & 1.800 & 0.19 & 0.68 & 3.79 \\
+        1.045 & 0.42 & 1.18 & 2.81 & 1.425 & 0.70 & 0.87 & 6.15 & 1.825 & 0.15 & 0.67 & 3.64 \\
+        1.061 & 0.45 & 1.16 & 3.06 & 1.450 & 0.75 & 0.85 & 6.76 & 1.850 & 0.10 & 0.67 & 2.93 \\
+        1.075 & 0.48 & 1.15 & 3.31 & 1.475 & 0.72 & 0.84 & 6.63 & 1.875 & 0.08 & 0.66 & 3.17 \\
+        1.092 & 0.51 & 1.13 & 3.57 & 1.485 & 0.66 & 0.83 & 6.14 & 1.900 & 0.05 & 0.65 & 3.89 \\
+        1.107 & 0.54 & 1.11 & 3.83 & 1.500 & 0.60 & 0.82 & 5.69 & 1.930 & 0.01 & 0.64 & 7.35 \\
+        1.130 & 0.57 & 1.09 & 4.12 & 1.515 & 0.54 & 0.81 & 5.18 &       &      &      &      \\
+        \hline
+    \end{tabular}
+    \caption{Measured spectral photovoltage dependence of germanium diode.}
+\end{table}
+
+\begin{table}[h]
+    \scriptsize
+    \centering
+    \begin{tabular}{| c c c c | c c c c |}
+        \hline
+        $ \lambda $ (nm) & $ U_m $ (mV) & $ E $ (eV) & $ S \cdot 10^{6} $ & $ \lambda $ (nm) & $ U_m $ (mV) & $ E $ (eV) & $ S \cdot 10^{6} $ \\
+        \hline
+        0.593 & 0.03 & 2.09 & 0.64 & 0.938 & 0.54 & 1.32 & 3.05 \\
+        0.678 & 0.06 & 1.82 & 0.16 & 0.943 & 0.57 & 1.31 & 3.25 \\
+        0.724 & 0.09 & 1.71 & 0.29 & 0.948 & 0.60 & 1.30 & 3.45 \\
+        0.768 & 0.12 & 1.61 & 0.44 & 0.960 & 0.63 & 1.29 & 3.71 \\
+        0.803 & 0.15 & 1.54 & 0.61 & 0.975 & 0.66 & 1.27 & 3.99 \\
+        0.832 & 0.18 & 1.49 & 0.79 & 1.000 & 0.65 & 1.23 & 4.12 \\
+        0.848 & 0.21 & 1.46 & 0.96 & 1.020 & 0.63 & 1.21 & 4.09 \\
+        0.860 & 0.24 & 1.44 & 1.13 & 1.030 & 0.59 & 1.20 & 3.86 \\
+        0.869 & 0.27 & 1.42 & 1.30 & 1.040 & 0.51 & 1.19 & 3.41 \\
+        0.879 & 0.30 & 1.41 & 1.48 & 1.050 & 0.41 & 1.18 & 2.74 \\
+        0.884 & 0.33 & 1.40 & 1.65 & 1.060 & 0.29 & 1.16 & 2.01 \\
+        0.893 & 0.36 & 1.38 & 1.84 & 1.073 & 0.24 & 1.15 & 1.69 \\
+        0.900 & 0.39 & 1.37 & 2.03 & 1.085 & 0.19 & 1.14 & 1.31 \\
+        0.908 & 0.42 & 1.36 & 2.22 & 1.100 & 0.14 & 1.12 & 0.96 \\
+        0.917 & 0.45 & 1.35 & 2.43 & 1.110 & 0.11 & 1.11 & 0.75 \\
+        0.921 & 0.48 & 1.34 & 2.61 & 1.160 & 0.01 & 1.06 & 0.06 \\
+        0.928 & 0.51 & 1.33 & 2.82 &       &      &      &      \\
+        \hline
+    \end{tabular}
+    \caption{Measured spectral photovoltage dependence of silicon diode.}
+\end{table}
+
 
 \begin{table}[htpb]
     \begin{minipage}[b]{.45\linewidth}
@@ -177,7 +236,7 @@ We've separately measured one germanium diode and one made from silicon. The mea
     \end{minipage} 
 \end{table}
 
-To also get the correct relative intensities of induced voltage, we need to divide by the relative intensity of light emitted by our lamp. The measured relative intensities can be seen in Table 1 and for the rest we will interpolate by a polynomial fit.
+To also get the correct relative intensities of induced voltage, we need to divide by the relative intensity of light emitted by our lamp. The measured relative intensities can be seen in Table 3 and for the rest we will interpolate by a polynomial fit.
 
 \begin{table}[htpb]
     \begin{minipage}[b]{.45\linewidth}
@@ -200,7 +259,7 @@ To also get the correct relative intensities of induced voltage, we need to divi
         \centering
         \resizebox{\textwidth}{!}{ \input{cejchovani.tex} }
         \captionsetup{type=graph}
-        \caption{Fit of relative intensities from Table 1}
+        \caption{Fit of relative intensities from Table 3}
     \end{minipage} 
 \end{table}
 
@@ -222,15 +281,80 @@ Unfortunately, our data points don't go all the way to the smallest measured wav
     \end{minipage} 
 \end{table}
 
+
 \section{Conclusion}
 
 We've measured the spectral dependence of photovoltage induced by a monochromatic beam of light on PN junctions of a germanium and silicon diode which is shown in Graphs 1 and 2. A~measured voltage was only seen from the wavelength $ \lambda = 1160 $ nm for silicon and $ \lambda = 1930 $ nm, from which we conclude that the corresponding band gap energies are $ E_g = 1.069 $ eV and $ E_g = 0.642 $~eV respectively. Table values give $ E_g = 1.12 $ eV and $ E = 0.67 $ eV, which is not a bad result. The slight differences are likely due to measurement inaccuracies on my part.
 
 Our measured voltages were not completely to scale since the source of light did not emit light at even intensities. We've adjusted for this difference using measured relative intensity of the halogen lamp and plotted the corrected Graphs 4 and 5. It can be seen, that both follow a similar shape of one peek, but in the case of germanium there are significant dips at specific wavelengths. It seems like there are other ways of absorbing the photons which only come to effect at those specific wave lengths and reduce the induced voltage. 
 
-
 \begin{thebibliography}{0}
 \bibitem{tabulky} Task instructions ~\url{https://is.muni.cz/auth/el/sci/jaro2025/F4210/um/fp3-8_sirka_pasu.pdf}.   
 \end{thebibliography}
+
+%\begin{table}[htpb]
+%    \scriptsize
+%    \begin{minipage}{.4\linewidth}
+%    \centering
+%    \begin{tabular}{| c c | c c |}
+%        \hline
+%        $ \lambda $ (nm) & $ U_m $ (mV) & $ \lambda $ (nm) & $ U_m $ (mV) \\
+%        \hline
+%        593 & 0.03 &  948 & 0.60 \\
+%        678 & 0.06 &  960 & 0.63 \\
+%        724 & 0.09 &  975 & 0.66 \\
+%        768 & 0.12 & 1000 & 0.65 \\
+%        803 & 0.15 & 1020 & 0.63 \\
+%        832 & 0.18 & 1030 & 0.59 \\
+%        848 & 0.21 & 1040 & 0.51 \\
+%        860 & 0.24 & 1050 & 0.41 \\
+%        869 & 0.27 & 1060 & 0.29 \\
+%        879 & 0.30 & 1073 & 0.24 \\
+%        884 & 0.33 & 1085 & 0.19 \\
+%        893 & 0.36 & 1100 & 0.14 \\
+%        900 & 0.39 & 1110 & 0.11 \\
+%        908 & 0.42 & 1160 & 0.01 \\
+%        917 & 0.45 & & \\
+%        921 & 0.48 & & \\
+%        928 & 0.51 & & \\
+%        938 & 0.54 & & \\
+%        943 & 0.57 & & \\
+%        \hline
+%    \end{tabular}
+%    \caption{Measured spectral photovoltage dependence of silicon diode.}
+%    \end{minipage} 
+%    \hfill
+%    \begin{minipage}{.55\linewidth}
+%    \centering
+%    \begin{tabular}{| c c | c c | c c |}
+%        \hline
+%        $ \lambda $ (nm) & $ U_m $ (mV) & $ \lambda $ (nm) & $ U_m $ (mV) & $ \lambda $ (nm) & $ U_m $ (mV) \\
+%        \hline
+%        0.792 & 0.030 & 1.154 & 0.579 & 1.525 & 0.459 \\
+%        0.853 & 0.060 & 1.160 & 0.573 & 1.550 & 0.420 \\
+%        0.879 & 0.090 & 1.175 & 0.570 & 1.575 & 0.417 \\
+%        0.899 & 0.120 & 1.200 & 0.615 & 1.600 & 0.363 \\
+%        0.914 & 0.150 & 1.225 & 0.669 & 1.625 & 0.330 \\
+%        0.925 & 0.180 & 1.250 & 0.723 & 1.650 & 0.318 \\
+%        0.942 & 0.210 & 1.275 & 0.735 & 1.675 & 0.270 \\
+%        0.960 & 0.240 & 1.300 & 0.765 & 1.680 & 0.240 \\
+%        0.975 & 0.270 & 1.325 & 0.780 & 1.700 & 0.201 \\
+%        0.985 & 0.300 & 1.350 & 0.750 & 1.725 & 0.210 \\
+%        1.000 & 0.330 & 1.362 & 0.690 & 1.750 & 0.165 \\
+%        1.015 & 0.360 & 1.375 & 0.660 & 1.775 & 0.204 \\
+%        1.030 & 0.390 & 1.400 & 0.633 & 1.800 & 0.186 \\
+%        1.045 & 0.420 & 1.425 & 0.696 & 1.825 & 0.150 \\
+%        1.061 & 0.450 & 1.450 & 0.750 & 1.850 & 0.096 \\
+%        1.075 & 0.480 & 1.475 & 0.720 & 1.875 & 0.075 \\
+%        1.092 & 0.510 & 1.485 & 0.660 & 1.900 & 0.054 \\
+%        1.107 & 0.540 & 1.500 & 0.603 & 1.930 & 0.009 \\
+%        1.130 & 0.570 & 1.515 & 0.540 & & \\
+%        \hline
+%    \end{tabular}
+%    \caption{Measured spectral photovoltage dependence of germanium diode.}
+%    \end{minipage} 
+%\end{table}
+
+ 
 
 \end{document}
