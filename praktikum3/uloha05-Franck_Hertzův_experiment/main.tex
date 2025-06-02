@@ -1,0 +1,199 @@
+\documentclass[a4paper,11pt]{article}
+
+% Kodovani (cestiny) v dokumentu: utf-8
+%\usepackage[cp1250]{inputenc}	% Omezena stredoevropska kodova stranka, pouze MSW.
+\usepackage[utf8]{inputenc}	% Doporucujeme pouzivat UTF-8 (unicode).
+
+\usepackage[margin=2cm]{geometry}
+\newtoks\jmenopraktika \newtoks\jmeno \newtoks\datum
+\newtoks\obor \newtoks\skupina \newtoks\rocnik \newtoks\semestr
+\newtoks\cisloulohy \newtoks\jmenoulohy
+\newtoks\tlak \newtoks\teplota \newtoks\vlhkost
+
+\jmenopraktika={Fyzikální praktikum 3}
+\jmeno={Lukáš Lejdar}
+\datum={13. května 2025}
+\obor={F}
+\skupina={Út 14:00}
+
+\cisloulohy={5}
+\jmenoulohy={Franck-Hertzův experiment}
+
+%%%%%%%%%%% Uzitecne balicky:
+\usepackage[czech]{babel}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{xspace}
+\usepackage{url}
+\usepackage{indentfirst}
+\usepackage{wrapfig}
+\usepackage{xcolor}
+\usepackage{subfig}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{tikzsymbols}
+\usepackage{newfloat}
+\usepackage{siunitx}
+
+
+\DeclareFloatingEnvironment[fileext=lof]{graph}
+\captionsetup[graph]{labelformat=simple, labelsep=colon, name=Graf}
+
+%%%%%% Zamezeni parchantu:
+\widowpenalty 10000 \clubpenalty 10000 \displaywidowpenalty 10000
+%%%%%% Parametry pro moznost vsazeni vetsiho poctu obrazku na stranku
+\setcounter{topnumber}{3}	  % max. pocet floatu nahore (specifikace t)
+\setcounter{bottomnumber}{3}	  % max. pocet floatu dole (specifikace b)
+\setcounter{totalnumber}{6}	  % max. pocet floatu na strance celkem
+\renewcommand\topfraction{0.9}	  % max podil stranky pro floaty nahore
+\renewcommand\bottomfraction{0.9} % max podil stranky pro floaty dole
+\renewcommand\textfraction{0.1}	  % min podil stranky, ktery musi obsahovat text
+\intextsep=8mm \textfloatsep=8mm  %\intextsep pro ulozeni [h] floatu a \textfloatsep pro [b] or [t]
+
+% Tecky za cisly sekci:
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
+% Jednopismenna mezera mezi cislem a nazvem kapitoly:
+\makeatletter \def\@seccntformat#1{\csname the#1\endcsname\hspace{1ex}} \makeatother
+%
+\newcommand{\vsn}[4]{\ensuremath{#1 =} #2(#3)\,#4}
+\newcommand{\vrn}[6]{\ensuremath{#1 =} (#2 $\pm$ #3)\,#4 ($p=$ #5\,\%, $\nu=$ #6)}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+		\node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Zacatek dokumentu
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\thispagestyle{empty}
+
+{
+\begin{center}
+\sf 
+{\Large Ústav fyziky a technologií plazmatu Přírodovědecké fakulty Masarykovy univerzity} \\
+\bigskip
+{\huge \bfseries FYZIKÁLNÍ PRAKTIKUM} \\
+\bigskip
+{\Large \the\jmenopraktika}
+\end{center}
+
+\bigskip
+
+\sf
+\noindent
+\setlength{\arrayrulewidth}{1pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l l}
+\large {\bfseries Zpracoval:}  \the\jmeno & \large  {\bfseries Naměřeno:} \the\datum\\[2mm]
+\large  {\bfseries Obor:} \the\obor  \hspace{40mm}  {\bfseries Skupina:} \the\skupina %
+&\large {\bfseries Testováno:}\\
+\\
+\hline
+\end{tabular*}
+}
+
+\bigskip
+
+{
+\sf
+\noindent \begin{tabular}{p{4cm} p{0.6\textwidth}}
+\Large  Úloha č. {\bfseries \the\cisloulohy:} \par
+\smallskip
+&\Large \bfseries \the\jmenoulohy  \\[2mm]
+\end{tabular}
+}
+
+\vskip1cm
+
+\section{Úvod}
+
+V roce 1914 Franck a Hertz experimentálně prokázali kvantování energetických hladin v atomech pomocí analýzy elektronových srážek s parami atomů rtuti. Cílem praktika je provést tento experiment s elektronkou naplněnou některým vzácným plynem a z naměřených dat zjistit o který jde plyn.
+
+\section{Postup měření}
+
+Experimentální uspořádání je schematicky znázorněno na obrázku 1. Z katody C jsou termoemisí uvolňované elektrony, které pak vlétají dovnitř elektronky naplněné některým vzácným plynem. V elektronce se nacházejí postupně dvě mřížky $ G_1 $ a $ G_2 $ a sběrná anoda. Pro experiment nejpodstatnější je urychlovací napětí mezi mřížkami $ G_1 $ a $ G_2 $ a brzdné napětí mezi mřížkou $ G_2 $ a anodou. Pokud mají elektrony při průletu mřížkou $ G_2 $ dostatečně velkou rychlost, dokáží brzdné napětí překonat a anodou začne téct měřitelný proud. V opačném případě si elektrony přitáhne mřížka $ G_2 $. 
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.4\textwidth]{zapojeni.jpg}
+    \caption{Experimentální uspořádání Franck-Hertzova pokusu}
+\end{figure}
+
+%Elektrony jsou několika tisíci násobně lehčí než atomy, takže při pružné srážce se jen odrazí s minimální ztrátou kinetické energie podobně jako gumový míček odražený od bowlingové koule. Pokud je střední volná dráha elektronů dostatečně dlouhá, aby takových srážek nebylo moc 
+
+Při zvyšování napětí $ U_2 $ v běžné elektronce se vzduchem by měl anodový proud jenom růst, až do nějaké hranice nasyceného proudu. Voltampérová charakteristika elektronky naplněné rtutí na Obrázku 2, naměřená Franck-Hertzem, ale namísto toho periodicky klesá ve stabilním intervalu přibližně $ \Delta U_2 = 4.9 $ V. Toto je známá hodnota hodnota energie jedné výrazné spektrální čáry rtuti, což naznačuje, že pokles proudu vzniká kvůli nepružným srážkám elektronů s atomy, kdy elektron ztratí velkou část své kinetické energie při excitaci a už není schopný překonat brzdné napětí. Tato hypotéza by měla být jednoduše ověřitelná, protože excitovaný atom sám od sebe brzo zase de-excituje a vyzáří foton o vlnové délce $ \lambda = hc / \Delta U_2 = 2530 \ \si{\angstrom}$. Na spektrometru by potom měla být vidět jediná spektrální čára o této vlnové délce. 
+
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.4\textwidth]{hg.jpg}
+    \caption{Závislost kolektorového proudu na urychlujícím napětí pro rtuť}
+\end{figure}
+
+V uspořádání z obrázku 1. hraje roli ještě několik věcí. Urychlující napětí $ U_1 $ slouží ke stabilizaci měření, ale tím ovlivňuje první maximum. Kromě toho, elektron, který překoná první excitační energii ještě musí průměrně urazit jednu střední volnou dráhu, než se srazí s některým atomem a proto maxima nejsou ostrá a ani nenastávají v moment kdy energie elektronů přímo u mřížky $ G_2 $ dosáhne excitační energie $ \Delta E = e( U_1 + U_2 )$. Z těchto důvodů je lepší odečítat jen rozdíl po sobě následujících maxim $ \Delta U_2 $ a nedívat se na jeji absolutní velikosti. 
+
+\section{Výsledky měření}
+
+Experimentální aparatura byla sestavená podle Obrázku 1 s rozdílem, že místo anodového proudu se měří anodové napětí $ U_a \propto I_a $. Před měřením jsem nejdřív ověřil jestli všechny řídící napětí $ U_1 $, $ U_2 $ a $ U_3 $ fungují správně a potom hledal nejvhodnější nastavení napětí $ U_1 $ a $ U_3 $, aby maxima byli dobře vidět a zabírali co největší část měřícího rozsahu. Tyto hodnoty jsem nakonec našel jako $ U_1 = 2.36 $ V a $ U_3 = 9.91 $ V a pro ně změřil závislost $ U_a(U_2) $, která je vynesená do Grafu 1. 
+
+
+\begin{figure}[htpb]
+    \centering
+    \input{mereni.tex}
+    \captionsetup{type=graph}
+    \caption{Závislost anodového napětí na urychlujícím napětí $ U_2 $ }
+\end{figure}
+
+Data v okolí maxim byla nafitovaná polynomy řádu 5 a z nich jsem zjistil souřadnice lokálních maxim, které jsou uvedené v tabulce 1. Z fitu přímkou jsem potom získal sklon $ \Delta U_2 $. Ze známých hodnot první excitační energie by měla tato hodnota odpovídat atomům Helia. 
+
+\begin{equation}
+\Delta U_2 = 20 \pm 0.6 \text{ eV}
+\end{equation}
+
+
+\begin{table}[htpb]
+    \begin{minipage}{.4\linewidth}
+        \centering
+        \begin{tabular}{| c c c |}
+            \hline
+            maximum & $ U_2 $ (V) & $ U_a $ (V)  \\
+            \hline
+            1 & 22.0 & 3.15 \\
+            2 & 41.0 & 7.65 \\
+            3 & 62.0 & 10.1 \\
+            \hline
+        \end{tabular}
+        \caption{Hodnoty lokálních maxim}
+    \end{minipage} 
+    \hfill
+    \begin{minipage}{.55\linewidth}
+        \centering
+        \resizebox{\textwidth}{!}{ \input{peaks.tex} }
+        \caption{}
+    \end{minipage} 
+\end{table}
+
+\subsection{Emitované spektrum}
+
+V praktiku se k úloze nachází příruční spektrometr, kterým jsem změřil spektrum vyzařované z trubice Franck-Hertzova experimentu a výsledné hodnoty vynesl do grafu 2. Je vidět, že se ve spektru nachází podstatně víc spektrálních čar, než očekávaná jedna, takže změřený rozdíl maxim $ \Delta U_2 $ pravděpodobně neodpovídá žádné jedné excitační energii. Na druhou stranu víme, že $ \Delta U_2 $ nemůže být větší než ionizační energie plynu, což možnosti redukuje na Helium, nebo Neon. Známé vlnové délky jsem zjistil z odkazu [2] a vynesl je do Grafu 2 společně se změřeným spektrem. Je vidět, že na data sedí mnohem líp spektrum Neonu.
+
+\begin{figure}[htpb]
+    \centering
+    \input{spektrum.tex}
+    \captionsetup{type=graph}
+    \caption{Spektrální závislost plynu v trubici}
+\end{figure}
+
+\section{Závěr}
+
+Změřil jsem závislost anodového napětí na urychlovacím napětí v trubici Franck-Hertzova experimentu a zjistil, že se maxima opakují s periodou $ \Delta U_2 = 20 \pm 0.6 \text{ eV} $, což je hodnota, která by odpovídala první excitační energii Helia. Ze spektrální závislost ale vyplynulo, že neměříme jedinou spektrální čáru, ale celé spektrum, které odpovídá atomům Neonu. Z měření ale stále vyplývá, že existuje nějaká minimální energie, kterou může atom Neonu přijmout při excitaci do vyššího stavu.  
+
+\begin{thebibliography}{0}
+\bibitem{tabulky} Návod k úloze ~\url{https://is.muni.cz/auth/el/sci/jaro2025/F4210/um/fp3-5_Franck-Hertz.pdf}.   
+\bibitem{spectra} Atomic spectra database  \\ ~\url{https://www.nist.gov/pml/productsservices/physical-reference-data}.   
+\end{thebibliography}
+
+\end{document}
