@@ -163,14 +163,14 @@ n'(\vec{v}') = \frac{2 m_e^3 }{h^{3}} \exp \left( \frac{\mu - w}{k T} \right) \e
 \end{equation}
 
 \noindent
-takže rychlostní rozdělení elektronů vně by mělo být přibližně Maxwellovo o teplotě stejné jako uvnitř materiálu. Celkový proudu potom získáme provedením integrálu (4), který vede na Richardson – Dushmanovu rovnici
+takže rychlostní rozdělení elektronů vně by mělo být přibližně Maxwellovo o teplotě stejné jako uvnitř materiálu. Celkový proud potom získáme provedením integrálu (4), který vede na Richardson – Dushmanovu rovnici
 
 \begin{equation}
 I_{\text{nas}} = B T^2 \exp\left(- \frac{w}{kT} \right)
 \end{equation}
 
 \noindent
-kde $ B $ je konstanta zahrnující povrch katody a ostatní konstanty. Wolframovou Katodu budeme v praktiku zahřívat žhavícím proudem $ I_{f} $ přičemž víme, že odpor katody $ R_t $ závisí na teplotě $ t $ (ve stupních Celsia) v prvním přiblížení jako
+kde $ B $ je konstanta zahrnující povrch katody a ostatní konstanty. Wolframovou katodu budeme v praktiku zahřívat žhavícím proudem $ I_{f} $ přičemž víme, že odpor katody $ R_t $ závisí na teplotě $ t $ (ve stupních Celsia) v prvním přiblížení jako
 
 \begin{equation}
 \frac{U_f}{I_f} = R_t = \frac{\rho d}{ S} (1 + \alpha t)
@@ -191,7 +191,7 @@ Pokud na katodu přivedeme vnější elektrické pole o intenzitě $ E $ směřu
 a tedy nová hodnota $w'$ je
 
 \begin{equation}
-w' = w - w_p = w - \sqrt{ \frac{e E^{3}}{4 \pi \varepsilon_0}}
+w' = w - w_p = w - \sqrt{ \frac{e^{3} E}{4 \pi \varepsilon_0}}
 \end{equation}
 
 \noindent
@@ -217,14 +217,20 @@ Proud $ I_a $, který naměříme je potom podle vztahů (4) a (6) pro energetic
 I_a = I_0 \exp \left( {\frac{e U_a}{kT}} \right)
 \end{equation}
 
-V experimentálním uspořádání je Wolframové vlákno zatočené do spirály o průměru$  2r = 0.09 $ mm, takže intenzitu elektrického pole v jejím okolí budeme aproximovat polem válcového kondenzátoru o vnějším poloměru vzdálenosti anody $ R = 17 $ mm. Pro přesnější určení se do vztahu přidal ještě faktor $ (L - D) / D $
+V experimentálním uspořádání je Wolframové vlákno zatočené do spirály o průměru $  2r = 0.09 $ mm, takže intenzitu elektrického pole v jejím okolí budeme aproximovat polem válcového kondenzátoru o vnějším poloměru vzdálenosti anody $ R = 17 $ mm. Pro přesnější určení se do vztahu přidal ještě faktor $ (L - D) / D $
 
 \begin{equation}
 E = U_a \frac{L - D}{D} \frac{1}{r \ln (R / r )}
 \end{equation}
 
 \noindent
-kde $ D $  je vzdálenost anody od žhavené katody a $ L $  je vzdálenost anody od rovinné studené katody. 
+kde $ D $  je vzdálenost anody od žhavené katody a $ L $  je vzdálenost anody od rovinné studené katody. Dosazením do vztahu (12) a zlogaritmováním dostaneme konečný vztah, který je možné fitovat pro nasycený proud $ I_{\text{nas}} $  a teplotu $ T $.
+
+\begin{equation}
+    \ln I_{\text{nas}}' = \ln I_{\text{nas}} -  \frac{ \sqrt{U_a} }{kT} \sqrt{ \frac{e^{3} }{4 \pi \varepsilon_0} \frac{L - D}{D} \frac{1}{r \ln (R / r )} } 
+\end{equation}
+
+
 
 
 
@@ -240,40 +246,63 @@ kde $ D $  je vzdálenost anody od žhavené katody a $ L $  je vzdálenost anod
 
 \subsection{Závislost anodového proudu na anodovém napětí}
 
-Aparaturu jsem zapojil podle obrázku (1) a zkontroloval, že všechny ovládací prvky fungují správně. Před měřením je potřeba nejdřív vlákno nažhavit, takže jsem nastavil žhavící proud na $ I_f = 1.92 $ A a počkal přibližně 10 minut. Po nažhavení vlákna jsem po malý krocích změřil závislost anodového proudu $ I_a $  na anodovém napětí v rozmezí $ U_a \in [-5, 500] $ a to stejné udělal ještě pro žhavící proud $ I_f = 1.98 $ A. Obě závislosti jsou uvedené v grafech 1 a 2, kde je vidět, že se anodový proud ustálí kolem 20 V a pak pomalu roste kvůli Schottkyho efektu. Grafy 3 a 4 vykreslují logaritmickou závislost proudu na napětí v oblasti záporného anodového napětí, které jsem fitoval podle zlogaritmováním vztahu (14) a ze sklonu získál teplotu $ T $, která je uvedena pod grafy. Se zjištěnou teplotou už bylo možné fitovat změřenou závislost v oblasti vyšších napětí vztahem (12) ze kterého jsem získal nasycené termoemisní proudy $ I_{\text{nas}} $.
+Aparaturu jsem zapojil podle obrázku (1) a zkontroloval, že všechny ovládací prvky fungují správně. Před měřením je potřeba nejdřív vlákno nažhavit, takže jsem nastavil žhavící proud na $ I_f = 1.92 $ A a počkal přibližně 10 minut. Po nažhavení vlákna jsem po malý krocích změřil závislost anodového proudu $ I_a $  na anodovém napětí v rozmezí $ U_a \in [-5, 500] $ a to stejné udělal ještě pro žhavící proud $ I_f = 1.98 $ A. 
+
+\begin{figure}[h]
+    \centering
+    \input{schotty1.tex}
+    \captionsetup{type=graph}
+    \caption{ Závislost anodového proudu na anodovém napětí}
+\end{figure}
+
+Obě závislosti zobrazené v Grafu 1 ukazují rychlé ustálení anodového proudu, po kterém následuje jeho pozvolný nárůst vlivem Schottkyho efektu. Podle vztahu (16) by měl být tento nárůst lineární při zobrazení $ \log(I_a) $ v závislosti na $ \sqrt{U_a}  $, což potvrzují Grafy 2 a 3. Linearita se ale projevuje až od $\sqrt{U_a} \approx 9$, proto byl fit provedený jen v intervalu $U_a \in [80, 500]$ V. Z parametrů fitu vyjdou hodnoty $ I_{\text{nas}} $ a teplota katody $ T_{\text{nas}} $, kterou můžeme spočítat i ze vztahu (9). 
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{| c | c c c |}
+        \hline
+        $ I_f $ ($ $A) & $ I_{\text{nas}} $ ($  \mu$A)  & $ T_{\text{fit}} $  (K) & T (K)  \\
+        \hline
+        1.92 & 36.48 $ \pm $  0.05 & 1450 $ \pm $ 20 & 1450 \\
+        1.98 & 61.4 $ \pm $  0.1 & 1466 $ \pm $ 23 & 1480 \\
+        \hline
+    \end{tabular}
+    \caption{ Výsledné parametry fitu nárůstu anodového proudu podle vztahu (16) }
+\end{table}
+\vspace{-40pt}
 
 \begin{table}[h]
     \captionsetup{type=graph}
     \begin{minipage}{.45\linewidth}
         \centering
         \input{schotty-1,92A.tex}
-        \[ I_{\text{nas}} = 37.9 \pm 0.2 \ \mu \text{A} \]
-        \caption{ Závislost anodového proudu na anodovém napětí při $ I_f = 1.92 $ A. }
+        \caption{Fit nárůstu napětí z důvodu Schottkyho efektu při anodovém napětí $ I_f = 1.92 $ A }
     \end{minipage}
     \hfill
     \begin{minipage}{.45\linewidth}
         \centering
         \input{schotty-1,98A.tex}
-        \[ I_{\text{nas}} = 63.8 \pm 0.3 \ \mu \text{A} \]
-        \caption{Závislost anodového proudu na anodovém napětí při $ I_f = 1.98 $ A }
+        \caption{Fit nárůstu napětí z důvodu Schottkyho efektu při anodovém napětí $ I_f = 1.98 $ A }
     \end{minipage}
 \end{table}
 
-\vspace{-30pt}
+\newpage
+
+Grafy 3 a 4 vykreslují logaritmickou závislost proudu na odmocnině z napětí $ U_a $ v oblasti záporného anodového napětí, které jsem fitoval podle zlogaritmováním vztahu (14) a ze sklonu získál teplotu elektronů $ T $, která je uvedena pod grafy. 
 
 \begin{table}[h]
     \captionsetup{type=graph}
     \begin{minipage}{.45\linewidth}
         \centering
         \input{schotty-1,92A_log.tex}
-        \[ T = 2654.99 \pm 54.43 \text{ K} \]
+        \[ T = 2655 \pm 54 \text{ K} \]
         \caption{ Logaritmické závislost anodového proudu na anodovém napětí při $ I_f = 1.92 $ A }
     \end{minipage}
     \hfill
     \begin{minipage}{.45\linewidth}
         \centering
         \input{schotty-1,98A_log.tex}
-        \[ T = 2764.03 \pm 8.108 \text{ K} \]
+        \[ T = 2764 \pm 72 \text{ K} \]
 
         \caption{Logaritmické závislost anodového proudu na anodovém napětí při $ I_f = 1.98 $ A }
     \end{minipage}
@@ -281,7 +310,7 @@ Aparaturu jsem zapojil podle obrázku (1) a zkontroloval, že všechny ovládac�
 
 \subsection{Závislost nasyceného proudu na žhavícím proudu}
 
-Při obou měřených žhavících proudech došlo k ustálení anodového proudu kolem $ U_a = 20 $ V, takže závislost $ I_{\text{nas}} = f(T(I_f, U_f)) $ budu měřit při tomto napětí. Pokaždé když změním žhavící napětí je opět potřeba nějakou dobu počkat na zahřátí čidla a proto změřených hodnot není tolik. Teplotu jsem ze žhavícího napětí a proudu spočítal podle vztahu (9) a výstupní práci zjistím fitem zlogaritmovanéhé Richardson – Dushmanovy rovnice (8)
+Pokud chceme měřit závislost nasyceného proudu na žhavícím, je nutné zvolit takové anodové napětí, které příliš nezvýší nasycený proud, ale které zárověň zajistí, že se většina elektronů dostane k anodě. Vhodná volba je třeba $ U_a = 20 $ V. Pokaždé když změním žhavící napětí je opět potřeba nějakou dobu počkat na zahřátí čidla a proto změřených hodnot není tolik. Teplotu katody jsem ze žhavícího napětí a proudu spočítal podle vztahu (9) a výstupní práci zjistím fitem zlogaritmovanéhé Richardson – Dushmanovy rovnice (8)
 
 \begin{equation*}
 w = 4.04 \pm 0.09 \text{ (eV)}
@@ -289,19 +318,23 @@ w = 4.04 \pm 0.09 \text{ (eV)}
 
 \begin{figure}[h]
     \centering
-    \include{teplota.tex}
+    \input{teplota.tex}
     \caption{Závislost anodového proudu na teplotě katody }
 \end{figure}
 
 \section{Závěr}
 
-Povedlo se ověřit vztah (12), který popisuje Schottkyho efekt. Při přivedení elektrického pole na wolframovou katodu došlo ke snížení výstupní práce elektronů a většímu nasycenému proudu přibližně podle tohoto vztahu. 
+
+
+Povedlo se ověřit vztah (16), který popisuje Schottkyho efekt, ale jen při anodovém napětí větším než 80 V. Z fitu naměřených dat jsem zjistil teplotu katody, která dobře odpovídá hodnotě vypočítané z odporu vlákna. Před hranicí $ U_a = 80 $ V pravděpodobně musí hrát roli ještě nějaké další efekty, které zabrání některým elektronům se dostat na anodu.
+
+Měření anodového proudu jsem provedl i při záporném anodovém napětí a tím změřil integrální rozdělení rychlosti elektronů, odkud fitem podle Boltzmanova rozdělení vyšla teplota elektronů při obou měřeních přibližně $ 2700 $ K. Je to hodnota o 1250 K větší než teplota katody, přesto že by podle vztahu (7) měli být stejné. V tomto případě si nejsem jistý jestli je chybná teorie, nebo měření.
 
 V druhé části jsem ověřil Richardson – Dushmanovu rovnice (8) popisující nasycený proud v závislosti na rostoucí teplotě a z fitu naměřených dat zjistil výstupní práci wolframu $ w = 4.04 \pm 0.09 \text{ (eV)} $. Tabulková hodnota udává $ w = 4.5  \text{ (eV)} $
 
 
 \begin{thebibliography}{0}
-\bibitem{tabulky} Hustota pevných látek. Dostupné z~\url{http://www.converter.cz/tabulky/hustota-pevne.htmf}.   
+\bibitem{tabulky} Návod k úloze ~\url{https://is.muni.cz/auth/el/sci/jaro2025/F4210/um/fp3-4_termoemise.pdf}.   
 \end{thebibliography}
 
 \end{document}

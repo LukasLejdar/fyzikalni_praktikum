@@ -6,9 +6,6 @@ m = 9.1093837e-31
 epsilon = 8.854e-12
 T  = 2750
 
-
-
-
 set ylabel "$ \\log( I_a ) $  "
 set xlabel "$ U_a $ (V) "
 
@@ -45,8 +42,15 @@ plot "schotty-1,98A.txt" u 3:(log($4 - noise2)) lc -1 lt 7 t "", [*:0] log(f2(x)
 set ylabel "$ I_a $ ($ \\mu $A)  "
 set xlabel "$ U_a $ (V) "
 
+set key at graph 0.57,0.97
+
 set xrange [-5:500]
-set yrange [-5:80]
+set yrange [-5:90]
+
+set output "schotty1.tex"
+plot "schotty-1,98A.txt" u 3:($4 * 1e6) lc 6 lt 7 t "$ I_f = 1.98 $ A", \
+"schotty-1,92A.txt" u 3:($4 * 1e6) lc 7 lt 7 t "$ I_f = 1.92 $ A"
+
 
 L = 25e-3
 R = 17e-3
@@ -59,16 +63,30 @@ E(x) = x * (L - D) / D  * 1 / (r * log(R/r))
 W(x) = sqrt( q**3 * E(x) / (4 * pi * epsilon ) )
 
 In1 = 40e-6
+U01 = 20
 
 I1(x) = In1 * exp( W(x) / (k*T1) )
 
+set ylabel "$ \\ln(I_a) $ "
+set xlabel "$ \\sqrt{U_a} $ (V$^{1/2}$) "
+
+set xrange [0:25]
+set yrange [-10.3:-10]
+
 set output "schotty-1,92A.tex"
-fit [20:500] I1(x) "schotty-1,92A.txt" u 3:4 via In1
-plot "schotty-1,92A.txt" u 3:($4 * 1e6) lc -1 lt 7 t "", I1(x)*1e6 lc 7 t "fit"
+fit [80:500] I1(x) "schotty-1,92A.txt" u 3:4 via In1, T1
+plot "schotty-1,92A.txt" u ($3**0.5):(log($4)) lc -1 lt 7 t "", log(I1(x**2)) lc 7 t "fit"
+
+set xrange [0:25]
+set yrange [-9.8:-9.5]
+
+In2 = 60e-6
+T2 = 1544
+U02 = 40
 
 I2(x) = In2 * exp( W(x) / (k*T2) )
-fit [20:500] I2(x) "schotty-1,98A.txt" u 3:4 via In2
+fit [90:500] I2(x) "schotty-1,98A.txt" u 3:4 via In2, T2
 
 set output "schotty-1,98A.tex"
-plot "schotty-1,98A.txt" u 3:($4 * 1e6) lc -1 lt 7 t "", I2(x)*1e6 lc 7 t "fit"
+plot "schotty-1,98A.txt" u ($3**0.5):(log($4)) lc -1 lt 7 t "", log(I2(x**2)) lc 7 t "fit"
 

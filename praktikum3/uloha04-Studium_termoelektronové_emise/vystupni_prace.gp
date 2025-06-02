@@ -22,13 +22,14 @@ T(x) = (x / (rho * d_S) - 1) / alpha + 273.15
 
 f(x) = B * x**2 * exp( - w / (k*x) )
 
-set ylabel " $ \\log(I_a) $ "
-set xlabel " $ T $ (K) "
+set ylabel " $ \\log(I_a/T^2) $ "
+set xlabel " $ 1/T $ (K$^{-1} $) "
 
 fit [1100:1400] log(f(x)) "vystupni_prace.txt" u (T($1/$2)):(log($4)) via w, B
 
 set output "teplota.tex"
-plot "vystupni_prace.txt" u (T($1/$2)):(log($4)) lc -1 lt 7 t "", log(f(x)) lc 7 t "fit", 
+plot "vystupni_prace.txt" u (1/T($1/$2)):(log($4/(T($1/$2)**2))) lc -1 lt 7 t "", log(f(1/x)/( (1/x)**2)) lc 7 t "fit"
+
 
 print "1.92", T(4.883779 / 1.925364)
 
