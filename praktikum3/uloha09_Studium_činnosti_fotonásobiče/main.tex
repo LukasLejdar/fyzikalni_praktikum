@@ -116,41 +116,45 @@
 Fotonásobič je elektro-optický přístroj, který slouží k zesilování velmi slabých světelných signálů. Využívá při tom dva základní jevy - fotoemisi a sekundární emisi
 
 \begin{enumerate}[label=\bfseries\tiny\protect\circled{\small\arabic*}]
-    \item \textbf{Fotoemise}: Fotony, dopadající na fotokatodu z ní dokáží vyrážet elektrony. Energie světelného kvanta se přemění na práci potřebnou k uvolnění elektronu a jeho kinetickou energii
+    \item \textbf{Fotoemise}: Fotony, dopadající na fotokatodu z ní dokáží vyrážet elektrony. Energie světelného kvanta $ h \nu $  se přemění na práci potřebnou k uvolnění elektronu $ w $  a jeho kinetickou energii $ E_k = \frac{mv^2}{2} $, kde $ v $  je rychlost elektronu a $ \nu $ frekvence dopadajícího světla.
         \begin{equation}
-        h \nu = w + \frac{mv^2}{2}
+        h \nu = w + \frac{mv^2}{2},
         \end{equation}
-    \item \textbf{Sekundární emise: } Nastává, když elektron s dostatečnou energií dopadne na dynodu a uvolní další elektrony. Koeficient sekundární emise je potom
+        \noindent
+    \item \textbf{Sekundární emise: } Nastává, když elektron s dostatečnou energií dopadne na dynodu a uvolní další elektrony. Zavádí se veličina koeficient sekundární emise, jako poměr proudu uvolněných elektronů $ I_{sek} $  vůči proudu dopadajících $ I_{prim} $ 
+
 \begin{equation}
 \sigma = \frac{I_{sek}}{I_{prim}}
 \end{equation}
-a jeho velikost závisí na materiálu elektrod a podle vztahu
 
-\begin{equation}
-\sigma = A E \exp (-\mu E),
-\end{equation}
 \noindent
-kde A a $ \mu $ jsou konstanty závislé na materiálu elektrod. E je energie elektronů, kterou v případě fotonásobiče můžeme nastavit pomocí napětí mezi dvěma sousedními dynodami. 
+Jeho velikost závisý jen na energii dopadajících elektronů $ E $ a parametrech materiálu $ A $ a $ \mu $ podle vztahu
+\begin{equation}
+\sigma = A E \exp (-\mu E).
+\end{equation}
+
+\noindent
+Energii elektronů, můžeme v případě fotonásobiče nastavit pomocí napětí mezi dvěma sousedními dynodami. 
 
 
 
 \end{enumerate}
 
-Ve fotonásobiči elektrony postupně procházejí z fotokatody přes několik dynod, kdy jsou po celou cestu urychlovány konstantním napětím a proto jejich počet roste geometricky s počtem dynod $ n $. Pokud proud na poslední anodě je $ I_a $ a proud na fotokatodě $ I_f $, potom platí
+Ve fotonásobiči elektrony postupně procházejí z fotokatody přes několik dynod, kdy jsou po celou cestu urychlovány konstantním napětím a proto jejich počet roste geometricky s počtem dynod $ n $. Proud na poslední anodě označím $ I_a $ a proud na fotokatodě $ I_f $ a platí
 
 \begin{equation}
 I_a = \sigma^{n} I_f,
 \end{equation}
 
 \noindent
-kde $ \sigma $ je koeficient sekundární emise $ \sigma $ mezi dvěma katodami. Zároveň taky platí Stoletův zákon pro bílé světlo, že
+kde $ \sigma $ je koeficient sekundární emise $ \sigma $ mezi dvěma katodami. Zároveň taky platí Stoletův zákon pro bílé světlo, že proud na fotokatodě $ I_f $  je přímo úměrný intenzitě dopadajícího světla $ \Phi $ přes nějakou konstantu $ k $ .
 
 \begin{equation}
-I_f = k \Phi,
+I_f = k \Phi
 \end{equation}
 
 \noindent
-kde $ \Phi $  je intenzita světla dopadajícího na fotokatodu. Zavádíme taky veličinu zesílení fotonásobiče $ M $ 
+Zavádíme taky veličinu zesílení fotonásobiče $ M $ 
 
 \begin{equation}
 M = \frac{I_a}{I_f}
@@ -166,31 +170,44 @@ I_a = M k \Phi = S \Phi \quad S = M k
  
 \section{Postup měření}
 
-Fotonásobič je umístěný v temné komoře, kde je možné zdroj světla regulovat otočným klínem. Můžeme taky nastavit celkové napětí na fotonásobiči $ U_n $ a měřit proud na dynodách 10 a 12 a taky celkový proud anodový $ I_a $.
+Fotonásobič je umístěný v temné komoře, kde je možné osvětlení regulovat otočným klínem. Můžeme taky nastavit celkové napětí na fotonásobiči $ U_n $ a měřit proud na dynodách 9 a 11 a taky celkový anodový proud $ I_a $.
 Prvním úkolem je stanovit závislost koeficientu sekundární emise, zesílení a integrální citlivosti na napětí mezi jednotlivými dynodami a ve druhé části potom ověřit, jestli tyto veličiny závisí na intenzitě osvětlení $ \Phi $, nebo ne.
 
-Bude taky potřeba zjistit, jaký je anodový proud, když je zdroj světla úplně vypnutý. Tento proud se nazývá temný proud a je důležité, aby byl alespoň o řád menší než hodnoty naměřené při běžném osvětlení, abychom ho mohli zanedbat.
+Bude taky potřeba zjistit, jaký je anodový proud, když je zdroj světla úplně vypnutý. Tento proud se nazývá temný proud a je důležité, aby byl řádově stejný jako nejistoty měřených proudů, abychom ho mohli zanedbat.
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.5\textwidth]{fotonasobic.png}
+    \includegraphics[width=0.4\textwidth]{fotonasobic.png}
     \caption{Schéma zapojení fotonásobiče. FK je fotokatoda, $ D_1 $ až $ D_{13} $ jsou dynody a $ U_n $ je napětí přivedené na násobič. }
 \end{figure}
 
-\newpage
-
 \section{Výsledky měření}
+
+\subsection{Vliv temného proudu}
+
+Nejdřív ověřím vliv temného proudu na změřené hodnoty. Pro několik vysokých napětí jsem při vypnutém zdroji světla měřil anodový proud a hodnoty uvedl v Tabulce 1. Všechny tyto proudy jsou mnohem nižší, než ty z předešlích tabulek, takže jej nebylo potřeba brát v úvahu.
+
+\begin{table}[htpb]
+    \centering
+    \begin{tabular}{  c | c c c }
+        $ U_n $ (V) & 1000 & 800 & 700 \\
+        \hline
+        $ I_a $ ($ \mu $ A ) & 1 & 0.9 & 0.25 \\
+    \end{tabular} 
+    \caption{Anodový proud při nulovém osvětlení}
+\end{table}
+
 
 \subsection{Závislost koeficientu sekundární emise na energii elektronů}
 
-Fotonásobič jsem zapojil podle obrázku 1 a pro různé napětí $ U_n $ měřil anodový proud a proud na dynodě 10 a 12. Koeficient sekundární emise a energii dopadajících elektronů potom spočítám podle vztahů
+Fotonásobič jsem zapojil podle Obrázku 1 a pro různé napětí $ U_n $ měřil anodový proud a proud na dynodě 9 a 11. Koeficient sekundární emise a energii dopadajících elektronů potom spočítám podle vztahů
 
 \begin{equation}
-\sigma = \sqrt{\frac{I_{12}}{I_{10}}} \quad \quad  \quad E = \frac{q U_n}{n},
+\sigma = \sqrt{\frac{I_{11}}{I_{9}}} \quad \quad  \quad E = \frac{e U_n}{n},
 \end{equation}
 
 \noindent
-protože mezi 10 a 12 dynodou dojede k zesílení o $ \sigma^{2} $ a napětí $ U_n $  je mezi dynody rozdělené rovnoměrně. Závislost $ \sigma $ na $ E $ by měla exponenciální podle vztahu (3), který tedy zlogaritmuju a fit bude přímkou podle $ y = \ln (\frac{\sigma}{E}) = f(E) $ pro směrnici $ \mu $ 
+protože mezi 9 a 11 dynodou dojede k zesílení o $ \sigma^{2} $ a napětí $ U_n $  je mezi dynody rozdělené rovnoměrně. Elektrony mají náboj $ e $. Závislost $ \sigma $ na $ E $ by měla být podle vztahu (3) exponenciální, který tedy zlogaritmuju a fit bude přímkou podle $ y = \ln (\frac{\sigma}{E}) = f(E) $ pro směrnici $ \mu $ 
 
 \begin{table}[htpb]
     \begin{minipage}[b]{.35\linewidth}
@@ -199,15 +216,15 @@ protože mezi 10 a 12 dynodou dojede k zesílení o $ \sigma^{2} $ a napětí $ 
             \ln \frac{\sigma}{E} = -\mu E + \ln A
         \end{equation}
         \begin{align*}
-            \mu_1 &= 0.0023 \pm 0.0004 \\
-            \mu_3 &= 0.0022  \pm 0.0005  \\
-            \mu_5 &= 0.0025 \pm 0.0004 \\
+            \mu_1 &= 0.0023 \pm 0.0004 \text{ mV}^{-1} \\
+            \mu_3 &= 0.0022  \pm 0.0005 \text{ mV}^{-1} \\
+            \mu_5 &= 0.0025 \pm 0.0004 \text{ mV}^{-1}\\
         \end{align*}
         \vspace{-30pt}
         \begin{align*}
-            A_1 &= -2.56 \pm 0.02 \\
-            A_3 &= -2.57 \pm 0.02 \\
-            A_5 &= -2.56 \pm 0.02 \\
+            A_1 &= -2.56 \pm 0.02 \text{ mV}^{-1}\\
+            A_3 &= -2.57 \pm 0.02 \text{ mV}^{-1}\\
+            A_5 &= -2.56 \pm 0.02 \text{ mV}^{-1}\\
             \\
         \end{align*}
     \end{minipage} 
@@ -230,9 +247,9 @@ protože mezi 10 a 12 dynodou dojede k zesílení o $ \sigma^{2} $ a napětí $ 
     \begin{tabular}{ | c c c c c c | c c c c c c | c c c c c c |}
         \hline
         \multicolumn{6}{|l}{poloha klínu 1 $ \Phi = 90 \ \mu  $Lm } & \multicolumn{6}{|l}{poloha klínu 3 $ \Phi = 52 \ \mu  $Lm} & \multicolumn{6}{|l|}{poloha klínu 5 $ \Phi = 33\ \mu  $Lm} \\ \hline
-        $ U_n $ & $ I_{10} $ & $ I_{12} $ & $ I_a $ & $ \sigma $ & k $ \cdot 10^{-9} $  &
-        $ U_n $ & $ I_{10} $ & $ I_{12} $ & $ I_a $ & $ \sigma $ & k $ \cdot 10^{-9} $&
-        $ U_n $ & $ I_{10} $ & $ I_{12} $ & $ I_a $ & $ \sigma $ & k $ \cdot 10^{-9} $  \\ 
+        $ U_n $ & $ I_{9} $ & $ I_{11} $ & $ I_a $ & $ \sigma $ & k $ \cdot 10^{-9} $  &
+        $ U_n $ & $ I_{9} $ & $ I_{11} $ & $ I_a $ & $ \sigma $ & k $ \cdot 10^{-9} $&
+        $ U_n $ & $ I_{9} $ & $ I_{11} $ & $ I_a $ & $ \sigma $ & k $ \cdot 10^{-9} $  \\ 
         V & $ \mu A $  & $ \mu A $ &  $ \mu A $ & & ALm$ ^{-1}$  &
         V & $ \mu A $  & $ \mu A $ &  $ \mu A $ & & $ALm ^{-1}$  &
         V & $ \mu A $  & $ \mu A $ &  $ \mu A $ & & ALm$ ^{-1}$  \\ 
@@ -263,45 +280,42 @@ protože mezi 10 a 12 dynodou dojede k zesílení o $ \sigma^{2} $ a napětí $ 
     \caption{Změřené anodové a dynodové proudy při různých napětích na fotonásobiči.}
 \end{table}        
 
-Z tabulky 1 můžeme taky vypočítat podle vztahů (6) a (7) zesílení $ M $ a citlivosti $ S $ a vynést je v závislost na napětí $ U_n $. Obě tyto závislosti by měli být znovu podle vztahu (3) přibližně exponenciální 
+Z Tabulky 2 můžeme taky vypočítat podle vztahů (6) a (7) zesílení $ M $ a citlivosti $ S $ a vynést je v závislost na napětí $ U_n $. Obě tyto závislosti by měli být znovu podle vztahu (3) přibližně exponenciální 
                    
 \begin{table}[htpb]
     \begin{minipage}[b]{.45\linewidth}
         \centering
-        \include{M.tex}
+        \resizebox{1.1\textwidth}{!}{ \input{M.tex} }
         \captionsetup{type=graph}
         \caption{Závislost zesílení fotonásobiče na napětí $ U_n $}
     \end{minipage} 
     \hfill
     \begin{minipage}[b]{.45\linewidth}
         \centering
-        \include{S.tex}
+        \resizebox{1.1\textwidth}{!}{ \input{S.tex} }
         \captionsetup{type=graph}
         \caption{Závislost citlivosti fotonásobiče na napětí $ U_n $ }
     \end{minipage} 
 \end{table}
+
+\vspace{-10pt}
+
 \subsection{Závislost koeficientu sekundární emise na osvětlení fotokatody}
                    
-Tentokrát jsem nechal stálé napětí $ U_n = $ a pohyboval s klínem pro regulaci osvětlení fotokatody. Naměřená data jsou uvedené v tabulce 2 a 3 a závislost koeficientu sekundární emise $ \sigma $  na osvětlení $ \Phi $ vykreslená do grafu 4. Koeficient emise katody na osvětlení tolik nezávisí, takže jsem hodnoty statisticky vyhodnotil a vypočítal společně s integrální citlivostí fotokatody $ k $ ze vztahů (4) a (5).
+Tentokrát jsem nechal stálé napětí $ U_n $ a pohyboval s klínem pro regulaci osvětlení fotokatody. Naměřená data jsou uvedené v Tabulkách 3 a závislost koeficientu sekundární emise $ \sigma $  na osvětlení $ \Phi $ je vykreslená do Grafu 4. Koeficient emise katody na osvětlení tolik nezávisí, takže jsem hodnoty statisticky vyhodnotil a vypočítal společně s integrální citlivostí fotokatody $ k $ ze vztahů (4) a (5).
 
 \begin{align*}
     \sigma &= 3.68 \pm 0.05 && k = 11 \pm 2 \text{ nALm}  ^{-1} && \text{pro $ U_n = 750 $ V} \\
     \sigma &= 3.26 \pm 0.08 && k = 18 \pm 5 \text{ nALm}^{-1} && \text{pro $ U_n = 650 $ V }
 \end{align*}
 
-\begin{figure}[htpb]
-    \centering
-    \include{sigma_na_phi.tex}
-    \captionsetup{type=graph}
-    \caption{Závislost koeficientu sekundární emise na intenzitě osvětlení fotokatody}
-\end{figure} 
-
 \begin{table}[htpb]
     \centering
+    \small
     \begin{tabular}{| c c | c c c c c |}
         \hline
         \multicolumn{2}{|l|}{} & \multicolumn{5}{l|}{$ U_n = 750 $ V} \\\hline
-        klín & $ \Phi $ ($ \mu $Lm) & $ I_{10} $ $ (\mu A) $  & $ I_{12} $ $ (\mu A) $ & $ I_a $ $ (\mu A) $ & $ \sigma $ & $ k \cdot 10^{-9} $ (ALm$^{-1}  $ )  \\ \hline
+        klín & $ \Phi $ ($ \mu $Lm) & $ I_{9} $ $ (\mu A) $  & $ I_{11} $ $ (\mu A) $ & $ I_a $ $ (\mu A) $ & $ \sigma $ & $ k \cdot 10^{-9} $ (ALm$^{-1}  $ )  \\ \hline
         1 & 90 & 0.65 & 8.86 & 74 & 3.69 &  9.4 \\
         2 & 66 & 0.48 & 6.37 & 56 & 3.64 & 11.5 \\
         3 & 52 & 0.40 & 5.32 & 46 & 3.65 & 12.0 \\
@@ -312,15 +326,17 @@ Tentokrát jsem nechal stálé napětí $ U_n = $ a pohyboval s klínem pro regu
         8 & 15 & 0.14 & 1.90 & 17 & 3.68 & 12.7 \\
         \hline
     \end{tabular}
-    \caption{Změřené anodové a dynodové proudy při napětí $ U_n = 750 $ V .}
 \end{table}
 
+\vspace{-25pt}
+
 \begin{table}[htpb]
+    \small
     \centering
     \begin{tabular}{| c c | c c c c c |}
         \hline
         \multicolumn{2}{|l|}{} & \multicolumn{5}{l|}{$ U_n = 650 $ V} \\\hline
-        klín & $ \Phi $ ($ \mu $Lm) & $ I_{10} $ $ (\mu A) $  & $ I_{12} $ $ (\mu A) $ & $ I_a $ $ (\mu A) $ & $ \sigma $ & $ k \cdot 10^{-9} $ (ALm$^{-1}  $ ) \\ \hline
+        klín & $ \Phi $ ($ \mu $Lm) & $ I_{9} $ $ (\mu A) $  & $ I_{11} $ $ (\mu A) $ & $ I_a $ $ (\mu A) $ & $ \sigma $ & $ k \cdot 10^{-9} $ (ALm$^{-1}  $ ) \\ \hline
         1 & 90 & 0.24 & 2.57 & 20 & 3.24 & 15.6 \\
         2 & 66 & 0.21 & 2.12 & 16 & 3.20 & 20.1 \\
         3 & 52 & 0.16 & 1.70 & 13 & 3.26 & 16.6 \\
@@ -331,39 +347,22 @@ Tentokrát jsem nechal stálé napětí $ U_n = $ a pohyboval s klínem pro regu
         8 & 15 & 0.07 & 0.78 & 6  & 3.29 & 22.0 \\
         \hline
     \end{tabular}
-    \caption{Změřené anodové a dynodové proudy při napětí $ U_n = 650 $ V .}
+    \caption{Změřené anodové a dynodové proudy při konstantním napětí .}
 \end{table}
 
-\subsection{Vliv temného proudu}
-
-Nakonec ještě ověřím vliv temného proudu na změřené hodnoty. Pro několik vysokých napětí jsem při vypnutém zdroji světla měřil anodový proud a hodnoty uvedl v tabulce 4. Všechny tyto proudy jsou mnohem nižší, než ty z předešlích tabulek, takže jej nebylo potřeba brát v úvahu.
-
-\begin{table}[htpb]
+\begin{figure}[htpb]
     \centering
-    \begin{tabular}{c l}
-        $ U_n $  & $ I_a $  \\\hline
-        1000 & 1 \\
-        800  & 0.9 \\
-        700  & 0.25 \\
-    \end{tabular} 
-    \caption{Anodový proud při nulovém osvětlení}
-\end{table}
-
+    \input{sigma_na_phi.tex}
+    \captionsetup{type=graph}
+    \caption{Závislost koeficientu sekundární emise na intenzitě osvětlení fotokatody}
+\end{figure} 
 
 \section{Závěr}
 
 V první části úlohy jsem měřil koeficient sekundární emise $ \sigma $ mezi dvěma dynodami fotonásobiče a ověřil, že na energii elektronů závisí exponenciálně podle vztahu $ \sigma = A E \exp (-\mu E) $. 
 Z naměřených hodnot jsem potom taky dopočítal zesílení $ M $ a citlivost fotonásobiče $ S $ a hodnoty vynesl do grafů 2, a 3 v závislosti na napětí $ U_n $ .
 
-Pomocí anodového proudu a zjištěného koeficientu sekundární emise jsem potom dopočítal fotokatodový proud $ I_f = I_a \sigma^{-n} $ a pak za vztahu (5) vyjádřil citlivost fotokatody $ k $ . Podle Stoletova zákona by mělo $ k $ záviset pouze na vlnové délce dopadajícího světla, ale z tabulek 2 a 3 vyplývá, že s rostoucím napětím na násobiči citlivost klesá. Myslím, že hodnoty $ I_f $ v těchto výpočtech nemůžou být příliš spolehlivé, když ani tímto způsobem většinou v tabulkách nedostanu sloupce $ I_{12} $ z $ I_{12} = I_a \sigma^{-2} $.
-
-
-
-
-
-
-
-
+Pomocí anodového proudu a zjištěného koeficientu sekundární emise jsem potom dopočítal fotokatodový proud $ I_f = I_a \sigma^{-n} $ a pak za vztahu (5) vyjádřil citlivost fotokatody $ k $ . Podle Stoletova zákona by mělo $ k $ záviset pouze na vlnové délce dopadajícího světla, ale z tabulek 2 a 3 vyplývá, že s rostoucím napětím na násobiči citlivost klesá. Myslím, že hodnoty $ I_f $ v těchto výpočtech nemůžou být příliš spolehlivé, když ani tímto způsobem většinou v tabulkách nedostanu sloupce $ I_{11} $ z $ I_{11} = I_a \sigma^{-2} $.
 
 
 \begin{thebibliography}{0}

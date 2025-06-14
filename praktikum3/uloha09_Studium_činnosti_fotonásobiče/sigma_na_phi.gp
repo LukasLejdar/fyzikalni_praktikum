@@ -5,8 +5,7 @@ set key at graph 0.95, 0.6
 set key spacing 1
 set key samplen 1.5
 
-set bmargin at screen 0.10
-set term epslatex size 3.7,2.3
+set term epslatex size 3.5,2.3
 set output "sigma_na_phi.tex"
 
 set yrange [3.1:3.8]

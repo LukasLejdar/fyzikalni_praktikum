@@ -1,4 +1,4 @@
-set ylabel " $ \\ln ( \\sigma / E) $ ($ eV ^{-1}$)"
+set ylabel " $ \\ln ( \\sigma / E) $ "
 set xlabel "$ E $ ($ eV $)"
 
 

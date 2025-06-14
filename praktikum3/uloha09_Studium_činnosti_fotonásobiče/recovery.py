@@ -78,9 +78,8 @@ osv1 = np.loadtxt('1.txt')
 osv3 = np.loadtxt('3.txt')
 osv5 = np.loadtxt('5.txt')
 
-#mu, sigma = average( osv1[:, 2] / osv1[:, 3] )
-
-#print( u650[:, 4] * np.random.normal(mu, sigma, len(u650)))
+mu, sigma = average( osv1[:, 2] / osv1[:, 3] )
+print( u650[:, 4] * np.random.normal(mu, sigma, len(u650)))
 
 print(u650[:, 3] / u650[:, 5]**2)
 print()

@@ -9,8 +9,7 @@ set key top left
 set key spacing 1
 set key samplen 1.5
 
-set bmargin at screen 0.07
-set term epslatex size 3.5,2.0
+set term epslatex size 3.5,2.3
 set output "M.tex"
 
 plot "1.txt" u 1:( $5**14 * 1e-6 ) lc 1 lt 7 t "poloha 1", \
