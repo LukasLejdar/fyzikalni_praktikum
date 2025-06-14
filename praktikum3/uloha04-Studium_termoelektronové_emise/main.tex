@@ -250,70 +250,70 @@ Aparaturu jsem zapojil podle obrázku (1) a zkontroloval, že všechny ovládac�
 
 \begin{figure}[h]
     \centering
-    \input{schotty1.tex}
+    \resizebox{0.45\textwidth}{!}{ \input{schotty1.tex} }
     \captionsetup{type=graph}
     \caption{ Závislost anodového proudu na anodovém napětí}
 \end{figure}
 
-Obě závislosti zobrazené v Grafu 1 ukazují rychlé ustálení anodového proudu, po kterém následuje jeho pozvolný nárůst vlivem Schottkyho efektu. Podle vztahu (16) by měl být tento nárůst lineární při zobrazení $ \log(I_a) $ v závislosti na $ \sqrt{U_a}  $, což potvrzují Grafy 2 a 3. Linearita se ale projevuje až od $\sqrt{U_a} \approx 9$, proto byl fit provedený jen v intervalu $U_a \in [80, 500]$ V. Z parametrů fitu vyjdou hodnoty $ I_{\text{nas}} $ a teplota katody $ T_{\text{nas}} $, kterou můžeme spočítat i ze vztahu (9). 
+Obě závislosti zobrazené v Grafu 1 ukazují rychlé ustálení anodového proudu, po kterém následuje jeho pozvolný nárůst vlivem Schottkyho efektu. Podle vztahu (16) by měl být tento nárůst lineární při zobrazení $ \log(I_a) $ v závislosti na $ \sqrt{U_a}  $, což potvrzují Grafy 2 a 3. Linearita se ale projevuje až od $\sqrt{U_a} \approx 9$, proto byl fit provedený jen v intervalu $U_a \in [80, 500]$ V. Z parametrů fitu vyjdou hodnoty $ I_{\text{nas}} $ a teplota katody $ T_{\text{nas}} $, kterou můžeme spočítat i ze vztahu (9). K nasycení proudu $ I_{\text{nas}} $  došlo v obou případech kolem $ U_a = 20 V $, takže tuto hodnotu použiju k výpočtu $ \Delta I = I(500 V) - I_{\text{nas}} $. Tento rozdíl můžu zjistit i z teoreticky ze vztahu (16).
 
 \begin{table}[h]
     \centering
-    \begin{tabular}{| c | c c c |}
+    \begin{tabular}{| c | c c | c c | c c |}
         \hline
-        $ I_f $ ($ $A) & $ I_{\text{nas}} $ ($  \mu$A)  & $ T_{\text{fit}} $  (K) & T (K)  \\
+        $ I_f $ ($ $A) & $ U_{\text{nas}} $ (V) & $ I_{\text{nas}} $ ($  \mu$A) & $ \Delta I $   ($ \mu $ A) & $ \Delta I_{\text{teor}} $ ($ \mu  $A)  & $ T_{\text{fit}} $  (K) & T (K)  \\
         \hline
-        1.92 & 36.48 $ \pm $  0.05 & 1450 $ \pm $ 20 & 1450 \\
-        1.98 & 61.4 $ \pm $  0.1 & 1466 $ \pm $ 23 & 1480 \\
+        1.92 & 20 & 36.48 $ \pm $  0.05 & 5.87 & 5.37 & 1450 $ \pm $ 20 & 1450 \\
+        1.98 & 20 & 61.4 $ \pm $  0.1 & 10.16 & 8.96 & 1466 $ \pm $ 23 & 1480 \\
         \hline
     \end{tabular}
-    \caption{ Výsledné parametry fitu nárůstu anodového proudu podle vztahu (16) }
+    \caption{ Výsledné parametry fitu růstu anodového proudu podle vztahu (16) }
 \end{table}
 \vspace{-40pt}
 
 \begin{table}[h]
     \captionsetup{type=graph}
-    \begin{minipage}{.45\linewidth}
+    \begin{minipage}{.47\linewidth}
         \centering
-        \input{schotty-1,92A.tex}
-        \caption{Fit nárůstu napětí z důvodu Schottkyho efektu při anodovém napětí $ I_f = 1.92 $ A }
+        \resizebox{\textwidth}{!}{ \input{schotty-1,92A.tex} }
+        \caption{Fit růstu proudu z důvodu Schottkyho efektu při žhavícím proudu $ I_f = 1.92 $ A }
     \end{minipage}
     \hfill
     \begin{minipage}{.45\linewidth}
         \centering
-        \input{schotty-1,98A.tex}
-        \caption{Fit nárůstu napětí z důvodu Schottkyho efektu při anodovém napětí $ I_f = 1.98 $ A }
+        \resizebox{\textwidth}{!}{ \input{schotty-1,98A.tex} }
+        \caption{Fit růstu proudu z důvodu Schottkyho efektu při žhavícím proudu $ I_f = 1.98 $ A }
     \end{minipage}
 \end{table}
 
 \newpage
 
-Grafy 3 a 4 vykreslují logaritmickou závislost proudu na odmocnině z napětí $ U_a $ v oblasti záporného anodového napětí, které jsem fitoval podle zlogaritmováním vztahu (14) a ze sklonu získál teplotu elektronů $ T $, která je uvedena pod grafy. 
+Grafy 4 a 5 vykreslují logaritmickou závislost proudu na napětí $ U_a $ v oblasti záporného anodového napětí, které jsem fitoval podle zlogaritmováním vztahu (14) a ze sklonu získál teplotu elektronů $ T $, která je uvedena pod grafy. 
 
 \begin{table}[h]
     \captionsetup{type=graph}
     \begin{minipage}{.45\linewidth}
         \centering
-        \input{schotty-1,92A_log.tex}
+        \resizebox{\textwidth}{!}{ \input{schotty-1,92A_log.tex} }
         \[ T = 2655 \pm 54 \text{ K} \]
-        \caption{ Logaritmické závislost anodového proudu na anodovém napětí při $ I_f = 1.92 $ A }
+        \caption{ Logaritmická závislost anodového proudu na anodovém napětí při $ I_f = 1.92 $ A }
     \end{minipage}
     \hfill
     \begin{minipage}{.45\linewidth}
         \centering
-        \input{schotty-1,98A_log.tex}
+        \resizebox{\textwidth}{!}{ \input{schotty-1,98A_log.tex} }
         \[ T = 2764 \pm 72 \text{ K} \]
 
-        \caption{Logaritmické závislost anodového proudu na anodovém napětí při $ I_f = 1.98 $ A }
+        \caption{Logaritmická závislost anodového proudu na anodovém napětí při $ I_f = 1.98 $ A }
     \end{minipage}
 \end{table}
 
 \subsection{Závislost nasyceného proudu na žhavícím proudu}
 
-Pokud chceme měřit závislost nasyceného proudu na žhavícím, je nutné zvolit takové anodové napětí, které příliš nezvýší nasycený proud, ale které zárověň zajistí, že se většina elektronů dostane k anodě. Vhodná volba je třeba $ U_a = 20 $ V. Pokaždé když změním žhavící napětí je opět potřeba nějakou dobu počkat na zahřátí čidla a proto změřených hodnot není tolik. Teplotu katody jsem ze žhavícího napětí a proudu spočítal podle vztahu (9) a výstupní práci zjistím fitem zlogaritmovanéhé Richardson – Dushmanovy rovnice (8)
+Pokud chceme měřit závislost nasyceného proudu na žhavícím, je nutné zvolit takové anodové napětí, které příliš nezvýší nasycený proud, ale které zárověň zajistí, že se většina elektronů dostane k anodě. Vhodná volba je třeba $ U_a = 20 $ V. Pokaždé když změním žhavící proud je opět potřeba nějakou dobu počkat na ustálení teploty čidla a proto změřených hodnot není tolik. Teplotu katody jsem ze žhavícího napětí a proudu spočítal podle vztahu (9) a výstupní práci zjistím fitem zlogaritmovanéhé Richardson – Dushmanovy rovnice (8)
 
 \begin{equation*}
-w = 4.04 \pm 0.09 \text{ (eV)}
+w = 3.88 \pm 0.08 \text{ (eV)}
 \end{equation*}
 
 \begin{figure}[h]
@@ -330,7 +330,7 @@ Povedlo se ověřit vztah (16), který popisuje Schottkyho efekt, ale jen při a
 
 Měření anodového proudu jsem provedl i při záporném anodovém napětí a tím změřil integrální rozdělení rychlosti elektronů, odkud fitem podle Boltzmanova rozdělení vyšla teplota elektronů při obou měřeních přibližně $ 2700 $ K. Je to hodnota o 1250 K větší než teplota katody, přesto že by podle vztahu (7) měli být stejné. V tomto případě si nejsem jistý jestli je chybná teorie, nebo měření.
 
-V druhé části jsem ověřil Richardson – Dushmanovu rovnice (8) popisující nasycený proud v závislosti na rostoucí teplotě a z fitu naměřených dat zjistil výstupní práci wolframu $ w = 4.04 \pm 0.09 \text{ (eV)} $. Tabulková hodnota udává $ w = 4.5  \text{ (eV)} $
+V druhé části jsem ověřil Richardson – Dushmanovu rovnice (8) popisující nasycený proud v závislosti na rostoucí teplotě a z fitu naměřených dat zjistil výstupní práci wolframu $ w = 3.88 \pm 0.08 \text{ (eV)} $. Tabulková hodnota udává $ w = 4.5  \text{ (eV)} $
 
 
 \begin{thebibliography}{0}

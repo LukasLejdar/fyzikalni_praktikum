@@ -90,3 +90,7 @@ fit [90:500] I2(x) "schotty-1,98A.txt" u 3:4 via In2, T2
 set output "schotty-1,98A.tex"
 plot "schotty-1,98A.txt" u ($3**0.5):(log($4)) lc -1 lt 7 t "", log(I2(x**2)) lc 7 t "fit"
 
+
+print(I1(500) - In1)
+print(I2(500) - In2)
+

@@ -14,6 +14,7 @@ k = 1.380649e-23
 rho = 4.89e-8
 d_S = 7.76e6
 alpha = 4.83e-3
+q = 1.60217663e-19
 
 w = 6.75 * 1e-19
 B = 2
@@ -27,14 +28,19 @@ set xlabel " $ 1/T $ (K$^{-1} $) "
 
 fit [1100:1400] log(f(x)) "vystupni_prace.txt" u (T($1/$2)):(log($4)) via w, B
 
+n = w/q
+m = -22
+
+z(x) = n*x*q/k + m 
+
+fit z(x) "vystupni_prace.txt" u (1/T($1/$2)):(log($4/(T($1/$2)**2))) via n, m
+
 set output "teplota.tex"
-plot "vystupni_prace.txt" u (1/T($1/$2)):(log($4/(T($1/$2)**2))) lc -1 lt 7 t "", log(f(1/x)/( (1/x)**2)) lc 7 t "fit"
+plot "vystupni_prace.txt" u (1/T($1/$2)):(log($4/(T($1/$2)**2))) lc -1 lt 7 t "", log(f(1/x)/( (1/x)**2)) lc 7 t "fit", z(x)
 
 
 print "1.92", T(4.883779 / 1.925364)
 
 print "1.98", T(5.143126 / 1.985696)
-
-q = 1.60217663e-19
 
 print "work function (eV)", w / q, w_err / q
