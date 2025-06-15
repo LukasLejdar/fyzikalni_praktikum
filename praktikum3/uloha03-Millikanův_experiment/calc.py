@@ -97,6 +97,25 @@ plt.title('Charges Color-Coded by Voltage')
 plt.grid(True)
 plt.show()
 
+N = 500
+x = (np.arange(N) + 1)/N * np.max(charges_sorted)
+y = np.zeros(N)
+
+for i in range(len(x)):
+    ratios = charges_sorted / x[i] 
+    count = np.round(ratios)
+    count[count == 0] = 1
+    y[i] = np.sum((count - ratios)**2)
+
+res = np.hstack( (x[:, None], y[:, None]) )
+np.savetxt('res.txt', res)
+
+print(x[np.argmin(y)])
+plt.plot(x, y)
+plt.show()
+
+
+
 #plt.scatter(np.arange(len(charges)), charges_sorted / q)
 #
 #plt.show()

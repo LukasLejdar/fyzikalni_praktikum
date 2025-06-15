@@ -1,8 +1,6 @@
 \documentclass[a4paper,11pt]{article}
-
-% Kodovani (cestiny) v dokumentu: utf-8
-%\usepackage[cp1250]{inputenc}	% Omezena stredoevropska kodova stranka, pouze MSW.
-\usepackage[utf8]{inputenc}	% Doporucujeme pouzivat UTF-8 (unicode).
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 
 \usepackage[margin=2cm]{geometry}
 \newtoks\jmenopraktika \newtoks\jmeno \newtoks\datum
@@ -129,11 +127,11 @@
 
 \section{Úvod}
 
-V této úloze budu měřit náboje malých olejových kapiček. Ukáže se, že tyto náboje jsou celočíselnými násobky elementárního náboje, který je pak možné vypočítat. Tento experiment poprvé provedl Robert A. Millikan v roce 1913, za který později dostal Nobelovu cenu za Fyziku.
+Cílem úlohy je změřit náboje olejových kapiček a na jejich základě určit velikost elementárního náboje. Kapičky totiž bývají nabité na jednotky náboje, jak vyjde najevo. Tento experiment poprvé provedl Robert A. Millikan v roce 1913, za který později dostal Nobelovu cenu.
 
 \section{Teorie}
 
-Principem Millikanova experimentu je měření rovnovážné rychlosti kapičky oleje. Síla působící na takovou kapičku v důsledku intenzity elektrického pole $ E $ bude
+Principem Millikanova experimentu je měření rovnovážné rychlosti kapičky oleje v elektrickém poli. Velikost síly působící na takovou kapičku v důsledku pole $ \vec{E} $ bude
 
 \begin{equation}
 F_e =  \mid q \mid E
@@ -154,7 +152,7 @@ F_{vz} =  \frac{4}{3} \pi r^{3} \rho_{vz} g
 \end{equation}
 
 \noindent
-kde $ \rho_{vz} $ je hustota vzduchu a odporová síla vyjádřená Stokesovým zákonem
+kde $ \rho_{vz} $ je hustota vzduchu. A odporová síla vyjádřená Stokesovým zákonem
 
 \begin{equation}
  F_t = 6 \pi \eta r v
@@ -216,7 +214,7 @@ Celkem jsem nahrál 2 až 3 videa pro každé napětí na kondenzátoru v rozmez
     \end{minipage} 
     \hfill
     \captionsetup{type=figure}
-    \caption{Postup zpracování každého framu z videa. Nalevo je vidět původní obrázek, uprostřed bylo odebrané pozadí a napravo je jsou anotované rozpoznané kapičky. }
+    \caption{Postup zpracování každého framu z videa. Nalevo je vidět původní fotka, uprostřed bylo odebrané pozadí a napravo jsou anotované rozpoznané kapičky. }
 \end{table}
 
 Rozpoznání kapek v každém jednotlivém framu ještě neumožňuje určit, která kapička odpovídá které v následujícím framu. K propojení těchto bodů do trajektorií napříč framy souží v knihovně funkce \texttt{trackpy.link}. V Grafu 3 je uveden příklad zpracovaného videa při napětí 300 V. 
@@ -228,20 +226,51 @@ Rozpoznání kapek v každém jednotlivém framu ještě neumožňuje určit, kt
     \caption{Trajektorie kapiček při napětí 300 V}
 \end{figure}
 
-V obrázku jsou jasně rozpoznatelné místa, kde několik kapek ostře změní směr letu, kvůli změně polarity napětí. Z trajektorií jsem vybíral jen ty, které jsou co nejpřímější před a po změně napětí a z lineárního fitu určil jejich rychlosti $ v_1 $ a $ v_2 $. Tímto způsobem jsem z 15 videí získal 61 měření a podle vztahů (5) a (6) vypočítal výsledné náboje. Tyto náboje jsou ve vzestupném pořadí vykreslené do Grafu 2.
+V obrázku jsou jasně rozpoznatelná místa, kde několik kapek ostře změní směr letu, kvůli změně polarity napětí. Z trajektorií jsem vybíral jen ty, které jsou co nejpřímější před a po změně napětí a z lineárního fitu pak určoval jejich rychlosti $ v_1 $ a $ v_2 $. Tímto způsobem jsem z 15 videí získal 61 měření a podle vztahů (5) a (6) vypočítal výsledné náboje. Tyto náboje jsou ve vzestupném pořadí vynesené do Grafu 2.
 
 \begin{figure}[htpb]
     \centering
     \input{all_charges.tex}
     \captionsetup{type=graph}
-    \caption{Zjištěné náboje kapiček, označené barevně podle napětí při kterých byli měřené.}
+    \caption{Zjištěné náboje kapiček, označené barevně podle napětí při kterých byly měřené.}
 \end{figure}
 
-Graf má spíš schodovitý charakter než spojitý průběh přímky. Některé body ale schodovitý tvar narušují, takže je vyřadím jako chybné měření. Zbylé hodnoty jsem rozdělil do skupiny a pro každou určil střední hodnotu, které vyšly postupně $ \bar{q}_1 = 1.58 $, $ \bar{q}_2 = 3.23 $, $ \bar{q}_3 = 4.84 $ a $ \bar{q}_3 = 6.36 $ v jednotkách $ 10 ^{-19} $ C. Krok mezi skupinami je přibližně 1.6, což naznačuje, že jednotlivé skupiny odpovídají celým násobkům elemntárního náboje od 1 do 4. Každé hodnotě jsem tedy přiřadil počet elementárních nábojů a získal hodnoty $ e_i = \frac{q_i}{n} $. Statistickým vyhodnocením pak vyšla konečná hodnota náboje
+Graf má spíš schodovitý charakter než spojitý průběh přímky, což naznačuje, že jde o jednotky náboje. Jako první hrubý odhad tohoto náboje použiju metodu residuí. Pro každou hodnotu ve změřeném rozmezí  $ e \in [0:7] \cdot 10^{-19} $ C vypočítám střední kvadratickou chybu relativní odchylky od nejbližšího násobku $ e $ podle vzorce (7) a zjistím kde má residuum minimum. 
 
 \begin{equation}
-e = (1.61 \pm 0.03) \cdot 10^{-19} \text{ C } \ (p= 99\,\%, \nu= 52)
+\text{res}(e) = \sum_i \left( \left\lfloor \frac{q_i}{e} \right\rceil - \frac{q_i}{e}  \right)  ^2
 \end{equation}
+
+\newpage
+
+\begin{figure}[htpb]
+    \centering
+    \input{res.tex}
+    \captionsetup{type=graph}
+    \caption{ Residuál náboje. Minium nastává při $ e = 1.63 \cdot 10^{-19} $   }
+\end{figure}
+
+
+Závislost residuálu na náboji je vykreslený do Grafu 3. Je vidět prudký pokles kolem hodnoty $ e = 1.63 \cdot 10^{-19} $, takže změřené náboje rozřadím do shluků kolem násobků tohoto prvního odhadu. Některé body ale schodovitý tvar v Grafu 2 narušují, takže je vyřadím jako chybné měření pod podmínkou, že $ | \left( \left\lfloor \frac{q_i}{e} \right\rceil - \frac{q_i}{e}  \right) | < 30 \% $. Zbylé hodnoty jsou vynesené do Grafu 4, barevně podle počtu přiřazeného náboje a v Grafu 5 je závislost $ q(n) $  fitovaná funkcí $ q = en $. Výledkem je konečná hodnota náboje 
+
+\begin{equation}
+e = (1.607 \pm 0.03) \cdot 10^{-19} \text{ C } \ (p= 99\,\%, \nu= 52)
+\end{equation}
+
+\begin{table}[htpb]
+    \captionsetup{type=graph}
+    \begin{minipage}{.45\linewidth}
+        \centering
+         \input{charges.tex}
+        \caption{Zachované náboje kapiček pro vyhodnocení}
+    \end{minipage} 
+    \hfill
+    \begin{minipage}{.43\linewidth}
+        \centering
+        \resizebox{\textwidth}{!}{ \input{charge.tex} }
+        \caption{Závislost náboje kapiček na počtu nábojů}
+    \end{minipage} 
+\end{table}
 
 \section{Závěr}
 
