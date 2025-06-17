@@ -28,6 +28,7 @@ set xlabel " $ 1/T $ (K$^{-1} $) "
 
 fit [1100:1400] log(f(x)) "vystupni_prace.txt" u (T($1/$2)):(log($4)) via w, B
 
+
 n = w/q
 m = -22
 
@@ -35,8 +36,12 @@ z(x) = n*x*q/k + m
 
 fit z(x) "vystupni_prace.txt" u (1/T($1/$2)):(log($4/(T($1/$2)**2))) via n, m
 
+set yrange [-35:-23]
+
 set output "teplota.tex"
-plot "vystupni_prace.txt" u (1/T($1/$2)):(log($4/(T($1/$2)**2))) lc -1 lt 7 t "", log(f(1/x)/( (1/x)**2)) lc 7 t "fit", z(x)
+plot "vystupni_prace.txt" u (1/T($1/$2)):(log($4/(T($1/$2)**2))) lc -1 lt 7 t "", z(x) lc 7 t "fit"
+
+#, log(f(1/x)/( (1/x)**2)) lc 7 t "fit",
 
 
 print "1.92", T(4.883779 / 1.925364)

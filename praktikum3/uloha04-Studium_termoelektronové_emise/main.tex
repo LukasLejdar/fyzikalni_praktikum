@@ -1,9 +1,5 @@
 \documentclass[a4paper,11pt]{article}
 
-% Kodovani (cestiny) v dokumentu: utf-8
-%\usepackage[cp1250]{inputenc}	% Omezena stredoevropska kodova stranka, pouze MSW.
-\usepackage[utf8]{inputenc}	% Doporucujeme pouzivat UTF-8 (unicode).
-
 \usepackage[margin=2cm]{geometry}
 \newtoks\jmenopraktika \newtoks\jmeno \newtoks\datum
 \newtoks\obor \newtoks\skupina \newtoks\rocnik \newtoks\semestr
@@ -230,10 +226,6 @@ kde $ D $  je vzdálenost anody od žhavené katody a $ L $  je vzdálenost anod
     \ln I_{\text{nas}}' = \ln I_{\text{nas}} -  \frac{ \sqrt{U_a} }{kT} \sqrt{ \frac{e^{3} }{4 \pi \varepsilon_0} \frac{L - D}{D} \frac{1}{r \ln (R / r )} } 
 \end{equation}
 
-
-
-
-
 \begin{figure}[htpb]
     \centering
     \includegraphics[width=0.7\textwidth]{zapojeni.jpg}
@@ -259,12 +251,12 @@ Obě závislosti zobrazené v Grafu 1 ukazují rychlé ustálení anodového pro
 
 \begin{table}[h]
     \centering
-    \begin{tabular}{| c | c c | c c | c c |}
+    \begin{tabular}{| c | c c c | c c | c c |}
         \hline
-        $ I_f $ ($ $A) & $ U_{\text{nas}} $ (V) & $ I_{\text{nas}} $ ($  \mu$A) & $ \Delta I $   ($ \mu $ A) & $ \Delta I_{\text{teor}} $ ($ \mu  $A)  & $ T_{\text{fit}} $  (K) & T (K)  \\
+        $ I_f $ ($ $A) & $ U_{\text{nas}} $ (V) & $ I_\text{nas} $ ($ \mu A $ ) & $ I_{\text{nas fit}} $ ($  \mu$A) & $ \Delta I $   ($ \mu $ A) & $ \Delta I_{\text{teor}} $ ($ \mu  $A)  & $ T_{\text{fit}} $  (K) & T (K)  \\
         \hline
-        1.92 & 20 & 36.48 $ \pm $  0.05 & 5.87 & 5.37 & 1450 $ \pm $ 20 & 1450 \\
-        1.98 & 20 & 61.4 $ \pm $  0.1 & 10.16 & 8.96 & 1466 $ \pm $ 23 & 1480 \\
+        1.92 & 30 & 36.78 &  36.78 $ \pm $ 0.05 & 4.97 & 5.37 & 1450 $ \pm $ 20 & 1450 \\
+        1.98 & 30 & 61.90 & 61.4 $ \pm $ 0.1 & 8.57 & 8.96 & 1466 $ \pm $ 23 & 1480 \\
         \hline
     \end{tabular}
     \caption{ Výsledné parametry fitu růstu anodového proudu podle vztahu (16) }
@@ -310,7 +302,7 @@ Grafy 4 a 5 vykreslují logaritmickou závislost proudu na napětí $ U_a $ v ob
 
 \subsection{Závislost nasyceného proudu na žhavícím proudu}
 
-Pokud chceme měřit závislost nasyceného proudu na žhavícím, je nutné zvolit takové anodové napětí, které příliš nezvýší nasycený proud, ale které zárověň zajistí, že se většina elektronů dostane k anodě. Vhodná volba je třeba $ U_a = 20 $ V. Pokaždé když změním žhavící proud je opět potřeba nějakou dobu počkat na ustálení teploty čidla a proto změřených hodnot není tolik. Teplotu katody jsem ze žhavícího napětí a proudu spočítal podle vztahu (9) a výstupní práci zjistím fitem zlogaritmovanéhé Richardson – Dushmanovy rovnice (8)
+Pokud chceme měřit závislost nasyceného proudu na žhavícím, je nutné zvolit takové anodové napětí, které příliš nezvýší nasycený proud, ale které zárověň zajistí, že se většina elektronů dostane k anodě. Vhodná volba je třeba $ U_a = 20 $ V. Pokaždé když změním žhavící proud je opět potřeba nějakou dobu počkat na ustálení teploty a proto změřených hodnot není tolik. Teplotu katody jsem ze žhavícího napětí a proudu spočítal podle vztahu (9) a výstupní práci zjistím fitem zlogaritmovanéhé Richardson – Dushmanovy rovnice (8)
 
 \begin{equation*}
 w = 3.88 \pm 0.08 \text{ (eV)}
@@ -323,8 +315,6 @@ w = 3.88 \pm 0.08 \text{ (eV)}
 \end{figure}
 
 \section{Závěr}
-
-
 
 Povedlo se ověřit vztah (16), který popisuje Schottkyho efekt, ale jen při anodovém napětí větším než 80 V. Z fitu naměřených dat jsem zjistil teplotu katody, která dobře odpovídá hodnotě vypočítané z odporu vlákna. Před hranicí $ U_a = 80 $ V pravděpodobně musí hrát roli ještě nějaké další efekty, které zabrání některým elektronům se dostat na anodu.
 
