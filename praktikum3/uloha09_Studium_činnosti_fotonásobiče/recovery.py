@@ -4,6 +4,29 @@ import uncertainties as unc
 import scipy.stats as stats
 from scipy.interpolate import interp1d
 
+import scipy.stats as stats
+import uncertainties as unc
+
+def average(arr):
+    sem = np.std(arr, ddof=1) / np.sqrt(len(arr))
+    coef = stats.t.ppf((1 + 0.99) / 2, len(arr) - 1)
+    return unc.ufloat(np.mean(arr), sem*coef)
+
+
+data1 = np.loadtxt('1.txt')
+data2 = np.loadtxt('3.txt')
+data3 = np.loadtxt('5.txt')
+
+print(average(data1[:, 4]))
+print(average(data2[:, 4]))
+print(average(data3[:, 4]))
+
+print(average(data1[:, 5]))
+print(average(data2[:, 5]))
+print(average(data3[:, 5]))
+
+data1[:, 4]
+
 
 phi1 = 0.90 * 1e-4
 phi3 = 0.52 * 1e-4

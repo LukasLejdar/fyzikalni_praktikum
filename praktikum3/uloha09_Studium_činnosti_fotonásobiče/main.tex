@@ -147,17 +147,17 @@ I_a = \sigma^{n} I_f,
 \end{equation}
 
 \noindent
-kde $ \sigma $ je koeficient sekundární emise $ \sigma $ mezi dvěma katodami. Zároveň taky platí Stoletův zákon pro bílé světlo, že proud na fotokatodě $ I_f $  je přímo úměrný intenzitě dopadajícího světla $ \Phi $ přes nějakou konstantu $ k $ .
+kde $ \sigma $ je koeficient sekundární emise $ \sigma $ mezi dvěma katodami. Zároveň platí Stoletův zákon pro bílé světlo, že proud na fotokatodě $ I_f $  je přímo úměrný intenzitě dopadajícího světla $ \Phi $ 
 
 \begin{equation}
-I_f = k \Phi
+I_f = k(\lambda) \Phi
 \end{equation}
 
 \noindent
-Zavádíme taky veličinu zesílení fotonásobiče $ M $ 
+kde $ k(\lambda) $ je spektrální charakteristika fotokatody. V našem měření ji budeme považovat za konstantu. Zavádíme taky veličinu zesílení fotonásobiče $ M $ 
 
 \begin{equation}
-M = \frac{I_a}{I_f}
+M = \frac{I_a}{I_f} = \sigma^{n}
 \end{equation}
 
 \noindent
@@ -185,7 +185,7 @@ Bude taky potřeba zjistit, jaký je anodový proud, když je zdroj světla úpl
 
 \subsection{Vliv temného proudu}
 
-Nejdřív ověřím vliv temného proudu na změřené hodnoty. Pro několik vysokých napětí jsem při vypnutém zdroji světla měřil anodový proud a hodnoty uvedl v Tabulce 1. Všechny tyto proudy jsou mnohem nižší, než ty z předešlích tabulek, takže jej nebylo potřeba brát v úvahu.
+Nejdřív ověřím vliv temného proudu na změřené hodnoty. Pro několik vysokých napětí jsem při vypnutém zdroji světla měřil anodový proud a hodnoty uvedl v Tabulce 1. Všechny tyto proudy jsou mnohem nižší, než ty z následujících tabulek, takže jej nebylo potřeba brát v úvahu.
 
 \begin{table}[htpb]
     \centering
@@ -216,15 +216,15 @@ protože mezi 9 a 11 dynodou dojede k zesílení o $ \sigma^{2} $ a napětí $ U
             \ln \frac{\sigma}{E} = -\mu E + \ln A
         \end{equation}
         \begin{align*}
-            \mu_1 &= 0.0023 \pm 0.0004 \text{ mV}^{-1} \\
-            \mu_3 &= 0.0022  \pm 0.0005 \text{ mV}^{-1} \\
-            \mu_5 &= 0.0025 \pm 0.0004 \text{ mV}^{-1}\\
+            \mu_1 &= 0.0023 \pm 0.0004 \text{ eV}^{-1} \\
+            \mu_3 &= 0.0022  \pm 0.0005 \text{ eV}^{-1} \\
+            \mu_5 &= 0.0025 \pm 0.0004 \text{ eV}^{-1}\\
         \end{align*}
         \vspace{-30pt}
         \begin{align*}
-            A_1 &= -2.56 \pm 0.02 \text{ mV}^{-1}\\
-            A_3 &= -2.57 \pm 0.02 \text{ mV}^{-1}\\
-            A_5 &= -2.56 \pm 0.02 \text{ mV}^{-1}\\
+            A_1 &= 0.0767 \pm 0.0013  \text{ eV}^{-1}\\
+            A_3 &= 0.0764 \pm 0.0019 \text{ eV}^{-1}\\
+            A_5 &= 0.0775 \pm 0.0015 \text{ eV}^{-1}\\
             \\
         \end{align*}
     \end{minipage} 
@@ -275,28 +275,74 @@ protože mezi 9 a 11 dynodou dojede k zesílení o $ \sigma^{2} $ a napětí $ U
             &      &      &    &      &      &     &      &      &    &      &      & 835 & 0.75 & 12.0 & 84 & 4.00 & 9.28 \\
             &      &      &    &      &      &     &      &      &    &      &      & 843 & 0.70 & 11.3 & 90 & 4.01 & 9.41 \\
         \hline     
+            & & & & 3.32 & 17 & & & & & 3.50 & 16 & & & & & 3.71 & 12.5 \\
+            & & & & 0.16 & 4  & & & & & 0.19 & 4  & & & & & 0.15 & 0.23 \\ 
+            \hline
+
     \end{tabular}  
     }
     \caption{Změřené anodové a dynodové proudy při různých napětích na fotonásobiči.}
 \end{table}        
 
-Z Tabulky 2 můžeme taky vypočítat podle vztahů (6) a (7) zesílení $ M $ a citlivosti $ S $ a vynést je v závislost na napětí $ U_n $. Obě tyto závislosti by měli být znovu podle vztahu (3) přibližně exponenciální 
-                   
+Z Tabulky 2 je taky možné podle vztahu (6) vypočítat zesílení $ M $ a proložit ho závislostí vyjádřením ze vztahu (3). Z parametrů fitu vyjdou stejné hodnoty jako u grafu koeficientu emise, protože vychází ze stejných měření, takže uvádím jenom graf. 
+
+\begin{equation}
+M = \left( A\frac{eU_n}{n} \right)^{n} \exp ( -\mu eU_n)
+\end{equation}
+
+\begin{figure}[htpb]
+    \centering
+    \input{M.tex}
+    \caption{Závislost zesílení fotonásobiče na napětí $ U_n $}
+\end{figure}
+
+Citlivost fotonásobiče $ S $ můžeme z tabulky (2) vypočítat podle vztahu (7) a měla by se řídit podobným vztahem (11). V tomto případě budy fitovat kombinaci konstant $ k A^{n} $  a $ \mu $. 
+
+\begin{equation}
+S = k \left( A\frac{eU_n}{n} \right) ^{n}  \exp ( -\mu e U_n).
+\end{equation}
+
 \begin{table}[htpb]
-    \begin{minipage}[b]{.45\linewidth}
+    \begin{minipage}{.35\linewidth}
         \centering
-        \resizebox{1.1\textwidth}{!}{ \input{M.tex} }
-        \captionsetup{type=graph}
-        \caption{Závislost zesílení fotonásobiče na napětí $ U_n $}
+        \begin{align*}
+        \mu_1 = 0.00743 \pm 0.00024 \text{ eV}^{-1} \\
+        \mu_3 = 0.00730 \pm 0.00026  \text{ eV}^{-1}\\
+        \mu_5 = 0.00709 \pm 0.00020  \text{ eV}^{-1}\\
+        \end{align*}
+        \vspace{-30pt}
+        \begin{align*}
+            k_1 A_1^{n} = 13.3 \pm 2.1 \cdot 10^{-23} \text{ ALm}^{-1}\text{eV}^{-n}     \\
+            k_3 A_3^{n}= 13.4 \pm 2.5  \cdot 10^{-23} \text{ ALm}^{-1}\text{eV}^{-n} \\
+            k_5 A_5^{n} = 11.9 \pm 1.8   \cdot 10^{-23}\text{ ALm}^{-1}\text{eV}^{-n}\\
+        \end{align*}
     \end{minipage} 
     \hfill
-    \begin{minipage}[b]{.45\linewidth}
+    \begin{minipage}{.60\linewidth}
         \centering
-        \resizebox{1.1\textwidth}{!}{ \input{S.tex} }
+        \input{S.tex}
         \captionsetup{type=graph}
         \caption{Závislost citlivosti fotonásobiče na napětí $ U_n $ }
     \end{minipage} 
 \end{table}
+
+
+
+%\begin{table}[htpb]
+%    \begin{minipage}[b]{.45\linewidth}
+%        \centering
+%        \resizebox{1.1\textwidth}{!}{ \input{M.tex} }
+%        \captionsetup{type=graph}
+%        \caption{Závislost zesílení fotonásobiče na napětí $ U_n $}
+%    \end{minipage} 
+%    \hfill
+%    \begin{minipage}[b]{.45\linewidth}
+%        \centering
+%        \resizebox{1.1\textwidth}{!}{ \input{S.tex} }
+%        \captionsetup{type=graph}
+%        \caption{Závislost citlivosti fotonásobiče na napětí $ U_n $ }
+%    \end{minipage} 
+%\end{table}
 
 \vspace{-10pt}
 

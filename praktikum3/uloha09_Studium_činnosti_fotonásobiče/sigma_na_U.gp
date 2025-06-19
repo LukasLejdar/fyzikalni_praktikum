@@ -1,15 +1,25 @@
 set ylabel " $ \\ln ( \\sigma / E) $ "
 set xlabel "$ E $ ($ eV $)"
 
+A1 = 0.077
+A3 = 0.077
+A5 = 0.077
 
+mu1 = 0.0023
+mu3 = 0.0023
+mu5 = 0.0023
 
-f1(x) = -a1 * x + b1
-f3(x) = -a3 * x + b3
-f5(x) = -a5 * x + b5
+#s1(x) = A1*x*exp(-mu1*x)
 
-fit f1(x) "1.txt" u ($1 / 14):( log( $5 / $1 * 14 ) ) via a1, b1
-fit f3(x) "3.txt" u ($1 / 14):( log( $5 / $1 * 14 ) ) via a3, b3
-fit f5(x) "5.txt" u ($1 / 14):( log( $5 / $1 * 14 ) ) via a5, b5
+f1(x) = -mu1 * x + log(A1)
+f3(x) = -mu3 * x + log(A3)
+f5(x) = -mu5 * x + log(A5)
+
+fit f1(x) "1.txt" u ($1 / 14):( log( $5 / $1 * 14 ) ) via mu1, A1
+fit f3(x) "3.txt" u ($1 / 14):( log( $5 / $1 * 14 ) ) via mu3, A3
+fit f5(x) "5.txt" u ($1 / 14):( log( $5 / $1 * 14 ) ) via mu5, A5
+
+#print(s1(42))
 
 set key at graph 1, 0.95
 set key spacing 1
@@ -25,5 +35,8 @@ plot "1.txt" u ($1 / 14):( log( $5 / $1 * 14 ) ) lc 1 lt 7 t "poloha 1", \
 f1(x) lc 1 t "", \
 f3(x) lc 4 t "", \
 f5(x) lc 3 t "" 
+
+
+
 
 
